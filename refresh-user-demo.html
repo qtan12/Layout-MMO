@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refresh User Data Demo</title>
+    <script type="text/javascript">
+    const API_URL = "https://panel.dongnai.net/api/v1/";
+    </script>
+    <script src="js/notification.js"></script>
+    <script src="js/header.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-warning { background: #ffc107; color: black; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-info { background: #17a2b8; color: white; }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .code-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Component (hidden) -->
+    <div x-data="headerComponent()" style="display: none;"></div>
+    
+    <h1>Refresh User Data - Giải Thích & Demo</h1>
+    
+    <!-- Khởi tạo FastNotice -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.fastNotice = new FastNotice({
+                position: 'bottom-right',
+                duration: 3000,
+                maxNotifications: 3
+            });
+        });
+    </script>
+    
+    <!-- Giải thích refreshUserData -->
+    <div class="section">
+        <h2>🤔 Tại sao cần refreshUserData?</h2>
+        <p><strong>Vấn đề:</strong> Khi user cập nhật thông tin (avatar, tên, email...) ở trang khác, trang hiện tại vẫn hiển thị data cũ từ cache.</p>
+        
+        <div class="code-block">
+// Ví dụ: User cập nhật avatar từ trang Profile
+// Trang Home vẫn hiển thị avatar cũ vì dùng cache
+// → Cần refreshUserData() để lấy data mới nhất
+        </div>
+    </div>
+
+    <!-- Khi nào dùng refreshUserData -->
+    <div class="section">
+        <h2>📋 Khi nào dùng refreshUserData?</h2>
+        <ul>
+            <li><strong>Sau khi user cập nhật profile</strong> (avatar, tên, email...)</li>
+            <li><strong>Sau khi user thay đổi settings</strong> (theme, language...)</li>
+            <li><strong>Sau khi admin cập nhật thông tin user</strong></li>
+            <li><strong>Khi cần data mới nhất ngay lập tức</strong> (bỏ qua cache)</li>
+        </ul>
+    </div>
+
+    <!-- Cách hoạt động -->
+    <div class="section">
+        <h2>⚙️ Cách hoạt động của refreshUserData</h2>
+        <div class="code-block">
+1. refreshUserData() được gọi
+2. Xóa cache cũ (clearUserCache)
+3. Gọi API users/info/ để lấy data mới nhất
+4. Cache data mới
+5. Cập nhật UI (updateAuthUI)
+6. Gửi data mới đến tất cả components (sendUserData)
+        </div>
+    </div>
+
+    <!-- Demo -->
+    <div class="section">
+        <h2>🧪 Demo Functions</h2>
+        <button class="btn btn-primary" onclick="testRefresh()">Test refreshUserData()</button>
+        <button class="btn btn-success" onclick="testClearCache()">Test clearUserCache()</button>
+        <button class="btn btn-warning" onclick="showCacheStatus()">Show Cache Status</button>
+        <button class="btn btn-danger" onclick="simulateUserUpdate()">Simulate User Update</button>
+        <button class="btn btn-info" onclick="testFunctions()">Test Functions Availability</button>
+        <button class="btn btn-primary" onclick="testAPICall()">Test Direct API Call</button>
+    </div>
+
+    <!-- Ví dụ sử dụng -->
+    <div class="section">
+        <h2>💡 Ví dụ sử dụng trong code</h2>
+        <div class="code-block">
+// Trong trang Profile sau khi user cập nhật avatar:
+function updateAvatar() {
+    // ... code cập nhật avatar ...
+    
+    // Sau khi cập nhật thành công, refresh user data
+    refreshUserData();
+    sendNotice('Avatar đã được cập nhật!', 'success');
+}
+
+// Trong trang Settings sau khi user thay đổi theme:
+function changeTheme() {
+    // ... code thay đổi theme ...
+    
+    // Refresh để lấy settings mới nhất
+    refreshUserData();
+}
+        </div>
+    </div>
+
+    <!-- So sánh -->
+    <div class="section">
+        <h2>🔄 So sánh các hàm</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background: #f8f9fa;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Hàm</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Mục đích</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Gọi API</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Cập nhật UI</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><code>checkAccessToken()</code></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Khởi tạo, kiểm tra cache trước</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Chỉ khi không có cache</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">✅</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><code>refreshUserData()</code></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Lấy data mới nhất, bỏ qua cache</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Luôn gọi</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">✅</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><code>clearUserCache()</code></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Xóa cache, không gọi API</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">❌</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">❌</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Đợi Alpine.js load xong
+        document.addEventListener('alpine:init', () => {
+            console.log('Alpine.js initialized');
+        });
+
+        function testRefresh() {
+            console.log('Testing refreshUserData()...');
+            sendNotice('Gọi refreshUserData()...', 'info');
+            
+            // Kiểm tra xem header component có sẵn sàng không
+            if (typeof refreshUserData === 'function') {
+                refreshUserData();
+                sendNotice('refreshUserData() called successfully!', 'success');
+            } else {
+                sendNotice('refreshUserData() function not found!', 'error');
+            }
+        }
+
+        function testClearCache() {
+            console.log('Testing clearUserCache()...');
+            sendNotice('Gọi clearUserCache()...', 'info');
+            
+            if (typeof clearUserCache === 'function') {
+                clearUserCache();
+                sendNotice('clearUserCache() called successfully!', 'success');
+            } else {
+                sendNotice('clearUserCache() function not found!', 'error');
+            }
+        }
+
+        function showCacheStatus() {
+            const cacheData = localStorage.getItem('user_cache');
+            const timestamp = localStorage.getItem('user_cache_at');
+            
+            let status = 'Cache Status:\n';
+            status += `- Data: ${cacheData ? 'Present' : 'Empty'}\n`;
+            status += `- Timestamp: ${timestamp || 'None'}\n`;
+            
+            if (timestamp) {
+                const age = Math.floor((Date.now() - parseInt(timestamp)) / 1000);
+                status += `- Age: ${age} seconds\n`;
+            }
+            
+            console.log(status);
+            alert(status);
+        }
+
+        function simulateUserUpdate() {
+            console.log('Simulating user profile update...');
+            sendNotice('Simulating user profile update...', 'info');
+            
+            // Clear cache to simulate fresh data needed
+            if (typeof clearUserCache === 'function') {
+                clearUserCache();
+                
+                // Then refresh to get new data
+                setTimeout(() => {
+                    if (typeof refreshUserData === 'function') {
+                        refreshUserData();
+                        sendNotice('User data refreshed after profile update!', 'success');
+                    } else {
+                        sendNotice('refreshUserData() function not found!', 'error');
+                    }
+                }, 1000);
+            } else {
+                sendNotice('clearUserCache() function not found!', 'error');
+            }
+        }
+
+        // Test functions availability
+        function testFunctions() {
+            console.log('Testing function availability...');
+            console.log('refreshUserData:', typeof refreshUserData);
+            console.log('clearUserCache:', typeof clearUserCache);
+            console.log('sendNotice:', typeof sendNotice);
+            
+            if (typeof refreshUserData === 'function' && typeof clearUserCache === 'function') {
+                sendNotice('All functions are available!', 'success');
+            } else {
+                sendNotice('Some functions are missing!', 'error');
+            }
+        }
+
+        // Test direct API call
+        function testAPICall() {
+            console.log('Testing direct API call...');
+            sendNotice('Testing direct API call...', 'info');
+            
+            // Test if xhr function is available
+            if (typeof window.xhr === 'function') {
+                sendNotice('xhr function is available!', 'success');
+                
+                // Try to call API (this will fail without token, but we can see the attempt)
+                window.xhr({
+                    method: 'GET',
+                    url: 'https://panel.dongnai.net/api/v1/users/info/',
+                    headers: {
+                        'Authorization': 'Bearer test-token'
+                    },
+                    withCredentials: false,
+                    timeout: 5000
+                }).then(response => {
+                    console.log('API Response:', response);
+                    sendNotice('API call successful!', 'success');
+                }).catch(error => {
+                    console.log('API Error:', error);
+                    sendNotice('API call failed (expected without valid token)', 'warning');
+                });
+            } else {
+                sendNotice('xhr function not found!', 'error');
+            }
+        }
+
+        // Auto test on load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                testFunctions();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

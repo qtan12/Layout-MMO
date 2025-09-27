@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMO Store - Premium Digital Products</title>
+    <meta name="description"
+        content="Cửa hàng bán tài khoản premium, key license, VPN và các sản phẩm số chất lượng cao với giá tốt nhất.">
+
+    <script type="text/javascript">
+        const API_URL = "https://panel.dongnai.net/api/v2/";
+    </script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="js/tailwindcss.3.js"></script>
+
+    <!-- Tailwind CSS Globals -->
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+    <style type="text/tailwindcss">
+
+        @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container {
+    @apply mx-auto px-4;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+      @apply px-6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1240px;
+      @apply px-8;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
+
+ /* Button Styles */
+ .btn {
+    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
+  }
+  /* đặt tên gì phổ biến hơn để các nhu cầu tương tự cũng dùng được đi, đặt tên cart nó chỉ dùng cho cart à */
+  .btn-overflow{
+    @apply overflow-visible;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-emerald-600 text-emerald-600 hover:bg-emerald-50 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply border border-gray-300 text-gray-700 hover:bg-gray-50 ;
+  }
+
+  .btn-ghost {
+    @apply border border-gray-300 text-gray-600 hover:text-emerald-600 hover:bg-transparent transition-colors;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 text-white focus:ring-red-500/20;
+  }
+
+  .btn-success {
+    @apply bg-green-500 hover:bg-green-600 text-white focus:ring-green-500/20;
+  }
+
+  /* Button Sizes */
+  .btn-sm {
+    @apply px-3 py-1.5 h-8 text-sm;
+  }
+
+  .btn-md {
+    @apply px-4 py-2 h-10 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 h-12 text-base;
+  }
+
+  .btn-xl {
+    @apply px-8 py-4 h-14 text-lg;
+  }
+
+
+  /* Input Styles */
+  .input {
+    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
+  }
+
+  .input-lg {
+    @apply h-12 px-4 py-3 text-sm;
+  }
+
+  .input-sm {
+    @apply h-8 px-2 py-1 text-sm;
+  }
+        
+        /* Custom input with icon styles */
+  .input-icon {
+            position: relative;
+        }
+        
+    .input-icon input {
+        padding-left: 2rem;
+        }
+        
+    .input-icon .icon {
+            position: absolute;
+        left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #9CA3AF;
+            pointer-events: none;
+        }
+        
+    .input-icon input:focus + .icon {
+            color: #10B981;
+        }
+        
+  /* Card Styles */
+  .card {
+    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+  }
+
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6 pb-4;
+  }
+
+  .card-title {
+    @apply text-2xl font-semibold leading-none tracking-tight;
+  }
+
+  .card-description {
+    @apply text-sm text-gray-600;
+  }
+
+  .card-content {
+    @apply p-6;
+  }
+
+  .card-content-no-header {
+    @apply p-6;
+  }
+
+  .card-footer {
+    @apply flex items-center p-6 pt-4;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-md border;
+  }
+
+  .badge-primary {
+    @apply bg-emerald-50 text-emerald-700 border-emerald-200;
+  }
+
+  .badge-secondary {
+    @apply bg-gray-50 text-gray-700 border-gray-200;
+  }
+
+  .badge-success {
+    @apply bg-green-50 text-green-700 border-green-200;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-50 text-yellow-700 border-yellow-200;
+  }
+
+  .badge-danger {
+    @apply bg-red-50 text-red-700 border-red-200;
+  }
+
+  .badge-info {
+    @apply bg-emerald-50 text-emerald-700 border-emerald-200;
+  }
+
+  .badge-hot {
+    @apply bg-gradient-to-r from-red-500 to-pink-500 text-white border-0 shadow-sm;
+  }
+
+  .badge-new {
+    @apply bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0 shadow-sm;
+  }
+
+  .badge-trending {
+    @apply bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-0 shadow-sm;
+  }
+
+  /* Section Styles */
+  .section {
+    @apply py-12 lg:py-16;
+  }
+
+  .section-sm {
+    @apply py-8 lg:py-12;
+  }
+
+  .section-lg {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-title {
+    @apply text-2xl lg:text-3xl font-bold text-gray-900 mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-gray-600 mb-8 lg:mb-12;
+  }
+
+  /* Grid Layouts */
+  .grid-cols-auto {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .grid-cols-auto-sm {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .grid-cols-auto-lg {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  /* Tab Styles */
+  .tabs {
+    @apply w-full;
+  }
+
+  .tabs-list {
+    @apply flex bg-gray-100 rounded-xl p-1 gap-2;
+  }
+
+  .tabs-trigger {
+    @apply flex-1 py-2.5 px-4 text-sm font-medium rounded-lg transition-all focus:outline-none disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .tabs-content {
+    @apply mt-2 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2;
+  }
+
+  /* Dropdown Styles */
+  .dropdown {
+    @apply relative inline-block text-left;
+  }
+
+  .dropdown-content {
+    @apply absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none;
+  }
+
+  .dropdown-item {
+    @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer;
+  }
+
+  /* Modal Styles */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 bg-black/50 backdrop-blur-sm;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .modal-content {
+    @apply fixed left-[50%] top-[50%] z-50 w-full translate-x-[-50%] translate-y-[-50%] bg-white shadow-2xl border border-gray-100;
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between pb-4 border-b;
+  }
+
+  .modal-title {
+    @apply text-lg font-semibold;
+  }
+
+  .modal-body {
+    @apply py-4;
+  }
+
+  .modal-footer {
+    @apply flex justify-end space-x-2 pt-4 border-t;
+  }
+
+  /* Pagination Styles */
+  .pagination {
+    @apply flex items-center justify-center space-x-2;
+  }
+
+  .pagination-item {
+    @apply flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700;
+  }
+
+  .pagination-item.active {
+    @apply text-white bg-blue-600 border-blue-600;
+  }
+
+  .pagination-item.disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* Alert Styles */
+  .alert {
+    @apply relative w-full rounded-lg border p-4 flex items-start;
+  }
+
+  .alert-info {
+    @apply border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-900 shadow-sm;
+  }
+
+  .alert-success {
+    @apply border-green-200 bg-gradient-to-r from-green-50 to-green-100 text-green-900 shadow-sm;
+  }
+
+  .alert-warning {
+    @apply border-orange-200 bg-gradient-to-r from-orange-50 to-orange-100 text-orange-900 shadow-sm;
+  }
+
+  .alert-error {
+    @apply border-red-200 bg-gradient-to-r from-red-50 to-red-100 text-red-900 shadow-sm;
+  }
+
+  .alert-light {
+    @apply border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 text-gray-900 shadow-sm;
+  }
+
+  /* Loading Styles */
+  .loading {
+    @apply animate-spin rounded-full border-2 border-gray-300 border-t-blue-600;
+  }
+
+  .loading-sm {
+    @apply w-4 h-4;
+  }
+
+  .loading-md {
+    @apply w-6 h-6;
+  }
+
+  .loading-lg {
+    @apply w-8 h-8;
+  }
+
+  /* Skeleton Styles */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+
+  .skeleton-text {
+    @apply h-4 bg-gray-200 rounded;
+  }
+
+  .skeleton-avatar {
+    @apply w-10 h-10 bg-gray-200 rounded-full;
+  }
+
+      /* Navigation Styles */
+      .nav-link {
+        @apply text-gray-600 hover:text-emerald-600 font-medium transition-colors whitespace-nowrap overflow-hidden text-ellipsis;
+      }
+      
+      .nav-dropdown {
+        @apply relative;
+      }
+      
+      .nav-dropdown-trigger {
+        @apply flex items-center text-gray-600 hover:text-emerald-600 font-medium transition-colors whitespace-nowrap overflow-hidden text-ellipsis;
+      }
+      
+      .nav-dropdown-menu {
+        @apply absolute top-full left-[-100%] mt-2 bg-white rounded-xl shadow-xl border border-gray-200 opacity-0 invisible transition-all duration-500 transform scale-90 z-50;
+        box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      
+      .nav-dropdown:hover .nav-dropdown-menu {
+        @apply opacity-100 visible scale-100;
+      }
+      
+      .nav-dropdown-trigger:hover + .nav-dropdown-menu,
+      .nav-dropdown-menu:hover {
+        @apply opacity-100 visible scale-100;
+      }
+
+      /* Single Column Menu */
+      .nav-dropdown-menu.single-col {
+        @apply w-56 py-3;
+      }
+      
+      /* Two Column Menu */
+      .nav-dropdown-menu.two-col {
+        @apply w-[520px] p-6;
+      }
+
+      /* Three Column Menu */
+      .nav-dropdown-menu.three-col {
+        @apply w-[720px] p-6;
+      }
+      
+      .nav-dropdown-item {
+        @apply block px-4 py-2.5 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-200 rounded-lg mx-2;
+      }
+
+      /* Two Column Layout */
+      .dropdown-two-col {
+        @apply grid grid-cols-2 gap-6;
+      }
+
+      /* Three Column Layout */
+      .dropdown-three-col {
+        @apply grid grid-cols-3 gap-6;
+      }
+
+      .dropdown-col {
+        @apply space-y-2;
+      }
+
+      .dropdown-col-header {
+        @apply text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3 px-2 pb-2 border-b border-gray-100;
+      }
+
+      /* Submenu Level 2 */
+      .nav-submenu {
+        @apply relative;
+      }
+
+        .nav-submenu-menu {
+          @apply hidden absolute top-[-50%] left-[100%] w-52 bg-white rounded-xl shadow-xl border border-gray-200 py-3 opacity-0 invisible transition-all duration-300 z-50;
+          box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+      .nav-submenu:hover .nav-submenu-menu {
+        @apply block opacity-100 visible;
+      }
+
+      .nav-submenu-item {
+        @apply block px-4 py-2 text-sm text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-200 rounded-lg mx-2;
+      }
+
+      .nav-dropdown-item.has-submenu {
+        @apply flex items-center pr-8;
+        position: relative;
+      }
+
+      .nav-dropdown-item.has-submenu::after {
+        content: '';
+        @apply w-3 h-3 bg-gray-400 opacity-60;
+        mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3e%3c/svg%3e") no-repeat center;
+        mask-size: contain;
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .nav-dropdown-item.has-submenu:hover::after {
+        @apply bg-emerald-500 opacity-100;
+      }
+
+      /* Enhanced styling for better visual hierarchy */
+      .nav-dropdown-menu.single-col .nav-dropdown-item:first-child {
+        @apply mt-0;
+      }
+
+      .nav-dropdown-menu.two-col .dropdown-col:first-child {
+        @apply border-gray-200 pr-3;
+      }
+
+      .nav-dropdown-menu.two-col .dropdown-col:last-child {
+        @apply pl-3;
+      }
+
+      /* Better visual balance for two columns */
+      .nav-dropdown-menu.two-col .dropdown-two-col {
+        @apply relative;
+      }
+
+      .nav-dropdown-menu.two-col .dropdown-two-col::before {
+        content: '';
+        @apply absolute top-0 left-1/2 transform -translate-x-px h-full w-px bg-gray-200;
+      }
+
+      /* Three column separators */
+      .nav-dropdown-menu.three-col .dropdown-three-col {
+        @apply relative;
+      }
+
+      .nav-dropdown-menu.three-col .dropdown-three-col::before {
+        content: '';
+        @apply absolute top-0 left-1/3 transform -translate-x-px h-full w-px bg-gray-200;
+      }
+
+      .nav-dropdown-menu.three-col .dropdown-three-col::after {
+        content: '';
+        @apply absolute top-0 left-2/3 transform -translate-x-px h-full w-px bg-gray-200;
+      }
+
+      /* Menu Header with Icons */
+      .dropdown-col-header-with-icon {
+        @apply flex items-center gap-2 text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3 px-2 pb-2 border-b border-gray-100;
+      }
+
+      .dropdown-col-header-with-icon i {
+        @apply w-4 h-4 mr-2 text-emerald-500;
+      }
+
+      /* Divider between menu sections */
+      .nav-menu-divider {
+        @apply border-t border-gray-100 my-3 mx-2;
+      }
+
+      /* Featured menu items */
+      .nav-dropdown-item.featured {
+        @apply bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-100 text-emerald-700 font-medium;
+      }
+
+      .nav-dropdown-item.featured:hover {
+        @apply from-emerald-100 to-green-100 border-emerald-200 text-emerald-800;
+      }
+      
+      .mobile-menu-item {
+        @apply flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-50 transition-colors;
+      }
+
+      .mobile-submenu-header {
+        @apply flex items-center text-xs font-bold text-gray-600 uppercase tracking-wider border-b border-gray-200 pb-2 pt-4 mb-2 px-2;
+      }
+      .mobile-submenu-header:first-of-type {
+        @apply pt-2;
+      }
+
+      .mobile-menu-expandable {
+        @apply flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer;
+      }
+      
+      .mobile-submenu-item {
+        @apply flex items-center p-2 text-sm text-gray-600 hover:text-emerald-600 transition-colors rounded-lg hover:bg-emerald-50;
+      }
+
+      .mobile-submenu-item i {
+        @apply flex-shrink-0;
+      }
+
+      .mobile-submenu-expandable {
+        @apply flex items-center justify-between p-2 text-sm text-gray-600 hover:text-emerald-600 transition-colors rounded-lg hover:bg-emerald-50 cursor-pointer;
+      }
+
+      .mobile-submenu-expandable i:first-child {
+        @apply flex-shrink-0;
+      }
+
+      /* Text Utilities */
+      .text-nowrap-ellipsis {
+        @apply whitespace-nowrap overflow-hidden text-ellipsis;
+      }
+
+      /* Utility Classes */
+      .text-gradient {
+        @apply bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent;
+      }
+
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-emerald-500 to-green-600;
+  }
+
+  .bg-gradient-secondary {
+    @apply bg-gradient-to-r from-gray-100 to-gray-200;
+  }
+
+  .shadow-soft {
+    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-medium {
+    box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-strong {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Text */
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-md {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-3xl sm:text-3xl lg:text-4xl;
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-200 hover:shadow-lg;
+  }
+
+  /* Form Elements */
+  .checkbox {
+    @apply w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500;
+  }
+
+  .checkbox-sm {
+    @apply w-3 h-3 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500;
+  }
+
+  .checkbox-lg {
+    @apply w-5 h-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500;
+  }
+
+  /* Link Styles */
+  .link {
+    @apply text-emerald-600 hover:text-green-400 transition-colors;
+  }
+
+  .link-primary {
+    @apply text-emerald-600 hover:text-green-400 font-medium transition-colors;
+  }
+
+  .link-secondary {
+    @apply text-gray-600 hover:text-emerald-600 transition-colors;
+  }
+
+  .link-muted {
+    @apply text-gray-500 hover:text-gray-700 transition-colors;
+  }
+
+  .link-underline {
+    @apply text-emerald-600 hover:text-green-400 underline underline-offset-2 transition-colors;
+  }
+
+  .link-no-underline {
+      @apply text-emerald-600 hover:text-green-400 no-underline transition-colors;
+    }
+
+    /* Icon Background Class for Reusability */
+    .bg-icon {
+      @apply w-10 h-10 text-white bg-gradient-to-r from-emerald-500 to-green-600 rounded-lg flex items-center justify-center mr-3;
+    }
+    .bg-icon i {
+      @apply w-5 h-5 text-white;
+  }
+
+    /* Warning Button */
+    .btn-warning {
+      @apply bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all;
+    }
+
+    .btn-danger {
+      @apply bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all;
+    }
+
+    .btn-success {
+      @apply bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all;
+    }
+
+    /* Toggle Switch Styles */
+    .toggle {
+      @apply relative inline-flex items-center cursor-pointer;
+    }
+
+    .toggle input {
+      @apply sr-only;
+    }
+
+    .toggle input + .toggle-track {
+      @apply relative w-11 h-6 bg-gray-200 rounded-full transition-all;
+    }
+
+    .toggle input:focus + .toggle-track {
+      @apply outline-none ring-4 ring-blue-300;
+    }
+
+    .toggle input:checked + .toggle-track {
+      @apply bg-blue-600;
+    }
+
+    .toggle-track {
+      position: relative;
+    }
+
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border: 1px solid #d1d5db;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .toggle input:checked + .toggle-track::after {
+      transform: translateX(100%);
+      border-color: white;
+    }
+
+    /* Small Toggle */
+    .toggle-sm input + .toggle-track {
+      @apply w-9 h-5;
+    }
+
+    .toggle-sm .toggle-track::after {
+      width: 16px;
+      height: 16px;
+    }
+
+    .toggle-sm input:checked + .toggle-track::after {
+      transform: translateX(16px);
+    }
+
+    /* Large Toggle */
+    .toggle-lg input + .toggle-track {
+      @apply w-14 h-7;
+    }
+
+    .toggle-lg .toggle-track::after {
+      width: 24px;
+      height: 24px;
+    }
+
+    .toggle-lg input:checked + .toggle-track::after {
+      transform: translateX(28px);
+    }
+
+    /* Setting Item Component */
+    .setting-item {
+      @apply flex items-center justify-between py-3;
+    }
+
+    .setting-item-label {
+      @apply text-sm font-medium text-gray-700;
+    }
+
+    .setting-item-description {
+      @apply text-xs text-gray-500 mt-1;
+    }
+
+    /* Rating Component */
+    .rating {
+      @apply flex items-center space-x-1;
+    }
+
+    .rating-star {
+      @apply w-5 h-5 cursor-pointer transition-colors;
+    }
+
+    .rating-star.filled {
+      @apply text-yellow-400;
+    }
+
+    .rating-star.empty {
+      @apply text-gray-300 hover:text-yellow-400;
+    }
+
+    /* Progress Bar Component */
+    .progress {
+      @apply w-full bg-gray-200 rounded-full;
+    }
+
+    .progress-bar {
+      @apply h-2 rounded-full transition-all duration-300;
+    }
+
+    .progress-sm .progress-bar {
+      @apply h-1;
+    }
+
+    .progress-lg .progress-bar {
+      @apply h-3;
+    }
+
+    .progress-primary .progress-bar {
+      @apply bg-blue-600;
+    }
+
+    .progress-success .progress-bar {
+      @apply bg-green-600;
+    }
+
+    .progress-warning .progress-bar {
+      @apply bg-orange-500;
+    }
+
+    .progress-danger .progress-bar {
+      @apply bg-red-600;
+    }
+
+    /* Status Indicator Component */
+    .status {
+      @apply inline-flex items-center px-2 py-1 rounded-md text-xs font-medium;
+    }
+
+    .status-online {
+      @apply bg-green-100 text-green-800;
+    }
+
+    .status-offline {
+      @apply bg-gray-100 text-gray-800;
+    }
+
+    .status-away {
+      @apply bg-yellow-100 text-yellow-800;
+    }
+
+    .status-busy {
+      @apply bg-red-100 text-red-800;
+    }
+
+    /* Tooltip Component */
+    .tooltip {
+      @apply relative inline-block cursor-help;
+    }
+
+    .tooltip-content {
+      @apply invisible absolute z-10 px-3 py-2 text-sm text-white bg-gray-900 rounded-lg shadow-lg opacity-0 transition-opacity duration-300;
+    }
+
+    .tooltip:hover .tooltip-content {
+      @apply visible opacity-100;
+    }
+
+    .tooltip-top .tooltip-content {
+      @apply bottom-full left-1/2 transform -translate-x-1/2 mb-2;
+    }
+
+    .tooltip-bottom .tooltip-content {
+      @apply top-full left-1/2 transform -translate-x-1/2 mt-2;
+    }
+
+    .tooltip-left .tooltip-content {
+      @apply right-full top-1/2 transform -translate-y-1/2 mr-2;
+    }
+
+    .tooltip-right .tooltip-content {
+      @apply left-full top-1/2 transform -translate-y-1/2 ml-2;
+    }
+
+    /* Breadcrumb Components */
+    .breadcrumb {
+      @apply flex items-center flex-wrap gap-1;
+    }
+
+    .breadcrumb-item {
+      @apply flex items-center whitespace-nowrap;
+    }
+
+    .breadcrumb-link {
+      @apply text-gray-500 hover:text-gray-700 transition-colors flex items-center text-sm;
+    }
+
+    .breadcrumb-current {
+      @apply text-gray-900 font-medium flex items-center text-sm;
+    }
+
+    .breadcrumb-separator {
+      @apply text-gray-400 mx-1 flex-shrink-0;
+    }
+
+    /* Breadcrumb Variants */
+    .breadcrumb-pills {
+      @apply gap-2;
+    }
+
+    .breadcrumb-pills .breadcrumb-item {
+      @apply bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full transition-colors text-sm;
+    }
+
+    .breadcrumb-pills .breadcrumb-current {
+      @apply bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full;
+    }
+
+    .breadcrumb-pills .breadcrumb-separator {
+      @apply hidden;
+    }
+
+    .breadcrumb-background {
+      @apply bg-gray-50 px-4 py-3 rounded-lg border;
+    }
+
+    .breadcrumb-arrows .breadcrumb-separator::before {
+      content: '→';
+      @apply text-gray-400 text-sm;
+    }
+
+    .breadcrumb-dots .breadcrumb-separator::before {
+      content: '•';
+      @apply text-gray-400 text-sm;
+    }
+
+    .breadcrumb-minimal .breadcrumb-link {
+      @apply text-blue-600 hover:text-blue-700 underline text-sm;
+    }
+
+    .breadcrumb-card {
+      @apply bg-white border rounded-lg shadow-sm p-4;
+    }
+        
+
+    /* Text Truncation Utilities */
+    .truncate {
+        @apply whitespace-nowrap overflow-hidden text-ellipsis;
+    }
+    
+    .one-line { 
+        @apply whitespace-nowrap; 
+    }
+    
+    .two-lines {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-word;
+        line-height: 1.5;
+    }
+    
+    .three-lines {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-word;
+        line-height: 1.5;
+    }
+    
+    .four-lines {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-word;
+        line-height: 1.5;
+    }
+    
+    /* Truncate at Flex/Grid */
+    .flex-truncate-parent { 
+        @apply min-w-0; 
+    }
+    
+    .flex-truncate { 
+        @apply w-0 flex-1 truncate; 
+    }
+    
+    /* Truncate at Table/Cell */
+    .table-truncate { 
+        @apply block truncate; 
+    }
+    
+    /* Text Break Utilities */
+    .break-word {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .break-all {
+        word-break: break-all;
+    }
+    
+    .no-break {
+        word-break: normal;
+        overflow-wrap: normal;
+    }
+    
+    /* Image Fallback Styles */
+    img {
+      @apply transition-opacity duration-300;
+    }
+
+    img.loading {
+      @apply opacity-50;
+    }
+
+    img.error {
+      @apply opacity-100;
+      background-image: url('https://panel.dongnai.net/themes/dongnai/Backend/assets/favicon/apple-icon-180x180.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Layout Utilities */
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+    
+    .flex-between {
+        @apply flex items-center justify-between;
+    }
+    
+    .flex-around {
+        @apply flex items-center justify-around;
+    }
+    
+    .flex-start {
+        @apply flex items-center justify-start;
+    }
+    
+    .flex-end {
+        @apply flex items-center justify-end;
+    }
+    
+    .flex-col-center {
+        @apply flex flex-col items-center justify-center;
+    }
+    
+    .flex-col-start {
+        @apply flex flex-col items-start justify-start;
+    }
+    
+    /* Spacing Utilities */
+    .space-y-0\.5 > * + * {
+        margin-top: 0.125rem;
+    }
+    
+    .space-y-1\.5 > * + * {
+        margin-top: 0.375rem;
+    }
+    
+    .space-y-2\.5 > * + * {
+        margin-top: 0.625rem;
+    }
+    
+    .space-y-3\.5 > * + * {
+        margin-top: 0.875rem;
+    }
+    
+    /* Size Utilities */
+    .w-fit {
+        width: fit-content;
+    }
+    
+    .h-fit {
+        height: fit-content;
+    }
+    
+    .size-4 {
+        @apply w-4 h-4;
+    }
+    
+    .size-5 {
+        @apply w-5 h-5;
+    }
+    
+    .size-6 {
+        @apply w-6 h-6;
+    }
+    
+    .size-8 {
+        @apply w-8 h-8;
+    }
+    
+    .size-10 {
+        @apply w-10 h-10;
+    }
+    
+    .size-12 {
+        @apply w-12 h-12;
+    }
+    
+        
+    /* Custom scrollbar for mobile menu */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 2px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+}
+    </style>
+
+<style type="text/css">
+/* BlazerSlider */
+.blaze-slider{--slides-to-show:1;--slide-gap:20px;direction:ltr}.blaze-container{position:relative}.blaze-track-container{overflow:hidden}.blaze-track{will-change:transform;touch-action:pan-y;display:flex;gap:var(--slide-gap);--slide-width:calc(
+    (100% - (var(--slides-to-show) - 1) * var(--slide-gap)) /
+      var(--slides-to-show)
+  );box-sizing:border-box}.blaze-track>*{box-sizing:border-box;width:var(--slide-width);flex-shrink:0}
+/* End BlazerSlider */
+
+/* Hot Products Slider CSS Variables */
+.hot-products-slider.blaze-slider {
+    --slides-to-show: 1;
+    --slide-gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .hot-products-slider.blaze-slider {
+        --slides-to-show: 1;
+    }
+}
+
+/* Hot Products Slider Pagination Dots */
+.hot-products-slider .blaze-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+    padding: 0 16px;
+    font-size: 0; /* Hide default text */
+}
+
+.hot-products-slider .blaze-prev, 
+.hot-products-slider .blaze-next {
+    display: none; /* Hide default arrows */
+}
+
+.hot-products-slider .blaze-pagination button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(49, 198, 99, 0.7); /* Semi-transparent emerald */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.hot-products-slider .blaze-pagination button.active {
+    background-color: #10b981; /* Solid emerald */
+    transform: scale(1.2);
+}
+
+.hot-products-slider .blaze-pagination button:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+}
+
+.hot-products-slider .blaze-pagination button.active:hover {
+    background-color: #059669;
+    transform: scale(1.3);
+}
+
+.hot-products-slider .blaze-pagination button:focus {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+}
+    </style>
+    <!-- Alpine.js CDN -->
+    <script src="js/alpinejs.3.15.0.js" defer></script>
+    <!-- Image Fallback Utility -->
+    <script src="js/image-fallback.js"></script>
+    <!-- Notification Library -->
+    <script src="js/notification.js"></script>
+    <!-- Initialize FastNotice -->
+    <script>
+        // Khởi tạo FastNotice với cấu hình tùy chỉnh sau khi DOM sẵn sàng
+        document.addEventListener('DOMContentLoaded', function () {
+            window.fastNotice = new FastNotice({
+                position: 'bottom-right',    // Vị trí mặc định
+                duration: 3000,              // Thời gian hiển thị (ms)
+                maxNotifications: 3          // Số notification tối đa
+            });
+        });
+
+    </script>
+
+    <!-- Header Component JS -->
+    <script src="js/header.js"></script>
+    <!-- BlazeSlider JS -->
+    <script src="js/blaze-slider.js"></script>
+ 
+    <!-- Lucide Icons - Custom Build -->
+    <!-- <script src="js/lucide-custom.min.js"></script> -->
+    <!-- Hiện tại đang Development nên tôi dùng CDN của Lucide trước -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Dashboard Alpine.js Component -->
+    <script>
+        function dashboardComponent() {
+            return {
+                // Dashboard specific data
+                currentTab: 'overview',
+                searchQuery: '',
+                notifications: [],
+                quickActions: [
+                    {
+                        name: 'Thêm sản phẩm',
+                        icon: 'plus',
+                        href: '/seller/products/new',
+                        color: 'green'
+                    },
+                    {
+                        name: 'Quản lý đơn hàng',
+                        icon: 'package',
+                        href: '/orders',
+                        color: 'blue'
+                    },
+                    {
+                        name: 'Thống kê',
+                        icon: 'chart-column',
+                        href: '/analytics',
+                        color: 'purple'
+                    },
+                    {
+                        name: 'Tin nhắn',
+                        icon: 'message-circle',
+                        href: '/messages',
+                        color: 'orange'
+                    },
+                    {
+                        name: 'Cài đặt',
+                        icon: 'settings',
+                        href: '/profile',
+                        color: 'gray'
+                    },
+                    {
+                        name: 'Ví tiền',
+                        icon: 'credit-card',
+                        href: '/wallet',
+                        color: 'yellow'
+                    }
+                ],
+                stats: {
+                    ordersPurchased: 24,
+                    ordersSold: 156,
+                    monthlyRevenue: 12500000,
+                    averageRating: 4.8
+                },
+                recentActivities: [
+                    {
+                        type: 'purchase',
+                        title: 'Mua thành công Account Facebook Ads',
+                        description: 'Đơn hàng #PO001 - 450,000đ',
+                        time: '2 giờ trước',
+                        icon: 'shopping-bag',
+                        color: 'blue'
+                    },
+                    {
+                        type: 'sale',
+                        title: 'Bán thành công Account TikTok Ads',
+                        description: 'Đơn hàng #SO001 - 800,000đ',
+                        time: '4 giờ trước',
+                        icon: 'package',
+                        color: 'green'
+                    },
+                    {
+                        type: 'update',
+                        title: 'Cập nhật sản phẩm Gmail PVA',
+                        description: 'Thay đổi giá và mô tả',
+                        time: '1 ngày trước',
+                        icon: 'square-pen',
+                        color: 'purple'
+                    },
+                    {
+                        type: 'review',
+                        title: 'Nhận đánh giá 5 sao',
+                        description: 'Từ khách hàng Nguyễn Văn B',
+                        time: '2 ngày trước',
+                        icon: 'star',
+                        color: 'yellow'
+                    }
+                ],
+                performance: {
+                    conversionRate: 3.2,
+                    averageRating: 4.8,
+                    responseTime: '< 2 giờ'
+                },
+                goals: {
+                    revenue: {
+                        current: 12500000,
+                        target: 15000000,
+                        percentage: 83
+                    },
+                    orders: {
+                        current: 156,
+                        target: 200,
+                        percentage: 78
+                    }
+                },
+
+                init() {
+                    console.log('Dashboard component initialized');
+                    this.loadNotifications();
+                },
+
+                // Tab switching
+                switchTab(tab) {
+                    this.currentTab = tab;
+                },
+
+                // Search functionality
+                handleSearch() {
+                    if (this.searchQuery.trim()) {
+                        console.log('Searching for:', this.searchQuery);
+                        // Implement search logic here
+                    }
+                },
+
+                // Load notifications
+                loadNotifications() {
+                    // Mock notifications - replace with actual API call
+                    this.notifications = [
+                        {
+                            id: 1,
+                            title: 'Đơn hàng mới',
+                            message: 'Bạn có đơn hàng mới #SO002',
+                            time: '5 phút trước',
+                            unread: true
+                        },
+                        {
+                            id: 2,
+                            title: 'Thanh toán thành công',
+                            message: 'Đơn hàng #PO001 đã được thanh toán',
+                            time: '1 giờ trước',
+                            unread: true
+                        },
+                        {
+                            id: 3,
+                            title: 'Đánh giá mới',
+                            message: 'Khách hàng đã đánh giá sản phẩm của bạn',
+                            time: '2 giờ trước',
+                            unread: false
+                        }
+                    ];
+                },
+
+                // Format currency
+                formatCurrency(amount) {
+                    return new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(amount);
+                },
+
+                // Format large numbers
+                formatNumber(num) {
+                    if (num >= 1000000) {
+                        return (num / 1000000).toFixed(1) + 'M';
+                    } else if (num >= 1000) {
+                        return (num / 1000).toFixed(1) + 'K';
+                    }
+                    return num.toString();
+                },
+
+                // Get activity icon color
+                getActivityColor(type) {
+                    const colors = {
+                        purchase: 'blue',
+                        sale: 'green',
+                        update: 'purple',
+                        review: 'yellow'
+                    };
+                    return colors[type] || 'gray';
+                },
+
+                // Get activity icon
+                getActivityIcon(type) {
+                    const icons = {
+                        purchase: 'shopping-bag',
+                        sale: 'package',
+                        update: 'square-pen',
+                        review: 'star'
+                    };
+                    return icons[type] || 'circle';
+                }
+            };
+        }
+
+        // Initialize BlazeSlider
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize BlazeSlider for hot products
+            const hotProductsSlider = document.querySelector('.hot-products-slider');
+            if (hotProductsSlider) {
+                new BlazeSlider(hotProductsSlider, {
+                    all: {
+                        enableAutoplay: true,
+                        autoplayInterval: 5000,
+                        transitionDuration: 500,
+                        slidesToShow: 2,
+                    },
+                    '(max-width: 640px)': {
+                        slidesToShow: 1,
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BlazeSlider CSS Variables to prevent layout shift -->
+    <style>
+        .hot-products-slider.blaze-slider {
+            --slides-to-show: 2;
+            --slide-gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .hot-products-slider.blaze-slider {
+                --slides-to-show: 1;
+            }
+        }
+
+        /* Custom pagination dots styling */
+        .hot-products-slider .blaze-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 0;
+            padding: 0 16px;
+            /* i want no display text */
+            font-size: 0;
+        }
+        .hot-products-slider .blaze-prev, .hot-products-slider .blaze-next{display: none;}
+
+        .hot-products-slider .blaze-pagination button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(49, 198, 99, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .hot-products-slider .blaze-pagination button.active {
+            background-color: #10b981;
+            transform: scale(1.2);
+        }
+
+        .hot-products-slider .blaze-pagination button:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.1);
+        }
+
+        .hot-products-slider .blaze-pagination button.active:hover {
+            background-color: #059669;
+            transform: scale(1.3);
+        }
+
+        /* Focus states for accessibility */
+        .hot-products-slider .blaze-pagination button:focus {
+            outline: 2px solid #10b981;
+            outline-offset: 2px;
+        }
+    </style>
+
+</head>
+
+<body class="min-h-screen bg-gray-50">
+    <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" x-data="headerComponent()">
+        <div class="container mx-auto flex h-16 items-center justify-between px-4">
+            <!-- Left Side - Back to Shop + Logo -->
+            <div class="flex items-center gap-4">
+                <a href="/" class="btn btn-ghost">
+                    <i data-lucide="arrow-left" class="h-4 w-4"></i>
+                    <span class="hidden sm:inline">Back to Shop</span>
+                </a>
+                
+                <div class="h-6 w-px bg-border"></div>
+                
+                <a href="/dashboard" class="flex items-center space-x-2">
+                    <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">D</span>
+                    </div>
+                    <span class="font-bold text-lg hidden sm:inline">Dashboard</span>
+                </a>
+            </div>
+            
+            <!-- Search Bar - Hidden on mobile -->
+            <form @submit.prevent="handleSearch" class="hidden md:flex flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4"></i>
+                    <input 
+                        type="search" 
+                        placeholder="Search dashboard..." 
+                        class="input pl-10 pr-4" 
+                        x-model="searchQuery">
+                </div>
+            </form>
+            
+            <!-- Right Side Actions -->
+            <div class="flex items-center space-x-3">
+                <!-- Balance Display -->
+                <button @click="showDepositModal = true" class="btn btn-outline hidden sm:flex items-center gap-2 hover:bg-green-50 hover:border-green-200 bg-transparent">
+                    <i data-lucide="wallet" class="h-4 w-4 text-green-600"></i>
+                    <span class="font-medium" x-text="'$' + userBalance.toFixed(2)">$2,847.50</span>
+                    <i data-lucide="plus" class="h-3 w-3 text-green-600"></i>
+                </button>
+                
+                <!-- Messages -->
+                <a href="/messages" class="btn  relative">
+                    <i data-lucide="message-circle" class="h-5 w-5"></i>
+                    <span class="badge badge-primary absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-xs">3</span>
+                </a>
+                
+                <!-- Shopping Cart -->
+                <button @click="toggleCart()" class="btn  relative">
+                    <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                    <span class="badge badge-primary absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-xs" 
+                          x-show="cartCount > 0" x-text="cartCount">2</span>
+                </button>
+                
+                <!-- User Menu -->
+                <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="btn btn-ghost h-8 w-8 rounded-full p-0">
+                        <img alt="User Avatar" class="h-8 w-8 rounded-full object-cover" 
+                             :src="user?.avatar || '/placeholder.svg?height=32&width=32'">
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div x-show="open" @click.away="open = false" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-150"
+                         x-transition:leave-start="opacity-100 scale-100"
+                         x-transition:leave-end="opacity-0 scale-95"
+                         class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
+                        <div class="py-1">
+                            <div class="px-4 py-2 border-b border-gray-100">
+                                <p class="text-sm font-medium text-gray-900" x-text="user?.fullname || 'John Doe'">John Doe</p>
+                                <p class="text-xs text-gray-500" x-text="user?.email || 'john@example.com'">john@example.com</p>
+                            </div>
+                            <a href="/profile" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="user" class="mr-2 h-4 w-4"></i>
+                                Profile
+                            </a>
+                            <a href="/orders" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="package" class="mr-2 h-4 w-4"></i>
+                                My Orders
+                            </a>
+                            <a href="/wallet" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="wallet" class="mr-2 h-4 w-4"></i>
+                                Wallet
+                            </a>
+                            <a href="/favorites" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="heart" class="mr-2 h-4 w-4"></i>
+                                Favorites
+                            </a>
+                            <div class="border-t border-gray-100"></div>
+                            <a href="/settings" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="settings" class="mr-2 h-4 w-4"></i>
+                                Settings
+                            </a>
+                            <button @click="logout()" class="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="log-out" class="mr-2 h-4 w-4"></i>
+                                Log out
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="openMobileMenu()" class="btn btn-ghost md:hidden">
+                    <i data-lucide="menu" class="h-5 w-5"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+             class="fixed inset-0 z-50 lg:hidden hidden">
+            <div class="fixed left-0 top-0 h-screen w-80 bg-white shadow-xl" x-show="mobileMenuOpen"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full">
+                <div class="flex h-full flex-col">
+                    <!-- Mobile Menu Header -->
+                    <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                        <h2 class="text-lg font-semibold">Dashboard Menu</h2>
+                        <button @click="closeMobileMenu()" class="btn btn-ghost h-8 w-8 rounded-full p-0">
+                            <i data-lucide="x" class="h-5 w-5"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu Content -->
+                    <div class="flex-1 overflow-y-auto p-4">
+                        <!-- Mobile Search -->
+                        <form @submit.prevent="handleSearch" class="mb-4">
+                            <div class="relative">
+                                <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4"></i>
+                                <input type="search" placeholder="Search..." 
+                                       class="input pl-10" 
+                                       x-model="searchQuery">
+                            </div>
+                        </form>
+                        
+                        <!-- Mobile Balance -->
+                        <button @click="showDepositModal = true" class="btn btn-outline w-full justify-start bg-transparent mb-4">
+                            <i data-lucide="wallet" class="mr-2 h-4 w-4"></i>
+                            Balance: <span x-text="'$' + userBalance.toFixed(2)">$2,847.50</span>
+                        </button>
+                        
+                        <!-- Mobile Navigation -->
+                        <div class="space-y-2">
+                            <a href="/" class="mobile-menu-item">
+                                <i data-lucide="arrow-left" class="h-5 w-5 text-gray-600"></i>
+                                <span>Back to Shop</span>
+                            </a>
+                            <a href="/dashboard" class="mobile-menu-item">
+                                <i data-lucide="layout-dashboard" class="h-5 w-5 text-blue-600"></i>
+                                <span>Dashboard</span>
+                            </a>
+                            <a href="/messages" class="mobile-menu-item">
+                                <i data-lucide="message-circle" class="h-5 w-5 text-green-600"></i>
+                                <span>Messages</span>
+                            </a>
+                            <a href="/orders" class="mobile-menu-item">
+                                <i data-lucide="package" class="h-5 w-5 text-purple-600"></i>
+                                <span>Orders</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cart Modal -->
+        <div id="cartModal" x-show="showCart" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0" class="fixed inset-0 z-50 hidden"
+            style="height: 100vh; height: 100dvh;">
+            <div class="fixed inset-0 bg-black/50" @click="toggleCart()" style="height: 100vh; height: 100dvh;">
+            </div>
+            <div class="fixed right-0 top-0 h-screen w-80 bg-white shadow-xl flex flex-col" x-show="showCart"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-x-full"
+                x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+                style="height: 100vh; height: 100dvh;">
+                
+                <!-- Cart Header -->
+                <div class="bg-gradient-to-r from-emerald-500 to-green-600 p-6 text-white flex-shrink-0">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold">Giỏ hàng</h2>
+                            <p class="text-emerald-100 text-sm" x-text="cartCount + ' sản phẩm'">0 sản phẩm</p>
+                        </div>
+                        <button @click="toggleCart()" class="text-white hover:text-gray-200 transition-colors">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cart Items -->
+                <div class="flex-1 overflow-y-auto custom-scrollbar">
+                    <div class="p-4 space-y-3">
+                        <template x-for="item in cartItems" :key="item.id">
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 py-2 hover:shadow-sm transition-shadow">
+                                <div class="flex items-center space-x-3">
+                                    <div class="bg-icon">
+                                        <i :data-lucide="item.icon"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="font-medium text-gray-900 truncate" x-text="item.name"></p>
+                                        <p class="text-sm text-gray-500" x-text="item.category"></p>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <span class="text-sm font-semibold text-emerald-600" x-text="formatPrice(item.price)"></span>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="text-xs text-gray-500">x<span x-text="item.quantity"></span></span>
+                                                <button @click="removeFromCart(item.id)" 
+                                                    class="p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
+                                                    title="Xóa sản phẩm">
+                                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        
+                        <!-- Empty Cart -->
+                        <div x-show="cartCount === 0" class="text-center py-12">
+                            <i data-lucide="shopping-cart" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                            <p class="text-gray-500 text-lg font-medium">Giỏ hàng trống</p>
+                            <p class="text-gray-400 text-sm mt-2">Thêm sản phẩm để bắt đầu mua sắm</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div x-show="cartCount > 0" class="p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-lg font-semibold text-gray-900">Tổng cộng:</span>
+                        <span class="text-2xl font-bold text-emerald-600" x-text="formatPrice(cartTotal)">0₫</span>
+                    </div>
+                    <div class="space-y-3">
+                        <button @click="proceedToCheckout()" class="w-full btn btn-primary">
+                            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                            Thanh toán
+                        </button>
+                        <button @click="viewCart()" class="w-full btn btn-outline">
+                            <i data-lucide="shopping-cart" class="w-4 h-4 mr-2"></i>
+                            Xem giỏ hàng
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8" x-data="dashboardComponent()">
+        <div class="space-y-8"> 
+
+        
+        <!-- Welcome -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Xin chào, <span class="text-gradient">Nguyễn Văn A</span>! 👋</h1>
+                <p class="text-gray-600 mt-1">Quản lý tài khoản và theo dõi hoạt động mua bán của bạn</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="btn btn-outline">
+                    <i data-lucide="bell" class="w-4 h-4 mr-2"></i>
+                    Thông báo
+                </button>
+                <a href="/seller/products/new" class="btn btn-primary">
+                    <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                    Đăng sản phẩm
+                </a>
+            </div>
+        </div>
+        <!-- Danh mục của bạn -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-green-600">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        +12%
+                    </div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-gray-900 mb-1" x-text="stats.ordersPurchased">24</div>
+                    <div class="text-sm text-gray-600 mb-1">Đơn hàng đã mua</div>
+                    <div class="text-xs text-gray-500">Tổng số đơn hàng đã mua</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                        <i data-lucide="package" class="w-6 h-6 text-green-600"></i>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-green-600">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        +8%
+                    </div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-gray-900 mb-1" x-text="stats.ordersSold">156</div>
+                    <div class="text-sm text-gray-600 mb-1">Đơn hàng đã bán</div>
+                    <div class="text-xs text-gray-500">Tổng số đơn hàng đã bán</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+                        <i data-lucide="dollar-sign" class="w-6 h-6 text-purple-600"></i>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-green-600">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        +15%
+                    </div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-gray-900 mb-1" x-text="formatNumber(stats.monthlyRevenue)">12.5M</div>
+                    <div class="text-sm text-gray-600 mb-1">Doanh thu tháng này</div>
+                    <div class="text-xs text-gray-500">Doanh thu trong tháng</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-100 flex items-center justify-center">
+                        <i data-lucide="star" class="w-6 h-6 text-yellow-600"></i>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-green-600">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        +0.2
+                    </div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-gray-900 mb-1" x-text="stats.averageRating">4.8</div>
+                    <div class="text-sm text-gray-600 mb-1">Đánh giá trung bình</div>
+                    <div class="text-xs text-gray-500">Điểm đánh giá từ khách hàng</div>
+                </div>
+            </div>
+        </div>
+        <!-- Thao tác nhanh -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Thao tác nhanh</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <template x-for="action in quickActions" :key="action.name">
+                    <a :href="action.href" class="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
+                        <div :class="`w-12 h-12 rounded-xl text-${action.color}-600 bg-${action.color}-50 flex items-center justify-center group-hover:scale-110 transition-transform`">
+                            <i :data-lucide="action.icon" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700" x-text="action.name"></span>
+                    </a>
+                </template>
+            </div>
+        </div>
+        <!-- tab tổng quan -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-8 px-6 overflow-x-auto">
+                    <button class="flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap border-green-500 text-green-600">
+                        <i data-lucide="activity" class="w-4 h-4"></i>
+                        Tổng quan
+                    </button>
+                    <button class="flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                        Đơn hàng đã mua<span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">4</span>
+                    </button>
+                    <button class="flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                        <i data-lucide="package" class="w-4 h-4"></i>
+                        Đơn hàng bán ra<span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">3</span>
+                    </button>
+                    <button class="flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                        <i data-lucide="package" class="w-4 h-4"></i>
+                        Sản phẩm của tôi<span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">4</span>
+                    </button>
+                </nav>
+            </div>
+            <div class="p-6">
+                <div class="space-y-8">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-900">Hoạt động gần đây</h3>
+                            <a href="/activities" class="text-green-600 hover:text-green-700 font-medium text-sm">Xem tất cả</a>
+                        </div>
+                        <div class="space-y-4">
+                            <template x-for="activity in recentActivities" :key="activity.title">
+                                <div :class="`flex items-center gap-4 p-4 bg-${getActivityColor(activity.type)}-50 rounded-xl`">
+                                    <div :class="`w-10 h-10 bg-${getActivityColor(activity.type)}-50 text-${getActivityColor(activity.type)}-600 rounded-full flex items-center justify-center`">
+                                        <i :data-lucide="getActivityIcon(activity.type)" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="font-medium text-gray-900" x-text="activity.title"></p>
+                                        <p class="text-sm text-gray-600" x-text="activity.description"></p>
+                                    </div>
+                                    <div class="text-xs text-gray-500" x-text="activity.time"></div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-lg font-semibold text-gray-900">Hiệu suất bán hàng</h4>
+                                <i data-lucide="award" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex justify-between"><span class="text-gray-600">Tỷ lệ chuyển đổi</span><span class="font-semibold text-gray-900" x-text="performance.conversionRate + '%'">3.2%</span></div>
+                                <div class="flex justify-between"><span class="text-gray-600">Đánh giá trung bình</span><span class="font-semibold text-gray-900" x-text="performance.averageRating + '/5'">4.8/5</span></div>
+                                <div class="flex justify-between"><span class="text-gray-600">Thời gian phản hồi</span><span class="font-semibold text-gray-900" x-text="performance.responseTime">&lt; 2 giờ</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-lg font-semibold text-gray-900">Mục tiêu tháng này</h4>
+                                <i data-lucide="target" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-600">Doanh thu</span>
+                                        <span class="font-semibold text-gray-900" x-text="formatNumber(goals.revenue.current) + ' / ' + formatNumber(goals.revenue.target)">12.5M / 15M</span>
+                                    </div>
+                                    <div class="w-full bg-blue-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" :style="`width: ${goals.revenue.percentage}%`"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-600">Đơn hàng</span>
+                                        <span class="font-semibold text-gray-900" x-text="goals.orders.current + ' / ' + goals.orders.target">156 / 200</span>
+                                    </div>
+                                    <div class="w-full bg-blue-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" :style="`width: ${goals.orders.percentage}%`"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Trạng thái tài khoản -->
+        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-6 border border-green-100">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Trạng thái tài khoản</h3>
+                        <p class="text-gray-600">
+                            <span class="flex items-center gap-2">
+                                <i data-lucide="circle-check-big" class="w-5 h-5 text-green-600"></i>
+                                Tài khoản đã được xác thực
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <a href="/profile" class="btn btn-secondary">
+                        <i data-lucide="settings" class="w-4 h-4 mr-2"></i>
+                        Cài đặt tài khoản
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <!-- Authentication Modal -->
+    <div x-show="isAuthModalOpen" x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+         class="modal-overlay fixed inset-0 z-50 hidden">
+        <div class="modal-content max-w-md w-full mx-4 rounded-2xl">
+            <!-- Modal Header -->
+            <div class="modal-header p-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
+                        <i data-lucide="user" class="h-6 w-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900" x-text="authTab === 'login' ? 'Đăng nhập' : 'Đăng ký'">Đăng nhập</h2>
+                        <p class="text-sm text-gray-600" x-text="authTab === 'login' ? 'Chào mừng bạn quay trở lại!' : 'Tạo tài khoản mới'">Chào mừng bạn quay trở lại!</p>
+                    </div>
+                </div>
+                <button @click="closeAuthModal()" class="btn btn-ghost h-8 w-8 rounded-full p-0">
+                    <i data-lucide="x" class="h-5 w-5"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body p-6">
+                <!-- Tab Navigation -->
+                <div class="tabs-list mb-6">
+                    <button @click="authTab = 'login'" 
+                            :class="authTab === 'login' ? 'bg-white text-emerald-600 shadow-sm' : 'text-gray-600'"
+                            class="tabs-trigger">
+                        Đăng nhập
+                    </button>
+                    <button @click="authTab = 'register'" 
+                            :class="authTab === 'register' ? 'bg-white text-emerald-600 shadow-sm' : 'text-gray-600'"
+                            class="tabs-trigger">
+                        Đăng ký
+                    </button>
+                </div>
+                
+                <!-- General Error -->
+                <div x-show="errors.general" class="alert alert-error mb-4">
+                    <i data-lucide="alert-circle" class="h-5 w-5 mr-3 flex-shrink-0"></i>
+                    <span x-text="errors.general"></span>
+                </div>
+                
+                <!-- Login Form -->
+                <div x-show="authTab === 'login'" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tên đăng nhập</label>
+                        <input type="text" x-model="loginForm.email" 
+                               class="input w-full" 
+                               :class="errors.email ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập tên đăng nhập">
+                        <p x-show="errors.email" class="text-red-500 text-xs mt-1" x-text="errors.email"></p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu</label>
+                        <input type="password" x-model="loginForm.password" 
+                               class="input w-full" 
+                               :class="errors.password ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập mật khẩu">
+                        <p x-show="errors.password" class="text-red-500 text-xs mt-1" x-text="errors.password"></p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" x-model="loginForm.remember" class="checkbox mr-2">
+                            <span class="text-sm text-gray-600">Ghi nhớ đăng nhập</span>
+                        </label>
+                        <a href="/forgot-password" class="text-sm text-emerald-600 hover:text-emerald-700">Quên mật khẩu?</a>
+                    </div>
+                    
+                    <button @click="handleLogin()" :disabled="isLoading" 
+                            class="btn btn-primary btn-lg w-full">
+                        <div x-show="isLoading" class="loading loading-sm mr-2"></div>
+                        <span x-text="isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'">Đăng nhập</span>
+                    </button>
+                </div>
+                
+                <!-- Register Form -->
+                <div x-show="authTab === 'register'" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Họ và tên</label>
+                        <input type="text" x-model="registerForm.fullname" 
+                               class="input w-full" 
+                               :class="errors.fullname ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập họ và tên">
+                        <p x-show="errors.fullname" class="text-red-500 text-xs mt-1" x-text="errors.fullname"></p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tên đăng nhập</label>
+                        <input type="text" x-model="registerForm.username" 
+                               class="input w-full" 
+                               :class="errors.username ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập tên đăng nhập">
+                        <p x-show="errors.username" class="text-red-500 text-xs mt-1" x-text="errors.username"></p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" x-model="registerForm.email" 
+                               class="input w-full" 
+                               :class="errors.email ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập email">
+                        <p x-show="errors.email" class="text-red-500 text-xs mt-1" x-text="errors.email"></p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Số điện thoại</label>
+                        <input type="tel" x-model="registerForm.phone" 
+                               class="input w-full" 
+                               :class="errors.phone ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập số điện thoại">
+                        <p x-show="errors.phone" class="text-red-500 text-xs mt-1" x-text="errors.phone"></p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu</label>
+                        <input type="password" x-model="registerForm.password" 
+                               class="input w-full" 
+                               :class="errors.password ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập mật khẩu">
+                        <p x-show="errors.password" class="text-red-500 text-xs mt-1" x-text="errors.password"></p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Xác nhận mật khẩu</label>
+                        <input type="password" x-model="registerForm.confirmPassword" 
+                               class="input w-full" 
+                               :class="errors.confirmPassword ? 'border-red-500 focus:ring-red-500' : ''"
+                               placeholder="Nhập lại mật khẩu">
+                        <p x-show="errors.confirmPassword" class="text-red-500 text-xs mt-1" x-text="errors.confirmPassword"></p>
+                    </div>
+                    
+                    <div>
+                        <label class="flex items-start">
+                            <input type="checkbox" x-model="registerForm.agree" class="checkbox mr-2 mt-1">
+                            <span class="text-sm text-gray-600">
+                                Tôi đồng ý với 
+                                <a href="/terms" class="text-emerald-600 hover:text-emerald-700">điều khoản sử dụng</a> 
+                                và 
+                                <a href="/privacy" class="text-emerald-600 hover:text-emerald-700">chính sách bảo mật</a>
+                            </span>
+                        </label>
+                        <p x-show="errors.agree" class="text-red-500 text-xs mt-1" x-text="errors.agree"></p>
+                    </div>
+                    
+                    <button @click="handleRegister()" :disabled="isLoading" 
+                            class="btn btn-primary btn-lg w-full">
+                        <div x-show="isLoading" class="loading loading-sm mr-2"></div>
+                        <span x-text="isLoading ? 'Đang đăng ký...' : 'Đăng ký'">Đăng ký</span>
+                    </button>
+                </div>
+                
+                <!-- Social Login -->
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Hoặc đăng nhập bằng</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 grid grid-cols-2 gap-3">
+                        <button @click="handleGoogleLogin()" :disabled="isLoading" 
+                                class="btn btn-outline flex-center space-x-2 py-3 hover:bg-red-50 hover:border-red-500 hover:text-red-600 transition-colors">
+                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            Google
+                        </button>
+                        <button @click="handleFacebookLogin()" :disabled="isLoading" 
+                                class="btn btn-outline flex-center space-x-2 py-3 hover:bg-blue-50 hover:border-blue-500 hover:text-blue-600 transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="#1877F2" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div x-show="showDepositModal" x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+         class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold">Nạp tiền vào ví</h2>
+                    <button @click="showDepositModal = false" class="btn btn-ghost h-8 w-8 rounded-full p-0">
+                        <i data-lucide="x" class="h-5 w-5"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Current Balance -->
+                    <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <div class="flex items-center gap-2 text-blue-800 mb-2">
+                            <i data-lucide="wallet" class="w-4 h-4"></i>
+                            <span class="font-medium">Số dư hiện tại</span>
+                        </div>
+                        <p class="text-2xl font-bold text-blue-900" x-text="'$' + userBalance.toFixed(2)">$2,847.50</p>
+                    </div>
+
+                    <!-- Deposit Method -->
+                    <div class="space-y-3">
+                        <h3 class="font-medium text-gray-900">Nạp tiền qua chuyển khoản:</h3>
+
+                        <button @click="showDepositModal = false; window.location.href = '/deposit'" 
+                                class="btn btn-outline w-full p-4 h-auto justify-start hover:bg-green-50 hover:border-green-200 bg-transparent">
+                            <div class="flex items-center gap-4">
+                                <div class="p-2 bg-green-100 rounded-lg">
+                                    <span class="text-green-700 font-bold text-sm">QR</span>
+                                </div>
+                                <div class="text-left">
+                                    <p class="font-medium">Chuyển khoản qua QR Code</p>
+                                    <p class="text-sm text-muted-foreground">Quét QR hoặc chuyển khoản thủ công</p>
+                                    <p class="text-xs text-green-600">Xử lý tự động • An toàn • Nhanh chóng</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <div class="flex items-start gap-2">
+                            <div class="w-4 h-4 rounded-full bg-yellow-400 flex-shrink-0 mt-0.5"></div>
+                            <div class="text-sm text-yellow-800">
+                                <p class="font-medium mb-1">Quy trình nạp tiền:</p>
+                                <ul class="space-y-1 text-xs">
+                                    <li>• Chuyển khoản qua QR Code hoặc thông tin TK</li>
+                                    <li>• Admin kiểm tra và duyệt giao dịch</li>
+                                    <li>• Tiền được cộng vào ví (5-30 phút)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.warn('Lucide library not loaded');
+            }
+        });
+    </script>
+
+</body>

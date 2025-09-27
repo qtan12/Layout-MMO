@@ -1,0 +1,18 @@
+{
+  "name": "lucide-custom-builder",
+  "version": "1.0.0",
+  "description": "Custom Lucide icons builder for apkmody2.com",
+  "main": "build-icons.js",
+  "scripts": {
+    "build": "node build-icons.js",
+    "extract": "node extract-icons.js",
+    "create": "node create-custom-lucide.js"
+  },
+  "devDependencies": {
+    "lucide": "^0.544.0",
+    "terser": "^5.36.0"
+  },
+  "keywords": ["lucide", "icons", "custom", "builder"],
+  "author": "apkmody2.com",
+  "license": "MIT"
+}
