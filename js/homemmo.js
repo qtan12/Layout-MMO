@@ -93,9 +93,12 @@ function homepageComponent() {
 
         // Add item to cart - use global function
         addToCart(item) {
+            console.log('Adding to cart:', item);
             // Use global addToCart function
             if (window.addToCart) {
                 window.addToCart(item);
+            } else {
+                console.error('window.addToCart function not found');
             }
         }
     };

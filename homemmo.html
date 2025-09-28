@@ -1243,9 +1243,10 @@
 
     <!-- Header Component JS -->
     <script src="js/header.js"></script>
+    <!-- Homepage Component JS -->
+    <script src="js/homemmo.js"></script>
     <!-- BlazeSlider JS -->
     <script src="js/blaze-slider.js"></script>
- 
     <!-- Lucide Icons - Custom Build -->
     <!-- <script src="js/lucide-custom.min.js"></script> -->
     <!-- Hiện tại đang Development nên tôi dùng CDN của Lucide trước -->
@@ -2937,7 +2938,7 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" x-data="homepageComponent()">
                     <!-- Product 1: Backlink Premium -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                         <div class="flex items-center mb-4">
