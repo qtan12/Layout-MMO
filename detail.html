@@ -1241,6 +1241,7 @@
     </script>
 
     <!-- Header Component JS -->
+    <script src="js/cart-manager.js"></script>
     <script src="js/header.js"></script>
     <!-- BlazeSlider JS -->
     <script src="js/blaze-slider.js"></script>
@@ -2463,7 +2464,7 @@
                   </button>
                   <button @click="viewCart()" class="w-full btn btn-outline">
                       <i data-lucide="shopping-cart" class="w-4 h-4 mr-2"></i>
-                      Xem giỏ hàng
+                      <a href="/cart.html">Xem giỏ hàng</a>
                   </button>
               </div>
           </div>
@@ -2793,8 +2794,9 @@
                             <div class="flex items-center space-x-2 sm:space-x-4">
                                 <span class="text-2xl sm:text-3xl font-bold text-emerald-600">899.000đ</span>
                                 <span class="text-lg sm:text-xl text-gray-500 line-through">2.990.000đ</span>
+                                <span class="badge badge-danger self-start">-70%</span>
                             </div>
-                            <div class="badge badge-danger self-start">-70%</div>
+                           
                         </div>
                         <p class="text-sm text-gray-600">Tiết kiệm 2.091.000đ</p>
                     </div>
@@ -3244,10 +3246,10 @@
                                                 </div>
                                                 <div class="flex items-center justify-between">
                                                     <div class="flex items-center space-x-2">
-                                                        <span class="text-2xl font-bold text-emerald-600">1.299.000đ</span>
-                                                        <span class="text-sm text-gray-500 line-through">1.599.000đ</span>
+                                                        <span class="text-2xl font-bold text-emerald-600">199.000đ</span>
+                                                        <span class="text-sm text-gray-500 line-through">299.000đ</span>
                                                     </div>
-                                                    <button class="btn btn-outline btn-sm">Mua ngay</button>
+                                                    <button class="btn btn-success btn-sm">Mua ngay</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -3328,10 +3330,10 @@
                                                 </div>
                                                 <div class="flex items-center justify-between">
                                                     <div class="flex items-center space-x-2">
-                                                        <span class="text-2xl font-bold text-emerald-600">399.000đ</span>
-                                                        <span class="text-sm text-gray-500 line-through">499.000đ</span>
+                                                        <span class="text-2xl font-bold text-emerald-600">199.000đ</span>
+                                                        <span class="text-sm text-gray-500 line-through">299.000đ</span>
                                                     </div>
-                                                    <button class="btn btn-ghost btn-sm">Mua ngay</button>
+                                                    <button class="btn btn-success btn-sm">Mua ngay</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -3373,7 +3375,7 @@
                                                         <span class="text-2xl font-bold text-emerald-600">199.000đ</span>
                                                         <span class="text-sm text-gray-500 line-through">299.000đ</span>
                                                     </div>
-                                                    <button class="btn btn-danger btn-sm">Mua ngay</button>
+                                                    <button class="btn btn-success btn-sm">Mua ngay</button>
                                                 </div>
                                             </div>
                                         </div>

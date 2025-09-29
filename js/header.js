@@ -933,7 +933,14 @@ function headerComponent() {
         // ===========================================
         
         initializeCart() {
-            this.loadCartFromStorage();
+            this.initCartItems();
+            this.setupCartSync();
+            this.updateCartCount();
+        },
+
+        // Initialize cart items from Cart Manager
+        initCartItems() {
+            this.cartItems = window.cartManager.getCartItems();
         },
 
         // Toggle cart modal
@@ -988,28 +995,12 @@ function headerComponent() {
 
         // Add item to cart
         addToCart(item) {
-            const existingItem = this.cartItems.find(cartItem => cartItem.id === item.id);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                this.cartItems.push({
-                    ...item,
-                    quantity: 1
-                });
-            }
-            
-            this.updateCartCount();
-            this.saveCartToStorage();
-            this.showCartNotification('Đã thêm vào giỏ hàng!', 'success');
+            window.cartManager.addToCart(item);
         },
 
         // Remove item from cart
         removeFromCart(itemId) {
-            this.cartItems = this.cartItems.filter(item => item.id !== itemId);
-            this.updateCartCount();
-            this.saveCartToStorage();
-            this.showCartNotification('Đã xóa khỏi giỏ hàng!', 'info');
+            window.cartManager.removeFromCart(itemId);
         },
 
         // Update cart count and total
@@ -1020,16 +1011,13 @@ function headerComponent() {
 
         // Format price
         formatPrice(price) {
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(price);
+            return window.cartManager.formatPrice(price);
         },
 
         // Proceed to checkout
         proceedToCheckout() {
             if (this.cartCount === 0) {
-                this.showCartNotification('Giỏ hàng trống!', 'warning');
+                window.cartManager.showNotification('Giỏ hàng trống!', 'warning');
                 return;
             }
             window.location.href = '/checkout';
@@ -1040,25 +1028,22 @@ function headerComponent() {
             window.location.href = '/cart';
         },
 
-        // Save cart to localStorage
-        saveCartToStorage() {
-            localStorage.setItem('mmo_cart', JSON.stringify(this.cartItems));
-        },
-
-        // Load cart from localStorage
-        loadCartFromStorage() {
-            const savedCart = localStorage.getItem('mmo_cart');
-            if (savedCart) {
-                this.cartItems = JSON.parse(savedCart);
-                this.updateCartCount();
-            }
+        // Setup cart synchronization
+        setupCartSync() {
+            // Subscribe to cart changes
+            this.unsubscribe = window.cartManager.subscribe((action, data, cartItems) => {
+                // Update local cart items to trigger Alpine.js reactivity
+                this.cartItems = [...cartItems];
+                // Force Alpine.js to re-evaluate reactive properties
+                this.$nextTick(() => {
+                    this.updateCartCount();
+                });
+            });
         },
 
         // Show cart notification
         showCartNotification(message, type = 'info') {
-            if (window.fastNotice) {
-                window.fastNotice.show(message, type);
-            }
+            window.cartManager.showNotification(message, type);
         }
     };
 }

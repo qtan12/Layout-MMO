@@ -85,21 +85,13 @@ function homepageComponent() {
 
         // Format price helper
         formatPrice(price) {
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(price);
+            return window.cartManager.formatPrice(price);
         },
 
-        // Add item to cart - use global function
+        // Add item to cart - use Cart Manager
         addToCart(item) {
             console.log('Adding to cart:', item);
-            // Use global addToCart function
-            if (window.addToCart) {
-                window.addToCart(item);
-            } else {
-                console.error('window.addToCart function not found');
-            }
+            window.cartManager.addToCart(item);
         }
     };
 }
@@ -109,8 +101,5 @@ window.homepageComponent = homepageComponent;
 
 // Make formatPrice available globally for Alpine.js templates
 window.formatPrice = function(price) {
-    return new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND'
-    }).format(price);
+    return window.cartManager.formatPrice(price);
 };

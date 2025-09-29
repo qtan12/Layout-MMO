@@ -89,10 +89,7 @@ function productDetailComponent() {
 
         // Helper methods
         formatPrice(price) {
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(price);
+            return window.cartManager.formatPrice(price);
         },
 
         getSavings() {
@@ -146,15 +143,42 @@ function productDetailComponent() {
         addToCart() {
             this.isAddingToCart = true;
 
+            // Add to cart using Cart Manager
+            const cartItem = {
+                id: this.product.id,
+                name: this.product.name,
+                category: this.product.category,
+                price: this.product.price,
+                originalPrice: this.product.originalPrice,
+                image: this.mainImageSrc,
+                icon: this.getProductIcon()
+            };
+
+            // Add multiple items based on quantity
+            for (let i = 0; i < this.quantity; i++) {
+                window.cartManager.addToCart(cartItem);
+            }
+
             // Simulate loading state
             setTimeout(() => {
                 this.isAddingToCart = false;
-                
-                // Show success notification
-                if (window.fastNotice) {
-                    window.fastNotice.success('Đã thêm sản phẩm vào giỏ hàng!');
-                }
-            }, 1000);
+            }, 500);
+        },
+
+        getProductIcon() {
+            // Map product categories to icons
+            const iconMap = {
+                'Tài khoản Streaming': 'tv',
+                'Tài khoản Social': 'users',
+                'Software & License': 'monitor',
+                'VPN & Proxy': 'shield',
+                'SEO & Link Building': 'link',
+                'Data & Tools MMO': 'search',
+                'Tài khoản Email': 'mail',
+                'Tài khoản Facebook': 'facebook',
+                'Tài khoản Social khác': 'share-2'
+            };
+            return iconMap[this.product.category] || 'package';
         },
 
         buyNow() {
