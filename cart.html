@@ -2652,28 +2652,28 @@
                     <!-- Cart Items -->
                     <div class="space-y-3 lg:space-y-4">
                         <template x-for="item in cartItems" :key="item.id">
-                            <div class="cart-item bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm" x-data="{ selected: item.selected, quantity: item.quantity }" :data-product-id="item.id">
+                            <div class="relative bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm" x-data="{ selected: item.selected, quantity: item.quantity }" :data-product-id="item.id">
                                 <div class="flex gap-3 lg:gap-4">
                                     <div class="flex items-start pt-1 lg:pt-2">
                                         <input type="checkbox" 
-                                               class="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500" 
+                                               class="absolute top-[10%] left-4 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500" 
                                                x-model="selected"
                                                @change="window.cartManager.toggleSelection(item.id); $nextTick(() => { item.selected = selected; })">
                                     </div>
                                     <a class="flex-shrink-0" :href="`/product/${item.id}`">
-                                        <div class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gray-100 rounded-lg lg:rounded-xl overflow-hidden">
+                                        <div class="ml-5 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gray-100 rounded-lg lg:rounded-xl overflow-hidden">
                                             <img :src="item.image || 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=200&h=200&fit=crop&crop=center'" 
                                                  :alt="item.name" 
                                                  class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                                         </div>
                                     </a>
                                     <div class="flex-1 min-w-0">
-                                        <div class="flex items-start justify-between mb-2">
+                                        <div class="flex items-start justify-between mb-2 relative">
                                             <div>
                                                 <span class="badge badge-primary text-xs">Sản phẩm</span>
                                             </div>
                                             <button @click="window.cartManager.removeFromCart(item.id)" 
-                                                    class="w-7 h-7 lg:w-8 lg:h-8 text-red-500 hover:bg-red-50 rounded-lg flex items-center justify-center transition-colors">
+                                                    class="absolute top-0 right-0 w-7 h-7 lg:w-8 lg:h-8 text-red-500 hover:bg-red-50 rounded-lg flex items-center justify-center transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 w-5 h-5">
                                                     <path d="M3 6h18"></path>
                                                     <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
