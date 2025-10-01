@@ -185,11 +185,22 @@ function headerComponent() {
         errors: {},
         showDepositModal: false,
         userBalance: 2847.50,
+        isWalletModalOpen: false,
+        walletBalance: 68400000, // ₫68,400,000 VND
+        isPaymentModalOpen: false,
+        depositAmount: 0,
+        selectedPaymentMethod: 'bank',
+        depositErrors: {},
+        depositHistory: [],
+        currentTransaction: null,
+        isHistoryModalOpen: false,
+        historyFilter: 'all',
 
         init() {
             console.log('Header component initialized.');
             this.initializeAuth();
             this.initializeCart();
+            this.initializeDepositData();
 
             // Listen for auth modal open requests from other components
             window.addEventListener('open-auth-modal', (event) => {
@@ -409,6 +420,275 @@ function headerComponent() {
                 // Handle body scroll for all modals
                 this.handleBodyScroll();
             });
+        },
+
+        // Wallet Modal Functions
+        openWalletModal() {
+            this.isWalletModalOpen = true;
+            // Reset form when opening modal
+            this.depositAmount = 0;
+            this.selectedPaymentMethod = 'bank';
+            this.depositErrors = {};
+            
+            this.$nextTick(() => {
+                const modal = document.querySelector('[x-show="isWalletModalOpen"]');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+                // Handle body scroll for all modals
+                this.handleBodyScroll();
+            });
+        },
+
+        closeWalletModal() {
+            this.isWalletModalOpen = false;
+            this.$nextTick(() => {
+                const modal = document.querySelector('[x-show="isWalletModalOpen"]');
+                if (modal) {
+                    modal.classList.add('hidden');
+                }
+                // Handle body scroll for all modals
+                this.handleBodyScroll();
+            });
+        },
+
+        // Deposit Functions
+        setDepositAmount(amount) {
+            this.depositAmount = amount;
+            this.depositErrors.amount = '';
+        },
+
+        validateDepositAmount() {
+            const amount = this.depositAmount;
+            if (!amount || amount <= 0) {
+                this.depositErrors.amount = 'Vui lòng nhập số tiền hợp lệ';
+                return false;
+            }
+            if (amount < 10000) {
+                this.depositErrors.amount = 'Số tiền tối thiểu là 10,000₫';
+                return false;
+            }
+            if (amount > 50000000) {
+                this.depositErrors.amount = 'Số tiền tối đa là 50,000,000₫';
+                return false;
+            }
+            this.depositErrors.amount = '';
+            return true;
+        },
+
+        selectPaymentMethod(method) {
+            this.selectedPaymentMethod = method;
+        },
+
+        canProceedPayment() {
+            return this.depositAmount > 0 && this.validateDepositAmount() && this.selectedPaymentMethod;
+        },
+
+        proceedToPayment() {
+            if (!this.canProceedPayment()) {
+                return;
+            }
+
+            // Create transaction
+            this.currentTransaction = {
+                id: this.generateTransactionId(),
+                amount: this.depositAmount,
+                method: this.selectedPaymentMethod,
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+
+            // Add to history
+            this.depositHistory.unshift(this.currentTransaction);
+
+            // Open payment modal
+            this.isPaymentModalOpen = true;
+            this.isWalletModalOpen = false;
+
+            this.$nextTick(() => {
+                const modal = document.querySelector('[x-show="isPaymentModalOpen"]');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+                this.handleBodyScroll();
+            });
+
+            // Generate QR codes if needed
+            this.generateQRCodes();
+        },
+
+        generateTransactionId() {
+            return 'TXN' + Date.now().toString().slice(-8);
+        },
+
+        generateQRCodes() {
+            // In real implementation, you would generate actual QR codes
+            // For demo purposes, we'll just show placeholder
+            console.log('Generating QR codes for transaction:', this.currentTransaction);
+        },
+
+        getPaymentMethodName(method) {
+            const methods = {
+                'bank': 'Chuyển khoản ngân hàng',
+                'momo': 'Ví MoMo',
+                'zalopay': 'ZaloPay',
+                'vnpay': 'VNPay'
+            };
+            return methods[method] || 'Chưa chọn';
+        },
+
+        copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                sendNotice('Đã sao chép vào clipboard', 'success');
+            }).catch(() => {
+                sendNotice('Không thể sao chép', 'error');
+            });
+        },
+
+        checkPaymentStatus() {
+            // Simulate checking payment status
+            sendNotice('Đang kiểm tra trạng thái thanh toán...', 'info');
+            
+            // Simulate payment completion after 3 seconds
+            setTimeout(() => {
+                if (this.currentTransaction) {
+                    this.currentTransaction.status = 'completed';
+                    // Update wallet balance (cộng dồn)
+                    this.walletBalance += this.currentTransaction.amount;
+                    // Update user balance as well
+                    this.userBalance += this.currentTransaction.amount;
+                    
+                    // Save to localStorage
+                    this.saveWalletBalance();
+                    
+                    sendNotice(`Nạp tiền thành công! +${this.formatPrice(this.currentTransaction.amount)}`, 'success');
+                    
+                    // Update the transaction in history
+                    const historyIndex = this.depositHistory.findIndex(t => t.id === this.currentTransaction.id);
+                    if (historyIndex !== -1) {
+                        this.depositHistory[historyIndex].status = 'completed';
+                    }
+                    
+                    this.closePaymentModal();
+                }
+            }, 3000);
+        },
+
+        closePaymentModal() {
+            this.isPaymentModalOpen = false;
+            this.$nextTick(() => {
+                const modal = document.querySelector('[x-show="isPaymentModalOpen"]');
+                if (modal) {
+                    modal.classList.add('hidden');
+                }
+                this.handleBodyScroll();
+            });
+        },
+
+        viewDepositHistory() {
+            this.isHistoryModalOpen = true;
+            this.$nextTick(() => {
+                const modal = document.querySelector('[x-show="isHistoryModalOpen"]');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+                this.handleBodyScroll();
+            });
+        },
+
+        closeHistoryModal() {
+            this.isHistoryModalOpen = false;
+            this.$nextTick(() => {
+                const modal = document.querySelector('[x-show="isHistoryModalOpen"]');
+                if (modal) {
+                    modal.classList.add('hidden');
+                }
+                this.handleBodyScroll();
+            });
+        },
+
+        get filteredDepositHistory() {
+            if (this.historyFilter === 'all') {
+                return this.depositHistory;
+            }
+            return this.depositHistory.filter(transaction => transaction.status === this.historyFilter);
+        },
+
+        getStatusText(status) {
+            const statusTexts = {
+                'pending': 'Đang xử lý',
+                'completed': 'Thành công',
+                'failed': 'Thất bại'
+            };
+            return statusTexts[status] || 'Không xác định';
+        },
+
+        formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('vi-VN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        },
+
+        getTotalDeposits() {
+            return this.depositHistory.length;
+        },
+
+        getCompletedDeposits() {
+            return this.depositHistory.filter(t => t.status === 'completed').length;
+        },
+
+        getPendingDeposits() {
+            return this.depositHistory.filter(t => t.status === 'pending').length;
+        },
+
+        initializeDepositData() {
+            // Load wallet balance from localStorage
+            this.loadWalletBalance();
+            
+            // Add some sample deposit history for demo
+            this.depositHistory = [
+                {
+                    id: 'TXN12345678',
+                    amount: 5000000, // ₫5,000,000
+                    method: 'bank',
+                    status: 'completed',
+                    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()
+                },
+                {
+                    id: 'TXN12345679',
+                    amount: 10000000, // ₫10,000,000
+                    method: 'momo',
+                    status: 'completed',
+                    createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
+                },
+                {
+                    id: 'TXN12345680',
+                    amount: 2000000, // ₫2,000,000
+                    method: 'zalopay',
+                    status: 'pending',
+                    createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
+                }
+            ];
+        },
+
+        // Load wallet balance from localStorage
+        loadWalletBalance() {
+            const savedBalance = localStorage.getItem('walletBalance');
+            if (savedBalance) {
+                this.walletBalance = parseFloat(savedBalance);
+            } else {
+                this.walletBalance = 68400000; // Default ₫68,400,000
+            }
+        },
+
+        // Save wallet balance to localStorage
+        saveWalletBalance() {
+            localStorage.setItem('walletBalance', this.walletBalance.toString());
         },
         
         openAuthModal() {
@@ -968,7 +1248,8 @@ function headerComponent() {
         // Handle body scroll for all modals
         handleBodyScroll() {
             // Check if any modal is open
-            const isAnyModalOpen = this.showCart || this.isAuthModalOpen || this.mobileMenuOpen;
+            const isAnyModalOpen = this.showCart || this.isAuthModalOpen || this.mobileMenuOpen || 
+                                 this.isWalletModalOpen || this.isPaymentModalOpen || this.isHistoryModalOpen;
             
             if (isAnyModalOpen) {
                 // Disable body scroll when any modal is open
