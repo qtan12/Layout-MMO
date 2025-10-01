@@ -18,8 +18,7 @@ class CartManager {
         } else {
             this.cartItems.push({
                 ...item,
-                quantity: 1,
-                selected: true // Default to selected for cart page
+                quantity: 1
             });
         }
         
@@ -48,26 +47,6 @@ class CartManager {
         return item;
     }
 
-    // Toggle item selection
-    toggleSelection(itemId) {
-        const item = this.cartItems.find(item => item.id === itemId);
-        if (item) {
-            item.selected = !item.selected;
-            this.saveToStorage();
-            this.notifyListeners('toggle', item);
-        }
-        return item;
-    }
-
-    // Toggle select all
-    toggleSelectAll() {
-        const hasSelected = this.cartItems.some(item => item.selected);
-        this.cartItems.forEach(item => {
-            item.selected = !hasSelected;
-        });
-        this.saveToStorage();
-        this.notifyListeners('toggleAll', { selected: !hasSelected });
-    }
 
     // Clear cart
     clearCart() {
@@ -81,9 +60,9 @@ class CartManager {
         return this.cartItems.reduce((total, item) => total + item.quantity, 0);
     }
 
-    // Get selected items count
-    getSelectedCount() {
-        return this.cartItems.filter(item => item.selected).length;
+    // Get cart items count
+    getCartItemsCount() {
+        return this.cartItems.length;
     }
 
     // Get cart total
@@ -91,17 +70,9 @@ class CartManager {
         return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
     }
 
-    // Get selected items total
-    getSelectedTotal() {
-        return this.cartItems
-            .filter(item => item.selected)
-            .reduce((total, item) => total + (item.price * item.quantity), 0);
-    }
-
     // Get discount amount
     getDiscount() {
         return this.cartItems
-            .filter(item => item.selected)
             .reduce((total, item) => {
                 const originalPrice = item.originalPrice || item.price;
                 return total + ((originalPrice - item.price) * item.quantity);
@@ -113,15 +84,6 @@ class CartManager {
         return [...this.cartItems];
     }
 
-    // Get selected cart items
-    getSelectedItems() {
-        return this.cartItems.filter(item => item.selected);
-    }
-
-    // Check if all items are selected
-    isAllSelected() {
-        return this.cartItems.length > 0 && this.cartItems.every(item => item.selected);
-    }
 
     // Format price
     formatPrice(price) {
@@ -156,7 +118,6 @@ class CartManager {
                         price: 899000,
                         originalPrice: 2090000,
                         quantity: 1,
-                        selected: true,
                         image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=200&h=200&fit=crop&crop=center',
                         icon: 'tv'
                     },
@@ -167,7 +128,6 @@ class CartManager {
                         price: 599000,
                         originalPrice: 1200000,
                         quantity: 1,
-                        selected: true,
                         image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop&crop=center',
                         icon: 'music'
                     },
@@ -178,7 +138,6 @@ class CartManager {
                         price: 299000,
                         originalPrice: 5490000,
                         quantity: 1,
-                        selected: true,
                         image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=200&h=200&fit=crop&crop=center',
                         icon: 'monitor'
                     }

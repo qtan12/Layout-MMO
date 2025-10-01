@@ -97,7 +97,7 @@
 
   /* Button Styles */
   .btn {
-    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
+    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-md transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
   }
   /* đặt tên gì phổ biến hơn để các nhu cầu tương tự cũng dùng được đi, đặt tên cart nó chỉ dùng cho cart à */
   .btn-overflow{
@@ -129,6 +129,9 @@
   }
 
   /* Button Sizes */
+  .btn-xs{
+    @apply px-2 py-1 h-6 text-xs rounded-sm;
+  }
   .btn-sm {
     @apply px-3 py-1.5 h-8 text-sm;
   }
@@ -1739,11 +1742,11 @@
 
                 <!-- Right side -->
                 <div class="flex items-center space-x-0 xl:space-x-3">
-                    <!-- Wallet Button -->
-                    <button @click="openWalletModal()" class="hidden sm:flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl hover:from-green-100 hover:to-emerald-100 transition-all duration-300 mr-3 xl:mr-0">
-                        <i data-lucide="wallet" class="w-4 h-4 text-green-600"></i>
-                        <span class="hidden lg:inline text-sm font-medium text-green-700">Ví tiền</span>
-                        <span class="text-xs font-semibold text-green-600" x-text="formatPrice(walletBalance)">$2,847.50</span>
+                    <!-- Post Button -->
+                    <button @click="handlePostClick()" class="btn btn-primary">
+                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                        <span class="hidden sm:inline">Đăng Bán</span>
+                        <span class="sm:hidden">Đăng</span>
                     </button>
 
                     <!-- Shopping Cart -->
@@ -1755,15 +1758,15 @@
                               x-show="cartCount > 0" x-text="cartCount">0</span>
                     </button>
 
-                    <!-- Post Button -->
-                    <button @click="handlePostClick()" class="btn btn-primary">
-                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
-                        <span class="hidden sm:inline">Đăng Bán</span>
-                        <span class="sm:hidden">Đăng</span>
-                    </button>
-
                     <!-- Auth Section -->
-                    <div class="flex items-center">
+                    <section class="flex items-center">
+                        <!-- Wallet Button (only show when logged in) -->
+                        <button x-show="user" @click="openWalletModal()" class="hidden sm:flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl hover:from-green-100 hover:to-emerald-100 transition-all duration-300 mr-3">
+                            <i data-lucide="wallet" class="w-4 h-4 text-green-600"></i>
+                            <span class="hidden lg:inline text-sm font-medium text-green-700">Ví tiền</span>
+                            <span class="text-xs font-semibold text-green-600" x-text="formatPrice(walletBalance)">$2,847.50</span>
+                        </button>
+
                         <!-- Login Buttons (show by default) -->
                         <div id="loginButtons" class="flex items-center space-x-3">
                             <!-- Desktop Login Button -->
@@ -1773,11 +1776,7 @@
                                 Đăng Nhập
                             </button>
 
-                            <!-- Mobile Login Icon -->
-                            <button @click="openAuthModal(); authTab = 'login'; errors = {}; isLoading = false"
-                                class="xl:hidden btn btn-ghost btn-sm p-2 h-8 w-8">
-                                <i data-lucide="users" class="w-6 h-6"></i>
-                            </button>
+                           
                         </div>
 
                         <!-- User Dropdown (hidden by default) -->
@@ -1788,7 +1787,7 @@
                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGLy8P0ACAAA//8CbgGIf795rQAAAABJRU5ErkJggg==                                "
                                     alt="User" class="w-8 h-8 rounded-full">
                                 <span id="userName" class="hidden lg:block text-sm font-medium">User</span>
-                        </button>
+                            </button>
                             <div x-ref="userMenu"
                                 class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 hidden">
                                 <a href="/newfeed"
@@ -1799,14 +1798,11 @@
                                     Xuất</button>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
                     <!-- Mobile Menu -->
-                    <div class="lg:hidden flex items-center space-x-2 pl-2">
-                        <!-- Mobile Wallet Button -->
-                        <button @click="openWalletModal()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
-                            <i data-lucide="wallet" class="w-5 h-5 text-green-600"></i>
-                        </button>
+                    <section class="lg:hidden flex items-center space-x-2 pl-2">
+                       
                         
                         <!-- Mobile Cart -->
                         <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
@@ -1821,7 +1817,7 @@
                         <button @click="openMobileMenu()" class="btn btn-ghost btn-sm p-2 h-8 w-8">
                             <i data-lucide="menu" class="w-6 h-6"></i>
                         </button>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -3442,11 +3438,11 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" x-data="homepageComponent()">
 
                     <!-- Product Card 1: Backlink Premium -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/34d399/ffffff?text=Backlink" alt="Backlink Premium" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3455,42 +3451,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">SEO & Link Building</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Backlink Premium</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Backlink chất lượng cao từ các website uy tín, giúp tăng thứ hạng SEO hiệu quả và an toàn.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">SEO & Link Building</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Backlink Premium</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller1" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">MMO Store</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(120 reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 1.5k</span>
                                     <span>Tồn kho: 99+</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">500,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">500,000₫</span>
                                 <button @click="addToCart({ id: 'backlink-premium', name: 'Backlink Premium', price: 500000, image: 'https://placehold.co/100x100/34d399/ffffff?text=B' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 2: Facebook Clone VIP -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Facebook" alt="Facebook Clone VIP" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3499,43 +3491,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Tài khoản Facebook</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Facebook Clone VIP</a></h3>
-                                </div>
-                                
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Tài khoản Facebook clone chất lượng cao, đã xác minh danh tính, sẵn sàng cho các chiến dịch quảng cáo.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Tài khoản Facebook</a>
+                                <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Facebook Clone VIP</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller2" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Pro Seller</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(98 reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 2.1k</span>
                                     <span>Tồn kho: 50</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">150,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">150,000₫</span>
                                 <button @click="addToCart({ id: 'facebook-clone-vip', name: 'Facebook Clone VIP', price: 150000, image: 'https://placehold.co/100x100/3b82f6/ffffff?text=F' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 3: Tools SEO Pro -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=SEO" alt="Tools SEO Pro" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3544,42 +3531,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Data & Tools MMO</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Tools SEO Pro</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Bộ công cụ SEO chuyên nghiệp, giúp phân tích từ khóa, theo dõi thứ hạng và tối ưu hóa website toàn diện.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Data & Tools MMO</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Tools SEO Pro</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller1" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">MMO Store</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(250 reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 800</span>
                                     <span>Tồn kho: 25</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">1,200,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">1,200,000₫</span>
                                 <button @click="addToCart({ id: 'tools-seo-pro', name: 'Tools SEO Pro', price: 1200000, image: 'https://placehold.co/100x100/8b5cf6/ffffff?text=S' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 4: Gmail Clone VIP -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/ea580c/ffffff?text=Gmail" alt="Gmail Clone VIP" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3587,42 +3570,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Tài khoản Email</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Gmail Clone VIP</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Tài khoản Gmail cổ, đã xác minh, độ tin cậy cao, phù hợp để đăng ký các dịch vụ quan trọng.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Tài khoản Email</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Gmail Clone VIP</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller4" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Email Provider</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(150 reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 3.2k</span>
                                     <span>Tồn kho: 99+</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">200,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">200,000₫</span>
                                 <button @click="addToCart({ id: 'gmail-clone-vip', name: 'Gmail Clone VIP', price: 200000, image: 'https://placehold.co/100x100/ea580c/ffffff?text=G' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 5: TikTok Clone Premium -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/000000/ffffff?text=TikTok" alt="TikTok Clone Premium" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3630,42 +3609,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Tài khoản Social khác</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">TikTok Clone Premium</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Tài khoản TikTok có lượng follow sẵn, tương tác tốt, phù hợp để xây dựng thương hiệu hoặc bán hàng.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Tài khoản Social khác</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">TikTok Clone Premium</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller5" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Social King</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(450 reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 5k</span>
                                     <span>Tồn kho: 99+</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">300,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">300,000₫</span>
                                 <button @click="addToCart({ id: 'tiktok-clone-premium', name: 'TikTok Clone Premium', price: 300000, image: 'https://placehold.co/100x100/000000/ffffff?text=T' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 6: Windows 11 Pro License -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/0ea5e9/ffffff?text=Win11" alt="Windows 11 Pro License" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3673,42 +3648,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">License Phần Mềm</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Windows 11 Pro License</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Key bản quyền Windows 11 Pro chính hãng, kích hoạt online vĩnh viễn, cập nhật đầy đủ từ Microsoft.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">License Phần Mềm</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Windows 11 Pro License</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller6" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Key Store</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(1.2k reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 10k+</span>
                                     <span>Tồn kho: 99+</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">800,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">800,000₫</span>
                                 <button @click="addToCart({ id: 'windows-11-pro', name: 'Windows 11 Pro License', price: 800000, image: 'https://placehold.co/100x100/0ea5e9/ffffff?text=W' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 7: VPS Server 1GB -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/f97316/ffffff?text=VPS" alt="VPS Server 1GB" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3716,42 +3687,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">VPN/Proxy/Server</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">VPS Server 1GB</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">VPS cấu hình cao, băng thông không giới hạn, phù hợp để chạy website, tool MMO hoặc game server.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">VPN/Proxy/Server</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">VPS Server 1GB</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller7" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Infra Solutions</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(88 reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 300+</span>
                                     <span>Tồn kho: 45</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">150,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">150,000₫</span>
                                 <button @click="addToCart({ id: 'vps-server-1gb', name: 'VPS Server 1GB', price: 150000, image: 'https://placehold.co/100x100/f97316/ffffff?text=V' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 8: Khóa học SEO Master -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/34d399/ffffff?text=Backlink" alt="Backlink Premium" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3759,42 +3726,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Khóa Học/TUT MMO</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Khóa học SEO Master</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Khóa học SEO từ cơ bản đến nâng cao, bao gồm case study thực tế và bộ công cụ hỗ trợ độc quyền.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Khóa Học/TUT MMO</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Khóa học SEO Master</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller8" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Academy MMO</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(500+ reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 1.2k</span>
                                     <span>Tồn kho: 99+</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">2,500,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">2,500,000₫</span>
                                 <button @click="addToCart({ id: 'khoa-hoc-seo-master', name: 'Khóa học SEO Master', price: 2500000, image: 'https://placehold.co/100x100/14b8a6/ffffff?text=K' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 9: Instagram Clone VIP -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/f97316/ffffff?text=Insta" alt="Instagram Clone VIP" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3802,42 +3765,38 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Tài khoản Social khác</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Instagram Clone VIP</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Tài khoản Instagram cổ, có sẵn lượng người theo dõi, lý tưởng để xây dựng thương hiệu cá nhân hoặc kinh doanh.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Tài khoản Social khác</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Instagram Clone VIP</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller5" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Social King</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(320 reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 4.5k</span>
                                     <span>Tồn kho: 99+</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">250,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">250,000₫</span>
                                 <button @click="addToCart({ id: 'instagram-clone-vip', name: 'Instagram Clone VIP', price: 250000, image: 'https://placehold.co/100x100/c026d3/ffffff?text=I' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Card 10: Photoshop CC License -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
+                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
+                        <div class="w-24 sm:w-32 lg:w-1/3 flex-shrink-0">
                             <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
                                 <img src="https://placehold.co/400x400/f97316/ffffff?text=Ps" alt="Photoshop CC License" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
+                                <div class="absolute top-1 left-1 badge badge-primary shadow-md">
                                     <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
                                     Nổi bật
                                 </div>
@@ -3846,250 +3805,33 @@
                         </div>
                         <div class="flex flex-col flex-grow">
                             <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">License Phần Mềm</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Photoshop CC License</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Bản quyền Adobe Photoshop CC chính hãng, sử dụng đầy đủ tính năng và nhận cập nhật mới nhất.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
+                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">License Phần Mềm</a>
+                                    <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight"><a href="detail.html" class="hover:text-emerald-600">Photoshop CC License</a></h3>
+                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
                                     <img src="https://i.pravatar.cc/24?u=seller6" alt="Seller Avatar" class="w-6 h-6 rounded-full">
                                     <a href="#" class="hover:text-emerald-600">Key Store</a>
                                 </div>
-                                <div class="flex items-center space-x-1 text-sm">
+                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
                                     <div class="flex text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
                                     </div>
                                     <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(800+ reviews)</a>
                                 </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
+                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
                                     <span>Đã bán: 2k+</span>
                                     <span>Tồn kho: 99+</span>
                                 </div>
                             </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">1,500,000₫</span>
+                            <div class="mt-auto pt-2 sm:pt-4 flex items-center justify-between">
+                                <span class="text-lg sm:text-2xl font-bold text-emerald-600">1,500,000₫</span>
                                 <button @click="addToCart({ id: 'photoshop-cc-license', name: 'Photoshop CC License', price: 1500000, image: 'https://placehold.co/100x100/2563eb/ffffff?text=P' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
+                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Product Card 11: Proxy Residential 100 -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
-                            <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
-                                <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Proxy" alt="Proxy Residential 100" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
-                                    Nổi bật
-                                </div>
-                            </a>
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">VPN/Proxy/Server</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Proxy Residential 100</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Gói 100 proxy dân cư chất lượng cao, IP sạch, tốc độ ổn định, phù hợp cho các tác vụ MMO chuyên nghiệp.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
-                                    <img src="https://i.pravatar.cc/24?u=seller7" alt="Seller Avatar" class="w-6 h-6 rounded-full">
-                                    <a href="#" class="hover:text-emerald-600">Infra Solutions</a>
-                                </div>
-                                <div class="flex items-center space-x-1 text-sm">
-                                    <div class="flex text-yellow-400">
-                                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
-                                    </div>
-                                    <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(180 reviews)</a>
-                                </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
-                                    <span>Đã bán: 900+</span>
-                                    <span>Tồn kho: 30</span>
-                                </div>
-                            </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">500,000₫</span>
-                                <button @click="addToCart({ id: 'proxy-residential-100', name: 'Proxy Residential 100', price: 500000, image: 'https://placehold.co/100x100/f59e0b/ffffff?text=P' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 12: YouTube Clone Premium -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
-                            <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
-                                <img src="https://placehold.co/400x400/ef4444/ffffff?text=YouTube" alt="YouTube Clone Premium" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
-                                    Nổi bật
-                                </div>
-                            </a>
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Tài khoản Social khác</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">YouTube Clone Premium</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Tài khoản YouTube đã bật kiếm tiền hoặc có lượng đăng ký lớn, sẵn sàng để phát triển nội dung.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
-                                    <img src="https://i.pravatar.cc/24?u=seller5" alt="Seller Avatar" class="w-6 h-6 rounded-full">
-                                    <a href="#" class="hover:text-emerald-600">Social King</a>
-                                </div>
-                                <div class="flex items-center space-x-1 text-sm">
-                                    <div class="flex text-yellow-400">
-                                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star"></i>
-                                    </div>
-                                    <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(210 reviews)</a>
-                                </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
-                                    <span>Đã bán: 1.8k</span>
-                                    <span>Tồn kho: 99+</span>
-                                </div>
-                            </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">400,000₫</span>
-                                <button @click="addToCart({ id: 'youtube-clone-premium', name: 'YouTube Clone Premium', price: 400000, image: 'https://placehold.co/100x100/ef4444/ffffff?text=Y' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 13: Office 365 License -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
-                            <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
-                                <img src="https://placehold.co/400x400/d946ef/ffffff?text=Office" alt="Office 365 License" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
-                                    Nổi bật
-                                </div>
-                            </a>
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">License Phần Mềm</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Office 365 License</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Bản quyền Office 365 chính hãng, sử dụng đầy đủ các ứng dụng Word, Excel, PowerPoint và nhận cập nhật mới nhất.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
-                                    <img src="https://i.pravatar.cc/24?u=seller6" alt="Seller Avatar" class="w-6 h-6 rounded-full">
-                                    <a href="#" class="hover:text-emerald-600">Key Store</a>
-                                </div>
-                                <div class="flex items-center space-x-1 text-sm">
-                                    <div class="flex text-yellow-400">
-                                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
-                                    </div>
-                                    <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(950+ reviews)</a>
-                                </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
-                                    <span>Đã bán: 3k+</span>
-                                    <span>Tồn kho: 99+</span>
-                                </div>
-                            </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">600,000₫</span>
-                                <button @click="addToCart({ id: 'office-365-license', name: 'Office 365 License', price: 600000, image: 'https://placehold.co/100x100/d946ef/ffffff?text=O' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 14: Khóa học Ads Facebook -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
-                            <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
-                                <img src="https://placehold.co/400x400/6366f1/ffffff?text=FB+Ads" alt="Khóa học Ads Facebook" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
-                                    Nổi bật
-                                </div>
-                            </a>
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Khóa Học/TUT MMO</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Khóa học Ads Facebook</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Khóa học quảng cáo Facebook từ cơ bản đến nâng cao, giúp bạn tối ưu hóa chiến dịch và tăng doanh thu.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
-                                    <img src="https://i.pravatar.cc/24?u=seller8" alt="Seller Avatar" class="w-6 h-6 rounded-full">
-                                    <a href="#" class="hover:text-emerald-600">Academy MMO</a>
-                                </div>
-                                <div class="flex items-center space-x-1 text-sm">
-                                    <div class="flex text-yellow-400">
-                                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star"></i>
-                                    </div>
-                                    <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(400+ reviews)</a>
-                                </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
-                                    <span>Đã bán: 800+</span>
-                                    <span>Tồn kho: 99+</span>
-                                </div>
-                            </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">1,800,000₫</span>
-                                <button @click="addToCart({ id: 'khoa-hoc-ads-facebook', name: 'Khóa học Ads Facebook', price: 1800000, image: 'https://placehold.co/100x100/6366f1/ffffff?text=K' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 15: Data SĐT Premium -->
-                    <div class="card flex flex-col sm:flex-row gap-4 p-4 hover:shadow-md transition-shadow">
-                        <div class="w-full sm:w-1/3 flex-shrink-0">
-                            <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
-                                <img src="https://placehold.co/400x400/ec4899/ffffff?text=Data" alt="Data SĐT Premium" class="w-full h-full object-cover">
-                                <div class="absolute top-3 left-3 badge badge-primary shadow-md">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1.5 fill-current"></i>
-                                    Nổi bật
-                                </div>
-                            </a>
-                        </div>
-                        <div class="flex flex-col flex-grow">
-                            <div>
-                                <a href="#" class="text-sm text-gray-500 hover:text-emerald-600">Data & Tools MMO</a>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="badge badge-primary">Sản phẩm</span>
-                                    <h3 class="text-lg font-semibold text-gray-900"><a href="detail.html" class="hover:text-emerald-600">Data SĐT Premium</a></h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-2 two-lines">Tệp dữ liệu số điện thoại khách hàng tiềm năng, đã được lọc và phân loại theo nhiều tiêu chí, phù hợp cho telesales.</p>
-                                <div class="flex items-center space-x-2 text-sm text-gray-600 my-2">
-                                    <img src="https://i.pravatar.cc/24?u=seller9" alt="Seller Avatar" class="w-6 h-6 rounded-full">
-                                    <a href="#" class="hover:text-emerald-600">Data Hub</a>
-                                </div>
-                                <div class="flex items-center space-x-1 text-sm">
-                                    <div class="flex text-yellow-400">
-                                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star"></i>
-                                    </div>
-                                    <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(600+ reviews)</a>
-                                </div>
-                                <div class="text-sm text-gray-500 mt-2 space-x-4">
-                                    <span>Đã bán: 5k+</span>
-                                    <span>Tồn kho: 99+</span>
-                                </div>
-                            </div>
-                            <div class="mt-auto pt-4 flex items-center justify-between">
-                                <span class="text-2xl font-bold text-emerald-600">350,000₫</span>
-                                <button @click="addToCart({ id: 'data-sdt-premium', name: 'Data SĐT Premium', price: 350000, image: 'https://placehold.co/100x100/ec4899/ffffff?text=D' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Thêm vào giỏ</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </section>

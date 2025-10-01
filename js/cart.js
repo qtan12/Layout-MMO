@@ -4,25 +4,22 @@ function cartComponent() {
     return {
         // State
         isProcessing: false,
-        selectAll: true,
         
         // Cart data - Now synced with global Cart Manager
         cartItems: [],
 
         // Computed properties
         get selectedItemsCount() {
-            return this.cartItems.filter(item => item.selected).length;
+            return this.cartItems.length;
         },
 
         get subtotal() {
             return this.cartItems
-                .filter(item => item.selected)
                 .reduce((total, item) => total + (item.price * item.quantity), 0);
         },
 
         get discount() {
             return this.cartItems
-                .filter(item => item.selected)
                 .reduce((total, item) => {
                     const originalPrice = item.originalPrice || item.price;
                     return total + ((originalPrice - item.price) * item.quantity);
@@ -55,14 +52,8 @@ function cartComponent() {
                 // Force Alpine.js to re-evaluate reactive properties
                 this.$nextTick(() => {
                     this.updateCartTotal();
-                    this.updateSelectAllState();
                 });
             });
-        },
-
-        // Update select all state
-        updateSelectAllState() {
-            this.selectAll = window.cartManager.isAllSelected();
         },
 
         // Methods
@@ -70,15 +61,10 @@ function cartComponent() {
             return window.cartManager.formatPrice(price);
         },
 
-        toggleSelectAll() {
-            window.cartManager.toggleSelectAll();
-            this.selectAll = window.cartManager.isAllSelected();
-        },
-
         updateCartTotal() {
             // Get totals from Cart Manager
-            const selectedCount = window.cartManager.getSelectedCount();
-            const total = window.cartManager.getSelectedTotal();
+            const selectedCount = window.cartManager.getCartItemsCount();
+            const total = window.cartManager.getCartTotal();
             
             // Update display
             this.updateDisplay(selectedCount, total);
@@ -89,12 +75,6 @@ function cartComponent() {
             const cartInfo = document.querySelector('[x-text*="sản phẩm"]');
             if (cartInfo) {
                 cartInfo.textContent = `${selectedCount} sản phẩm • Tổng cộng: ${this.formatPrice(total)}`;
-            }
-            
-            // Update select all text
-            const selectAllText = document.querySelector('[x-text*="Chọn tất cả"]');
-            if (selectAllText) {
-                selectAllText.textContent = `Chọn tất cả (${selectedCount} sản phẩm)`;
             }
             
             // Update order summary
@@ -133,10 +113,10 @@ function cartComponent() {
         },
 
         async proceedToCheckout() {
-            const selectedCount = window.cartManager.getSelectedCount();
+            const selectedCount = window.cartManager.getCartItemsCount();
             
             if (selectedCount === 0) {
-                window.cartManager.showNotification('Vui lòng chọn ít nhất một sản phẩm!', 'warning');
+                window.cartManager.showNotification('Giỏ hàng trống!', 'warning');
                 return;
             }
 
