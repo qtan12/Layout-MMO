@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -95,28 +96,9 @@
     }
   }
 
-  /* Custom responsive breakpoints for cart */
-  @media (max-width: 475px) {
-    .xs\:inline {
-      display: inline;
-    }
-    .xs\:hidden {
-      display: none;
-    }
-  }
-
-  @media (min-width: 475px) {
-    .xs\:inline {
-      display: inline;
-    }
-    .xs\:hidden {
-      display: none;
-    }
-  }
-
   /* Button Styles */
   .btn {
-    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
+    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-md transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
   }
   /* đặt tên gì phổ biến hơn để các nhu cầu tương tự cũng dùng được đi, đặt tên cart nó chỉ dùng cho cart à */
   .btn-overflow{
@@ -148,6 +130,9 @@
   }
 
   /* Button Sizes */
+  .btn-xs{
+    @apply px-2 py-1 h-6 text-xs rounded-sm;
+  }
   .btn-sm {
     @apply px-3 py-1.5 h-8 text-sm;
   }
@@ -1261,6 +1246,7 @@
     </script>
 
     <!-- Header Component JS -->
+    <script src="js/cart-manager.js"></script>
     <script src="js/header.js"></script>
     <!-- Homepage Component JS -->
     <script src="js/homemmo.js"></script>
@@ -1358,7 +1344,7 @@
 
 </head>
 
-<body>
+<body class="min-h-screen bg-white">
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm sticky top-0 z-50" x-data="headerComponent()">
         <!-- Top Bar -->
@@ -1759,7 +1745,7 @@
                 </div>
 
                 <!-- Right side -->
-                <div class="flex items-center gap-2 space-x-0 xl:space-x-3">
+                <div class="flex items-center space-x-0 xl:space-x-3">
                     <!-- Post Button -->
                     <button @click="handlePostClick()" class="btn btn-primary">
                         <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
@@ -1776,114 +1762,113 @@
                               x-show="cartCount > 0" x-text="cartCount">0</span>
                     </button>
 
-                    
+                    <!-- Auth Section -->
+                    <section class="flex items-center">
+                        <!-- Login Buttons (show by default) -->
+                        <div id="loginButtons" class="flex items-center space-x-3">
+                            <!-- Desktop Login Button -->
+                            <button @click="openAuthModal(); authTab = 'login'; errors = {}; isLoading = false"
+                                class="hidden xl:flex btn btn-outline">
+                                <i data-lucide="log-in" class="w-4 h-4 mr-2"></i>
+                                Đăng Nhập
+                            </button>
+
+                           
+                        </div>
+
+                        <!-- User Dropdown (hidden by default) -->
+                        <div id="userDropdown" class="relative group ml-2 hidden">
+                            <button class="flex items-center space-x-2"
+                                @click="$refs.userMenu.classList.toggle('hidden')">
+                                <img id="userAvatar"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGLy8P0ACAAA//8CbgGIf795rQAAAABJRU5ErkJggg==                                "
+                                    alt="User" class="w-8 h-8 rounded-full">
+                                <span id="userName" class="hidden lg:block text-sm font-medium">User</span>
+                            </button>
+                            <div x-ref="userMenu"
+                                class="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 hidden">
+                                
+                                <!-- User Info Section -->
+                                <div class="px-4 py-3 border-b border-gray-100">
+                                    <div class="flex flex-col">
+                                        <p class="text-sm font-semibold text-gray-900" id="userName">John Doe</p>
+                                        <p class="text-xs text-gray-500" id="userEmail">john@example.com</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dashboard Link -->
+                                <a href="dashboard.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Dashboard
+                                </a>
+
+                                <!-- Profile Link -->
+                                <a href="profile.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="user" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Profile
+                                </a>
+                                
+                                <!-- My Orders Link -->
+                                <a href="orders.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <div class="flex items-center">
+                                        <i data-lucide="package" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                        My Orders
+                                    </div>
+                                    <span class="text-xs font-semibold text-blue-600">1</span>
+                                </a>
+                                
+                                <!-- Wallet Link -->
+                                <a href="wallet.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <div class="flex items-center">
+                                        <i data-lucide="wallet" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                        Wallet
+                                    </div>
+                                    <span class="text-xs font-semibold text-green-600" x-text="formatPrice(walletBalance)">1.350.000 ₫</span>
+                                </a>
+                                
+                                <!-- Favorites Link -->
+                                <a href="favorites.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="heart" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Favorites
+                                </a>
+                                
+                                
+                                <!-- Separator -->
+                                <div class="border-t border-gray-100 my-2"></div>
+                                
+                                <!-- Settings Link -->
+                                <a href="settings.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="settings" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Settings
+                                </a>
+                                
+                                <!-- Logout Button -->
+                                <button @click="logout()"
+                                    class="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-50">
+                                    <i data-lucide="log-out" class="w-4 h-4 mr-3"></i>
+                                    Log out
+                                </button>
+                            </div>
+                        </div>
+                    </section>
 
                     <!-- Mobile Menu -->
                     <section class="lg:hidden flex items-center space-x-2 pl-2">
+                        
+                        
                         <!-- Mobile Cart -->
                         <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
                             <i data-lucide="shopping-cart" class="w-6 h-6"></i>
                             <span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
                                   x-show="cartCount > 0" x-text="cartCount">0</span>
                         </button>
-                         <!-- Mobile search -->
+                        
                         <button @click="openMobileMenu(true)" class="btn btn-ghost btn-sm p-2 h-8 w-8">
                             <i data-lucide="search" class="w-6 h-6"></i>
                         </button>
-                         <!-- Mobile Auth -->
-                         <div class="flex items-center">
-                            <!-- Login Buttons (show by default) -->
-                            <div id="loginButtons" class="flex items-center space-x-3">
-                                <!-- Desktop Login Button -->
-                                <button @click="openAuthModal(); authTab = 'login'; errors = {}; isLoading = false"
-                                    class="hidden xl:flex btn btn-outline">
-                                    <i data-lucide="log-in" class="w-4 h-4 mr-2"></i>
-                                    Đăng Nhập
-                                </button>
-    
-                               
-                            </div>
-    
-                            <!-- User Dropdown (hidden by default) -->
-                            <div id="userDropdown" class="relative group hidden">
-                                <button class="flex items-center space-x-2"
-                                    @click="$refs.userMenu.classList.toggle('hidden')">
-                                    <img id="userAvatar"
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGLy8P0ACAAA//8CbgGIf795rQAAAABJRU5ErkJggg==                                "
-                                        alt="User" class="w-8 h-8 rounded-full">
-                                    <span id="userName" class="hidden lg:block text-sm font-medium">User</span>
-                                </button>
-                                <div x-ref="userMenu"
-                                    class="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 hidden">
-                                    
-                                    <!-- User Info Section -->
-                                    <div class="px-4 py-3 border-b border-gray-100">
-                                        <div class="flex flex-col">
-                                            <p class="text-sm font-semibold text-gray-900" id="userName">John Doe</p>
-                                            <p class="text-xs text-gray-500" id="userEmail">john@example.com</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Dashboard Link -->
-                                    <a href="dashboard.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                        <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                        Dashboard
-                                    </a>
-    
-                                    <!-- Profile Link -->
-                                    <a href="profile.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                        <i data-lucide="user" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                        Profile
-                                    </a>
-                                    
-                                    <!-- My Orders Link -->
-                                    <a href="orders.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                        <div class="flex items-center">
-                                            <i data-lucide="package" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                            My Orders
-                                        </div>
-                                        <span class="text-xs font-semibold text-blue-600">1</span>
-                                    </a>
-                                    
-                                    <!-- Wallet Link -->
-                                    <a href="wallet.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                        <div class="flex items-center">
-                                            <i data-lucide="wallet" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                            Wallet
-                                        </div>
-                                        <span class="text-xs font-semibold text-green-600" x-text="formatPrice(walletBalance)">1.350.000 ₫</span>
-                                    </a>
-                                    
-                                    <!-- Favorites Link -->
-                                    <a href="favorites.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                        <i data-lucide="heart" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                        Favorites
-                                    </a>
-                                    
-                                    
-                                    <!-- Separator -->
-                                    <div class="border-t border-gray-100 my-2"></div>
-                                    
-                                    <!-- Settings Link -->
-                                    <a href="settings.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                        <i data-lucide="settings" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                        Settings
-                                    </a>
-                                    
-                                    <!-- Logout Button -->
-                                    <button @click="logout()"
-                                        class="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-50">
-                                        <i data-lucide="log-out" class="w-4 h-4 mr-3"></i>
-                                        Log out
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Mobile menu -->
                         <button @click="openMobileMenu()" class="btn btn-ghost btn-sm p-2 h-8 w-8">
                             <i data-lucide="menu" class="w-6 h-6"></i>
                         </button>
-                        
                     </section>
                 </div>
             </div>
@@ -2652,190 +2637,11 @@
         
     </header>
 
-    <!-- Main Content Area -->
-    <main class="min-h-screen bg-gray-50" x-data="cartComponent()">
-        <div class="container mx-auto px-3 sm:px-4 lg:px-8 py-6 lg:py-8">
-            <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6 lg:mb-8 overflow-x-auto pb-2">
-                <a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
-                    <path d="m9 18 6-6-6-6"></path>
-                </svg>
-                <span class="text-gray-900 text-xs sm:text-sm truncate">Giỏ hàng</span>
-            </nav>
-            
-            <!-- Cart Header -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 lg:mb-8 gap-4">
-                <div class="flex-1 min-w-0">
-                    <h1 class="text-responsive-lg font-medium text-gray-900 mb-2">Giỏ hàng của bạn</h1>
-                    <p class="text-responsive-sm text-gray-600" x-text="`${cartItems.length} sản phẩm • Tổng cộng: ${formatPrice(cartTotal)}`">3 sản phẩm • Tổng cộng: 1.397.000đ</p>
-                </div>
-                <div class="flex-shrink-0">
-                    <a class="btn btn-outline btn-sm sm:btn-md w-full sm:w-auto" href="/products">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left w-4 h-4 mr-2">
-                            <path d="m12 19-7-7 7-7"></path>
-                            <path d="M19 12H5"></path>
-                        </svg>
-                        <span class=" xs:inline"> Tiếp tục mua sắm</span>
-                    </a>
-                </div>
-            </div>
-            <!-- Cart Content -->
-            <div class="grid lg:grid-cols-5 gap-4 lg:gap-8">
-                <div class="lg:col-span-3 space-y-4 lg:space-y-6">
-                    <!-- Cart Items -->
-                    <div class="space-y-3 lg:space-y-4">
-                        <template x-for="item in cartItems" :key="item.id">
-                            <div class="relative bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm" x-data="{ selected: item.selected, quantity: item.quantity }" :data-product-id="item.id">
-                                <div class="flex gap-3 lg:gap-4">
-                                    <a class="flex-shrink-0 relative" :href="`/product/${item.id}`">
-                                        <div class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gray-100 rounded-lg lg:rounded-xl overflow-hidden">
-                                            <img :src="item.image || 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=200&h=200&fit=crop&crop=center'" 
-                                                 :alt="item.name" 
-                                                 class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
-                                        </div>
-                                        <!-- Delete button positioned on image -->
-                                        <button @click="window.cartManager.removeFromCart(item.id)" 
-                                                class="absolute -top-2 -left-2 w-6 h-6 lg:w-7 lg:h-7 text-red-500 hover:bg-red-50 rounded-full flex items-center justify-center transition-colors z-10 bg-white shadow-md">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x w-3 h-3 lg:w-4 lg:h-4">
-                                                <path d="M18 6L6 18"></path>
-                                                <path d="M6 6l12 12"></path>
-                                            </svg>
-                                        </button>
-                                    </a>
-                                    <div class="flex-1 min-w-0">
-                                        <a :href="`/product/${item.id}`">
-                                            <h3 class="font-medium text-gray-900 mb-1 lg:mb-2 hover:text-green-600 transition-colors line-clamp-2 text-responsive-sm" x-text="item.name"></h3>
-                                        </a>
-                                        <p class="text-xs sm:text-sm text-gray-600 mb-2" x-text="item.category"></p>
-                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
-                                            <div class="flex items-center gap-2 flex-wrap">
-                                                <span class="text-responsive-sm  text-green-600" x-text="formatPrice(item.price)"></span>
-                                                <span class="text-xs sm:text-sm text-gray-500 line-through" x-text="formatPrice(item.originalPrice || item.price)" x-show="item.originalPrice && item.originalPrice > item.price"></span>
-                                                
-                                            </div>
-                                            <div class="flex items-center gap-2 lg:gap-3 justify-between">
-                                                <div class="flex items-center border border-gray-300 rounded-lg">
-                                                    <button @click="quantity > 1 ? (quantity--, window.cartManager.updateQuantity(item.id, quantity), $nextTick(() => { item.quantity = quantity; })) : null" 
-                                                            class="w-7 h-7 lg:w-8 lg:h-8 flex items-center justify-center hover:bg-gray-100 transition-colors"
-                                                            :disabled="quantity <= 1">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus w-3 h-3">
-                                                            <path d="M5 12h14"></path>
-                                                        </svg>
-                                                    </button>
-                                                    <span class="w-10 lg:w-12 text-center text-xs sm:text-sm font-medium" x-text="quantity"></span>
-                                                    <button @click="quantity < 10 ? (quantity++, window.cartManager.updateQuantity(item.id, quantity), $nextTick(() => { item.quantity = quantity; })) : null" 
-                                                            class="w-7 h-7 lg:w-8 lg:h-8 flex items-center justify-center hover:bg-gray-100 transition-colors"
-                                                            :disabled="quantity >= 10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-3 h-3">
-                                                            <path d="M5 12h14"></path>
-                                                            <path d="M12 5v14"></path>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <div class="text-right">
-                                                    <div class=" text-gray-900 text-responsive-sm" x-text="formatPrice(item.price * quantity)"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                        
-                        <!-- Empty Cart State -->
-                        <div x-show="cartItems.length === 0" class="text-center py-12">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart w-16 h-16 text-gray-300 mx-auto mb-4">
-                                <circle cx="8" cy="21" r="1"></circle>
-                                <circle cx="19" cy="21" r="1"></circle>
-                                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-                            </svg>
-                            <p class="text-gray-500 text-lg font-medium">Giỏ hàng trống</p>
-                            <p class="text-gray-400 text-sm mt-2">Thêm sản phẩm để bắt đầu mua sắm</p>
-                            <a href="/" class="btn btn-primary mt-4">Tiếp tục mua sắm</a>
-                        </div>
-                    </div>
-		        </div>
-                <!-- Order Summary -->
-                <div class="lg:col-span-2 space-y-4 lg:space-y-6">
-                    <div class="bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm lg:sticky lg:top-8">
-                        <h2 class="text-responsive-md font-medium text-gray-900 mb-4 lg:mb-6">Tóm tắt đơn hàng</h2>
-                        <div class="space-y-3 lg:space-y-4 mb-4 lg:mb-6">
-                            <div class="flex justify-between text-responsive-sm">
-                                <span class="text-gray-600">Sản phẩm đã chọn:</span>
-                                <span  x-text="selectedItemsCount">0</span>
-                            </div>
-                            <div class="flex justify-between text-responsive-sm">
-                                <span class="text-gray-600">Tạm tính:</span>
-                                <span  x-text="formatPrice(subtotal)">0₫</span>
-                            </div>
-                            <div class="flex justify-between text-responsive-sm">
-                                <span class="text-gray-600">Phí vận chuyển:</span>
-                                <span class=" text-green-600">Miễn phí</span>
-                            </div>
-                            <div class="flex justify-between text-responsive-sm" x-show="discount > 0">
-                                <span class="text-gray-600">Giảm giá:</span>
-                                <span class="text-red-600" x-text="formatPrice(discount)">0₫</span>
-                            </div>
-                            <div class="border-t border-gray-200 pt-3 lg:pt-4">
-                                <div class="flex justify-between text-responsive-md font-medium ">
-                                    <span>Tổng cộng:</span>
-                                    <span class="text-green-600" x-text="formatPrice(cartTotal)">0₫</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button  
-                                class="w-full btn btn-primary btn-md lg:btn-lg"
-                                > 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card w-4 h-4 lg:w-5 lg:h-5 mr-2">
-                                <rect width="20" height="14" x="2" y="5" rx="2"></rect>
-                                <line x1="2" x2="22" y1="10" y2="10"></line>
-                            </svg>
-                            Thanh toán
-                            
-                        </button>
-                        <!-- Trust Badges -->
-                        <div class="grid grid-cols-3 gap-2 lg:gap-4 mt-4 lg:mt-6 pt-4 lg:pt-6 border-t border-gray-200">
-                            <div class="text-center">
-                                <div class="w-8 h-8 lg:w-10 lg:h-10 bg-green-100 text-green-600 rounded-lg lg:rounded-xl flex items-center justify-center mx-auto mb-1 lg:mb-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-4 h-4 lg:w-5 lg:h-5">
-                                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
-                                    </svg>
-                                </div>
-                                <div class="text-xs text-gray-600">Bảo mật</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-8 h-8 lg:w-10 lg:h-10 bg-blue-100 text-blue-600 rounded-lg lg:rounded-xl flex items-center justify-center mx-auto mb-1 lg:mb-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck w-4 h-4 lg:w-5 lg:h-5">
-                                        <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
-                                        <path d="M15 18H9"></path>
-                                        <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
-                                        <circle cx="17" cy="18" r="2"></circle>
-                                        <circle cx="7" cy="18" r="2"></circle>
-                                    </svg>
-                                </div>
-                                <div class="text-xs text-gray-600">Giao nhanh</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-8 h-8 lg:w-10 lg:h-10 bg-purple-100 text-purple-600 rounded-lg lg:rounded-xl flex items-center justify-center mx-auto mb-1 lg:mb-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award w-4 h-4 lg:w-5 lg:h-5">
-                                        <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                                        <circle cx="12" cy="8" r="6"></circle>
-                                    </svg>
-                                </div>
-                                <div class="text-xs text-gray-600">Chất lượng</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                   
-                </div>
-            </div>
-        </div>
-    </main>
 
-     <!-- Footer -->
-     <footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
+    <!-- Main Content Area -->
+    
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
         <div class="container mx-auto px-4 py-12">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Logo & Description -->
@@ -2870,14 +2676,14 @@
                 <div class="col-start-1 lg:col-start-2">
                     <h3 class="font-semibold text-lg mb-4">Sản Phẩm</h3>
                     <ul class="space-y-2 text-emerald-200">
-                        <li><a href="/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
-                        <li><a href="/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
-                        <li><a href="/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
-                        <li><a href="/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
-                        <li><a href="/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
-                        <li><a href="/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
-                        <li><a href="/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
-                        <li><a href="/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
+                        <li><a href="/products/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
+                        <li><a href="/products/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
+                        <li><a href="/products/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
+                        <li><a href="/products/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
+                        <li><a href="/products/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
+                        <li><a href="/products/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
+                        <li><a href="/products/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
+                        <li><a href="/products/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
                     </ul>
                 </div>
 
@@ -2935,12 +2741,6 @@
     <script>
         lucide.createIcons();
     </script>
-
-    <!-- Cart Manager -->
-    <script src="js/cart-manager.js"></script>
-    <!-- Cart JavaScript -->
-    <script src="js/cart.js"></script>
 </body>
 
 </html>
-

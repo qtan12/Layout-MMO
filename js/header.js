@@ -1076,19 +1076,19 @@ function headerComponent() {
             }
 
             // Add status badge if user is inactive
-            if (this.user && this.user.status === 'inactive') {
-                const statusBadge = document.createElement('div');
-                statusBadge.className = 'user-status-badge absolute -top-3 -right-3 badge badge-warning text-xs';
-                statusBadge.textContent = 'No Active';
-                statusBadge.title = 'Tài khoản chưa được kích hoạt, vui lòng kiểm tra Email và kích hoạt.';
+            // if (this.user && this.user.status === 'inactive') {
+            //     const statusBadge = document.createElement('div');
+            //     statusBadge.className = 'user-status-badge absolute -top-3 -right-3 badge badge-warning text-xs';
+            //     statusBadge.textContent = 'No Active';
+            //     statusBadge.title = 'Tài khoản chưa được kích hoạt, vui lòng kiểm tra Email và kích hoạt.';
                 
-                // Add to user dropdown button
-                const userButton = userDropdown.querySelector('button');
-                if (userButton) {
-                    userButton.style.position = 'relative';
-                    userButton.appendChild(statusBadge);
-                }
-            }
+            //     // Add to user dropdown button
+            //     const userButton = userDropdown.querySelector('button');
+            //     if (userButton) {
+            //         userButton.style.position = 'relative';
+            //         userButton.appendChild(statusBadge);
+            //     }
+            // }
         },
 
         updateMobileStatusBadge() {
