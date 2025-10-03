@@ -656,13 +656,17 @@
     box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   }
 
+  
   /* Responsive Text */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
   .text-responsive-sm {
-    @apply text-sm sm:text-base;
+    @apply text-sm sm:text-lg;
   }
 
   .text-responsive-md {
-    @apply text-base sm:text-lg;
+    @apply text-base md:text-lg;
   }
 
   .text-responsive-lg {
@@ -672,6 +676,7 @@
   .text-responsive-xl {
     @apply text-3xl sm:text-3xl lg:text-4xl;
   }
+
 
   /* Hover Effects */
   .hover-lift {
@@ -2824,6 +2829,7 @@
             <!-- Ảnh -->
             <section class="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
                 <div class="space-y-2 sm:space-y-3">
+                    <!-- Ảnh chính -->
                     <div class="card relative p-3 sm:p-4 lg:p-6">
                         <img :alt="mainImageAlt" class="w-full h-48 sm:h-64 lg:h-80 object-contain" :src="mainImageSrc">
                         <button @click="toggleWishlist()" class="btn btn-ghost absolute top-2 right-2 sm:top-3 sm:right-3 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/80 hover:bg-white" :class="isWishlisted ? 'text-red-500' : 'text-gray-600'">
@@ -2832,17 +2838,40 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="flex space-x-2 overflow-x-auto pb-2">
-                        <template x-for="(thumbnail, index) in thumbnails" :key="index">
-                            <button @click="selectThumbnail(index)" class="w-12 h-12 sm:w-16 sm:h-16 rounded-lg border-2 overflow-hidden flex-shrink-0" :class="thumbnail.active ? 'border-emerald-500' : 'border-gray-200'">
-                                <img :alt="thumbnail.alt" class="w-full h-full object-cover" :src="thumbnail.src">
-                            </button>
-                        </template>
+                    <!--  -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-4 border-t border-gray-200">
+                        <div class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-6 h-6 text-emerald-600 mx-auto mb-1">
+                                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                            </svg>
+                            <p class="text-xs font-medium text-gray-900">Bảo hành 12 tháng</p>
+                            <p class="text-xs text-gray-500">Thay thế miễn phí</p>
+                        </div>
+                        <div class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck w-6 h-6 text-blue-600 mx-auto mb-1">
+                                <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                                <path d="M15 18H9"></path>
+                                <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                                <circle cx="17" cy="18" r="2"></circle>
+                                <circle cx="7" cy="18" r="2"></circle>
+                            </svg>
+                            <p class="text-xs font-medium text-gray-900">Giao hàng tức thì</p>
+                            <p class="text-xs text-gray-500">Nhận ngay sau thanh toán</p>
+                        </div>
+                        <div class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones w-6 h-6 text-purple-600 mx-auto mb-1">
+                                <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
+                            </svg>
+                            <p class="text-xs font-medium text-gray-900">Hỗ trợ 24/7</p>
+                            <p class="text-xs text-gray-500">Tư vấn miễn phí</p>
+                        </div>
                     </div>
+                    
                 </div>
+                <!-- Column right -->
                 <div class="space-y-3 sm:space-y-4 lg:space-y-5">
                     <div>
-                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">Netflix Premium 1 Năm - 4K Ultra HD</h1>
+                        <h1 class="text-responsive-lg font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">Netflix Premium 1 Năm - 4K Ultra HD</h1>
                         <div class="flex flex-row gap-2 sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 ">
                             <div class="flex items-center space-x-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-yellow-400 text-yellow-400">
@@ -2868,25 +2897,25 @@
                     <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-lg p-3 sm:p-4">
                         <div class="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-1">
                             <div class="flex items-center space-x-2 sm:space-x-3">
-                                <span class="text-xl sm:text-2xl font-bold text-emerald-600">899.000đ</span>
-                                <span class="text-base sm:text-lg text-gray-500 line-through">2.990.000đ</span>
+                                <span class="text-responsive-lg font-bold text-emerald-600">899.000đ</span>
+                                <span class="text-responsive-sm text-gray-500 line-through">2.990.000đ</span>
                                 
                             </div>
                            
                         </div>
-                        <p class="text-xs text-gray-600">Tiết kiệm 2.091.000đ</p>
+                        <p class="text-responsive-xs text-gray-600">Tiết kiệm 2.091.000đ</p>
                     </div>
                     <div class="space-y-3">
                         <div class="flex flex-row items-start sm:items-center sm:space-x-3">
                             <div class="flex items-center space-x-2 flex-1 min-w-0">
-                                <span class="font-medium text-gray-900 whitespace-nowrap text-sm">Số lượng:</span>
+                                <span class="font-medium text-gray-900 whitespace-nowrap text-responsive-sm">Số lượng:</span>
                                 <div class="flex items-center border border-gray-300 rounded-lg w-fit flex-shrink-0">
                                     <button @click="decreaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-l-lg">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus w-3 h-3">
                                             <path d="M5 12h14"></path>
                                         </svg>
                                     </button>
-                                    <span class="w-8 text-center font-medium text-sm" x-text="quantity"></span>
+                                    <span class="w-8 text-center font-medium text-responsive-sm" x-text="quantity"></span>
                                     <button @click="increaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-r-lg">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-3 h-3">
                                             <path d="M5 12h14"></path>
@@ -2894,7 +2923,7 @@
                                         </svg>
                                     </button>
                                 </div>
-                                <span class="text-xs text-gray-500 whitespace-nowrap">(50 có sẵn)</span>
+                                <span class="text-responsive-xs text-gray-500 whitespace-nowrap">(50 có sẵn)</span>
                             </div>
                             <button @click="share()" class="btn btn-outline btn-sm  flex-shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 w-4 h-4">
@@ -2921,7 +2950,7 @@
                                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
                                 </template>
-                                <span class="text-sm" x-text="isAddingToCart ? 'Đang thêm...' : 'Thêm vào giỏ hàng'"></span>
+                                <span class="text-responsive-xs" x-text="isAddingToCart ? 'Đang thêm...' : 'Thêm vào giỏ hàng'"></span>
                             </button>
                             <button @click="buyNow()" :disabled="isBuyingNow" class="btn btn-secondary btn-md w-full" :class="isBuyingNow ? 'opacity-50 cursor-not-allowed' : ''">
                                 <template x-if="!isBuyingNow">
@@ -2980,33 +3009,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-4 border-t border-gray-200">
-                        <div class="text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-6 h-6 text-emerald-600 mx-auto mb-1">
-                                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
-                            </svg>
-                            <p class="text-xs font-medium text-gray-900">Bảo hành 12 tháng</p>
-                            <p class="text-xs text-gray-500">Thay thế miễn phí</p>
-                        </div>
-                        <div class="text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck w-6 h-6 text-blue-600 mx-auto mb-1">
-                                <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
-                                <path d="M15 18H9"></path>
-                                <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
-                                <circle cx="17" cy="18" r="2"></circle>
-                                <circle cx="7" cy="18" r="2"></circle>
-                            </svg>
-                            <p class="text-xs font-medium text-gray-900">Giao hàng tức thì</p>
-                            <p class="text-xs text-gray-500">Nhận ngay sau thanh toán</p>
-                        </div>
-                        <div class="text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones w-6 h-6 text-purple-600 mx-auto mb-1">
-                                <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
-                            </svg>
-                            <p class="text-xs font-medium text-gray-900">Hỗ trợ 24/7</p>
-                            <p class="text-xs text-gray-500">Tư vấn miễn phí</p>
-                        </div>
-                    </div>
+                    
                 </div>
             </section>
             <!-- Thông tin sản phẩm -->
