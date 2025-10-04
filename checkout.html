@@ -659,6 +659,10 @@
   }
 
   /* Responsive Text */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+  
   .text-responsive-sm {
     @apply text-sm sm:text-base;
   }
@@ -1170,6 +1174,40 @@
 
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
         background: #94a3b8;
+    }
+
+    /* Checkout Responsive Utilities */
+    .checkout-form-grid {
+        @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+    }
+
+    .checkout-main-grid {
+        @apply grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8;
+    }
+
+    .checkout-form-col {
+        @apply xl:col-span-2;
+    }
+
+    .checkout-summary-col {
+        @apply xl:col-span-1;
+    }
+
+    .checkout-sticky {
+        @apply sticky top-4 xl:top-8;
+    }
+
+    /* Mobile-first responsive spacing */
+    .checkout-spacing {
+        @apply py-4 sm:py-6 lg:py-8;
+    }
+
+    .checkout-card-spacing {
+        @apply p-3 sm:p-4 lg:p-6;
+    }
+
+    .checkout-item-spacing {
+        @apply p-2 sm:p-3;
     }
 
     /* Payment Option Styles */
@@ -2666,51 +2704,38 @@
 
     <!-- Main Content Area -->
     <main class="min-h-screen bg-gray-50">
-        <!-- Breadcrumb -->
-        <div class="bg-white border-b border-gray-200">
-            <div class="container">
-                <div class="py-4">
-                    <div class="breadcrumb">
-                        <div class="breadcrumb-item">
-                            <a href="/" class="breadcrumb-link">
-                                <i data-lucide="home" class="w-4 h-4 mr-1"></i>
-                                Trang chủ
-                            </a>
-                        </div>
-                        <div class="breadcrumb-separator">
-                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                        </div>
-                        <div class="breadcrumb-item">
-                            <a href="/cart.html" class="breadcrumb-link">Giỏ hàng</a>
-                        </div>
-                        <div class="breadcrumb-separator">
-                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                        </div>
-                        <div class="breadcrumb-item">
-                            <span class="breadcrumb-current">Thanh toán</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+       
         <!-- Checkout Content -->
-        <div class="container py-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="container checkout-spacing">
+             <!-- Breadcrumb -->
+        <nav class="flex items-center text-responsive-xs text-gray-500  p-4">
+            <a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+            <a class="hover:text-emerald-600 whitespace-nowrap" href="/cart.html">Giỏ hàng</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+            <a class="hover:text-emerald-600 whitespace-nowrap hidden sm:inline" href="/checkout">Thanh toán</a>
+        </nav>
+            <!--  -->
+    
+            <div class="checkout-main-grid">
                 <!-- Checkout Form -->
-                <div class="lg:col-span-2">
+                <div class="checkout-form-col">
                     <div class="card">
                         <div class="card-header">
-                            <h2 class="card-title">Thông tin thanh toán</h2>
-                            <p class="card-description">Vui lòng điền đầy đủ thông tin để hoàn tất đơn hàng</p>
+                            <h2 class="card-title text-responsive-lg">Thông tin thanh toán</h2>
+                            <p class="card-description text-responsive-sm">Vui lòng điền đầy đủ thông tin để hoàn tất đơn hàng</p>
                         </div>
                         <div class="card-content">
                             <form id="checkoutForm" class="space-y-6">
                                 <!-- Customer Information -->
                                 <div class="space-y-4">
-                                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Thông tin khách hàng</h3>
+                                    <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Thông tin khách hàng</h3>
                                     
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="checkout-form-grid">
                                         <div>
                                             <label for="fullName" class="block text-sm font-semibold text-gray-700 mb-2">Họ và tên *</label>
                                             <input type="text" id="fullName" name="fullName" required
@@ -2725,7 +2750,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="checkout-form-grid">
                                         <div>
                                             <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Số điện thoại *</label>
                                             <input type="tel" id="phone" name="phone" required
@@ -2743,34 +2768,34 @@
 
                                 <!-- Payment Method -->
                                 <div class="space-y-4">
-                                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Phương thức thanh toán</h3>
+                                    <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Phương thức thanh toán</h3>
                                     
                                     <!-- Wallet Balance Display -->
-                                    <div class="p-4 bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg">
-                                        <div class="flex items-center justify-between">
+                                    <div class="p-3 sm:p-4 bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg">
+                                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                                             <div class="flex items-center gap-3">
                                                 <div class="p-2 bg-emerald-100 rounded-lg">
-                                                    <i data-lucide="wallet" class="w-5 h-5 text-emerald-700"></i>
+                                                    <i data-lucide="wallet" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-700"></i>
                                                 </div>
                                                 <div>
-                                                    <p class="font-medium text-emerald-900">Số dư ví hiện tại</p>
-                                                    <p class="text-sm text-emerald-600">Thanh toán bằng số dư trong ví</p>
+                                                    <p class="font-medium text-emerald-900 text-sm sm:text-base">Số dư ví hiện tại</p>
+                                                    <p class="text-xs sm:text-sm text-emerald-600">Thanh toán bằng số dư trong ví</p>
                                                 </div>
                                             </div>
-                                            <div class="text-right">
-                                                <p class="text-2xl font-bold text-emerald-600" id="currentWalletBalance">₫68,400,000</p>
+                                            <div class="text-left sm:text-right">
+                                                <p class="text-xl sm:text-2xl font-bold text-emerald-600" id="currentWalletBalance">₫68,400,000</p>
                                                 <p class="text-xs text-emerald-500">Có sẵn</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Insufficient Balance Warning -->
-                                    <div id="insufficientBalanceWarning" class="hidden p-4 bg-red-50 border border-red-200 rounded-lg">
+                                    <div id="insufficientBalanceWarning" class="hidden p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
                                         <div class="flex items-start gap-3">
-                                            <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 mt-0.5"></i>
+                                            <i data-lucide="alert-triangle" class="w-4 h-4 sm:w-5 sm:h-5 text-red-600 mt-0.5"></i>
                                             <div class="flex-1">
-                                                <p class="font-medium text-red-900">Số dư ví không đủ</p>
-                                                <p class="text-sm text-red-700 mt-1">Bạn cần nạp thêm <span id="requiredAmount" class="font-semibold">₫0</span> để hoàn tất thanh toán</p>
+                                                <p class="font-medium text-red-900 text-sm sm:text-base">Số dư ví không đủ</p>
+                                                <p class="text-xs sm:text-sm text-red-700 mt-1">Bạn cần nạp thêm <span id="requiredAmount" class="font-semibold">₫0</span> để hoàn tất thanh toán</p>
                                                 <button type="button" id="topUpWalletBtn" class="mt-2 btn btn-primary btn-sm">
                                                     <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
                                                     Nạp tiền vào ví
@@ -2782,7 +2807,7 @@
 
                                 <!-- Order Notes -->
                                 <div class="space-y-4">
-                                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Ghi chú đơn hàng</h3>
+                                    <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Ghi chú đơn hàng</h3>
                                     
                                     <div>
                                         <label for="notes" class="block text-sm font-semibold text-gray-700 mb-2">Ghi chú (tùy chọn)</label>
@@ -2811,55 +2836,55 @@
                 </div>
 
                 <!-- Order Summary -->
-                <div class="lg:col-span-1">
-                    <div class="card sticky top-8">
+                <div class="checkout-summary-col">
+                    <div class="card checkout-sticky">
                         <div class="card-header">
-                            <h2 class="card-title">Đơn hàng của bạn</h2>
-                            <p class="card-description" id="itemCount">3 sản phẩm</p>
+                            <h2 class="card-title text-responsive-lg">Đơn hàng của bạn</h2>
+                            <p class="card-description text-responsive-sm" id="itemCount">3 sản phẩm</p>
                         </div>
                         <div class="card-content">
                             <!-- Order Items -->
                             <div class="space-y-4" id="orderItems">
                                 <!-- Sample Order Item 1 -->
-                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                    <div class="bg-icon">
-                                        <i data-lucide="link"></i>
+                                <div class="flex items-center space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
+                                    <div class="bg-icon" style="width: 2rem; height: 2rem;">
+                                        <i data-lucide="link" style="width: 1rem; height: 1rem;"></i>
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <p class="font-medium text-gray-900 truncate">Backlink Premium</p>
-                                        <p class="text-sm text-gray-500">SEO & Link Building</p>
-                                        <div class="flex items-center justify-between mt-2">
-                                            <span class="text-sm font-semibold text-emerald-600">₫500,000</span>
+                                        <p class="font-medium text-gray-900 truncate text-sm sm:text-base">Backlink Premium</p>
+                                        <p class="text-xs sm:text-sm text-gray-500">SEO & Link Building</p>
+                                        <div class="flex items-center justify-between mt-1 sm:mt-2">
+                                            <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫500,000</span>
                                             <span class="text-xs text-gray-500">x1</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Sample Order Item 2 -->
-                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                    <div class="bg-icon">
-                                        <i data-lucide="mail"></i>
+                                <div class="flex items-center space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
+                                    <div class="bg-icon" style="width: 2rem; height: 2rem;">
+                                        <i data-lucide="mail" style="width: 1rem; height: 1rem;"></i>
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <p class="font-medium text-gray-900 truncate">Tài khoản Gmail</p>
-                                        <p class="text-sm text-gray-500">Email Accounts</p>
-                                        <div class="flex items-center justify-between mt-2">
-                                            <span class="text-sm font-semibold text-emerald-600">₫200,000</span>
+                                        <p class="font-medium text-gray-900 truncate text-sm sm:text-base">Tài khoản Gmail</p>
+                                        <p class="text-xs sm:text-sm text-gray-500">Email Accounts</p>
+                                        <div class="flex items-center justify-between mt-1 sm:mt-2">
+                                            <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫200,000</span>
                                             <span class="text-xs text-gray-500">x2</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Sample Order Item 3 -->
-                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                    <div class="bg-icon">
-                                        <i data-lucide="facebook"></i>
+                                <div class="flex items-center space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
+                                    <div class="bg-icon" style="width: 2rem; height: 2rem;">
+                                        <i data-lucide="facebook" style="width: 1rem; height: 1rem;"></i>
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <p class="font-medium text-gray-900 truncate">Tài khoản Facebook Clone</p>
-                                        <p class="text-sm text-gray-500">Facebook Accounts</p>
-                                        <div class="flex items-center justify-between mt-2">
-                                            <span class="text-sm font-semibold text-emerald-600">₫300,000</span>
+                                        <p class="font-medium text-gray-900 truncate text-sm sm:text-base">Tài khoản Facebook Clone</p>
+                                        <p class="text-xs sm:text-sm text-gray-500">Facebook Accounts</p>
+                                        <div class="flex items-center justify-between mt-1 sm:mt-2">
+                                            <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫300,000</span>
                                             <span class="text-xs text-gray-500">x1</span>
                                         </div>
                                     </div>
@@ -2867,43 +2892,43 @@
                             </div>
 
                             <!-- Order Summary -->
-                            <div class="border-t border-gray-200 pt-4 mt-6">
-                                <div class="space-y-3">
+                            <div class="border-t border-gray-200 pt-3 sm:pt-4 mt-4 sm:mt-6">
+                                <div class="space-y-2 sm:space-y-3">
                                     <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">Tạm tính:</span>
-                                        <span class="text-sm font-semibold text-gray-900" id="subtotal">₫1,200,000</span>
+                                        <span class="text-xs sm:text-sm text-gray-600">Tạm tính:</span>
+                                        <span class="text-xs sm:text-sm font-semibold text-gray-900" id="subtotal">₫1,200,000</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">Phí giao dịch:</span>
-                                        <span class="text-sm font-semibold text-green-600">Miễn phí</span>
+                                        <span class="text-xs sm:text-sm text-gray-600">Phí giao dịch:</span>
+                                        <span class="text-xs sm:text-sm font-semibold text-green-600">Miễn phí</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">Giảm giá:</span>
-                                        <span class="text-sm font-semibold text-red-600">-₫100,000</span>
+                                        <span class="text-xs sm:text-sm text-gray-600">Giảm giá:</span>
+                                        <span class="text-xs sm:text-sm font-semibold text-red-600">-₫100,000</span>
                                     </div>
-                                    <div class="border-t border-gray-200 pt-3">
+                                    <div class="border-t border-gray-200 pt-2 sm:pt-3">
                                         <div class="flex justify-between items-center">
-                                            <span class="text-lg font-bold text-gray-900">Tổng cộng:</span>
-                                            <span class="text-xl font-bold text-emerald-600" id="total">₫1,100,000</span>
+                                            <span class="text-base sm:text-lg font-bold text-gray-900">Tổng cộng:</span>
+                                            <span class="text-lg sm:text-xl font-bold text-emerald-600" id="total">₫1,100,000</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Checkout Button -->
-                            <div class="mt-6">
+                            <div class="mt-4 sm:mt-6">
                                 <button type="submit" form="checkoutForm" id="checkoutBtn"
-                                    class="w-full btn btn-primary btn-lg">
-                                    <i data-lucide="credit-card" class="w-5 h-5 mr-2"></i>
-                                    Hoàn tất thanh toán
+                                    class="w-full btn btn-primary btn-md sm:btn-lg">
+                                    <i data-lucide="credit-card" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
+                                    <span class="text-sm sm:text-base">Hoàn tất thanh toán</span>
                                 </button>
                             </div>
 
                             <!-- Digital Product Info -->
-                            <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                            <div class="mt-3 sm:mt-4 p-2 sm:p-3 bg-blue-50 border border-blue-200 rounded-lg">
                                 <div class="flex items-start gap-2">
-                                    <i data-lucide="download" class="w-4 h-4 text-blue-600 mt-0.5"></i>
-                                    <div class="text-sm text-blue-800">
+                                    <i data-lucide="download" class="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 mt-0.5"></i>
+                                    <div class="text-xs sm:text-sm text-blue-800">
                                         <p class="font-medium mb-1">Sản phẩm số</p>
                                         <p class="text-xs">Sau khi thanh toán, sản phẩm sẽ được gửi ngay lập tức qua email</p>
                                     </div>
@@ -2911,10 +2936,10 @@
                             </div>
 
                             <!-- Security Info -->
-                            <div class="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                            <div class="mt-2 sm:mt-3 p-2 sm:p-3 bg-green-50 border border-green-200 rounded-lg">
                                 <div class="flex items-start gap-2">
-                                    <i data-lucide="shield-check" class="w-4 h-4 text-green-600 mt-0.5"></i>
-                                    <div class="text-sm text-green-800">
+                                    <i data-lucide="shield-check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-600 mt-0.5"></i>
+                                    <div class="text-xs sm:text-sm text-green-800">
                                         <p class="font-medium mb-1">Bảo mật thanh toán</p>
                                         <p class="text-xs">Thanh toán an toàn qua ví số dư, không cần nhập thông tin thẻ</p>
                                     </div>

@@ -8,69 +8,10 @@ function productDetailComponent() {
         isWishlisted: false,
         isAddingToCart: false,
         isBuyingNow: false,
+        selectedGmailType: 'gmail-vn-aged-20-50',
         
-        // Product data
-        product: {
-            id: 'netflix-premium-1year',
-            name: 'Netflix Premium 1 Năm - 4K Ultra HD',
-            category: 'Tài khoản Streaming',
-            price: 899000,
-            originalPrice: 2990000,
-            discount: 70,
-            rating: 4.8,
-            reviewCount: 1247,
-            soldCount: 3420,
-            available: 50,
-            description: 'Tài khoản Netflix Premium chính hãng với chất lượng 4K Ultra HD, hỗ trợ 4 thiết bị cùng lúc. Bảo hành 12 tháng, thay thế miễn phí nếu có lỗi.',
-            features: [
-                'Chất lượng 4K Ultra HD',
-                'Hỗ trợ 4 thiết bị cùng lúc',
-                'Thư viện phim khổng lồ',
-                'Không quảng cáo',
-                'Tải xuống offline',
-                'Hỗ trợ HDR'
-            ],
-            specifications: {
-                'Chất lượng': '4K Ultra HD',
-                'Số thiết bị': '4 thiết bị cùng lúc',
-                'Hỗ trợ': 'HDR, Dolby Vision',
-                'Tải xuống': 'Có',
-                'Quảng cáo': 'Không',
-                'Bảo hành': '12 tháng'
-            },
-            warranty: {
-                period: '12 tháng',
-                type: 'Thay thế miễn phí',
-                support: 'Hỗ trợ 24/7'
-            }
-        },
-        
-        mainImageSrc: '/placeholder.svg?height=500&width=500&text=Netflix+Main',
-        mainImageAlt: 'Netflix Premium 1 Năm - 4K Ultra HD',
-
-        // Thumbnail images
-        thumbnails: [
-            {
-                src: '/placeholder.svg?height=500&width=500&text=Netflix+Main',
-                alt: 'Netflix Premium 1 Năm - 4K Ultra HD 1',
-                active: true
-            },
-            {
-                src: '/placeholder.svg?height=500&width=500&text=Netflix+2',
-                alt: 'Netflix Premium 1 Năm - 4K Ultra HD 2',
-                active: false
-            },
-            {
-                src: '/placeholder.svg?height=500&width=500&text=Netflix+3',
-                alt: 'Netflix Premium 1 Năm - 4K Ultra HD 3',
-                active: false
-            },
-            {
-                src: '/placeholder.svg?height=500&width=500&text=Netflix+4',
-                alt: 'Netflix Premium 1 Năm - 4K Ultra HD 4',
-                active: false
-            }
-        ],
+        // Product data will be loaded from API or server
+        product: null,
 
         // Initialize component
         init() {
@@ -93,15 +34,50 @@ function productDetailComponent() {
         },
 
         getSavings() {
-            return this.product.originalPrice - this.product.price;
+            // This will be calculated based on selected Gmail type
+            return 2091000; // Static value for now
         },
 
         getTotalPrice() {
-            return this.product.price * this.quantity;
+            // This will be calculated based on selected Gmail type and quantity
+            return 899000 * this.quantity; // Static value for now
         },
 
         getTotalSavings() {
             return this.getSavings() * this.quantity;
+        },
+
+        getSelectedGmailType() {
+            // This will be handled by the selected radio button in HTML
+            return null;
+        },
+
+        getSelectedPrice() {
+            const priceMap = {
+                'gmail-vn-aged-20-50': '899.000đ',
+                'gmail-vn-aged-30-80': '999.000đ',
+                'gmail-vn-aged-40-90': '1.099.000đ',
+                'gmail-vn-aged-60-120': '1.199.000đ',
+                'gmail-vn-new-1day': '799.000đ'
+            };
+            return priceMap[this.selectedGmailType] || '899.000đ';
+        },
+
+        getSavingsText() {
+            const priceMap = {
+                'gmail-vn-aged-20-50': 899000,
+                'gmail-vn-aged-30-80': 999000,
+                'gmail-vn-aged-40-90': 1099000,
+                'gmail-vn-aged-60-120': 1199000,
+                'gmail-vn-new-1day': 799000
+            };
+            const selectedPrice = priceMap[this.selectedGmailType] || 899000;
+            const savings = 2990000 - selectedPrice;
+            return savings.toLocaleString('vi-VN') + 'đ';
+        },
+
+        selectGmailType(typeId) {
+            this.selectedGmailType = typeId;
         },
 
         decreaseQuantity() {
@@ -111,21 +87,14 @@ function productDetailComponent() {
         },
 
         increaseQuantity() {
-            if (this.quantity < this.product.available) {
+            if (this.quantity < 50) { // Static limit for now
                 this.quantity++;
             }
         },
 
         selectThumbnail(index) {
-            // Update active state
-            this.thumbnails.forEach((thumb, i) => {
-                thumb.active = i === index;
-            });
-
-            // Update main image
-            const selectedThumb = this.thumbnails[index];
-            this.mainImageSrc = selectedThumb.src;
-            this.mainImageAlt = selectedThumb.alt;
+            // This will be handled by updating the main image src
+            console.log('Selected thumbnail:', index);
         },
 
         toggleWishlist() {
@@ -143,14 +112,39 @@ function productDetailComponent() {
         addToCart() {
             this.isAddingToCart = true;
 
+            // Get selected Gmail type data
+            const nameMap = {
+                'gmail-vn-aged-20-50': 'Gmail VN Đã Ngâm 20-50 Ngày',
+                'gmail-vn-aged-30-80': 'Gmail VN Đã Ngâm 30-80 Ngày',
+                'gmail-vn-aged-40-90': 'Gmail VN Đã Ngâm 40-90 Ngày',
+                'gmail-vn-aged-60-120': 'Gmail VN Đã Ngâm 60-120 Ngày',
+                'gmail-vn-new-1day': 'Gmail VN Mới Reg 1 Ngày'
+            };
+
+            const priceMap = {
+                'gmail-vn-aged-20-50': 899000,
+                'gmail-vn-aged-30-80': 999000,
+                'gmail-vn-aged-40-90': 1099000,
+                'gmail-vn-aged-60-120': 1199000,
+                'gmail-vn-new-1day': 799000
+            };
+
+            const name = nameMap[this.selectedGmailType];
+            const price = priceMap[this.selectedGmailType];
+
+            if (!name || !price) {
+                this.isAddingToCart = false;
+                return;
+            }
+
             // Add to cart using Cart Manager
             const cartItem = {
-                id: this.product.id,
-                name: this.product.name,
-                category: this.product.category,
-                price: this.product.price,
-                originalPrice: this.product.originalPrice,
-                image: this.mainImageSrc,
+                id: this.selectedGmailType,
+                name: name,
+                category: 'Tài khoản Streaming',
+                price: price,
+                originalPrice: 2990000,
+                image: '/placeholder.svg?height=500&width=500&text=Netflix+Main',
                 icon: this.getProductIcon()
             };
 
@@ -178,7 +172,7 @@ function productDetailComponent() {
                 'Tài khoản Facebook': 'facebook',
                 'Tài khoản Social khác': 'share-2'
             };
-            return iconMap[this.product.category] || 'package';
+            return iconMap['Tài khoản Streaming'] || 'package';
         },
 
         buyNow() {

@@ -150,7 +150,7 @@
 
   /* Input Styles */
   .input {
-    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
+    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
   }
 
   .input-lg {
@@ -186,8 +186,8 @@
         }
         
   /* Card Styles */
-  .card {
-    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+   .card {
+    @apply sm:border border-gray-200 bg-white shadow-md rounded-md hover:shadow-lg transition-all duration-300 transform;
   }
 
   .card-header {
@@ -216,7 +216,7 @@
 
   /* Badge Styles */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-md border;
+    @apply inline-flex items-center px-1 py-0.5 text-xs font-medium rounded-sm;
   }
 
   .badge-primary {
@@ -255,6 +255,7 @@
     @apply bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-0 shadow-sm;
   }
 
+
   /* Section Styles */
   .section {
     @apply py-12 lg:py-16;
@@ -269,7 +270,7 @@
   }
 
   .section-title {
-    @apply text-xl lg:text-2xl font-bold text-gray-900 mb-2;
+    @apply text-lg lg:text-2xl font-bold text-gray-900 mb-2;
   }
 
   .section-subtitle {
@@ -1737,7 +1738,7 @@
             </nav>
 
             <!-- Desktop Search -->
-            <div class="hidden lg:flex items-center flex-1 max-w-md mx-8">
+            <div class="hidden lg:flex items-center flex-1  max-w-md mx-8">
                 <div class="relative w-full">
                     <i data-lucide="search"
                         class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
@@ -1747,9 +1748,9 @@
             </div>
 
             <!-- Right side -->
-            <div class="flex items-center space-x-0 xl:space-x-3">
+            <div class="flex items-center gap-2">
                 <!-- Post Button -->
-                <button @click="handlePostClick()" class="btn btn-primary">
+                <button @click="handlePostClick()" class="btn btn-primary btn-sm lg:btn-md">
                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
                     <span class="hidden sm:inline">Đăng Bán</span>
                     <span class="sm:hidden">Đăng</span>
@@ -1855,7 +1856,7 @@
                 </section>
 
                 <!-- Mobile Menu -->
-                <section class="lg:hidden flex items-center space-x-2 pl-2">
+                <section class="lg:hidden flex items-center space-x-2 ">
                     
                     
                     <!-- Mobile Cart -->
@@ -2644,27 +2645,27 @@
     <main class="min-h-screen bg-gray-50">
 
         <!-- Hero Section -->
-        <section class="bg-gradient-to-br from-emerald-50 to-green-100 py-24">
+        <section class="bg-gradient-to-br from-emerald-50 to-green-100 py-12">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <!-- Left Column: Hero Content -->
-                    <div>
-                        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    <div class="text-left">
+                        <h1 class="text-responsive-xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
                             MMO Store
-                            <span class="text-gradient bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                            <span class="block sm:inline text-gradient bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
                                 Premium Digital Products
                             </span>
                         </h1>
-                        <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto lg:mx-0">
+                        <p class="text-responsive-sm text-gray-500 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                             Sàn bán tài nguyên số chuyên nghiệp cho MMO - Backlink, tài khoản social, data & tools, license phần mềm và dịch vụ MMO chất lượng cao
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <button class="btn btn-primary btn-lg">
-                                <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i>
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                            <button class="btn btn-primary btn-sm lg:btn-lg w-full sm:w-auto">
+                                <i data-lucide="shopping-bag" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
                                 Khám phá sản phẩm
                             </button>
-                            <button class="btn btn-outline btn-lg">
-                                <i data-lucide="play" class="w-5 h-5 mr-2"></i>
+                            <button class="btn btn-outline btn-sm lg:btn-lg w-full sm:w-auto">
+                                <i data-lucide="play" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
                                 Xem demo
                             </button>
                         </div>
@@ -3004,83 +3005,157 @@
                     </div>
                 </div>
                 <!-- Display product featured -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6" x-data="homepageComponent()">
-                    <!-- Product Card 1: gmail -->
-                    <div class="relative card p-4 hover:shadow-lg transition-all duration-300 transform ">
-                        <div class="">
-                            <div class="flex items-start justify-between mb-2">
-                                <div class="flex  space-x-3">
-                                    <div class="w-28 flex flex-col  lg:w-1/3 flex-shrink-0">
-                                        <a href="detail.html" class="block relative ">
-                                            <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=SEO" alt="Tools SEO Pro" class="w-full h-full object-cover">
-                                        </a>
-                                        <span class="text-responsive-sm mt-2 text-center text-green-600">500₫ - 1000₫</span>
-                                    </div>
-
-                                    <div>
-                                        <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Tài khoản Email</a>
-                                        <h3 class="text-responsive-sm"><a href="detail.html" class="hover:text-emerald-600"> GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ</a></h3>
-                                        <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
-                                            <img src="https://i.pravatar.cc/24?u=seller1" alt="Seller Avatar" class="w-6 h-6 rounded-full">
-                                            <a href="#" class="hover:text-emerald-600">MMO Store</a>
-                                        </div>
-                                        <div class="flex items-center space-x-1 text-xs sm:text-sm">
-                                            <div class="flex text-yellow-400">
-                                                <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                            </div>
-                                            <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(120 reviews)</a>
-                                        </div>
-                                        <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
-                                            <span>Đã bán: 1.5k</span>
-                                            <span>Tồn kho: 99+</span>
-                                        </div>
-                                    </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+                    <!-- Product Card 1 -->
+                    <div class="bg-white card ">
+                        <a href="detail.html" class="block relative group">
+                            <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                 alt="Gmail Pro Account" 
+                                 class="w-full h-42 rounded-t-md object-cover ">
+                                    <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                        </a>
+                        <div class="p-2">
+                            <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                            <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                <a href="detail.html">
+                                    GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                </a>
+                            </h3>
+                            <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                <div class="flex text-yellow-500">
+                                    <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                 </div>
+                                <span class="text-responsive-xs text-gray-500 ">5</span>
                             </div>
-                        </div>
-                    </div>
 
-                    
-                    <!--  -->
-                    <!-- Product Card 3: Tools SEO Pro -->
-                    <div class="card flex flex-row gap-3 sm:gap-4 p-3 sm:p-4 hover:shadow-md transition-shadow">
-                        <div class="w-28  lg:w-1/3 flex-shrink-0">
-                            <a href="detail.html" class="block relative overflow-hidden aspect-square border border-gray-200">
-                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=SEO" alt="Tools SEO Pro" class="w-full h-full object-cover">
-                            </a>
+                            <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                <span class="text-emerald-600">500₫ - 1000₫</span>
+                                <span>Đã bán: 900</span>
+                            </div>
                             
                         </div>
-                        <div class="flex flex-col flex-grow">
-                            <div>
-                                <a href="#" class="text-xs sm:text-sm text-gray-500 hover:text-emerald-600">Data & Tools MMO</a>
-                                    <h3 class="text-responsive-sm"><a href="detail.html" class="hover:text-emerald-600"> Tool quản lý profile( tạo profile, thêm proxy,...)</a></h3>
-                                <div class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 my-1 sm:my-2">
-                                    <img src="https://i.pravatar.cc/24?u=seller1" alt="Seller Avatar" class="w-6 h-6 rounded-full">
-                                    <a href="#" class="hover:text-emerald-600">MMO Store</a>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="bg-white card ">
+                        <a href="detail.html" class="block relative group">
+                            <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                 alt="Gmail Pro Account" 
+                                 class="w-full h-42 rounded-t-md object-cover ">
+                                    <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                        </a>
+                        <div class="p-2">
+                            <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                            <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                <a href="detail.html">
+                                    GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                </a>
+                            </h3>
+                            <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                <div class="flex text-yellow-500">
+                                    <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                 </div>
-                                <div class="flex items-center space-x-1 text-xs sm:text-sm">
-                                    <div class="flex text-yellow-400">
-                                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    </div>
-                                    <a href="#reviews" class="text-gray-500 hover:text-emerald-600">(250 reviews)</a>
-                                </div>
-                                <div class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 space-x-2 sm:space-x-4">
-                                    <span>Đã bán: 800</span>
-                                    <span>Tồn kho: 25</span>
-                                </div>
+                                <span class="text-responsive-xs text-gray-500 ">5</span>
                             </div>
-                            <div class=" pt-2 sm:pt-4 flex items-center justify-between">
-                                <span class="text-responsive-sm text-emerald-600">1,200,000₫</span>
-                                <button @click="addToCart({ id: 'tools-seo-pro', name: 'Tools SEO Pro', price: 1200000, image: 'https://placehold.co/100x100/8b5cf6/ffffff?text=S' })" class="btn btn-primary btn-sm">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i><span>Mua</span>
-                                </button>
+
+                            <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                <span class="text-emerald-600">500₫ - 1000₫</span>
+                                <span>Đã bán: 900</span>
                             </div>
+                            
                         </div>
                     </div>
 
-                    
+                    <!-- Product Card 3 -->
+                    <div class="bg-white card ">
+                        <a href="detail.html" class="block relative group">
+                            <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                 alt="Gmail Pro Account" 
+                                 class="w-full h-42 rounded-t-md object-cover ">
+                                    <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                        </a>
+                        <div class="p-2">
+                            <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                            <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                <a href="detail.html">
+                                    GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                </a>
+                            </h3>
+                            <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                <div class="flex text-yellow-500">
+                                    <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+                                </div>
+                                <span class="text-responsive-xs text-gray-500 ">5</span>
+                            </div>
 
-                    
+                            <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                <span class="text-emerald-600">500₫ - 1000₫</span>
+                                <span>Đã bán: 900</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="bg-white card ">
+                        <a href="detail.html" class="block relative group">
+                            <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                 alt="Gmail Pro Account" 
+                                 class="w-full h-42 rounded-t-md object-cover ">
+                                    <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                        </a>
+                        <div class="p-2">
+                            <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                            <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                <a href="detail.html">
+                                    GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                </a>
+                            </h3>
+                            <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                <div class="flex text-yellow-500">
+                                    <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+                                </div>
+                                <span class="text-responsive-xs text-gray-500 ">5</span>
+                            </div>
+
+                            <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                <span class="text-emerald-600">500₫ - 1000₫</span>
+                                <span>Đã bán 1k+</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                  
+                    <!-- Product Card 8 -->
+                    <div class="bg-white card ">
+                        <a href="detail.html" class="block relative group">
+                            <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                 alt="Gmail Pro Account" 
+                                 class="w-full h-42 rounded-t-md object-cover ">
+                                    <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                        </a>
+                        <div class="p-2">
+                            <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                            <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                <a href="detail.html">
+                                    GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                </a>
+                            </h3>
+                            <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                <div class="flex text-yellow-500">
+                                    <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+                                </div>
+                                <span class="text-responsive-xs text-gray-500 ">5</span>
+                            </div>
+
+                            <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                <span class="text-emerald-600">500₫ - 1000₫</span>
+                                <span>Đã bán: 900</span>
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -3183,7 +3258,7 @@
                 </div>
 
                 <div class="text-center mt-12">
-                    <a href="/products" class="btn btn-lg btn-primary">Xem tất cả Sản phẩm <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i></a>
+                    <a href="/products" class="btn btn-primary btn-sm sm:btn-md">Xem tất cả Sản phẩm <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i></a>
                 </div>
             </div>
         </section>
@@ -3264,7 +3339,7 @@
                 </div>
 
                 <div class="text-center mt-12">
-                    <a href="/services" class="btn btn-lg btn-primary">Xem tất cả Dịch vụ <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i></a>
+                    <a href="/services" class="btn btn-sm sm:btn-md btn-primary">Xem tất cả Dịch vụ <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i></a>
                 </div>
             </div>
         </section>
@@ -3280,14 +3355,14 @@
                 <div class="space-y-4 col-span-2 lg:col-span-1 col-start-1">
                     <a href="/" class="flex items-center space-x-2">
                         <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-sm">
-                            <span class="text-white font-bold text-xl">M</span>
+                            <span class="text-white font-bold text-responsive-lg">M</span>
                         </div>
                         <div>
-                            <div class="font-bold text-xl">MMO Store</div>
-                            <div class="text-xs text-emerald-200 -mt-1">Premium Digital Products</div>
+                            <div class="font-bold text-responsive-lg">MMO Store</div>
+                            <div class="text-responsive-xs text-emerald-200 -mt-1">Premium Digital Products</div>
                         </div>
                     </a>
-                    <p class="text-emerald-200 text-sm leading-relaxed">
+                    <p class="text-emerald-200 text-responsive-sm leading-relaxed">
                         Sàn bán tài nguyên số chuyên nghiệp cho MMO, cung cấp backlink, tài khoản social, data & tools, license phần mềm và các dịch vụ MMO chất lượng cao.
                     </p>
                     <div class="flex space-x-3">
@@ -3306,52 +3381,52 @@
 
                 <!-- Sản Phẩm -->
                 <div class="col-start-1 lg:col-start-2">
-                    <h3 class="font-semibold text-lg mb-4">Sản Phẩm</h3>
+                    <h3 class="font-semibold text-responsive-lg mb-4">Sản Phẩm</h3>
                     <ul class="space-y-2 text-emerald-200">
-                        <li><a href="/products/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
-                        <li><a href="/products/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
-                        <li><a href="/products/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
-                        <li><a href="/products/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
-                        <li><a href="/products/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
-                        <li><a href="/products/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
-                        <li><a href="/products/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
-                        <li><a href="/products/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
+                        <li><a href="/products/backlink" class="hover:text-white text-responsive-sm transition-colors">Backlink/Textlink/Entity</a></li>
+                        <li><a href="/products/email" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Email</a></li>
+                        <li><a href="/products/facebook" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Facebook</a></li>
+                        <li><a href="/products/social" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Social khác</a></li>
+                        <li><a href="/products/data-tools" class="hover:text-white text-responsive-sm transition-colors">Data & Tools MMO</a></li>
+                        <li><a href="/products/license" class="hover:text-white text-responsive-sm transition-colors">License Phần Mềm</a></li>
+                        <li><a href="/products/vpn-proxy" class="hover:text-white text-responsive-sm transition-colors">VPN/Proxy/Server</a></li>
+                        <li><a href="/products/course" class="hover:text-white text-responsive-sm transition-colors">Khóa Học/TUT MMO</a></li>
                     </ul>
                 </div>
 
                 <!-- Dịch Vụ -->
                 <div class="col-start-2 lg:col-start-3">
-                    <h3 class="font-semibold text-lg mb-4">Dịch Vụ</h3>
+                    <h3 class="font-semibold text-responsive-lg mb-4">Dịch Vụ</h3>
                     <ul class="space-y-2 text-emerald-200">
-                        <li><a href="/services/website" class="hover:text-white transition-colors">Thiết kế Website</a></li>
-                        <li><a href="/services/engagement" class="hover:text-white transition-colors">Tăng tương tác</a></li>
-                        <li><a href="/services/marketing" class="hover:text-white transition-colors">Dịch vụ Marketing</a></li>
-                        <li><a href="/services/software" class="hover:text-white transition-colors">Dịch vụ phần mềm</a></li>
-                        <li><a href="/services/web" class="hover:text-white transition-colors">Dịch vụ website</a></li>
-                        <li><a href="/services/seo" class="hover:text-white transition-colors">Dịch vụ SEO</a></li>
-                        <li><a href="/support" class="hover:text-white transition-colors">Hỗ trợ khách hàng</a></li>
-                        <li><a href="/warranty" class="hover:text-white transition-colors">Bảo hành</a></li>
+                        <li><a href="/services/website" class="hover:text-white text-responsive-sm transition-colors">Thiết kế Website</a></li>
+                        <li><a href="/services/engagement" class="hover:text-white text-responsive-sm transition-colors">Tăng tương tác</a></li>
+                        <li><a href="/services/marketing" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ Marketing</a></li>
+                        <li><a href="/services/software" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ phần mềm</a></li>
+                        <li><a href="/services/web" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ website</a></li>
+                        <li><a href="/services/seo" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ SEO</a></li>
+                        <li><a href="/support" class="hover:text-white text-responsive-sm transition-colors">Hỗ trợ khách hàng</a></li>
+                        <li><a href="/warranty" class="hover:text-white text-responsive-sm transition-colors">Bảo hành</a></li>
                     </ul>
                 </div>
 
                 <!-- Liên Hệ -->
                 <div class="col-span-2 lg:col-span-1 col-start-1 lg:col-start-4">
-                    <h3 class="font-semibold text-lg mb-4">Liên Hệ</h3>
-                    <div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block">
-                        <div class="flex items-start space-x-3">
+                    <h3 class="font-semibold text-responsive-lg mb-4">Liên Hệ</h3>
+                    <div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block text-responsive-sm">
+                        <div class="flex items-start space-x-3 text-responsive-sm">
                             <i data-lucide="headphones" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
-                            <div class="text-sm">
+                            <div class="text-responsive-sm">
                                 Hỗ trợ 24/7<br>
                                 <span class="text-emerald-300">support@mmostore.com</span>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-3">
+                        <div class="flex items-center space-x-3 text-responsive-sm">
                             <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
-                            <div class="text-sm">+84 123 456 789</div>
+                            <div class="text-responsive-sm">+84 123 456 789</div>
                         </div>
-                        <div class="flex items-center space-x-3">
+                        <div class="flex items-center space-x-3 text-responsive-sm">
                             <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
-                            <div class="text-sm">info@mmostore.com</div>
+                            <div class="text-responsive-sm">info@mmostore.com</div>
                         </div>
                     </div>
                 </div>

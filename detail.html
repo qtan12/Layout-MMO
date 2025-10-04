@@ -144,9 +144,9 @@
     @apply px-8 py-4 h-14 text-lg;
   }
 
-  /* Input Styles */
-  .input {
-    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
+   /* Input Styles */
+   .input {
+    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
   }
 
   .input-lg {
@@ -212,7 +212,7 @@
 
   /* Badge Styles */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-md border;
+    @apply inline-flex items-center px-1 py-0.5 text-xs font-medium rounded-sm;
   }
 
   .badge-primary {
@@ -251,6 +251,7 @@
     @apply bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-0 shadow-sm;
   }
 
+
   /* Section Styles */
   .section {
     @apply py-12 lg:py-16;
@@ -265,9 +266,8 @@
   }
 
   .section-title {
-    @apply text-2xl lg:text-3xl font-bold text-gray-900 mb-2;
+    @apply text-lg lg:text-2xl font-bold text-gray-900 mb-2;
   }
-
   .section-subtitle {
     @apply text-gray-600 mb-8 lg:mb-12;
   }
@@ -1382,25 +1382,31 @@
 
         /* Related Products Slider */
         .related-products-slider.blaze-slider {
-            --slides-to-show: 4;
+            --slides-to-show: 5;
             --slide-gap: 1.5rem;
         }
 
         @media (max-width: 1024px) {
             .related-products-slider.blaze-slider {
-                --slides-to-show: 3;
+                --slides-to-show: 4;
             }
         }
 
         @media (max-width: 768px) {
             .related-products-slider.blaze-slider {
-                --slides-to-show: 2;
+                --slides-to-show: 3;
             }
         }
 
         @media (max-width: 640px) {
             .related-products-slider.blaze-slider {
-                --slides-to-show: 1;
+                --slides-to-show: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .related-products-slider.blaze-slider {
+                --slides-to-show: 2;
             }
         }
 
@@ -1917,7 +1923,7 @@
             <!-- Right side -->
             <div class="flex items-center space-x-0 xl:space-x-3">
                 <!-- Post Button -->
-                <button @click="handlePostClick()" class="btn btn-primary">
+                <button @click="handlePostClick()" class="btn btn-primary btn-sm sm:btn-md">
                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
                     <span class="hidden sm:inline">Đăng Bán</span>
                     <span class="sm:hidden">Đăng</span>
@@ -2024,8 +2030,6 @@
 
                 <!-- Mobile Menu -->
                 <section class="lg:hidden flex items-center space-x-2 pl-2">
-                    
-                    
                     <!-- Mobile Cart -->
                     <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
                         <i data-lucide="shopping-cart" class="w-6 h-6"></i>
@@ -2831,7 +2835,7 @@
                 <div class="space-y-2 sm:space-y-3">
                     <!-- Ảnh chính -->
                     <div class="card relative p-3 sm:p-4 lg:p-6">
-                        <img :alt="mainImageAlt" class="w-full h-48 sm:h-64 lg:h-80 object-contain" :src="mainImageSrc">
+                        <img alt="Netflix Premium 1 Năm - 4K Ultra HD" class="w-full h-48 sm:h-64 lg:h-80 object-contain" src="/placeholder.svg?height=500&width=500&text=Netflix+Main">
                         <button @click="toggleWishlist()" class="btn btn-ghost absolute top-2 right-2 sm:top-3 sm:right-3 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/80 hover:bg-white" :class="isWishlisted ? 'text-red-500' : 'text-gray-600'">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart w-5 h-5 text-gray-600">
                                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
@@ -2872,7 +2876,7 @@
                 <div class="space-y-3 sm:space-y-4 lg:space-y-5">
                     <div>
                         <h1 class="text-responsive-lg font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">Netflix Premium 1 Năm - 4K Ultra HD</h1>
-                        <div class="flex flex-row gap-2 sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 ">
+                        <div class="flex flex-row gap-2 items-center  ">
                             <div class="flex items-center space-x-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-yellow-400 text-yellow-400">
                                     <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
@@ -2889,33 +2893,34 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 text-gray-300">
                                     <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
                                 </svg>
-                                <span class="font-medium text-gray-900 ml-1 text-sm">4.8</span>
+                                <span class=" text-gray-500 ml-1 text-responsive-xs">4.8</span>
                             </div>
-                            <span class="text-gray-500 text-xs">(1247 đánh giá)</span><span class="text-gray-500 hidden sm:inline">•</span><span class="text-gray-500 text-xs">3420 đã bán</span>
+                            <span class="text-gray-500 text-responsive-xs">(1247 đánh giá)</span><span class="text-gray-500 hidden sm:inline">•</span><span class="text-gray-500 text-responsive-xs">3420 đã bán</span>
                         </div>
                     </div>
-                    <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-lg p-3 sm:p-4">
+                    <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-md p-2 sm:p-4 ">
                         <div class="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-1">
                             <div class="flex items-center space-x-2 sm:space-x-3">
-                                <span class="text-responsive-lg font-bold text-emerald-600">899.000đ</span>
-                                <span class="text-responsive-sm text-gray-500 line-through">2.990.000đ</span>
+                                <span class="text-responsive-sm text-emerald-600" x-text="getSelectedPrice()">899.000đ</span>
+                                <span class="text-responsive-xs text-gray-500 line-through">2.990.000đ</span>
                                 
                             </div>
                            
                         </div>
-                        <p class="text-responsive-xs text-gray-600">Tiết kiệm 2.091.000đ</p>
+                        <p class="text-responsive-xs text-gray-500" x-text="'Tiết kiệm ' + getSavingsText()">Tiết kiệm 2.091.000đ</p>
                     </div>
+                    <!-- Số lượng -->
                     <div class="space-y-3">
                         <div class="flex flex-row items-start sm:items-center sm:space-x-3">
                             <div class="flex items-center space-x-2 flex-1 min-w-0">
-                                <span class="font-medium text-gray-900 whitespace-nowrap text-responsive-sm">Số lượng:</span>
-                                <div class="flex items-center border border-gray-300 rounded-lg w-fit flex-shrink-0">
+                                <span class="font-medium text-gray-900 whitespace-nowrap text-responsive-xs">Số lượng:</span>
+                                <div class="flex items-center btn btn-outline btn-sm w-fit flex-shrink-0">
                                     <button @click="decreaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-l-lg">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus w-3 h-3">
                                             <path d="M5 12h14"></path>
                                         </svg>
                                     </button>
-                                    <span class="w-8 text-center font-medium text-responsive-sm" x-text="quantity"></span>
+                                    <span class="w-8 text-center text-responsive-xs" x-text="quantity">1</span>
                                     <button @click="increaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-r-lg">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-3 h-3">
                                             <path d="M5 12h14"></path>
@@ -2935,36 +2940,96 @@
                                 </svg>
                             </button>
                         </div>
+                        
+                        <!-- Chọn loại -->
+                        <div class="space-y-3">
+                            <h3 class="font-medium text-gray-900 text-responsive-xs">Chọn loại Gmail:</h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
+                                        :class="selectedGmailType === 'gmail-vn-aged-20-50' ? 'bg-emerald-50 border-emerald-600' : ''">
+                                    <input type="radio" 
+                                        name="gmailType" 
+                                        value="gmail-vn-aged-20-50" 
+                                        @change="selectGmailType('gmail-vn-aged-20-50')"
+                                        :checked="selectedGmailType === 'gmail-vn-aged-20-50'"
+                                        class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
+                                    <span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
+                                            :class="selectedGmailType === 'gmail-vn-aged-20-50' ? 'text-emerald-600' : 'text-gray-900'">
+                                        Gmail VN Đã Ngâm 20-50 Ngày - 899.000đ
+                                    </span>
+                                </label>
+                                <label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
+                                       :class="selectedGmailType === 'gmail-vn-aged-30-80' ? 'bg-emerald-50 border-emerald-600' : ''">
+                                    <input type="radio" 
+                                           name="gmailType" 
+                                           value="gmail-vn-aged-30-80" 
+                                           @change="selectGmailType('gmail-vn-aged-30-80')"
+                                           :checked="selectedGmailType === 'gmail-vn-aged-30-80'"
+                                           class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
+                                    <span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
+                                          :class="selectedGmailType === 'gmail-vn-aged-30-80' ? 'text-emerald-600' : 'text-gray-900'">
+                                        Gmail VN Đã Ngâm 30-80 Ngày - 999.000đ
+                                    </span>
+                                </label>
+                                
+                                <label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
+                                       :class="selectedGmailType === 'gmail-vn-aged-40-90' ? 'bg-emerald-50 border-emerald-600' : ''">
+                                    <input type="radio" 
+                                           name="gmailType" 
+                                           value="gmail-vn-aged-40-90" 
+                                           @change="selectGmailType('gmail-vn-aged-40-90')"
+                                           :checked="selectedGmailType === 'gmail-vn-aged-40-90'"
+                                           class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
+                                    <span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
+                                          :class="selectedGmailType === 'gmail-vn-aged-40-90' ? 'text-emerald-600' : 'text-gray-900'">
+                                        Gmail VN Đã Ngâm 40-90 Ngày - 1.099.000đ
+                                    </span>
+                                </label>
+                                
+                                <label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
+                                       :class="selectedGmailType === 'gmail-vn-aged-60-120' ? 'bg-emerald-50 border-emerald-600' : ''">
+                                    <input type="radio" 
+                                           name="gmailType" 
+                                           value="gmail-vn-aged-60-120" 
+                                           @change="selectGmailType('gmail-vn-aged-60-120')"
+                                           :checked="selectedGmailType === 'gmail-vn-aged-60-120'"
+                                           class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
+                                    <span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
+                                          :class="selectedGmailType === 'gmail-vn-aged-60-120' ? 'text-emerald-600' : 'text-gray-900'">
+                                        Gmail VN Đã Ngâm 60-120 Ngày - 1.199.000đ
+                                    </span>
+                                </label>
+                                
+                                    <label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
+                                       :class="selectedGmailType === 'gmail-vn-new-1day' ? 'bg-emerald-50 border-emerald-600' : ''">
+                                    <input type="radio" 
+                                           name="gmailType" 
+                                           value="gmail-vn-new-1day" 
+                                           @change="selectGmailType('gmail-vn-new-1day')"
+                                           :checked="selectedGmailType === 'gmail-vn-new-1day'"
+                                           class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
+                                    <span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
+                                          :class="selectedGmailType === 'gmail-vn-new-1day' ? 'text-emerald-600' : 'text-gray-900'">
+                                        Gmail VN Mới Reg 1 Ngày - 799.000đ
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        
                         <div class="flex flex-col space-y-2">
                             <button @click="addToCart()" :disabled="isAddingToCart" class="btn btn-primary btn-md w-full" :class="isAddingToCart ? 'opacity-50 cursor-not-allowed' : ''">
-                                <template x-if="!isAddingToCart">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart w-4 h-4 mr-2">
-                                        <circle cx="8" cy="21" r="1"></circle>
-                                        <circle cx="19" cy="21" r="1"></circle>
-                                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-                                    </svg>
-                                </template>
-                                <template x-if="isAddingToCart">
-                                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                </template>
-                                <span class="text-responsive-xs" x-text="isAddingToCart ? 'Đang thêm...' : 'Thêm vào giỏ hàng'"></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart w-4 h-4 mr-2">
+                                    <circle cx="8" cy="21" r="1"></circle>
+                                    <circle cx="19" cy="21" r="1"></circle>
+                                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                                </svg>
+                                <span class="text-responsive-xs">Thêm vào giỏ hàng</span>
                             </button>
                             <button @click="buyNow()" :disabled="isBuyingNow" class="btn btn-secondary btn-md w-full" :class="isBuyingNow ? 'opacity-50 cursor-not-allowed' : ''">
-                                <template x-if="!isBuyingNow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap w-4 h-4 mr-2">
-                                        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
-                                    </svg>
-                                </template>
-                                <template x-if="isBuyingNow">
-                                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                </template>
-                                <span class="text-sm" x-text="isBuyingNow ? 'Đang xử lý...' : 'Mua ngay'"></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap w-4 h-4 mr-2">
+                                    <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
+                                </svg>
+                                <span class="text-sm">Mua ngay</span>
                             </button>
                         </div>
                     </div>
@@ -3029,11 +3094,11 @@
                     </div>
                     <div x-show="isTabActive('description')" role="tabpanel" class="tabs-content">
                         <div class="prose max-w-none">
-                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Mô tả sản phẩm</h3>
-                            <p class="text-gray-700 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">Tài khoản Netflix Premium chính hãng với chất lượng 4K Ultra HD, hỗ trợ 4 thiết bị cùng lúc. Bảo hành 12 tháng, thay thế miễn phí nếu có lỗi.</p>
-                            <div class="bg-emerald-50 rounded-lg p-3 sm:p-4">
-                                <h4 class="font-semibold text-emerald-800 mb-2 text-sm sm:text-base">Lưu ý quan trọng:</h4>
-                                <ul class="text-emerald-700 text-xs sm:text-sm space-y-1">
+                            <h3 class="text-responsive-sm font-medium text-gray-900 mb-2 sm:mb-3">Mô tả sản phẩm</h3>
+                            <p class="text-gray-500  mb-3 sm:mb-4 text-responsive-xs leading-relaxed">Tài khoản Netflix Premium chính hãng với chất lượng 4K Ultra HD, hỗ trợ 4 thiết bị cùng lúc. Bảo hành 12 tháng, thay thế miễn phí nếu có lỗi.</p>
+                            <div class="bg-emerald-50 rounded-md p-2 sm:p-4">
+                                <h4 class="font-semibold text-emerald-800 mb-2 text-responsive-xs">Lưu ý quan trọng:</h4>
+                                <ul class="text-emerald-700 text-responsive-xs space-y-1">
                                     <li>• Tài khoản được giao ngay sau khi thanh toán thành công</li>
                                     <li>• Vui lòng không thay đổi thông tin tài khoản để tránh bị khóa</li>
                                     <li>• Liên hệ hỗ trợ nếu gặp bất kỳ vấn đề nào</li>
@@ -3043,24 +3108,24 @@
                     </div>
                     <div x-show="isTabActive('specifications')" role="tabpanel" class="tabs-content">
                         <div class="prose max-w-none">
-                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Thông số kỹ thuật</h3>
+                            <h3 class="text-responsive-sm font-medium text-gray-900 mb-3 sm:mb-4">Thông số kỹ thuật</h3>
                             <div class="space-y-3 sm:space-y-4">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                     <div>
-                                        <span class="font-semibold text-gray-700 text-sm sm:text-base">Chất lượng video:</span>
-                                        <span class="text-gray-600 ml-2 text-sm sm:text-base">4K Ultra HD</span>
+                                        <span class="text-gray-900 text-responsive-xs ">Chất lượng video:</span>
+                                        <span class="text-gray-500 ml-2 text-responsive-xs">4K Ultra HD</span>
                                     </div>
                                     <div>
-                                        <span class="font-semibold text-gray-700 text-sm sm:text-base">Số thiết bị:</span>
-                                        <span class="text-gray-600 ml-2 text-sm sm:text-base">4 thiết bị cùng lúc</span>
+                                        <span class="text-gray-900 text-responsive-xs">Số thiết bị:</span>
+                                        <span class="text-gray-500 ml-2 text-responsive-xs">4 thiết bị cùng lúc</span>
                                     </div>
                                     <div>
-                                        <span class="font-semibold text-gray-700 text-sm sm:text-base">Hỗ trợ HDR:</span>
-                                        <span class="text-gray-600 ml-2 text-sm sm:text-base">Có</span>
+                                        <span class="text-gray-900 text-responsive-xs">Hỗ trợ HDR:</span>
+                                        <span class="text-gray-500 ml-2 text-responsive-xs">Có</span>
                                     </div>
                                     <div>
-                                        <span class="font-semibold text-gray-700 text-sm sm:text-base">Tải xuống offline:</span>
-                                        <span class="text-gray-600 ml-2 text-sm sm:text-base">Có</span>
+                                        <span class="text-gray-900 text-responsive-xs ">Tải xuống offline:</span>
+                                        <span class="text-gray-500 ml-2 text-responsive-xs">Có</span>
                                     </div>
                                 </div>
                             </div>
@@ -3207,8 +3272,8 @@
                 <div class="container">
                   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
                     <div class="text-left mb-3 sm:mb-0 flex-1">
-                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Sản phẩm liên quan</h2>
-                        <p class="text-xs sm:text-sm lg:text-base text-gray-600">Những sản phẩm liên quan</p>
+                        <h2 class="section-title text-gray-900 mb-1 sm:mb-2">Sản phẩm liên quan</h2>
+                        <p class="text-responsive-xs text-gray-500">Những sản phẩm liên quan</p>
                     </div>
                     <div class="flex-shrink-0 w-full sm:w-auto">
                         <button onclick="window.location.href='/products'" class="btn btn-outline w-full sm:w-auto btn-sm">
@@ -3219,342 +3284,256 @@
                 </div>
                     
                     <!-- Related Products Slider -->
-                    <div class="related-products-slider blaze-slider" data-slides-to-show="4" data-slides-to-scroll="1">
+                    <div class="related-products-slider blaze-slider" data-slides-to-show="5" data-slides-to-scroll="1">
                         <div class="blaze-container">
                             <div class="blaze-track-container">
                                 <div class="blaze-track">
                                     <!-- Product 1 -->
                                     <div class="blaze-slide">
-                                        <div class="card group hover:shadow-lg transition-all duration-300">
-                                            <div class="relative overflow-hidden rounded-t-xl">
-                                                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&crop=center" 
-                                                     alt="Tài khoản Facebook Premium" 
-                                                     class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                    <span class="badge badge-hot text-xs">HOT</span>
-                                                </div>
-                                                <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                    <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                        <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-content p-3 sm:p-4">
-                                                <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Tài khoản Facebook Premium</h3>
-                                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Tài khoản Facebook chất lượng cao, đã xác thực 2FA</p>
-                                                <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                    <div class="flex items-center space-x-1">
-                                                        <div class="flex text-yellow-400">
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                        </div>
-                                                        <span class="text-xs sm:text-sm text-gray-500">(128)</span>
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-38 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                                     </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center space-x-1 sm:space-x-2">
-                                                        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">299.000đ</span>
-                                                        <span class="text-xs sm:text-sm text-gray-500 line-through">399.000đ</span>
-                                                    </div>
-                                                    <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 900</span>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <!-- Product 2 -->
                                     <div class="blaze-slide">
-                                      <div class="card group hover:shadow-lg transition-all duration-300">
-                                          <div class="relative overflow-hidden rounded-t-xl">
-                                              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&crop=center" 
-                                                   alt="Tài khoản Facebook Premium" 
-                                                   class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                              <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                  <span class="badge badge-hot text-xs">HOT</span>
-                                              </div>
-                                              <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                  <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                      <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                  </button>
-                                              </div>
-                                          </div>
-                                          <div class="card-content p-3 sm:p-4">
-                                              <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Tài khoản Facebook Premium</h3>
-                                              <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Tài khoản Facebook chất lượng cao, đã xác thực 2FA</p>
-                                              <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                  <div class="flex items-center space-x-1">
-                                                      <div class="flex text-yellow-400">
-                                                          <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                          <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                          <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                          <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                          <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                      </div>
-                                                      <span class="text-xs sm:text-sm text-gray-500">(128)</span>
-                                                  </div>
-                                              </div>
-                                              <div class="flex items-center justify-between">
-                                                  <div class="flex items-center space-x-1 sm:space-x-2">
-                                                      <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">299.000đ</span>
-                                                      <span class="text-xs sm:text-sm text-gray-500 line-through">399.000đ</span>
-                                                  </div>
-                                                  <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                    
-                                    <!-- Product 3 -->
-                                    <div class="blaze-slide">
-                                        <div class="card group hover:shadow-lg transition-all duration-300">
-                                            <div class="relative overflow-hidden rounded-t-xl">
-                                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center" 
-                                                     alt="Tool SEO chuyên nghiệp" 
-                                                     class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                    <span class="badge badge-trending text-xs">TRENDING</span>
-                                                </div>
-                                                <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                    <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                        <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-content p-3 sm:p-4">
-                                                <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Tool SEO chuyên nghiệp</h3>
-                                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Bộ công cụ SEO đầy đủ, hỗ trợ phân tích từ khóa và backlink</p>
-                                                <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                    <div class="flex items-center space-x-1">
-                                                        <div class="flex text-yellow-400">
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                        </div>
-                                                        <span class="text-xs sm:text-sm text-gray-500">(67)</span>
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-42 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                                     </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center space-x-1 sm:space-x-2">
-                                                        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">899.000đ</span>
-                                                        <span class="text-xs sm:text-sm text-gray-500 line-through">1.199.000đ</span>
-                                                    </div>
-                                                    <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 2k+</span>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     
-                                    <!-- Product 4 -->
                                     <div class="blaze-slide">
-                                        <div class="card group hover:shadow-lg transition-all duration-300">
-                                            <div class="relative overflow-hidden rounded-t-xl">
-                                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=center" 
-                                                     alt="Data khách hàng tiềm năng" 
-                                                     class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                    <span class="badge badge-success text-xs">BEST</span>
-                                                </div>
-                                                <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                    <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                        <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-content p-3 sm:p-4">
-                                                <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Data khách hàng tiềm năng</h3>
-                                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Database 10,000+ khách hàng tiềm năng trong lĩnh vực MMO</p>
-                                                <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                    <div class="flex items-center space-x-1">
-                                                        <div class="flex text-yellow-400">
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                        </div>
-                                                        <span class="text-xs sm:text-sm text-gray-500">(203)</span>
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-42 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                                     </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center space-x-1 sm:space-x-2">
-                                                        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">599.000đ</span>
-                                                        <span class="text-xs sm:text-sm text-gray-500 line-through">799.000đ</span>
-                                                    </div>
-                                                    <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 1k+</span>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     
-                                    <!-- Product 5 -->
                                     <div class="blaze-slide">
-                                        <div class="card group hover:shadow-lg transition-all duration-300">
-                                            <div class="relative overflow-hidden rounded-t-xl">
-                                                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop&crop=center" 
-                                                     alt="Backlink chất lượng cao" 
-                                                     class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                    <span class="badge badge-new text-xs">NEW</span>
-                                                </div>
-                                                <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                    <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                        <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-content p-3 sm:p-4">
-                                                <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Backlink chất lượng cao</h3>
-                                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Gói backlink từ các website có DA cao, tăng ranking hiệu quả</p>
-                                                <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                    <div class="flex items-center space-x-1">
-                                                        <div class="flex text-yellow-400">
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                        </div>
-                                                        <span class="text-xs sm:text-sm text-gray-500">(95)</span>
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-42 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                                     </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center space-x-1 sm:space-x-2">
-                                                        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">199.000đ</span>
-                                                        <span class="text-xs sm:text-sm text-gray-500 line-through">299.000đ</span>
-                                                    </div>
-                                                    <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 900</span>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     
-                                    <!-- Product 6 -->
                                     <div class="blaze-slide">
-                                        <div class="card group hover:shadow-lg transition-all duration-300">
-                                            <div class="relative overflow-hidden rounded-t-xl">
-                                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center" 
-                                                     alt="Tool SEO chuyên nghiệp" 
-                                                     class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                    <span class="badge badge-trending text-xs">TRENDING</span>
-                                                </div>
-                                                <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                    <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                        <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-content p-3 sm:p-4">
-                                                <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Tool SEO chuyên nghiệp</h3>
-                                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Bộ công cụ SEO đầy đủ, hỗ trợ phân tích từ khóa và backlink</p>
-                                                <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                    <div class="flex items-center space-x-1">
-                                                        <div class="flex text-yellow-400">
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                        </div>
-                                                        <span class="text-xs sm:text-sm text-gray-500">(67)</span>
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-42 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                                     </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center space-x-1 sm:space-x-2">
-                                                        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">899.000đ</span>
-                                                        <span class="text-xs sm:text-sm text-gray-500 line-through">1.199.000đ</span>
-                                                    </div>
-                                                    <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 50</span>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     
-                                    <!-- Product 7 -->
                                     <div class="blaze-slide">
-                                        <div class="card group hover:shadow-lg transition-all duration-300">
-                                            <div class="relative overflow-hidden rounded-t-xl">
-                                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=center" 
-                                                     alt="Tài khoản Instagram Premium" 
-                                                     class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                    <span class="badge badge-hot text-xs">HOT</span>
-                                                </div>
-                                                <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                    <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                        <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-content p-3 sm:p-4">
-                                                <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Tài khoản Instagram Premium</h3>
-                                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Tài khoản Instagram chất lượng cao, đã xác thực và có followers</p>
-                                                <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                    <div class="flex items-center space-x-1">
-                                                        <div class="flex text-yellow-400">
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                        </div>
-                                                        <span class="text-xs sm:text-sm text-gray-500">(156)</span>
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-42 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                                     </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center space-x-1 sm:space-x-2">
-                                                        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">199.000đ</span>
-                                                        <span class="text-xs sm:text-sm text-gray-500 line-through">299.000đ</span>
-                                                    </div>
-                                                    <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 900</span>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     
-                                    <!-- Product 8 -->
                                     <div class="blaze-slide">
-                                        <div class="card group hover:shadow-lg transition-all duration-300">
-                                            <div class="relative overflow-hidden rounded-t-xl">
-                                                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&crop=center" 
-                                                     alt="Proxy Server VIP" 
-                                                     class="w-full h-32 sm:h-40 lg:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                                                <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
-                                                    <span class="badge badge-trending text-xs">TRENDING</span>
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-42 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+                                                    </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
-                                                    <button class="w-6 h-6 sm:w-8 sm:h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                                                        <i data-lucide="heart" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"></i>
-                                                    </button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 2k+</span>
                                                 </div>
+                                                
                                             </div>
-                                            <div class="card-content p-3 sm:p-4">
-                                                <h3 class="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 line-clamp-2">Proxy Server VIP</h3>
-                                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">Proxy server tốc độ cao, ổn định cho MMO và SEO</p>
-                                                <div class="flex items-center justify-between mb-2 sm:mb-3">
-                                                    <div class="flex items-center space-x-1">
-                                                        <div class="flex text-yellow-400">
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                            <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                                        </div>
-                                                        <span class="text-xs sm:text-sm text-gray-500">(89)</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="blaze-slide">
+                                        <div class="bg-white card ">
+                                            <a href="detail.html" class="block relative group">
+                                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
+                                                     alt="Gmail Pro Account" 
+                                                     class="w-full h-42 rounded-t-md object-cover ">
+                                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
+                                            </a>
+                                            <div class="p-2">
+                                                <a href="#" class="text-responsive-xs text-gray-500 ">Email Accounts</a>
+                                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
+                                                    <a href="detail.html">
+                                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
+                                                    </a>
+                                                </h3>
+                                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
+                                                    <div class="flex text-yellow-500">
+                                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
                                                     </div>
+                                                    <span class="text-responsive-xs text-gray-500 ">5</span>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center space-x-1 sm:space-x-2">
-                                                        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-600">199.000đ</span>
-                                                        <span class="text-xs sm:text-sm text-gray-500 line-through">299.000đ</span>
-                                                    </div>
-                                                    <button class="btn btn-primary btn-xs sm:btn-sm">Thêm vào giỏ</button>
+                    
+                                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
+                                                    <span class="text-emerald-600">500₫ - 1000₫</span>
+                                                    <span>Đã bán 1k+</span>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

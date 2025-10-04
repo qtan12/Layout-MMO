@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -14,12 +15,6 @@
     
     <!-- Tailwind CSS CDN -->
     <script src="js/tailwindcss.3.js"></script>
-    
-    <!-- Alpine.js CDN -->
-    <script defer src="js/alpinejs.3.15.0.js"></script>
-    
-    <!-- Lucide Icons CDN -->
-    <script src="js/lucide.0.544.0.js"></script>
 
     <!-- Tailwind CSS Globals -->
     <style>
@@ -67,12 +62,6 @@
   /* Container */
   .container {
     @apply mx-auto px-4;
-  }
-
-  @media (min-width: 475px) {
-    .container {
-      max-width: 475px;
-    }
   }
 
   @media (min-width: 640px) {
@@ -142,17 +131,7 @@
 
   /* Button Sizes */
   .btn-xs{
-    @apply px-2 py-1 h-6 text-xs rounded-sm sm:btn-sm lg:rounded-md
-  }
-
-  /* Extra small breakpoint */
-  @media (min-width: 475px) {
-    .xs\:inline {
-      display: inline;
-    }
-    .xs\:hidden {
-      display: none;
-    }
+    @apply px-2 py-1 h-6 text-xs rounded-sm;
   }
   .btn-sm {
     @apply px-3 py-1.5 h-8 text-sm;
@@ -172,7 +151,7 @@
 
   /* Input Styles */
   .input {
-    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
+    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
   }
 
   .input-lg {
@@ -208,8 +187,8 @@
         }
         
   /* Card Styles */
-  .card {
-    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+   .card {
+    @apply sm:border border-gray-200 bg-white shadow-md rounded-md hover:shadow-lg transition-all duration-300 transform;
   }
 
   .card-header {
@@ -238,7 +217,7 @@
 
   /* Badge Styles */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-md border;
+    @apply inline-flex items-center px-1 py-0.5 text-xs font-medium rounded-sm;
   }
 
   .badge-primary {
@@ -277,6 +256,7 @@
     @apply bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-0 shadow-sm;
   }
 
+
   /* Section Styles */
   .section {
     @apply py-12 lg:py-16;
@@ -291,7 +271,7 @@
   }
 
   .section-title {
-    @apply text-2xl lg:text-3xl font-bold text-gray-900 mb-2;
+    @apply text-lg lg:text-2xl font-bold text-gray-900 ;
   }
 
   .section-subtitle {
@@ -317,7 +297,7 @@
   }
 
   .tabs-list {
-    @apply flex bg-gray-100 rounded-xl p-1 gap-2;
+    @apply flex bg-gray-100 rounded-xl p-1  gap-2;
   }
 
   /* Mobile scrollable tabs */
@@ -339,7 +319,7 @@
   }
 
   .tabs-trigger {
-    @apply py-2.5 px-4 text-sm font-medium rounded-lg transition-all focus:outline-none disabled:pointer-events-none disabled:opacity-50;
+    @apply py-2.5 px-4 text-sm font-medium rounded-lg transition-all focus:outline-none disabled:pointer-events-none disabled:opacity-50 flex-shrink-0;
   }
 
   .tabs-content {
@@ -367,25 +347,7 @@
   }
 
   .modal-content {
-    @apply fixed left-[50%] top-[50%] z-50 w-full max-w-2xl mx-4 translate-x-[-50%] translate-y-[-50%] bg-white shadow-2xl border border-gray-100 rounded-2xl;
-    max-height: 90vh;
-    max-height: 90dvh;
-    overflow-y: auto;
-  }
-
-  /* Mobile responsive adjustments */
-  @media (max-width: 640px) {
-    .modal-content {
-      @apply mx-2 max-w-none;
-      max-height: 95vh;
-      max-height: 95dvh;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .modal-content {
-      @apply mx-1 rounded-xl;
-    }
+    @apply fixed left-[50%] top-[50%] z-50 w-full translate-x-[-50%] translate-y-[-50%] bg-white shadow-2xl border border-gray-100;
   }
 
   .modal-header {
@@ -702,10 +664,10 @@
 
   /* Responsive Text */
   .text-responsive-xs {
-    @apply text-xs sm:text-base;
+    @apply text-xs sm:text-sm;
   }
   .text-responsive-sm {
-    @apply text-sm sm:text-base;
+    @apply text-sm sm:text-lg;
   }
 
   .text-responsive-md {
@@ -1795,7 +1757,7 @@
             </nav>
 
             <!-- Desktop Search -->
-            <div class="hidden lg:flex items-center flex-1 max-w-md mx-8">
+            <div class="hidden lg:flex items-center flex-1  max-w-md mx-8">
                 <div class="relative w-full">
                     <i data-lucide="search"
                         class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
@@ -1805,9 +1767,9 @@
             </div>
 
             <!-- Right side -->
-            <div class="flex items-center space-x-0 xl:space-x-3">
+            <div class="flex items-center gap-2">
                 <!-- Post Button -->
-                <button @click="handlePostClick()" class="btn btn-primary">
+                <button @click="handlePostClick()" class="btn btn-primary btn-sm lg:btn-md">
                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
                     <span class="hidden sm:inline">Đăng Bán</span>
                     <span class="sm:hidden">Đăng</span>
@@ -1836,22 +1798,7 @@
                        
                     </div>
 
-                    
-                </section>
-
-                <!-- Mobile Menu -->
-                <section class="lg:hidden flex items-center space-x-2 pl-2">
-                    <!-- Mobile Cart -->
-                    <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
-                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                        <span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
-                              x-show="cartCount > 0" x-text="cartCount">0</span>
-                    </button>
-                    <!-- Mobile search -->
-                    <button @click="openMobileMenu(true)" class="btn btn-ghost btn-sm p-2 h-8 w-8">
-                        <i data-lucide="search" class="w-6 h-6"></i>
-                    </button>
-                    <!-- Mobile user dropdown (hidden by default) -->
+                    <!-- User Dropdown (hidden by default) -->
                     <div id="userDropdown" class="relative group ml-2 hidden">
                         <button class="flex items-center space-x-2"
                             @click="$refs.userMenu.classList.toggle('hidden')">
@@ -1925,7 +1872,22 @@
                             </button>
                         </div>
                     </div>
-                    <!-- Mobile menu -->
+                </section>
+
+                <!-- Mobile Menu -->
+                <section class="lg:hidden flex items-center space-x-2 ">
+                    
+                    
+                    <!-- Mobile Cart -->
+                    <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
+                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                        <span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
+                              x-show="cartCount > 0" x-text="cartCount">0</span>
+                    </button>
+                    
+                    <button @click="openMobileMenu(true)" class="btn btn-ghost btn-sm p-2 h-8 w-8">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </button>
                     <button @click="openMobileMenu()" class="btn btn-ghost btn-sm p-2 h-8 w-8">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
@@ -2693,764 +2655,525 @@
             </div>
         </div>
     </div>
-
-    
     </header>
 
 
     <!-- Main Content Area -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
-            <div class="flex items-center gap-3 sm:gap-4">
-                <a class="btn btn-ghost btn-sm" href="/dashboard">
-                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    <span class="hidden sm:inline">Quay lại</span>
+    <main class="container mx-auto py-4 sm:py-8 ">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <a class="flex items-center gap-2  text-gray-900  text-responsive-xs" href="/wallet">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left w-4 h-4">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                    <span class="inline">Quay lại </span>
                 </a>
-                <div>
-                    <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">Ví của tôi</h1>
-                </div>
+                    <h1 class="section-title font-bold text-gray-900 ">Lịch sử rút tiền</h1>
             </div>
-            <div class="flex flex-wrap items-center gap-1 sm:gap-2 lg:gap-3">
-                <a class="btn btn-ghost btn-sm sm:btn-sm" href="withdraw-history.html">
-                    <i data-lucide="clock" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                    <span class="hidden sm:inline">Lịch sử rút tiền</span>
-                    <span class="sm:hidden">Lịch sử</span>
-                </a>
-                <button class="btn btn-ghost btn-sm sm:btn-sm" onclick="exportReport()">
-                    <i data-lucide="download" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                    <span class="hidden sm:inline">Xuất báo cáo</span>
-                    <span class="sm:hidden">Xuất</span>
+            <div class="flex flex-row items-stretch sm:items-center gap-3 mt-4">
+                <button class="flex items-center justify-center  py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download w-4 h-4">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" x2="12" y1="15" y2="3"></line>
+                    </svg>
+                    <span class="inline">Xuất báo cáo</span>
                 </button>
                 <a class="btn btn-danger btn-sm sm:btn-sm lg:btn-md" href="/withdraw">
-                    <i data-lucide="minus" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                    <span class="hidden sm:inline">Rút tiền</span>
-                    <span class="sm:hidden">Rút</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="minus" class="lucide lucide-minus w-3 h-3 sm:w-4 sm:h-4"><path d="M5 12h14"></path></svg>
+                    <span class="inline">Rút tiền mới</span>
                 </a>
-                <button class="btn btn-success btn-sm sm:btn-sm lg:btn-md" onclick="openWalletModal()">
-                    <i data-lucide="plus" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                    <span class="hidden sm:inline">Nạp tiền</span>
-                    <span class="sm:hidden">Nạp</span>
-                </button>
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
-            <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 text-white">
+
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+            <div class="card p-4 ">
                 <div class="flex items-center justify-between mb-3 sm:mb-4">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="wallet" class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"></i>
-                        <span class="font-medium text-responsive-xs sm:text-sm lg:text-base">Số dư khả dụng</span>
+                    <div class="p-2 bg-green-100 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big w-4 h-4 sm:w-5 sm:h-5 text-green-600">
+                            <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                            <path d="m9 11 3 3L22 4"></path>
+                        </svg>
                     </div>
-                    <button class="p-1.5 sm:p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors">
-                        <i data-lucide="arrow-up-right" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                    </button>
+                    <span class="text-xs sm:text-sm font-medium text-green-600">3/6</span>
                 </div>
-                <div class="mb-2">
-                    <span class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold">$2847.50</span>
+                <div class="flex flex-row justify-between ">
+                    <p class="text-responsive-xs text-gray-500">Tổng đã rút</p>
+                    <p class="text-responsive-xs font-medium text-gray-900 ">2,000,000VND</p>
                 </div>
-                <p class="text-green-100 text-responsive-xs sm:text-sm lg:text-base">Có thể sử dụng ngay</p>
             </div>
-            <div class="bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 text-white">
+            <div class="card p-4 ">
                 <div class="flex items-center justify-between mb-3 sm:mb-4">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="dollar-sign" class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"></i>
-                        <span class="font-medium text-responsive-xs sm:text-sm lg:text-base">Số dư chờ xử lý</span>
+                    <div class="p-2 bg-yellow-100 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-4 h-4 sm:w-5 sm:h-5 text-yellow-600">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
                     </div>
-                    <button class="p-1.5 sm:p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors">
-                        <i data-lucide="arrow-down-left" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                    </button>
+                    <span class="text-xs sm:text-sm font-medium text-yellow-600">1</span>
                 </div>
-                <div class="mb-2">
-                    <span class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold">$125.00</span>
-                </div>
-                <p class="text-orange-100 text-responsive-xs sm:text-sm lg:text-base">Đang chờ duyệt</p>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
-            <div class="card">
-                <div class="card-content p-3 sm:p-4 lg:p-6">
-                    <div class="flex items-center justify-between mb-3 sm:mb-4">
-                        <div class="p-1.5 sm:p-2 bg-gray-100 rounded-lg">
-                            <i data-lucide="trending-up" class="w-4 h-4 sm:w-5 sm:h-5 text-green-600"></i>
-                        </div>
-                        <span class="badge badge-success ">+12.5%</span>
-                    </div>
-                    <div class="flex flex-row justify-between gap-2">
-                        <p class="text-responsive-xs text-gray-600">Tổng thu nhập</p>
-                        <p class="text-responsive-sm font-medium text-gray-900 mx-2">$3,245</p>
-                    </div>
+                <div class="flex flex-row justify-between ">
+                    <p class="text-responsive-xs text-gray-500">Đang xử lý</p>
+                    <p class="text-responsive-xs font-medium text-gray-900 ">1</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-content p-3 sm:p-4 lg:p-6">
-                    <div class="flex items-center justify-between mb-3 sm:mb-4">
-                        <div class="p-1.5 sm:p-2 bg-gray-100 rounded-lg">
-                            <i data-lucide="trending-down" class="w-4 h-4 sm:w-5 sm:h-5 text-red-600"></i>
-                        </div>
-                        <span class="badge badge-danger ">-8.2%</span>
+            <div class="card p-4 ">
+                <div class="flex items-center justify-between mb-3 sm:mb-4">
+                    <div class="p-2 bg-red-100 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x w-4 h-4 sm:w-5 sm:h-5 text-red-600">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="m15 9-6 6"></path>
+                            <path d="m9 9 6 6"></path>
+                        </svg>
                     </div>
-                    <div class="flex flex-row justify-between gap-2">
-                        <p class="text-responsive-xs text-gray-600">Tổng chi tiêu</p>
-                        <p class="text-responsive-sm font-medium text-gray-900 mx-2">$3,245</p>
-                    </div>
+                    <span class="text-responsive-xs font-medium text-red-600">1</span>
+                </div>
+                <div class="flex flex-row justify-between ">
+                    <p class="text-responsive-xs text-gray-500">Thất bại</p>
+                    <p class="text-responsive-xs font-medium text-gray-900 ">1</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-content p-3 sm:p-4 lg:p-6">
-                    <div class="flex items-center justify-between mb-3 sm:mb-4">
-                        <div class="p-1.5 sm:p-2 bg-gray-100 rounded-lg">
-                            <i data-lucide="credit-card" class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600"></i>
-                        </div>
-                        <span class="badge badge-success ">-8.2%</span>
+            <div class="card p-4 ">
+                <div class="flex items-center justify-between mb-3 sm:mb-4">
+                    <div class="p-2 bg-blue-100 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card w-4 h-4 sm:w-5 sm:h-5 text-blue-600">
+                            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                            <line x1="2" x2="22" y1="10" y2="10"></line>
+                        </svg>
                     </div>
-                    <div class="flex flex-row justify-between gap-2">
-                        <p class="text-responsive-xs text-gray-600">Tổng chi tiêu</p>
-                        <p class="text-responsive-sm font-medium text-gray-900 mx-2">$3,245</p>
-                    </div>
+                    <span class="text-responsive-xs font-medium text-blue-600">53.000VND</span>
+                </div>
+                <div class="flex flex-row justify-between ">
+                    <p class="text-responsive-xs text-gray-500">Tổng giao dịch</p>
+                    <p class="text-responsive-sm  text-gray-900 mb-1">6</p>
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header p-3 sm:p-4 lg:p-6">
+
+        <!-- Transaction List -->
+        <div class="card mb-8">
+            <div class="p-4 sm:p-6 border-b border-gray-200">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 sm:mb-4 gap-3 sm:gap-4">
-                    <h2 class="card-title text-base sm:text-lg lg:text-xl">Lịch sử giao dịch</h2>
-                    <div class="flex items-center gap-1.5 sm:gap-2 lg:gap-3">
-                        <button class="btn btn-ghost btn-xs">
-                            <i data-lucide="calendar" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                            <span class="hidden sm:inline">Lọc theo ngày</span>
-                            <span class="sm:hidden">Ngày</span>
-                        </button>
-                        <button class="btn btn-ghost btn-xs" onclick="showFilter()">
+                    <div class="relative flex-1 max-w-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </svg>
+                        <input placeholder="Tìm kiếm theo mã GD, phương thức..." class="w-full pl-10 pr-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" type="text" value="">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <select class="btn btn-outline btn-sm">
+                            <option value="all">Tất cả thời gian</option>
+                            <option value="today">Hôm nay</option>
+                            <option value="week">7 ngày qua</option>
+                            <option value="month">30 ngày qua</option>
+                            <option value="quarter">3 tháng qua</option>
+                        </select>
+                        <button class="btn btn-ghost btn-sm" onclick="showFilter()">
                             <i data-lucide="filter" class="w-3 h-3 sm:w-4 sm:h-4"></i>
                             <span class="hidden sm:inline">Bộ lọc</span>
                             <span class="sm:hidden">Lọc</span>
                         </button>
                     </div>
                 </div>
-                <div class="tabs">
-                    <div class="border-b border-gray-200">
-                        <div class="w-full overflow-x-auto">
-                            <div role="tablist" aria-orientation="horizontal" class="tabs-list min-w-max" tabindex="0" data-orientation="horizontal" style="outline: none;">
-                                <button type="button" role="tab" onclick="setActiveTab('all')" aria-selected="true" class="tabs-trigger bg-white text-emerald-600 shadow-sm text-responsive-xs sm:text-sm px-2 sm:px-4 py-2">Tất cả</button>
-                                <button type="button" role="tab" onclick="setActiveTab('deposit')" aria-selected="false" class="tabs-trigger text-responsive-xs px-2 sm:px-4 py-2">Nạp tiền</button>
-                                <button type="button" role="tab" onclick="setActiveTab('purchase')" aria-selected="false" class="tabs-trigger text-responsive-xs px-2 sm:px-4 py-2">Mua hàng</button>
-                                <button type="button" role="tab" onclick="setActiveTab('sale')" aria-selected="false" class="tabs-trigger text-responsive-xs px-2 sm:px-4 py-2">Bán hàng</button>
-                            </div>
-                        </div>
-                    </div>
+                
+                <div class="tabs-list mt-4">
+                    <button class="tabs-trigger bg-white text-gray-900 shadow-sm">
+                        <span>Tất cả</span>
+                        <span class="px-1.5 sm:px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-600 ml-2">6</span>
+                    </button>
+                    <button class="tabs-trigger text-gray-500 hover:text-gray-700">
+                        <span class="hidden sm:inline">Hoàn thành</span>
+                        <span class="sm:hidden">Hoàn thành</span>
+                        <span class="px-1.5 sm:px-2 py-0.5 rounded-full text-xs bg-gray-200 text-gray-500 ml-2">3</span>
+                    </button>
+                    <button class="tabs-trigger text-gray-500 hover:text-gray-700">
+                        <span class="hidden sm:inline">Đang xử lý</span>
+                        <span class="sm:hidden">Xử lý</span>
+                        <span class="px-1.5 sm:px-2 py-0.5 rounded-full text-xs bg-gray-200 text-gray-500 ml-2">1</span>
+                    </button>
+                    <button class="tabs-trigger text-gray-500 hover:text-gray-700">
+                        <span class="hidden sm:inline">Thất bại</span>
+                        <span class="sm:hidden">Thất bại</span>
+                        <span class="px-1.5 sm:px-2 py-0.5 rounded-full text-xs bg-gray-200 text-gray-500 ml-2">1</span>
+                    </button>
+                    <button class="tabs-trigger text-gray-500 hover:text-gray-700">
+                        <span class="hidden sm:inline">Đã hủy</span>
+                        <span class="sm:hidden">Hủy</span>
+                        <span class="px-1.5 sm:px-2 py-0.5 rounded-full text-xs bg-gray-200 text-gray-500 ml-2">1</span>
+                    </button>
                 </div>
             </div>
-            <div class="tabs-content">
-                <div class="divide-y divide-gray-200">
-                    <!-- Transaction 1 -->
-                    <div class="p-3 sm:p-4 lg:p-6 hover:bg-gray-50 transition-colors">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
-                            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
-                                <div class="p-1.5 sm:p-2 lg:p-3 rounded-lg flex-shrink-0 bg-green-100">
-                                    <i data-lucide="arrow-down-left" class="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-green-600"></i>
+
+            <!-- Transaction Items -->
+            <div class="divide-y divide-gray-200">
+                <!-- Transaction 1 - Completed -->
+                <div class="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                        <div class="flex items-start gap-3 sm:gap-4">
+                            <div class="p-2 sm:p-3 bg-gray-100 rounded-lg flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 w-4 h-4 sm:w-5 sm:h-5 text-blue-600">
+                                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                                    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                                    <path d="M10 6h4"></path>
+                                    <path d="M10 10h4"></path>
+                                    <path d="M10 14h4"></path>
+                                    <path d="M10 18h4"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-1">
+                                    <h3 class="font-semibold text-gray-900 text-sm sm:text-base">#WD001234</h3>
+                                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 w-fit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big w-3 h-3 sm:w-4 sm:h-4 text-green-600">
+                                            <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                            <path d="m9 11 3 3L22 4"></path>
+                                        </svg>
+                                        Hoàn thành
+                                    </span>
                                 </div>
-                                <div class="min-w-0 flex-1">
-                                    <h3 class="font-medium text-gray-900 text-responsive-xs truncate">Nạp tiền vào ví</h3>
-                                    <p class="text-responsive-xs text-gray-600">2024-01-15 • 14:30</p>
+                                <p class="text-xs sm:text-sm text-gray-600 mb-1">Chuyển khoản ngân hàng</p>
+                                <p class="text-xs text-gray-500 break-words">Vietcombank - 1234567890 - NGUYEN VAN A</p>
+                                <div class="mt-2 space-y-1">
+                                    <p class="text-xs text-gray-500">Yêu cầu: 02:30 15/01/2024</p>
+                                    <p class="text-xs text-gray-500">Xử lý: 06:20 17/01/2024</p>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-between sm:block sm:text-right">
-                                <p class="text-responsive-sm lg:text-lg font-semibold text-green-600">+$500.00</p>
-                                <span class="badge badge-success">Hoàn thành</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row lg:flex-col items-start sm:items-end lg:items-end gap-3 sm:gap-4 lg:gap-0">
+                            <div class="w-full sm:w-auto lg:w-full">
+                                <div class="space-y-1 bg-gray-50 p-2 rounded ">
+                                    <div class="flex justify-between gap-4 items-center">
+                                        <span class="text-responsive-xs">Rút </span>
+                                        <span class="text-gray-500 text-responsive-xs">12.250.000VND</span>
+
+                                    </div>
+                                    <div class="flex justify-between gap-4 items-center">
+                                        <span class="text-responsive-xs">Phí</span>
+                                        <span class="text-red-500 text-responsive-xs">-15.000VND</span>
+                                    </div>
+                                    <div class="flex justify-between gap-4  items-center">
+                                        <span class="text-responsive-xs">Nhận</span>
+                                        <span class="text-green-600 text-responsive-sm">12.235.000VND</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Transaction 2 -->
-                    <div class="p-3 sm:p-4 lg:p-6 hover:bg-gray-50 transition-colors">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
-                            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
-                                <div class="p-1.5 sm:p-2 lg:p-3 rounded-lg flex-shrink-0 bg-red-100">
-                                    <i data-lucide="minus" class="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-red-600"></i>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <h3 class="font-medium text-gray-900 text-responsive-xs sm:text-sm lg:text-base truncate">Mua Netflix Premium Account</h3>
-                                    <p class="text-responsive-xs text-gray-600">2024-01-14 • 10:15</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between sm:block sm:text-right">
-                                <p class="text-responsive-sm lg:text-lg font-semibold text-red-600">$89.99</p>
-                                <span class="badge badge-success">Hoàn thành</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Transaction 3 -->
-                    <div class="p-3 sm:p-4 lg:p-6 hover:bg-gray-50 transition-colors">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
-                            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
-                                <div class="p-1.5 sm:p-2 lg:p-3 rounded-lg flex-shrink-0 bg-blue-100">
-                                    <i data-lucide="arrow-up-right" class="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-blue-600"></i>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <h3 class="font-medium text-gray-900 text-responsive-xs  truncate">Bán WoW Account Level 80</h3>
-                                    <p class="text-responsive-xs text-gray-600">2024-01-13 • 16:45</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between sm:block sm:text-right">
-                                <p class="text-responsive-sm lg:text-lg font-semibold text-green-600">+$150.00</p>
-                                <span class="badge badge-success">Hoàn thành</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Transaction 4 -->
-                    <div class="p-3 sm:p-4 lg:p-6 hover:bg-gray-50 transition-colors">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
-                            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
-                                <div class="p-1.5 sm:p-2 lg:p-3 rounded-lg flex-shrink-0 bg-green-100">
-                                    <i data-lucide="arrow-down-left" class="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-green-600"></i>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <h3 class="font-medium text-gray-900 text-responsive-xs  truncate">Nạp tiền vào ví</h3>
-                                    <p class="text-responsive-xs text-gray-600">2024-01-12 • 09:20</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between sm:block sm:text-right">
-                                <p class="text-responsive-sm lg:text-lg font-semibold text-green-600">+$200.00</p>
-                                <span class="badge badge-warning">Đang xử lý</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Transaction 5 -->
-                    <div class="p-3 sm:p-4 lg:p-6 hover:bg-gray-50 transition-colors">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
-                            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
-                                <div class="p-1.5 sm:p-2 lg:p-3 rounded-lg flex-shrink-0 bg-purple-100">
-                                    <i data-lucide="shopping-cart" class="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-purple-600"></i>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <h3 class="font-medium text-gray-900 text-responsive-xs  truncate">Mua Facebook Clone Account</h3>
-                                    <p class="text-responsive-xs text-gray-600">2024-01-11 • 20:30</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between sm:block sm:text-right">
-                                <p class="text-responsive-sm lg:text-lg font-semibold text-red-600">$25.00</p>
-                                <span class="badge badge-success">Hoàn thành</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Transaction 6 -->
-                    <div class="p-3 sm:p-4 lg:p-6 hover:bg-gray-50 transition-colors">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
-                            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
-                                <div class="p-1.5 sm:p-2 lg:p-3 rounded-lg flex-shrink-0 bg-orange-100">
-                                    <i data-lucide="arrow-up-right" class="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-orange-600"></i>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <h3 class="font-medium text-gray-900 text-responsive-xs  truncate">Bán Backlink Package</h3>
-                                    <p class="text-responsive-xs text-gray-600">2024-01-10 • 15:45</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between sm:block sm:text-right">
-                                <p class="text-responsive-sm lg:text-lg font-semibold text-green-600">+$75.00</p>
-                                <span class="badge badge-success">Hoàn thành</span>
-                            </div>
-                        </div>
+                    <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <p class="text-xs sm:text-sm text-gray-700"><span class="font-medium">Ghi chú:</span> Rút tiền thành công</p>
                     </div>
                 </div>
+
+                <!-- Transaction 2 - Processing -->
+                <!-- <div class="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                        <div class="flex items-start gap-3 sm:gap-4">
+                            <div class="p-2 sm:p-3 bg-gray-100 rounded-lg flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone w-4 h-4 sm:w-5 sm:h-5 text-pink-600">
+                                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                                    <path d="M12 18h.01"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-1">
+                                    <h3 class="font-semibold text-gray-900 text-sm sm:text-base">#WD001235</h3>
+                                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 w-fit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-3 h-3 sm:w-4 sm:h-4 text-yellow-600">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        Đang xử lý
+                                    </span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 mb-1">Ví MoMo</p>
+                                <p class="text-xs text-gray-500 truncate">SĐT: 0987654321</p>
+                                <p class="text-xs text-gray-500 mt-1">Yêu cầu: 01:15 18/01/2024</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end gap-3 sm:gap-4 lg:gap-0">
+                            <div class="text-left sm:text-right lg:text-right">
+                                <div class="mb-2">
+                                    <p class="text-lg sm:text-xl font-bold text-gray-900">$200</p>
+                                    <p class="text-sm text-gray-600">4.900.000 VNĐ</p>
+                                </div>
+                                <div class="text-xs text-gray-500 space-y-1">
+                                    <div class="flex justify-between gap-4">
+                                        <span>Phí:</span>
+                                        <span class="text-red-600">-5.000 VNĐ</span>
+                                    </div>
+                                    <div class="flex justify-between gap-4 font-medium">
+                                        <span>Nhận:</span>
+                                        <span class="text-green-600">4.895.000 VNĐ</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button class="p-1 text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-4 h-4">
+                                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                                <button class="p-1 text-blue-400 hover:text-blue-600 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-cw w-4 h-4">
+                                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                        <path d="M21 3v5h-5"></path>
+                                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                                        <path d="M8 16H3v5"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <p class="text-xs sm:text-sm text-gray-700"><span class="font-medium">Ghi chú:</span> Đang xử lý</p>
+                    </div>
+                </div> -->
+
+                <!-- Transaction 3 - Completed -->
+                <!-- <div class="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-gray-100 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone w-5 h-5 text-pink-600">
+                                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                                    <path d="M12 18h.01"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h3 class="font-semibold text-gray-900">#WD001236</h3>
+                                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big w-5 h-5 text-green-600">
+                                            <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                            <path d="m9 11 3 3L22 4"></path>
+                                        </svg>
+                                        Hoàn thành
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-1">ZaloPay</p>
+                                <p class="text-xs text-gray-500">SĐT: 0912345678</p>
+                                <p class="text-xs text-gray-500 mt-1">Yêu cầu: 08:45 12/01/2024<span> • Xử lý: 09:02 12/01/2024</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="mb-2">
+                                <p class="text-lg font-bold text-gray-900">$150</p>
+                                <p class="text-sm text-gray-600">3.675.000 VNĐ</p>
+                            </div>
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div class="flex justify-between gap-4">
+                                    <span>Phí:</span>
+                                    <span class="text-red-600">-5.000 VNĐ</span>
+                                </div>
+                                <div class="flex justify-between gap-4 font-medium">
+                                    <span>Nhận:</span>
+                                    <span class="text-green-600">3.670.000 VNĐ</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mt-3">
+                                <button class="p-1 text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-4 h-4">
+                                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <p class="text-sm text-gray-700"><span class="font-medium">Ghi chú:</span> Rút tiền thành công</p>
+                    </div>
+                </div> -->
+
+                <!-- Transaction 4 - Failed -->
+                <!-- <div class="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-gray-100 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card w-5 h-5 text-red-600">
+                                    <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                                    <line x1="2" x2="22" y1="10" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h3 class="font-semibold text-gray-900">#WD001237</h3>
+                                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x w-5 h-5 text-red-600">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="m15 9-6 6"></path>
+                                            <path d="m9 9 6 6"></path>
+                                        </svg>
+                                        Thất bại
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-1">Viettel Money</p>
+                                <p class="text-xs text-gray-500">SĐT: 0901234567</p>
+                                <p class="text-xs text-gray-500 mt-1">Yêu cầu: 03:20 10/01/2024<span> • Xử lý: 03:35 10/01/2024</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="mb-2">
+                                <p class="text-lg font-bold text-gray-900">$300</p>
+                                <p class="text-sm text-gray-600">7.350.000 VNĐ</p>
+                            </div>
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div class="flex justify-between gap-4">
+                                    <span>Phí:</span>
+                                    <span class="text-red-600">-8.000 VNĐ</span>
+                                </div>
+                                <div class="flex justify-between gap-4 font-medium">
+                                    <span>Nhận:</span>
+                                    <span class="text-green-600">7.342.000 VNĐ</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mt-3">
+                                <button class="p-1 text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-4 h-4">
+                                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <p class="text-sm text-gray-700"><span class="font-medium">Ghi chú:</span> Thông tin tài khoản không chính xác</p>
+                    </div>
+                </div> -->
+
+                <!-- Transaction 5 - Cancelled -->
+                <!-- <div class="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-gray-100 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 w-5 h-5 text-blue-600">
+                                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                                    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                                    <path d="M10 6h4"></path>
+                                    <path d="M10 10h4"></path>
+                                    <path d="M10 14h4"></path>
+                                    <path d="M10 18h4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h3 class="font-semibold text-gray-900">#WD001238</h3>
+                                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban w-5 h-5 text-gray-600">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="m4.9 4.9 14.2 14.2"></path>
+                                        </svg>
+                                        Đã hủy
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-1">Chuyển khoản ngân hàng</p>
+                                <p class="text-xs text-gray-500">Techcombank - 9876543210 - TRAN THI B</p>
+                                <p class="text-xs text-gray-500 mt-1">Yêu cầu: 06:10 08/01/2024</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="mb-2">
+                                <p class="text-lg font-bold text-gray-900">$750</p>
+                                <p class="text-sm text-gray-600">18.375.000 VNĐ</p>
+                            </div>
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div class="flex justify-between gap-4">
+                                    <span>Phí:</span>
+                                    <span class="text-red-600">-15.000 VNĐ</span>
+                                </div>
+                                <div class="flex justify-between gap-4 font-medium">
+                                    <span>Nhận:</span>
+                                    <span class="text-green-600">18.360.000 VNĐ</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mt-3">
+                                <button class="p-1 text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-4 h-4">
+                                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <p class="text-sm text-gray-700"><span class="font-medium">Ghi chú:</span> Người dùng hủy yêu cầu</p>
+                    </div>
+                </div> -->
+
+                <!-- Transaction 6 - Completed -->
+                <!-- <div class="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-gray-100 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone w-5 h-5 text-pink-600">
+                                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                                    <path d="M12 18h.01"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h3 class="font-semibold text-gray-900">#WD001239</h3>
+                                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big w-5 h-5 text-green-600">
+                                            <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                            <path d="m9 11 3 3L22 4"></path>
+                                        </svg>
+                                        Hoàn thành
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-1">Ví MoMo</p>
+                                <p class="text-xs text-gray-500">SĐT: 0987654321</p>
+                                <p class="text-xs text-gray-500 mt-1">Yêu cầu: 00:30 05/01/2024<span> • Xử lý: 00:42 05/01/2024</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="mb-2">
+                                <p class="text-lg font-bold text-gray-900">$100</p>
+                                <p class="text-sm text-gray-600">2.450.000 VNĐ</p>
+                            </div>
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div class="flex justify-between gap-4">
+                                    <span>Phí:</span>
+                                    <span class="text-red-600">-5.000 VNĐ</span>
+                                </div>
+                                <div class="flex justify-between gap-4 font-medium">
+                                    <span>Nhận:</span>
+                                    <span class="text-green-600">2.445.000 VNĐ</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mt-3">
+                                <button class="p-1 text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-4 h-4">
+                                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <p class="text-sm text-gray-700"><span class="font-medium">Ghi chú:</span> Rút tiền thành công</p>
+                    </div>
+                </div> -->
             </div>
-            <div class="card-footer p-3 sm:p-4 lg:p-6">
-                <button class="btn btn-ghost btn-sm lg:btn-md w-full sm:w-auto" onclick="loadMoreTransactions()">
-                    <i data-lucide="plus" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                    <span class="text-responsive-xs ">Xem thêm giao dịch</span>
+
+            <!-- Load More Button -->
+            <div class="p-4 sm:p-6 text-center border-t border-gray-200">
+                <button class="px-4 sm:px-6 py-2 text-sm sm:text-base text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+                    Xem thêm giao dịch
                 </button>
             </div>
         </div>
     </main>
-
-    <!-- Wallet Modal -->
-    <div id="walletModal" class="modal-overlay hidden" onclick="closeWalletModal()" style="height: 100vh; height: 100dvh;">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between p-4 sm:p-6 pb-0">
-                <h2 class="text-lg sm:text-xl font-bold text-gray-900">Nạp tiền vào ví</h2>
-                <button onclick="closeWalletModal()" class="h-8 w-8 p-0 hover:bg-gray-100 rounded-full flex items-center justify-center transition-colors">
-                    <i data-lucide="x" class="w-4 h-4"></i>
-                </button>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
-                <!-- Current Balance -->
-                <div class="p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <div class="flex items-center gap-2 text-blue-800 mb-2">
-                        <i data-lucide="wallet" class="w-4 h-4"></i>
-                        <span class="font-medium text-responsive-sm">Số dư hiện tại</span>
-                    </div>
-                    <p class="text-xl sm:text-2xl font-bold text-blue-900" id="currentBalance">$2,847.50</p>
-                </div>
-
-                <!-- Deposit Amount Form -->
-                <div class="space-y-3 sm:space-y-4">
-                    <h3 class="font-medium text-gray-900 text-responsive-sm">Số tiền nạp</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
-                        <button onclick="setDepositAmount(100000)" 
-                                class="p-2 sm:p-3 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-200 transition-all duration-300 text-center deposit-amount-btn" 
-                                data-amount="100000">
-                            <div class="font-semibold text-responsive-sm">100K</div>
-                            <div class="text-responsive-xs text-gray-500">₫100,000</div>
-                        </button>
-                        <button onclick="setDepositAmount(500000)" 
-                                class="p-2 sm:p-3 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-200 transition-all duration-300 text-center deposit-amount-btn" 
-                                data-amount="500000">
-                            <div class="font-semibold text-responsive-sm">500K</div>
-                            <div class="text-responsive-xs text-gray-500">₫500,000</div>
-                        </button>
-                        <button onclick="setDepositAmount(1000000)" 
-                                class="p-2 sm:p-3 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-200 transition-all duration-300 text-center deposit-amount-btn" 
-                                data-amount="1000000">
-                            <div class="font-semibold text-responsive-sm">1M</div>
-                            <div class="text-responsive-xs text-gray-500">₫1,000,000</div>
-                        </button>
-                        <button onclick="setDepositAmount(2000000)" 
-                                class="p-2 sm:p-3 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-200 transition-all duration-300 text-center deposit-amount-btn" 
-                                data-amount="2000000">
-                            <div class="font-semibold text-responsive-sm">2M</div>
-                            <div class="text-responsive-xs text-gray-500">₫2,000,000</div>
-                        </button>
-                    </div>
-                    
-                    <!-- Custom Amount Input -->
-                    <div class="relative">
-                        <label class="block text-responsive-sm font-medium text-gray-700 mb-2">Số tiền tùy chỉnh</label>
-                        <div class="input-icon">
-                            <input type="number" 
-                                   id="depositAmountInput"
-                                   oninput="validateDepositAmount()"
-                                   class="input input-lg rounded-xl"
-                                   placeholder="Nhập số tiền nạp">
-                            <i data-lucide="dollar-sign" class="icon"></i>
-                        </div>
-                        <p id="depositAmountError" class="text-red-500 text-responsive-xs mt-1.5 font-medium hidden"></p>
-                    </div>
-                </div>
-
-                <!-- Payment Methods -->
-                <div class="space-y-3 sm:space-y-4">
-                    <h3 class="font-medium text-gray-900 text-responsive-sm">Phương thức thanh toán</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                        <!-- Bank Transfer -->
-                        <button onclick="selectPaymentMethod('bank')" 
-                                class="p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-200 transition-all duration-300 payment-method-btn" 
-                                data-method="bank">
-                            <div class="flex items-center gap-3 sm:gap-4">
-                                <div class="p-2 bg-green-100 rounded-lg">
-                                    <i data-lucide="credit-card" class="w-4 h-4 sm:w-5 sm:h-5 text-green-700"></i>
-                                </div>
-                                <div class="text-left">
-                                    <p class="font-medium text-responsive-sm">Chuyển khoản ngân hàng</p>
-                                    <p class="text-responsive-xs text-gray-500">QR Code hoặc thủ công</p>
-                                    <p class="text-responsive-xs text-green-600">Miễn phí • Xử lý nhanh</p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <!-- MoMo -->
-                        <button onclick="selectPaymentMethod('momo')" 
-                                class="p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-pink-50 hover:border-pink-200 transition-all duration-300 payment-method-btn" 
-                                data-method="momo">
-                            <div class="flex items-center gap-3 sm:gap-4">
-                                <div class="p-2 bg-pink-100 rounded-lg">
-                                    <i data-lucide="smartphone" class="w-4 h-4 sm:w-5 sm:h-5 text-pink-700"></i>
-                                </div>
-                                <div class="text-left">
-                                    <p class="font-medium text-responsive-sm">Ví MoMo</p>
-                                    <p class="text-responsive-xs text-gray-500">Thanh toán qua app</p>
-                                    <p class="text-responsive-xs text-pink-600">Tức thì • Bảo mật cao</p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <!-- ZaloPay -->
-                        <button onclick="selectPaymentMethod('zalopay')" 
-                                class="p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-200 transition-all duration-300 payment-method-btn" 
-                                data-method="zalopay">
-                            <div class="flex items-center gap-3 sm:gap-4">
-                                <div class="p-2 bg-blue-100 rounded-lg">
-                                    <i data-lucide="zap" class="w-4 h-4 sm:w-5 sm:h-5 text-blue-700"></i>
-                                </div>
-                                <div class="text-left">
-                                    <p class="font-medium text-responsive-sm">ZaloPay</p>
-                                    <p class="text-responsive-xs text-gray-500">Thanh toán qua app</p>
-                                    <p class="text-responsive-xs text-blue-600">Nhanh chóng • Tiện lợi</p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <!-- VNPay -->
-                        <button onclick="selectPaymentMethod('vnpay')" 
-                                class="p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-red-50 hover:border-red-200 transition-all duration-300 payment-method-btn" 
-                                data-method="vnpay">
-                            <div class="flex items-center gap-3 sm:gap-4">
-                                <div class="p-2 bg-red-100 rounded-lg">
-                                    <i data-lucide="shield" class="w-4 h-4 sm:w-5 sm:h-5 text-red-700"></i>
-                                </div>
-                                <div class="text-left">
-                                    <p class="font-medium text-responsive-sm">VNPay</p>
-                                    <p class="text-responsive-xs  text-gray-500">Cổng thanh toán</p>
-                                    <p class="text-responsive-xs text-red-600">An toàn • Hỗ trợ nhiều ngân hàng</p>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Payment Summary -->
-                <div id="paymentSummary" class="p-4 bg-gray-50 border border-gray-200 rounded-lg hidden">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-responsive-xs text-gray-600">Số tiền nạp:</span>
-                        <span class="text-responsive-sm text-gray-900" id="summaryAmount">₫0</span>
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-responsive-xs text-gray-600">Phí giao dịch:</span>
-                        <span class="text-responsive-xs text-green-600">Miễn phí</span>
-                    </div>
-                    <div class="border-t border-gray-200 pt-2">
-                        <div class="flex justify-between items-center">
-                            <span class="font-medium text-responsive-sm text-gray-900">Tổng cộng:</span>
-                            <span class="font-medium text-responsive-sm text-green-600" id="summaryTotal">₫0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    <button onclick="proceedToPayment()" 
-                            id="proceedPaymentBtn"
-                            class="flex-1 btn btn-primary opacity-50 cursor-not-allowed" 
-                            disabled>
-                        <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
-                        <span class="text-responsive-sm">Tiến hành thanh toán</span>
-                    </button>
-                    <button onclick="viewDepositHistory()" class="btn btn-outline">
-                        <i data-lucide="history" class="w-4 h-4 mr-2"></i>
-                        <span class="text-responsive-sm">Lịch sử</span>
-                    </button>
-                </div>
-
-                <!-- Process Info -->
-                <div class="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                    <div class="flex items-start gap-2">
-                        <div class="w-4 h-4 rounded-full bg-yellow-400 flex-shrink-0 mt-0.5"></div>
-                        <div class="text-responsive-xs text-yellow-800">
-                            <p class="font-medium mb-1">Quy trình nạp tiền:</p>
-                            <ul class="space-y-1 text-responsive-xs">
-                                <li>• Chọn số tiền và phương thức thanh toán</li>
-                                <li>• Thực hiện thanh toán theo hướng dẫn</li>
-                                <li>• Hệ thống tự động cộng tiền vào ví (1-5 phút)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="modal-overlay hidden" onclick="closePaymentModal()" style="height: 100vh; height: 100dvh;">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between p-4 sm:p-6 pb-0">
-                <h2 class="text-lg sm:text-xl font-bold text-gray-900">Thanh toán</h2>
-                <button onclick="closePaymentModal()" class="h-8 w-8 p-0 hover:bg-gray-100 rounded-full flex items-center justify-center transition-colors">
-                    <i data-lucide="x" class="w-4 h-4"></i>
-                </button>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
-                <!-- Payment Info -->
-                <div class="p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-responsive-xs  text-blue-800 font-medium">Số tiền thanh toán:</span>
-                        <span class="text-xl sm:text-2xl font-bold text-blue-900" id="paymentAmount">₫0</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-responsive-xs text-blue-800">Phương thức:</span>
-                        <span class="text-responsive-xs  font-medium text-blue-900" id="paymentMethodName">Chuyển khoản ngân hàng</span>
-                    </div>
-                </div>
-
-                <!-- Bank Transfer Payment -->
-                <div id="bankPayment" class="space-y-3 sm:space-y-4 hidden">
-                    <h3 class="font-medium text-gray-900 text-responsive-sm">Thông tin chuyển khoản</h3>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                        <!-- QR Code -->
-                        <div class="text-center">
-                            <div class="p-3 sm:p-4 bg-white border border-gray-200 rounded-lg mb-3 sm:mb-4">
-                                <div id="qr-code" class="w-32 h-32 sm:w-48 sm:h-48 mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
-                                    <div class="text-center">
-                                        <i data-lucide="qrcode" class="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-2"></i>
-                                        <p class="text-responsive-xs text-gray-500">QR Code sẽ được tạo</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-responsive-xs  text-gray-600">Quét QR Code để chuyển khoản</p>
-                        </div>
-
-                        <!-- Bank Info -->
-                        <div class="space-y-2 sm:space-y-3">
-                            <div class="p-2 sm:p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                                <div class="text-responsive-xs text-gray-600 mb-1">Ngân hàng:</div>
-                                <div class="font-medium text-responsive-sm">Vietcombank</div>
-                            </div>
-                            <div class="p-2 sm:p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                                <div class="text-responsive-xs text-gray-600 mb-1">Số tài khoản:</div>
-                                <div class="font-medium font-mono text-responsive-sm">0123456789</div>
-                                <button onclick="copyToClipboard('0123456789')" class="text-responsive-xs text-blue-600 hover:text-blue-800 mt-1">
-                                    <i data-lucide="copy" class="w-3 h-3 inline mr-1"></i>
-                                    Sao chép
-                                </button>
-                            </div>
-                            <div class="p-2 sm:p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                                <div class="text-responsive-xs  text-gray-600 mb-1">Chủ tài khoản:</div>
-                                <div class="font-medium text-responsive-sm">NGUYEN VAN A</div>
-                            </div>
-                            <div class="p-2 sm:p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                                <div class="text-responsive-xs  text-gray-600 mb-1">Nội dung chuyển khoản:</div>
-                                <div class="font-medium font-mono " id="bankTransferContent">NAP 100000 TXN123456</div>
-                                <button onclick="copyToClipboard(document.getElementById('bankTransferContent').textContent)" class="text-responsive-xs text-blue-600 hover:text-blue-800 mt-1">
-                                    <i data-lucide="copy" class="w-3 h-3 inline mr-1"></i>
-                                    Sao chép
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MoMo Payment -->
-                <div id="momoPayment" class="space-y-3 sm:space-y-4 hidden">
-                    <div class="text-center">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                            <i data-lucide="smartphone" class="w-8 h-8 sm:w-10 sm:h-10 text-pink-600"></i>
-                        </div>
-                        <h3 class="font-medium text-gray-900 mb-2 text-responsive-sm">Thanh toán qua MoMo</h3>
-                        <p class="text-responsive-xs text-gray-600 mb-3 sm:mb-4">Mở ứng dụng MoMo và quét mã QR bên dưới</p>
-                        
-                        <div class="p-3 sm:p-4 bg-white border border-gray-200 rounded-lg mb-3 sm:mb-4">
-                            <div id="momo-qr" class="w-32 h-32 sm:w-48 sm:h-48 mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
-                                <div class="text-center">
-                                    <i data-lucide="qrcode" class="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-2"></i>
-                                    <p class="text-responsive-xs text-gray-500">QR Code MoMo</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-2 sm:p-3 bg-pink-50 border border-pink-200 rounded-lg">
-                            <div class="text-responsive-xs text-pink-800">
-                                <strong>Số tiền:</strong> <span id="momoAmount">₫0</span>
-                            </div>
-                            <div class="text-responsive-xs text-pink-800 mt-1">
-                                <strong>Nội dung:</strong> NAP <span id="momoContent">TXN123456</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ZaloPay Payment -->
-                <div id="zalopayPayment" class="space-y-3 sm:space-y-4 hidden">
-                    <div class="text-center">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                            <i data-lucide="zap" class="w-8 h-8 sm:w-10 sm:h-10 text-blue-600"></i>
-                        </div>
-                        <h3 class="font-medium text-gray-900 mb-2 text-responsive-sm">Thanh toán qua ZaloPay</h3>
-                        <p class="text-responsive-xs text-gray-600 mb-3 sm:mb-4">Mở ứng dụng ZaloPay và quét mã QR bên dưới</p>
-                        
-                        <div class="p-3 sm:p-4 bg-white border border-gray-200 rounded-lg mb-3 sm:mb-4">
-                            <div id="zalopay-qr" class="w-32 h-32 sm:w-48 sm:h-48 mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
-                                <div class="text-center">
-                                    <i data-lucide="qrcode" class="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-2"></i>
-                                    <p class="text-responsive-xs text-gray-500">QR Code ZaloPay</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-2 sm:p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                            <div class="text-responsive-xs text-blue-800">
-                                <strong>Số tiền:</strong> <span id="zalopayAmount">₫0</span>
-                            </div>
-                            <div class="text-responsive-xs text-blue-800 mt-1">
-                                <strong>Nội dung:</strong> NAP <span id="zalopayContent">TXN123456</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VNPay Payment -->
-                <div id="vnpayPayment" class="space-y-3 sm:space-y-4 hidden">
-                    <div class="text-center">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                            <i data-lucide="shield" class="w-8 h-8 sm:w-10 sm:h-10 text-red-600"></i>
-                        </div>
-                        <h3 class="font-medium text-gray-900 mb-2 text-responsive-sm">Thanh toán qua VNPay</h3>
-                        <p class="text-responsive-xs text-gray-600 mb-3 sm:mb-4">Chuyển hướng đến cổng thanh toán VNPay</p>
-                        
-                        <div class="p-3 sm:p-4 bg-white border border-gray-200 rounded-lg mb-3 sm:mb-4">
-                            <div class="text-center">
-                                <i data-lucide="external-link" class="w-10 h-10 sm:w-12 sm:h-12 text-gray-400 mx-auto mb-2"></i>
-                                <p class="text-responsive-xs text-gray-500">Chuyển hướng đến VNPay</p>
-                            </div>
-                        </div>
-                        
-                        <div class="p-2 sm:p-3 bg-red-50 border border-red-200 rounded-lg">
-                            <div class="text-responsive-xs text-red-800">
-                                <strong>Số tiền:</strong> <span id="vnpayAmount">₫0</span>
-                            </div>
-                            <div class="text-responsive-xs text-red-800 mt-1">
-                                <strong>Mã giao dịch:</strong> <span id="vnpayContent">TXN123456</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Payment Status -->
-                <div class="p-3 sm:p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                    <div class="flex items-start gap-2 sm:gap-3">
-                        <div class="w-5 h-5 sm:w-6 sm:h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i data-lucide="clock" class="w-3 h-3 text-white"></i>
-                        </div>
-                        <div class="text-responsive-xs text-yellow-800">
-                            <p class="font-medium mb-1">Đang chờ thanh toán</p>
-                            <p class="text-responsive-xs">Sau khi chuyển khoản, tiền sẽ được cộng vào ví trong vòng 1-5 phút. Vui lòng giữ lại biên lai giao dịch.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    <button onclick="checkPaymentStatus()" class="flex-1 btn btn-primary">
-                        <i data-lucide="refresh-cw" class="w-4 h-4 mr-2"></i>
-                        <span class="text-responsive-sm">Kiểm tra thanh toán</span>
-                    </button>
-                    <button onclick="closePaymentModal()" class="btn btn-outline">
-                        <i data-lucide="x" class="w-4 h-4 mr-2"></i>
-                        <span class="text-responsive-sm">Đóng</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Deposit History Modal -->
-    <div id="historyModal" class="modal-overlay hidden" onclick="closeHistoryModal()" style="height: 100vh; height: 100dvh;">
-        <div class="modal-content max-w-4xl" onclick="event.stopPropagation()">
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between p-4 sm:p-6 pb-0">
-                <h2 class="text-lg sm:text-xl font-bold text-gray-900">Lịch sử giao dịch nạp tiền</h2>
-                <button onclick="closeHistoryModal()" class="h-8 w-8 p-0 hover:bg-gray-100 rounded-full flex items-center justify-center transition-colors">
-                    <i data-lucide="x" class="w-4 h-4"></i>
-                </button>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="p-4 sm:p-6">
-                <!-- Filter Tabs -->
-                <div class="flex space-x-1 bg-gray-100 rounded-lg p-1 mb-4 sm:mb-6">
-                    <button onclick="setHistoryFilter('all')" 
-                            class="flex-1 py-2 px-2 sm:px-4 text-responsive-xs font-medium rounded-md transition-all history-filter-btn bg-white text-gray-900 shadow-sm" 
-                            data-filter="all">
-                        Tất cả
-                    </button>
-                    <button onclick="setHistoryFilter('pending')" 
-                            class="flex-1 py-2 px-2 sm:px-4 text-responsive-xs font-medium rounded-md transition-all history-filter-btn text-gray-500 hover:text-gray-700" 
-                            data-filter="pending">
-                        Đang xử lý
-                    </button>
-                    <button onclick="setHistoryFilter('completed')" 
-                            class="flex-1 py-2 px-2 sm:px-4 text-responsive-xs font-medium rounded-md transition-all history-filter-btn text-gray-500 hover:text-gray-700" 
-                            data-filter="completed">
-                        Thành công
-                    </button>
-                    <button onclick="setHistoryFilter('failed')" 
-                            class="flex-1 py-2 px-2 sm:px-4 text-responsive-xs font-medium rounded-md transition-all history-filter-btn text-gray-500 hover:text-gray-700" 
-                            data-filter="failed">
-                        Thất bại
-                    </button>
-                </div>
-
-                <!-- History List -->
-                <div class="space-y-2 sm:space-y-3 max-h-80 sm:max-h-96 overflow-y-auto custom-scrollbar">
-                    <!-- Sample transactions -->
-                    <div class="flex items-center justify-between p-3 sm:p-4 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow">
-                        <div class="flex items-center space-x-3 sm:space-x-4">
-                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-green-100 text-green-600">
-                                <i data-lucide="check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <div class="font-medium text-gray-900 text-responsive-sm">TXN001</div>
-                                <div class="text-responsive-xs text-gray-500">Chuyển khoản ngân hàng</div>
-                                <div class="text-responsive-xs text-gray-400">2024-01-15 14:30</div>
-                            </div>
-                        </div>
-                        <div class="text-right ml-2">
-                            <div class="font-semibold text-gray-900 text-responsive-sm">₫500,000</div>
-                            <div class="text-responsive-xs text-green-600">Thành công</div>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between p-3 sm:p-4 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow">
-                        <div class="flex items-center space-x-3 sm:space-x-4">
-                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-yellow-100 text-yellow-600">
-                                <i data-lucide="clock" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <div class="font-medium text-gray-900 text-responsive-sm">TXN002</div>
-                                <div class="text-responsive-xs text-gray-500">Ví MoMo</div>
-                                <div class="text-responsive-xs text-gray-400">2024-01-14 10:15</div>
-                            </div>
-                        </div>
-                        <div class="text-right ml-2">
-                            <div class="font-semibold text-gray-900 text-responsive-sm">₫200,000</div>
-                            <div class="text-responsive-xs text-yellow-600">Đang xử lý</div>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between p-3 sm:p-4 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow">
-                        <div class="flex items-center space-x-3 sm:space-x-4">
-                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-red-100 text-red-600">
-                                <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <div class="font-medium text-gray-900 text-responsive-sm">TXN003</div>
-                                <div class="text-responsive-xs text-gray-500">ZaloPay</div>
-                                <div class="text-responsive-xs text-gray-400">2024-01-13 16:45</div>
-                            </div>
-                        </div>
-                        <div class="text-right ml-2">
-                            <div class="font-semibold text-gray-900 text-responsive-sm">₫100,000</div>
-                            <div class="text-responsive-xs text-red-600">Thất bại</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Summary -->
-                <div class="mt-4 sm:mt-6 p-3 sm:p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                    <div class="grid grid-cols-3 gap-2 sm:gap-4 text-center">
-                        <div>
-                            <div class="text-lg sm:text-2xl font-bold text-gray-900">₫800,000</div>
-                            <div class="text-responsive-xs text-gray-500">Tổng nạp</div>
-                        </div>
-                        <div>
-                            <div class="text-lg sm:text-2xl font-bold text-green-600">₫500,000</div>
-                            <div class="text-responsive-xs text-gray-500">Thành công</div>
-                        </div>
-                        <div>
-                            <div class="text-lg sm:text-2xl font-bold text-yellow-600">₫200,000</div>
-                            <div class="text-responsive-xs text-gray-500">Đang xử lý</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Footer -->
     <footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
         <div class="container mx-auto px-4 py-12">
@@ -3463,7 +3186,7 @@
                         </div>
                         <div>
                             <div class="font-bold text-xl">MMO Store</div>
-                            <div class="text-responsive-xs text-emerald-200 -mt-1">Premium Digital Products</div>
+                            <div class="text-xs text-emerald-200 -mt-1">Premium Digital Products</div>
                         </div>
                     </a>
                     <p class="text-emerald-200 text-sm leading-relaxed">
@@ -3552,303 +3275,7 @@
     <script>
         lucide.createIcons();
     </script>
-
-    <!-- Wallet JavaScript Functions -->
-    <script>
-        // Global variables for wallet functionality
-        let currentDepositAmount = 0;
-        let selectedPaymentMethod = '';
-        let currentHistoryFilter = 'all';
-
-        function setActiveTab(tab) {
-            // Remove active class from all tabs
-            const tabs = document.querySelectorAll('.tabs-trigger');
-            tabs.forEach(tab => {
-                tab.classList.remove('bg-white', 'text-emerald-600', 'shadow-sm');
-                tab.classList.add('text-gray-500');
-                tab.setAttribute('aria-selected', 'false');
-            });
-            
-            // Add active class to clicked tab
-            const activeTab = document.querySelector(`[onclick="setActiveTab('${tab}')"]`);
-            if (activeTab) {
-                activeTab.classList.add('bg-white', 'text-emerald-600', 'shadow-sm');
-                activeTab.classList.remove('text-gray-500');
-                activeTab.setAttribute('aria-selected', 'true');
-            }
-            
-            // Here you would filter transactions based on tab
-            console.log(`Switched to ${tab} tab`);
-        }
-
-        function exportReport() {
-            // Simulate export functionality
-            console.log('Exporting report...');
-            if (window.fastNotice) {
-                window.fastNotice.show('Báo cáo đã được xuất thành công!', 'success');
-            }
-        }
-
-        function showFilter() {
-            // Simulate filter functionality
-            console.log('Showing filter modal...');
-            if (window.fastNotice) {
-                window.fastNotice.show('Bộ lọc đang được phát triển!', 'info');
-            }
-        }
-
-        function loadMoreTransactions() {
-            // Simulate loading more transactions
-            console.log('Loading more transactions...');
-            if (window.fastNotice) {
-                window.fastNotice.show('Đang tải thêm giao dịch...', 'info');
-            }
-        }
-
-        // Wallet Modal Functions
-        function openWalletModal() {
-            document.getElementById('walletModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeWalletModal() {
-            document.getElementById('walletModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            // Reset form
-            currentDepositAmount = 0;
-            selectedPaymentMethod = '';
-            resetWalletForm();
-        }
-
-        function setDepositAmount(amount) {
-            currentDepositAmount = amount;
-            document.getElementById('depositAmountInput').value = amount;
-            
-            // Update button states
-            document.querySelectorAll('.deposit-amount-btn').forEach(btn => {
-                btn.classList.remove('bg-green-50', 'border-green-200', 'text-green-700');
-            });
-            
-            const selectedBtn = document.querySelector(`[data-amount="${amount}"]`);
-            if (selectedBtn) {
-                selectedBtn.classList.add('bg-green-50', 'border-green-200', 'text-green-700');
-            }
-            
-            updatePaymentSummary();
-            checkCanProceed();
-        }
-
-        function validateDepositAmount() {
-            const input = document.getElementById('depositAmountInput');
-            const error = document.getElementById('depositAmountError');
-            const amount = parseInt(input.value);
-            
-            if (amount < 10000) {
-                error.textContent = 'Số tiền tối thiểu là ₫10,000';
-                error.classList.remove('hidden');
-                currentDepositAmount = 0;
-            } else if (amount > 10000000) {
-                error.textContent = 'Số tiền tối đa là ₫10,000,000';
-                error.classList.remove('hidden');
-                currentDepositAmount = 0;
-            } else {
-                error.classList.add('hidden');
-                currentDepositAmount = amount;
-                
-                // Update button states
-                document.querySelectorAll('.deposit-amount-btn').forEach(btn => {
-                    btn.classList.remove('bg-green-50', 'border-green-200', 'text-green-700');
-                });
-            }
-            
-            updatePaymentSummary();
-            checkCanProceed();
-        }
-
-        function selectPaymentMethod(method) {
-            selectedPaymentMethod = method;
-            
-            // Update button states
-            document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.classList.remove('bg-green-50', 'border-green-200', 'bg-pink-50', 'border-pink-200', 'bg-blue-50', 'border-blue-200', 'bg-red-50', 'border-red-200');
-            });
-            
-            const selectedBtn = document.querySelector(`[data-method="${method}"]`);
-            if (selectedBtn) {
-                if (method === 'bank') {
-                    selectedBtn.classList.add('bg-green-50', 'border-green-200');
-                } else if (method === 'momo') {
-                    selectedBtn.classList.add('bg-pink-50', 'border-pink-200');
-                } else if (method === 'zalopay') {
-                    selectedBtn.classList.add('bg-blue-50', 'border-blue-200');
-                } else if (method === 'vnpay') {
-                    selectedBtn.classList.add('bg-red-50', 'border-red-200');
-                }
-            }
-            
-            checkCanProceed();
-        }
-
-        function updatePaymentSummary() {
-            if (currentDepositAmount > 0) {
-                document.getElementById('paymentSummary').classList.remove('hidden');
-                document.getElementById('summaryAmount').textContent = formatPrice(currentDepositAmount);
-                document.getElementById('summaryTotal').textContent = formatPrice(currentDepositAmount);
-            } else {
-                document.getElementById('paymentSummary').classList.add('hidden');
-            }
-        }
-
-        function checkCanProceed() {
-            const proceedBtn = document.getElementById('proceedPaymentBtn');
-            if (currentDepositAmount > 0 && selectedPaymentMethod) {
-                proceedBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                proceedBtn.disabled = false;
-            } else {
-                proceedBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                proceedBtn.disabled = true;
-            }
-        }
-
-        function proceedToPayment() {
-            if (currentDepositAmount > 0 && selectedPaymentMethod) {
-                closeWalletModal();
-                openPaymentModal();
-            }
-        }
-
-        function viewDepositHistory() {
-            closeWalletModal();
-            openHistoryModal();
-        }
-
-        function resetWalletForm() {
-            document.getElementById('depositAmountInput').value = '';
-            document.getElementById('depositAmountError').classList.add('hidden');
-            document.getElementById('paymentSummary').classList.add('hidden');
-            
-            document.querySelectorAll('.deposit-amount-btn').forEach(btn => {
-                btn.classList.remove('bg-green-50', 'border-green-200', 'text-green-700');
-            });
-            
-            document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.classList.remove('bg-green-50', 'border-green-200', 'bg-pink-50', 'border-pink-200', 'bg-blue-50', 'border-blue-200', 'bg-red-50', 'border-red-200');
-            });
-            
-            checkCanProceed();
-        }
-
-        // Payment Modal Functions
-        function openPaymentModal() {
-            document.getElementById('paymentModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            // Update payment info
-            document.getElementById('paymentAmount').textContent = formatPrice(currentDepositAmount);
-            document.getElementById('paymentMethodName').textContent = getPaymentMethodName(selectedPaymentMethod);
-            
-            // Show appropriate payment method
-            hideAllPaymentMethods();
-            if (selectedPaymentMethod === 'bank') {
-                document.getElementById('bankPayment').classList.remove('hidden');
-                document.getElementById('bankTransferContent').textContent = `NAP ${currentDepositAmount} ${generateTransactionId()}`;
-            } else if (selectedPaymentMethod === 'momo') {
-                document.getElementById('momoPayment').classList.remove('hidden');
-                document.getElementById('momoAmount').textContent = formatPrice(currentDepositAmount);
-                document.getElementById('momoContent').textContent = generateTransactionId();
-            } else if (selectedPaymentMethod === 'zalopay') {
-                document.getElementById('zalopayPayment').classList.remove('hidden');
-                document.getElementById('zalopayAmount').textContent = formatPrice(currentDepositAmount);
-                document.getElementById('zalopayContent').textContent = generateTransactionId();
-            } else if (selectedPaymentMethod === 'vnpay') {
-                document.getElementById('vnpayPayment').classList.remove('hidden');
-                document.getElementById('vnpayAmount').textContent = formatPrice(currentDepositAmount);
-                document.getElementById('vnpayContent').textContent = generateTransactionId();
-            }
-        }
-
-        function closePaymentModal() {
-            document.getElementById('paymentModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        function hideAllPaymentMethods() {
-            document.getElementById('bankPayment').classList.add('hidden');
-            document.getElementById('momoPayment').classList.add('hidden');
-            document.getElementById('zalopayPayment').classList.add('hidden');
-            document.getElementById('vnpayPayment').classList.add('hidden');
-        }
-
-        function checkPaymentStatus() {
-            if (window.fastNotice) {
-                window.fastNotice.show('Đang kiểm tra trạng thái thanh toán...', 'info');
-            }
-        }
-
-        // History Modal Functions
-        function openHistoryModal() {
-            document.getElementById('historyModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeHistoryModal() {
-            document.getElementById('historyModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        function setHistoryFilter(filter) {
-            currentHistoryFilter = filter;
-            
-            // Update button states
-            document.querySelectorAll('.history-filter-btn').forEach(btn => {
-                btn.classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
-                btn.classList.add('text-gray-500');
-            });
-            
-            const selectedBtn = document.querySelector(`[data-filter="${filter}"]`);
-            if (selectedBtn) {
-                selectedBtn.classList.add('bg-white', 'text-gray-900', 'shadow-sm');
-                selectedBtn.classList.remove('text-gray-500');
-            }
-            
-            // Here you would filter the history list
-            console.log(`Filtered history by: ${filter}`);
-        }
-
-        // Utility Functions
-        function formatPrice(amount) {
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(amount);
-        }
-
-        function getPaymentMethodName(method) {
-            const methods = {
-                'bank': 'Chuyển khoản ngân hàng',
-                'momo': 'Ví MoMo',
-                'zalopay': 'ZaloPay',
-                'vnpay': 'VNPay'
-            };
-            return methods[method] || 'Chưa chọn';
-        }
-
-        function generateTransactionId() {
-            return 'TXN' + Math.random().toString(36).substr(2, 9).toUpperCase();
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                if (window.fastNotice) {
-                    window.fastNotice.show('Đã sao chép vào clipboard!', 'success');
-                }
-            }).catch(() => {
-                if (window.fastNotice) {
-                    window.fastNotice.show('Không thể sao chép!', 'error');
-                }
-            });
-        }
-    </script>
 </body>
 
+</html>
 </html>
