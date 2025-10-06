@@ -95,25 +95,6 @@
     }
   }
 
-  /* Custom responsive breakpoints for cart */
-  @media (max-width: 475px) {
-    .xs\:inline {
-      display: inline;
-    }
-    .xs\:hidden {
-      display: none;
-    }
-  }
-
-  @media (min-width: 475px) {
-    .xs\:inline {
-      display: inline;
-    }
-    .xs\:hidden {
-      display: none;
-    }
-  }
-
   /* Button Styles */
   .btn {
     @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
@@ -1262,10 +1243,9 @@
 
     <!-- Header Component JS -->
     <script src="js/header.js"></script>
-    <!-- Homepage Component JS -->
-    <script src="js/homemmo.js"></script>
     <!-- BlazeSlider JS -->
     <script src="js/blaze-slider.js"></script>
+ 
     <!-- Lucide Icons - Custom Build -->
     <!-- <script src="js/lucide-custom.min.js"></script> -->
     <!-- Hiện tại đang Development nên tôi dùng CDN của Lucide trước -->
@@ -1358,7 +1338,7 @@
 
 </head>
 
-<body>
+<body class="min-h-screen bg-white">
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm sticky top-0 z-50" x-data="headerComponent()">
         <!-- Top Bar -->
@@ -1380,10 +1360,7 @@
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <div class="hidden sm:flex items-center space-x-2">
-                            <i data-lucide="flame" class="w-4 h-4"></i>
-                            <span>Flash Sale - Giảm đến 70%</span>
-                        </div>
+                        <span class="hidden sm:inline">🔥 Flash Sale - Giảm đến 70%</span>
                         <a href="/support" class="hover:text-emerald-200 transition-colors">Liên hệ</a>
                     </div>
                 </div>
@@ -1760,13 +1737,6 @@
 
                 <!-- Right side -->
                 <div class="flex items-center space-x-0 xl:space-x-3">
-                    <!-- Post Button -->
-                    <button @click="handlePostClick()" class="btn btn-primary">
-                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
-                        <span class="hidden sm:inline">Đăng Bán</span>
-                        <span class="sm:hidden">Đăng</span>
-                    </button>
-
                     <!-- Shopping Cart -->
                     <button @click="toggleCart()" class="hidden lg:flex mr-3 xl:mr-0 btn btn-overflow btn-ghost relative">
                         <i data-lucide="shopping-cart" class="w-5 h-5"></i>
@@ -1776,8 +1746,15 @@
                               x-show="cartCount > 0" x-text="cartCount">0</span>
                     </button>
 
+                    <!-- Post Button -->
+                    <button @click="handlePostClick()" class="btn btn-primary">
+                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                        <span class="hidden sm:inline">Đăng Bán</span>
+                        <span class="sm:hidden">Đăng</span>
+                    </button>
+
                     <!-- Auth Section -->
-                    <section class="flex items-center">
+                    <div class="flex items-center">
                         <!-- Login Buttons (show by default) -->
                         <div id="loginButtons" class="flex items-center space-x-3">
                             <!-- Desktop Login Button -->
@@ -1787,7 +1764,11 @@
                                 Đăng Nhập
                             </button>
 
-                           
+                            <!-- Mobile Login Icon -->
+                            <button @click="openAuthModal(); authTab = 'login'; errors = {}; isLoading = false"
+                                class="xl:hidden btn btn-ghost btn-sm p-2 h-8 w-8">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </button>
                         </div>
 
                         <!-- User Dropdown (hidden by default) -->
@@ -1798,78 +1779,21 @@
                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGLy8P0ACAAA//8CbgGIf795rQAAAABJRU5ErkJggg==                                "
                                     alt="User" class="w-8 h-8 rounded-full">
                                 <span id="userName" class="hidden lg:block text-sm font-medium">User</span>
-                            </button>
+                        </button>
                             <div x-ref="userMenu"
-                                class="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 hidden">
-                                
-                                <!-- User Info Section -->
-                                <div class="px-4 py-3 border-b border-gray-100">
-                                    <div class="flex flex-col">
-                                        <p class="text-sm font-semibold text-gray-900" id="userName">John Doe</p>
-                                        <p class="text-xs text-gray-500" id="userEmail">john@example.com</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Dashboard Link -->
-                                <a href="dashboard.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                    <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                    Dashboard
-                                </a>
-
-                                <!-- Profile Link -->
-                                <a href="profile.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                    <i data-lucide="user" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                    Profile
-                                </a>
-                                
-                                <!-- My Orders Link -->
-                                <a href="orders.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                    <div class="flex items-center">
-                                        <i data-lucide="package" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                        My Orders
-                                    </div>
-                                    <span class="text-xs font-semibold text-blue-600">1</span>
-                                </a>
-                                
-                                <!-- Wallet Link -->
-                                <a href="wallet.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                    <div class="flex items-center">
-                                        <i data-lucide="wallet" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                        Wallet
-                                    </div>
-                                    <span class="text-xs font-semibold text-green-600" x-text="formatPrice(walletBalance)">1.350.000 ₫</span>
-                                </a>
-                                
-                                <!-- Favorites Link -->
-                                <a href="favorites.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                    <i data-lucide="heart" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                    Favorites
-                                </a>
-                                
-                                
-                                <!-- Separator -->
-                                <div class="border-t border-gray-100 my-2"></div>
-                                
-                                <!-- Settings Link -->
-                                <a href="settings.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                    <i data-lucide="settings" class="w-4 h-4 mr-3 text-gray-500"></i>
-                                    Settings
-                                </a>
-                                
-                                <!-- Logout Button -->
+                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 hidden">
+                                <a href="/newfeed"
+                                    class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">Newfeed</a>
+                                <a href="/u/me" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">Hồ Sơ</a>
                                 <button @click="logout()"
-                                    class="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-50">
-                                    <i data-lucide="log-out" class="w-4 h-4 mr-3"></i>
-                                    Log out
-                                </button>
+                                    class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Đăng
+                                    Xuất</button>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
                     <!-- Mobile Menu -->
-                    <section class="lg:hidden flex items-center space-x-2 pl-2">
-                        
-                        
+                    <div class="lg:hidden flex items-center space-x-2 pl-2">
                         <!-- Mobile Cart -->
                         <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
                             <i data-lucide="shopping-cart" class="w-6 h-6"></i>
@@ -1883,7 +1807,7 @@
                         <button @click="openMobileMenu()" class="btn btn-ghost btn-sm p-2 h-8 w-8">
                             <i data-lucide="menu" class="w-6 h-6"></i>
                         </button>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2386,7 +2310,7 @@
                         </button>
                         <button @click="viewCart()" class="w-full btn btn-outline">
                             <i data-lucide="shopping-cart" class="w-4 h-4 mr-2"></i>
-                            <a href="/cart.html">Xem giỏ hàng</a>
+                            Xem giỏ hàng
                         </button>
                     </div>
                 </div>
@@ -2647,263 +2571,159 @@
                 </div>
             </div>
         </div>
-
-        
     </header>
 
     <!-- Main Content Area -->
-    <main class="min-h-screen bg-gray-50" x-data="cartComponent()">
-        <!-- Success Header -->
-        <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-b border-green-200">
-            <div class="container mx-auto px-4 py-8 sm:py-12">
-                <div class="text-center">
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                        <i data-lucide="check-circle" class="w-8 h-8 sm:w-10 sm:h-10 text-green-600"></i>
-                    </div>
-                    <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Đặt hàng thành công!</h1>
-                    <p class="text-base sm:text-lg text-gray-600 mb-4">Cảm ơn bạn đã mua sắm tại MMO Store</p>
-                    <div class="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-green-100 text-green-800 rounded-full text-xs sm:text-sm font-medium">
-                        <i data-lucide="mail" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                        <span class="hidden sm:inline">Thông tin đơn hàng đã được gửi đến email của bạn</span>
-                        <span class="sm:hidden">Đã gửi email xác nhận</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Order Details -->
-        <div class="container mx-auto px-4 py-6 sm:py-8">
-            <div class="max-w-4xl mx-auto">
-                <!-- Order Summary Card -->
-                <div class="card mb-6 sm:mb-8">
-                    <div class="card-content">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                            <!-- Order Info -->
-                            <div class="space-y-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Thông tin đơn hàng</h3>
-                                <div class="space-y-2 sm:space-y-3">
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Mã đơn hàng:</span>
-                                        <span class="font-mono text-emerald-600 text-sm sm:text-base break-all">#ORD-20241215-ABC</span>
-                                    </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Ngày đặt:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">15/12/2024, 14:30</span>
-                                    </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Phương thức thanh toán:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">Ví số dư</span>
-                                    </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Trạng thái:</span>
-                                        <span class="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs sm:text-sm font-medium w-fit">
-                                            <i data-lucide="check-circle" class="w-3 h-3"></i>
-                                            Đã thanh toán
-                                        </span>
-                                    </div>
+    <main class="min-h-screen bg-gray-50">
+        <div class="container py-8 lg:py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+                <!-- Main blog post content -->
+                <div class="lg:col-span-2">
+                    <article class="card p-6 lg:p-8">
+                        <!-- Breadcrumbs -->
+                        <div class="mb-6">
+                            <nav class="breadcrumb" aria-label="Breadcrumb">
+                                <ol class="flex items-center space-x-2 text-sm text-gray-500">
+                                    <li>
+                                        <a href="homemmo.html" class="breadcrumb-link">Trang chủ</a>
+                                    </li>
+                                    <li>
+                                        <span class="breadcrumb-separator">/</span>
+                                    </li>
+                                    <li>
+                                        <a href="blogs.html" class="breadcrumb-link">Blog</a>
+                                    </li>
+                                    <li>
+                                        <span class="breadcrumb-separator">/</span>
+                                    </li>
+                                    <li>
+                                        <span class="breadcrumb-current">Hướng dẫn sử dụng VPN...</span>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+    
+                        <!-- Article Header -->
+                        <header class="mb-6">
+                            <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
+                                Hướng dẫn chi tiết cách sử dụng VPN để truy cập an toàn và bảo mật
+                            </h1>
+                            <div class="flex items-center text-sm text-gray-500 space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://i.pravatar.cc/150?u=author" alt="Author" class="w-8 h-8 rounded-full">
+                                    <span>Admin</span>
                                 </div>
+                                <span>•</span>
+                                <span>15 Tháng 7, 2024</span>
+                                <span>•</span>
+                                <a href="#" class="link">VPN</a>
                             </div>
-
-                            <!-- Customer Info -->
-                            <div class="space-y-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Thông tin khách hàng</h3>
-                                <div class="space-y-2 sm:space-y-3">
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Họ và tên:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">Nguyễn Văn A</span>
-                                    </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Email:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base break-all">nguyenvana@email.com</span>
-                                    </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Số điện thoại:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">0123456789</span>
-                                    </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Tên đăng nhập:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">nguyenvana123</span>
-                                    </div>
-                                </div>
+                        </header>
+    
+                        <!-- Featured Image -->
+                        <div class="mb-8">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1974&auto=format&fit=crop" alt="VPN Security" class="rounded-lg w-full h-auto object-cover">
+                        </div>
+    
+                        <!-- Article Content -->
+                        <div class="prose prose-lg max-w-none">
+                            <p>Trong thời đại số, việc bảo vệ thông tin cá nhân và dữ liệu trực tuyến trở nên quan trọng hơn bao giờ hết. Mạng riêng ảo (VPN) là một công cụ mạnh mẽ giúp bạn duyệt web an toàn, bảo mật và ẩn danh. Bài viết này sẽ hướng dẫn bạn chi tiết cách sử dụng VPN một cách hiệu quả.</p>
+                            
+                            <h2>VPN là gì và tại sao bạn nên sử dụng?</h2>
+                            <p>VPN (Virtual Private Network) tạo ra một kết nối được mã hóa giữa thiết bị của bạn và internet. Toàn bộ lưu lượng truy cập của bạn sẽ đi qua một máy chủ từ xa do nhà cung cấp VPN vận hành. Điều này giúp:</p>
+                            <ul>
+                                <li><strong>Bảo mật dữ liệu:</strong> Mã hóa lưu lượng truy cập, ngăn chặn tin tặc và các bên thứ ba theo dõi hoạt động của bạn, đặc biệt khi sử dụng Wi-Fi công cộng.</li>
+                                <li><strong>Ẩn danh tính:</strong> Che giấu địa chỉ IP thật của bạn, thay thế bằng địa chỉ IP của máy chủ VPN, giúp bạn duyệt web ẩn danh.</li>
+                                <li><strong>Vượt qua giới hạn địa lý:</strong> Truy cập các nội dung, dịch vụ bị chặn hoặc giới hạn ở quốc gia của bạn.</li>
+                            </ul>
+    
+                            <h2>Cách chọn nhà cung cấp VPN uy tín</h2>
+                            <p>Trước khi bắt đầu, bạn cần chọn một nhà cung cấp VPN đáng tin cậy. Dưới đây là một số tiêu chí quan trọng:</p>
+                            <blockquote>
+                                <p>"Một VPN tốt không chỉ nhanh và ổn định mà còn phải có chính sách không ghi nhật ký (no-logs policy) rõ ràng để đảm bảo quyền riêng tư của bạn."</p>
+                            </blockquote>
+    
+                            <h2>Hướng dẫn cài đặt và sử dụng</h2>
+                            <p>Hầu hết các dịch vụ VPN đều rất dễ cài đặt. Dưới đây là các bước cơ bản:</p>
+                            <ol>
+                                <li><strong>Đăng ký tài khoản:</strong> Truy cập trang web của nhà cung cấp VPN và chọn gói dịch vụ phù hợp.</li>
+                                <li><strong>Tải và cài đặt ứng dụng:</strong> Tải ứng dụng VPN cho thiết bị của bạn (PC, Mac, điện thoại Android, iOS).</li>
+                                <li><strong>Đăng nhập và kết nối:</strong> Mở ứng dụng, đăng nhập bằng tài khoản của bạn và nhấn nút "Kết nối". Ứng dụng sẽ tự động chọn máy chủ tốt nhất hoặc bạn có thể chọn một máy chủ ở quốc gia cụ thể.</li>
+                            </ol>
+    
+                            <p>Sau khi kết nối thành công, toàn bộ lưu lượng truy cập internet của bạn sẽ được bảo vệ. Bạn có thể kiểm tra địa chỉ IP của mình trên các trang web như <code>whatismyip.com</code> để xác nhận rằng VPN đang hoạt động.</p>
+                        </div>
+    
+                        <!-- Tags -->
+                        <div class="mt-8 pt-6 border-t">
+                            <div class="flex items-center flex-wrap gap-2">
+                                <span class="font-medium">Tags:</span>
+                                <a href="#" class="badge badge-secondary">VPN</a>
+                                <a href="#" class="badge badge-secondary">Bảo mật</a>
+                                <a href="#" class="badge badge-secondary">An toàn mạng</a>
+                                <a href="#" class="badge badge-secondary">Internet</a>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
-
-                <!-- Order Items -->
-                <div class="card mb-6 sm:mb-8">
-                    <div class="card-header">
-                        <h2 class="card-title text-responsive-lg">Sản phẩm đã mua</h2>
-                        <p class="card-description text-responsive-sm">3 sản phẩm</p>
-                    </div>
-                    <div class="card-content">
-                        <div class="">
-                            <!-- Order Item 1 -->
-                            <div class="flex flex-col space-y-3 p-3 sm:p-4 bg-gray-50 rounded-lg">
-                                <div class="flex items-center space-x-3 sm:space-x-4">
-                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=100&h=100&fit=crop&crop=center" 
-                                             alt="Backlink Premium" 
-                                             class="w-full h-full object-cover rounded-lg">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h3 class="font-medium text-gray-900 text-sm sm:text-base">Backlink Premium</h3>
-                                        <p class="text-xs sm:text-sm text-gray-500">SEO & Link Building</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫500,000</span>
-                                        <span class="text-xs text-gray-500">x1</span>
-                                    </div>
-                                    <span class="text-base sm:text-lg font-bold text-emerald-600">₫500,000</span>
-                                </div>
-                            </div>
-
-                            <!-- Order Item 2 -->
-                            <div class="flex flex-col space-y-3 p-3 sm:p-4 bg-gray-50 rounded-lg">
-                                <div class="flex items-center space-x-3 sm:space-x-4">
-                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=100&h=100&fit=crop&crop=center" 
-                                             alt="Tài khoản Gmail" 
-                                             class="w-full h-full object-cover rounded-lg">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h3 class="font-medium text-gray-900 text-sm sm:text-base">Tài khoản Gmail</h3>
-                                        <p class="text-xs sm:text-sm text-gray-500">Email Accounts</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫200,000</span>
-                                        <span class="text-xs text-gray-500">x2</span>
-                                    </div>
-                                    <span class="text-base sm:text-lg font-bold text-emerald-600">₫400,000</span>
-                                </div>
-                            </div>
-
-                            <!-- Order Item 3 -->
-                            <div class="flex flex-col space-y-3 p-3 sm:p-4 bg-gray-50 rounded-lg">
-                                <div class="flex items-center space-x-3 sm:space-x-4">
-                                    <div class="w-12 h-12 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?w=100&h=100&fit=crop&crop=center" 
-                                             alt="Tài khoản Facebook Clone" 
-                                             class="w-full h-full object-cover rounded-lg">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h3 class="font-medium text-gray-900 text-sm sm:text-base">Tài khoản Facebook Clone</h3>
-                                        <p class="text-xs sm:text-sm text-gray-500">Facebook Accounts</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫300,000</span>
-                                        <span class="text-xs text-gray-500">x1</span>
-                                    </div>
-                                    <span class="text-base sm:text-lg font-bold text-emerald-600">₫300,000</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Order Total -->
-                        <div class="border-t border-gray-200 pt-4 mt-4 sm:mt-6">
-                            <div class="space-y-2 sm:space-y-3">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs sm:text-sm text-gray-600">Tạm tính:</span>
-                                    <span class="text-xs sm:text-sm font-semibold text-gray-900">₫1,200,000</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs sm:text-sm text-gray-600">Phí giao dịch:</span>
-                                    <span class="text-xs sm:text-sm font-semibold text-green-600">Miễn phí</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs sm:text-sm text-gray-600">Giảm giá:</span>
-                                    <span class="text-xs sm:text-sm font-semibold text-red-600">-₫100,000</span>
-                                </div>
-                                <div class="border-t border-gray-200 pt-2 sm:pt-3">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-base sm:text-lg font-bold text-gray-900">Tổng cộng:</span>
-                                        <span class="text-lg sm:text-xl font-bold text-emerald-600">₫1,100,000</span>
-                                    </div>
-                                </div>
-                            </div>
+    
+                <!-- Sidebar -->
+                <aside class="space-y-8">
+                    <!-- Search -->
+                    <div class="card p-6">
+                        <h3 class="section-title mb-4">Tìm kiếm</h3>
+                        <div class="input-icon">
+                            <input type="text" placeholder="Tìm kiếm bài viết..." class="input">
+                            <i class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></i>
                         </div>
                     </div>
-                </div>
-
-                <!-- Digital Product Delivery -->
-                <div class="card mb-6 sm:mb-8">
-                    <div class="card-header">
-                        <h2 class="card-title text-lg sm:text-xl">Thông tin giao hàng</h2>
-                        <p class="card-description text-sm sm:text-base">Sản phẩm số sẽ được gửi qua email</p>
+    
+                    <!-- Categories -->
+                    <div class="card p-6">
+                        <h3 class="section-title mb-4">Chuyên mục</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="link-secondary flex justify-between"><span>Thủ thuật</span><span>(12)</span></a></li>
+                            <li><a href="#" class="link-secondary flex justify-between"><span>Hướng dẫn</span><span>(8)</span></a></li>
+                            <li><a href="#" class="link-secondary flex justify-between"><span>Tin tức</span><span>(5)</span></a></li>
+                            <li><a href="#" class="link-secondary flex justify-between"><span>Đánh giá</span><span>(9)</span></a></li>
+                        </ul>
                     </div>
-                    <div class="card-content">
-                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
-                            <div class="flex items-start gap-2 sm:gap-3">
-                                <i data-lucide="download" class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mt-0.5 flex-shrink-0"></i>
-                                <div class="min-w-0">
-                                    <h3 class="font-medium text-blue-900 mb-2 text-sm sm:text-base">Sản phẩm số đã được gửi</h3>
-                                    <p class="text-xs sm:text-sm text-blue-800 mb-3">
-                                        Các sản phẩm số của bạn đã được gửi đến email <strong class="break-all">nguyenvana@email.com</strong>. 
-                                        Vui lòng kiểm tra hộp thư chính và thư mục spam.
-                                    </p>
-                                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-blue-700">
-                                        <div class="flex items-center gap-1">
-                                            <i data-lucide="mail" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                                            <span>Email đã gửi</span>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <i data-lucide="clock" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                                            <span>15/12/2024, 14:32</span>
-                                        </div>
-                                    </div>
+    
+                    <!-- Recent Posts -->
+                    <div class="card p-6">
+                        <h3 class="section-title mb-4">Bài viết gần đây</h3>
+                        <div class="space-y-4">
+                            <a href="#" class="flex items-center space-x-4 group">
+                                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop" alt="Post" class="w-16 h-16 rounded-md object-cover">
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-800 group-hover:text-emerald-600 leading-tight">Top 5 ứng dụng Netflix tốt nhất 2024</p>
+                                    <span class="text-xs text-gray-500">12 Tháng 7, 2024</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                    <a href="/" class="btn btn-primary btn-md ">
-                        <i data-lucide="home" class="w-5 h-5 mr-1 sm:mr-2"></i>
-                        <span class="text-responsive-sm">Về trang chủ</span>
-                    </a>
-                    <a href="/products.html" class="btn btn-outline btn-mdmd">
-                        <i data-lucide="shopping-bag" class="w-5 h-5 mr-1 sm:mr-2"></i>
-                        <span class="text-responsive-sm">Tiếp tục mua sắm</span>
-                    </a>
-                    <button onclick="window.print()" class="btn btn-ghost btn-md">
-                        <i data-lucide="printer" class="w-5 h-5 mr-1 sm:mr-2"></i>
-                        <span class="text-responsive-sm">In hóa đơn</span>
-                    </button>
-                </div>
-
-                <!-- Support Info -->
-                <div class="mt-6 sm:mt-8 p-3 sm:p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                    <div class="text-center">
-                        <h3 class="font-medium text-gray-900 mb-2 text-sm sm:text-base">Cần hỗ trợ?</h3>
-                        <p class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
-                            Nếu bạn có bất kỳ câu hỏi nào về đơn hàng, vui lòng liên hệ với chúng tôi
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                            <a href="mailto:support@mmostore.com" class="flex items-center justify-center gap-2 text-xs sm:text-sm text-emerald-600 hover:text-emerald-700">
-                                <i data-lucide="mail" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                                <span class="break-all">support@mmostore.com</span>
                             </a>
-                            <a href="tel:+84123456789" class="flex items-center justify-center gap-2 text-xs sm:text-sm text-emerald-600 hover:text-emerald-700">
-                                <i data-lucide="phone" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                                <span>+84 123 456 789</span>
+                            <a href="#" class="flex items-center space-x-4 group">
+                                <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?q=80&w=1974&auto=format&fit=crop" alt="Post" class="w-16 h-16 rounded-md object-cover">
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-800 group-hover:text-emerald-600 leading-tight">Cách nghe nhạc trên Spotify không cần mạng</p>
+                                    <span class="text-xs text-gray-500">10 Tháng 7, 2024</span>
+                                </div>
+                            </a>
+                            <a href="#" class="flex items-center space-x-4 group">
+                                <img src="https://images.unsplash.com/photo-1593438462539-afe495451694?q=80&w=2070&auto=format&fit=crop" alt="Post" class="w-16 h-16 rounded-md object-cover">
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-800 group-hover:text-emerald-600 leading-tight">Mẹo sử dụng ChatGPT hiệu quả cho công việc</p>
+                                    <span class="text-xs text-gray-500">8 Tháng 7, 2024</span>
+                                </div>
                             </a>
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
         </div>
     </main>
+    
 
-     <!-- Footer -->
-     <footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
         <div class="container mx-auto px-4 py-12">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Logo & Description -->
@@ -3003,15 +2823,6 @@
     <script>
         lucide.createIcons();
     </script>
-
-    <!-- Cart Manager -->
-    <script src="js/cart-manager.js"></script>
-    <!-- Cart JavaScript -->
-    <script src="js/cart.js"></script>
 </body>
 
 </html>
-
-
-</html>
-

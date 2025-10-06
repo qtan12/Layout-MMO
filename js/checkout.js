@@ -49,9 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form validation
+    // Form validation (simplified for static HTML)
     const checkoutForm = document.getElementById('checkoutForm');
-    const checkoutBtn = document.getElementById('checkoutBtn');
     
     checkoutForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -63,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formObject[key] = value;
         });
         
-        // Validate required fields (removed address, added username)
+        // Validate required fields
         const requiredFields = ['fullName', 'email', 'phone', 'username', 'agreeTerms'];
         let isValid = true;
         
@@ -88,13 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Show loading state
-        checkoutBtn.disabled = true;
-        checkoutBtn.innerHTML = `
-            <div class="loading loading-sm mr-2"></div>
-            Đang xử lý thanh toán...
-        `;
-        
         // Simulate payment processing with wallet deduction
         setTimeout(() => {
             // Deduct amount from wallet (VND)
@@ -110,66 +102,20 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.removeItem('cartItems');
             
             // Redirect to success page
-            window.location.href = '/order-success.html';
+            window.location.href = 'order-success.html';
         }, 2000);
     });
     
-    // Load cart items from localStorage
-    function loadCartItems() {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-        const orderItemsContainer = document.getElementById('orderItems');
-        const itemCountElement = document.getElementById('itemCount');
-        
-        if (cartItems.length === 0) {
-            orderItemsContainer.innerHTML = `
-                <div class="text-center py-8">
-                    <i data-lucide="shopping-cart" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
-                    <p class="text-gray-500 text-lg font-medium">Giỏ hàng trống</p>
-                    <p class="text-gray-400 text-sm mt-2">Vui lòng thêm sản phẩm vào giỏ hàng</p>
-                </div>
-            `;
-            itemCountElement.textContent = '0 sản phẩm';
-            return;
-        }
-        
-        // Render cart items
-        orderItemsContainer.innerHTML = cartItems.map(item => `
-            <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <div class="bg-icon">
-                    <i data-lucide="${item.icon}"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                    <p class="font-medium text-gray-900 truncate">${item.name}</p>
-                    <p class="text-sm text-gray-500">${item.category}</p>
-                    <div class="flex items-center justify-between mt-2">
-                        <span class="text-sm font-semibold text-emerald-600">₫${item.price.toLocaleString()}</span>
-                        <span class="text-xs text-gray-500">x${item.quantity}</span>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-        
-        // Update item count
-        itemCountElement.textContent = `${cartItems.length} sản phẩm`;
-        
-        // Calculate totals
-        const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const discount = 100000; // Sample discount
-        const total = subtotal - discount;
-        
-        // Update order total for wallet check
-        orderTotal = total;
-        
-        document.getElementById('subtotal').textContent = `₫${subtotal.toLocaleString()}`;
-        document.getElementById('total').textContent = `₫${total.toLocaleString()}`;
-        
-        // Check wallet balance after calculating total
+    // Load order data (static values from HTML)
+    function loadOrderData() {
+        // Use static values from HTML - no dynamic cart loading
+        orderTotal = 1100000; // Sample total from HTML
         checkWalletBalance();
     }
     
-    // Load wallet balance and cart items on page load
+    // Load wallet balance and order data on page load
     loadWalletBalance();
-    loadCartItems();
+    loadOrderData();
     
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') {

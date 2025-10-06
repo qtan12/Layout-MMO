@@ -2431,7 +2431,7 @@
                         <span class="text-2xl font-bold text-emerald-600" x-text="formatPrice(cartTotal)">0₫</span>
                     </div>
                     <div class="space-y-3">
-                        <button @click="proceedToCheckout()" class="w-full btn btn-primary">
+                        <button @click="window.location.href = 'checkout.html'" class="w-full btn btn-primary">
                             <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
                             Thanh toán
                         </button>
@@ -2713,11 +2713,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
                 <path d="m9 18 6-6-6-6"></path>
             </svg>
-            <a class="hover:text-emerald-600 whitespace-nowrap" href="/cart.html">Giỏ hàng</a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
-                <path d="m9 18 6-6-6-6"></path>
-            </svg>
-            <a class="hover:text-emerald-600 whitespace-nowrap hidden sm:inline" href="/checkout">Thanh toán</a>
+            
+            <a class="hover:text-emerald-600 whitespace-nowrap" href="/checkout">Thanh toán</a>
         </nav>
             <!--  -->
     
@@ -2766,6 +2763,17 @@
                                     </div>
                                 </div>
 
+                                 <!-- Order Notes -->
+                                 <div class="space-y-4">
+                                    <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Ghi chú đơn hàng</h3>
+                                    
+                                    <div>
+                                        <label for="notes" class="block text-sm font-semibold text-gray-700 mb-2">Ghi chú (tùy chọn)</label>
+                                        <textarea id="notes" name="notes" rows="4"
+                                            class="input input-lg rounded-xl resize-none"
+                                            placeholder="Nhập ghi chú cho đơn hàng..."></textarea>
+                                    </div>
+                                </div>
                                 <!-- Payment Method -->
                                 <div class="space-y-4">
                                     <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Phương thức thanh toán</h3>
@@ -2783,8 +2791,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-left sm:text-right">
-                                                <p class="text-xl sm:text-2xl font-bold text-emerald-600" id="currentWalletBalance">₫68,400,000</p>
-                                                <p class="text-xs text-emerald-500">Có sẵn</p>
+                                                <p class="text-responsive-lg font-bold text-emerald-600" id="currentWalletBalance">₫68,400,000</p>
+                                                <p class="text-responsive-sm  text-emerald-600">Có sẵn</p>
                                             </div>
                                         </div>
                                     </div>
@@ -2804,19 +2812,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Order Notes -->
-                                <div class="space-y-4">
-                                    <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Ghi chú đơn hàng</h3>
-                                    
-                                    <div>
-                                        <label for="notes" class="block text-sm font-semibold text-gray-700 mb-2">Ghi chú (tùy chọn)</label>
-                                        <textarea id="notes" name="notes" rows="4"
-                                            class="input input-lg rounded-xl resize-none"
-                                            placeholder="Nhập ghi chú cho đơn hàng..."></textarea>
-                                    </div>
-                                </div>
-
                                 <!-- Terms and Conditions -->
                                 <div class="space-y-4">
                                     <div class="flex items-start">
@@ -2839,16 +2834,29 @@
                 <div class="checkout-summary-col">
                     <div class="card checkout-sticky">
                         <div class="card-header">
-                            <h2 class="card-title text-responsive-lg">Đơn hàng của bạn</h2>
-                            <p class="card-description text-responsive-sm" id="itemCount">3 sản phẩm</p>
+                            <h2 class="card-title text-responsive-lg">Tóm tắt đơn hàng</h2>
+                            <p class="card-description text-responsive-sm" id="itemCount">3 sản phẩm trong đơn hàng</p>
                         </div>
                         <div class="card-content">
+                            <!-- Order Summary Header -->
+                            <div class="mb-4 p-2 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="receipt" class="w-4 h-4 text-blue-600"></i>
+                                    <div class="text-sm text-blue-800">
+                                        <p class="font-medium">Xác nhận thanh toán</p>
+                                        <p class="text-xs">Kiểm tra lại thông tin trước khi thanh toán</p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Order Items -->
-                            <div class="space-y-4" id="orderItems">
-                                <!-- Sample Order Item 1 -->
+                            <div class="space-y-4">
+                                <!-- Order Item 1 -->
                                 <div class="flex items-center space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
-                                    <div class="bg-icon" style="width: 2rem; height: 2rem;">
-                                        <i data-lucide="link" style="width: 1rem; height: 1rem;"></i>
+                                    <div class="flex-shrink-0 w-16 h-16">
+                                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=100&h=100&fit=crop&crop=center" 
+                                             alt="Backlink Premium" 
+                                             class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <p class="font-medium text-gray-900 truncate text-sm sm:text-base">Backlink Premium</p>
@@ -2860,10 +2868,12 @@
                                     </div>
                                 </div>
 
-                                <!-- Sample Order Item 2 -->
+                                <!-- Order Item 2 -->
                                 <div class="flex items-center space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
-                                    <div class="bg-icon" style="width: 2rem; height: 2rem;">
-                                        <i data-lucide="mail" style="width: 1rem; height: 1rem;"></i>
+                                    <div class="flex-shrink-0" style="width: 3rem; height: 3rem;">
+                                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=100&h=100&fit=crop&crop=center" 
+                                             alt="Tài khoản Gmail" 
+                                             class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <p class="font-medium text-gray-900 truncate text-sm sm:text-base">Tài khoản Gmail</p>
@@ -2875,10 +2885,12 @@
                                     </div>
                                 </div>
 
-                                <!-- Sample Order Item 3 -->
+                                <!-- Order Item 3 -->
                                 <div class="flex items-center space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
-                                    <div class="bg-icon" style="width: 2rem; height: 2rem;">
-                                        <i data-lucide="facebook" style="width: 1rem; height: 1rem;"></i>
+                                    <div class="flex-shrink-0" style="width: 3rem; height: 3rem;">
+                                        <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?w=100&h=100&fit=crop&crop=center" 
+                                             alt="Tài khoản Facebook Clone" 
+                                             class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <p class="font-medium text-gray-900 truncate text-sm sm:text-base">Tài khoản Facebook Clone</p>
@@ -2916,11 +2928,17 @@
                             </div>
 
                             <!-- Checkout Button -->
-                            <div class="mt-4 sm:mt-6">
+                            <div class="mt-4 sm:mt-6" x-data="{ isLoading: false }">
                                 <button type="submit" form="checkoutForm" id="checkoutBtn"
-                                    class="w-full btn btn-primary btn-md sm:btn-lg">
-                                    <i data-lucide="credit-card" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
-                                    <span class="text-sm sm:text-base">Hoàn tất thanh toán</span>
+                                    class="w-full btn btn-primary btn-md sm:btn-lg"
+                                    @click="isLoading = true; setTimeout(() => { window.location.href = 'order-success.html'; }, 2000)"
+                                    :disabled="isLoading">
+                                    <i data-lucide="wallet" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
+                                    <span x-show="!isLoading" class="text-responsive-sm">Thanh toán</span>
+                                    <span x-show="isLoading" class="text-responsive-sm flex items-center">
+                                        <div class="loading loading-sm mr-2"></div>
+                                        Đang xử lý...
+                                    </span>
                                 </button>
                             </div>
 
@@ -2942,6 +2960,17 @@
                                     <div class="text-xs sm:text-sm text-green-800">
                                         <p class="font-medium mb-1">Bảo mật thanh toán</p>
                                         <p class="text-xs">Thanh toán an toàn qua ví số dư, không cần nhập thông tin thẻ</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Final Confirmation -->
+                            <div class="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                                <div class="flex items-start gap-2">
+                                    <i data-lucide="alert-circle" class="w-4 h-4 text-amber-600 mt-0.5"></i>
+                                    <div class="text-xs sm:text-sm text-amber-800">
+                                        <p class="font-medium mb-1">Xác nhận cuối cùng</p>
+                                        <p class="text-xs">Nhấn "Thanh toán bằng ví" để hoàn tất đơn hàng. Sản phẩm sẽ được gửi ngay sau khi thanh toán thành công.</p>
                                     </div>
                                 </div>
                             </div>

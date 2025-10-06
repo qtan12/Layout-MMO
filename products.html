@@ -647,22 +647,19 @@
   /* Responsive Text */
   .text-responsive-xs {
     @apply text-xs sm:text-sm;
-  }
-  .text-responsive-sm {
-    @apply text-sm sm:text-lg;
-  }
-
-  .text-responsive-md {
+    }
+    .text-responsive-sm {
+    @apply text-sm sm:text-base;
+    }
+    .text-responsive-md {
     @apply text-base md:text-lg;
-  }
-
-  .text-responsive-lg {
+    }
+    .text-responsive-lg {
     @apply text-lg sm:text-xl lg:text-2xl;
-  }
-
-  .text-responsive-xl {
+    }
+    .text-responsive-xl {
     @apply text-3xl sm:text-3xl lg:text-4xl;
-  }
+    }
 
 
   /* Hover Effects */
@@ -2767,7 +2764,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
                 <path d="m9 18 6-6-6-6"></path>
             </svg>
-            <a class="hover:text-emerald-600 whitespace-nowrap hidden sm:inline" href="/email">Email</a>
+            <a class="hover:text-emerald-600 whitespace-nowrap" href="/email">Email</a>
         </nav>
             <div class="flex flex-col lg:flex-row ">
                 <!-- Sidebar Filters -->
@@ -2908,9 +2905,16 @@
                                 <h1 class="section-title font-bold text-gray-900">Gian hàng Tài Khoản Email</h1>
                                 <p class="text-gray-600 text-sm mt-1">Hiển thị 1-12 gian hàng</p>
                             </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="flex items-center space-x-2">
-                                    <label class="text-sm text-gray-700">Sắp xếp:</label>
+                            <div class="flex items-center gap-2 sm:gap-4">
+                                <!-- Mobile Filter Button -->
+                                <div class="lg:hidden">
+                                    <button @click="filterOpen = true" class="btn btn-outline btn-sm">
+                                        <i data-lucide="sliders-horizontal" class="w-4 h-4 mr-1.5"></i>
+                                        <span>Lọc</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <label class="text-sm text-gray-700 flex-shrink-0">Sắp xếp:</label>
                                     <select class="btn btn-outline btn-sm">
                                         <option>Phổ biến</option>
                                         <option>Giá thấp đến cao</option>
@@ -2919,183 +2923,145 @@
                                         <option>Đánh giá tốt nhất</option>
                                     </select>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
 
-                    <!-- Mobile Filter Button -->
-                    <div class="lg:hidden mb-4">
-                        <button @click="filterOpen = true" class="w-full btn btn-outline btn-sm lg:btn-md">
-                            <i data-lucide="sliders-horizontal" class="w-5 h-5 text-gray-600"></i>
-                            <span class="font-medium text-gray-900">Lọc & Sắp xếp</span>
-                        </button>
-                    </div>
+                    
 
                     <!-- Products Grid -->
-                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-2">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
                         <!-- Product Card 1 -->
-                        <div class="bg-white card ">
-                            <a href="detail.html" class="block relative group">
-                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
-                                     alt="Gmail Pro Account" 
-                                     class="w-full h-42 rounded-t-md object-cover ">
-                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
-                            </a>
-                            <div class="p-2">
-                                <a href="#" class="text-xs text-gray-500 ">Email Accounts</a>
-                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
-                                    <a href="detail.html">
-                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
-                                    </a>
-                                </h3>
-                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
-                                    <div class="flex text-yellow-500">
-                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                    </div>
-                                    <span class="text-responsive-xs text-gray-500 ">5</span>
-                                </div>
-
-                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
-                                    <span class="text-emerald-600">500₫ - 1000₫</span>
-                                    <span>Đã bán 900</span>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- Product Card 2 -->
-                        <div class="bg-white card ">
-                            <a href="detail.html" class="block relative group">
-                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
-                                     alt="Gmail Pro Account" 
-                                     class="w-full h-42 rounded-t-md object-cover ">
-                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
-                            </a>
-                            <div class="p-2">
-                                <a href="#" class="text-xs text-gray-500 ">Email Accounts</a>
-                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
-                                    <a href="detail.html">
-                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
-                                    </a>
-                                </h3>
-                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
-                                    <div class="flex text-yellow-500">
-                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                    </div>
-                                    <span class="text-responsive-xs text-gray-500 ">5</span>
-                                </div>
-
-                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
-                                    <span class="text-emerald-600">500₫ - 1000₫</span>
-                                    <span>Đã bán 900</span>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- Product Card 3 -->
-                        <div class="bg-white card ">
-                            <a href="detail.html" class="block relative group">
-                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
-                                     alt="Gmail Pro Account" 
-                                     class="w-full h-42 rounded-t-md object-cover ">
-                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
-                            </a>
-                            <div class="p-2">
-                                <a href="#" class="text-xs text-gray-500 ">Email Accounts</a>
-                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
-                                    <a href="detail.html">
-                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
-                                    </a>
-                                </h3>
-                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
-                                    <div class="flex text-yellow-500">
-                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                    </div>
-                                    <span class="text-responsive-xs text-gray-500 ">5</span>
-                                </div>
-
-                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
-                                    <span class="text-emerald-600">500₫ - 1000₫</span>
-                                    <span>Đã bán 2k+</span>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- Product Card 4 -->
-                        <div class="bg-white card ">
-                            <a href="detail.html" class="block relative group">
-                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
-                                     alt="Gmail Pro Account" 
-                                     class="w-full h-42 rounded-t-md object-cover ">
-                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
-                            </a>
-                            <div class="p-2">
-                                <a href="#" class="text-xs text-gray-500 ">Email Accounts</a>
-                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
-                                    <a href="detail.html">
-                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
-                                    </a>
-                                </h3>
-                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
-                                    <div class="flex text-yellow-500">
-                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                    </div>
-                                    <span class="text-responsive-xs text-gray-500 ">5</span>
-                                </div>
-
-                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
-                                    <span class="text-emerald-600">500₫ - 1000₫</span>
-                                    <span>Đã bán 1k+</span>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                      
-                        <!-- Product Card 8 -->
-                        <div class="bg-white card ">
-                            <a href="detail.html" class="block relative group">
-                                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Gmail+Pro" 
-                                     alt="Gmail Pro Account" 
-                                     class="w-full h-42 rounded-t-md object-cover ">
-                                        <span class="badge badge-primary absolute top-0 right-0">-52%</span>
-                            </a>
-                            <div class="p-2">
-                                <a href="#" class="text-xs text-gray-500 ">Email Accounts</a>
-                                <h3 class="text-responsive-xs text-gray-900 mt-1 line-clamp-3">
-                                    <a href="detail.html">
-                                        GMAIL VIỆT NAM HÀNG REG TAY LIVE SIÊU TRÂU,ĐÃ NGÂM LÂU NGÀY,GIÁ SIÊU RẺ
-                                    </a>
-                                </h3>
-                                <div class="flex items-center space-x-1 mt-2 sm:mt-4">
-                                    <div class="flex text-yellow-500">
-                                        <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-                                    </div>
-                                    <span class="text-responsive-xs text-gray-500 ">5</span>
-                                </div>
-
-                                <div class="flex items-center justify-between mt-4 text-responsive-xs text-gray-500">
-                                    <span class="text-emerald-600">500₫ - 1000₫</span>
-                                    <span>Đã bán 900</span>
-                                </div>
-                                
-                            </div>
-                        </div>
+                        <div class="bg-white card p-4">
+							<div class="flex items-center mb-3">
+								<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+									<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0">
+									<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
+									<h4 class="font-bold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
+								</div>
+							</div>
+							<div class="flex items-center justify-start gap-2 mt-4">
+								<div class="flex space-x-1 ">
+									<div class="flex text-yellow-500">
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+									</div>
+									<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+								</div>
+								<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+									<span>•</span>
+									<span>Đã bán 900</span>
+								</div>
+							</div>
+							<div class="flex items-center justify-between mt-4">
+								<span class="text-lg font-bold text-emerald-600">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+									})" class="btn btn-primary btn-md ">
+								<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+								Thêm giỏ hàng
+								</button>
+							</div>
+						</div>
+                        <div class="bg-white card p-4">
+							<div class="flex items-center mb-3">
+								<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+									<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0">
+									<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
+									<h4 class="font-bold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
+								</div>
+							</div>
+							<div class="flex items-center justify-start gap-2 mt-4">
+								<div class="flex space-x-1 ">
+									<div class="flex text-yellow-500">
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+									</div>
+									<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+								</div>
+								<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+									<span>•</span>
+									<span>Đã bán 900</span>
+								</div>
+							</div>
+							<div class="flex items-center justify-between mt-4">
+								<span class="text-lg font-bold text-emerald-600">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+									})" class="btn btn-primary btn-md ">
+								<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+								Thêm giỏ hàng
+								</button>
+							</div>
+						</div>
+                        <!-- product 3 -->
+                        <div class="bg-white card p-4">
+							<div class="flex items-center mb-3">
+								<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+									<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0">
+									<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
+									<h4 class="font-bold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
+								</div>
+							</div>
+							<div class="flex items-center justify-start gap-2 mt-4">
+								<div class="flex space-x-1 ">
+									<div class="flex text-yellow-500">
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+									</div>
+									<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+								</div>
+								<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+									<span>•</span>
+									<span>Đã bán 900</span>
+								</div>
+							</div>
+							<div class="flex items-center justify-between mt-4">
+								<span class="text-lg font-bold text-emerald-600">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+									})" class="btn btn-primary btn-md ">
+								<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+								Thêm giỏ hàng
+								</button>
+							</div>
+						</div>
                     </div>
 
                     <!-- Pagination -->
                     <div class="m-6  flex  justify-center">
                         <nav class="pagination">
-                            <a href="#" class="pagination-item disabled text-xs sm:text-sm">&laquo;</a>
-                            <a href="#" class="pagination-item active text-xs sm:text-sm">1</a>
-                            <a href="#" class="pagination-item text-xs sm:text-sm">2</a>
-                            <a href="#" class="pagination-item text-xs sm:text-sm">3</a>
-                            <span class="pagination-item text-xs sm:text-sm">...</span>
-                            <a href="#" class="pagination-item text-xs sm:text-sm">125</a>
-                            <a href="#" class="pagination-item text-xs sm:text-sm">&raquo;</a>
+                            <a href="#" class="pagination-item disabled text-responsive-sm">&laquo;</a>
+                            <a href="#" class="pagination-item active text-responsive-sm">1</a>
+                            <a href="#" class="pagination-item text-responsive-sm">2</a>
+                            <a href="#" class="pagination-item text-responsive-sm">3</a>
+                            <span class="pagination-item text-responsive-sm">...</span>
+                            <a href="#" class="pagination-item text-responsive-sm">125</a>
+                            <a href="#" class="pagination-item text-responsive-sm">&raquo;</a>
                         </nav>
                     </div>
                 </div>

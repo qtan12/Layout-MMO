@@ -158,7 +158,10 @@ window.xhr = function(options) {
 function headerComponent() {
     return {
         searchQuery: '', 
-        mobileSearchQuery: '', 
+        mobileSearchQuery: '',
+        searchResults: [],
+        isSearching: false,
+        searchHistory: [], 
         isAuthModalOpen: false,
         mobileMenuOpen: false,
         showCart: false,
@@ -201,6 +204,7 @@ function headerComponent() {
             this.initializeAuth();
             this.initializeCart();
             this.initializeDepositData();
+            this.loadSearchHistory();
 
             // Listen for auth modal open requests from other components
             window.addEventListener('open-auth-modal', (event) => {
@@ -1325,6 +1329,220 @@ function headerComponent() {
         // Show cart notification
         showCartNotification(message, type = 'info') {
             window.cartManager.showNotification(message, type);
+        },
+
+        // ===========================================
+        // SEARCH FUNCTIONS
+        // ===========================================
+
+        // Perform search
+        performSearch(query) {
+            if (!query || query.trim().length < 2) {
+                this.searchResults = [];
+                return;
+            }
+
+            this.isSearching = true;
+            const searchTerm = query.trim().toLowerCase();
+            
+            // Sample products data for search
+            const allProducts = [
+                {
+                    id: 'backlink-premium',
+                    name: 'Backlink Premium',
+                    category: 'SEO & Link Building',
+                    price: 500000,
+                    icon: 'link',
+                    description: 'Backlink chất lượng cao từ các website uy tín',
+                    gradientClass: 'from-emerald-500 to-green-600'
+                },
+                {
+                    id: 'facebook-clone-vip',
+                    name: 'Facebook Clone VIP',
+                    category: 'Tài khoản Facebook',
+                    price: 150000,
+                    icon: 'facebook',
+                    description: 'Tài khoản Facebook clone chất lượng cao',
+                    gradientClass: 'from-blue-500 to-indigo-600'
+                },
+                {
+                    id: 'tools-seo-pro',
+                    name: 'Tools SEO Pro',
+                    category: 'Data & Tools MMO',
+                    price: 1200000,
+                    icon: 'search',
+                    description: 'Bộ công cụ SEO chuyên nghiệp với đầy đủ tính năng',
+                    gradientClass: 'from-purple-500 to-pink-600'
+                },
+                {
+                    id: 'gmail-clone-vip',
+                    name: 'Gmail Clone VIP',
+                    category: 'Tài khoản Email',
+                    price: 200000,
+                    icon: 'mail',
+                    description: 'Tài khoản Gmail clone chất lượng cao',
+                    gradientClass: 'from-red-500 to-orange-600'
+                },
+                {
+                    id: 'tiktok-clone-premium',
+                    name: 'TikTok Clone Premium',
+                    category: 'Tài khoản Social khác',
+                    price: 300000,
+                    icon: 'music',
+                    description: 'Tài khoản TikTok clone chất lượng cao',
+                    gradientClass: 'from-pink-500 to-rose-600'
+                },
+                {
+                    id: 'windows-11-pro',
+                    name: 'Windows 11 Pro License',
+                    category: 'License Phần Mềm',
+                    price: 800000,
+                    icon: 'monitor',
+                    description: 'License Windows 11 Pro chính hãng',
+                    gradientClass: 'from-cyan-500 to-blue-600'
+                },
+                {
+                    id: 'vps-server-1gb',
+                    name: 'VPS Server 1GB',
+                    category: 'VPN/Proxy/Server',
+                    price: 150000,
+                    icon: 'server',
+                    description: 'VPS server 1GB RAM, 25GB SSD',
+                    gradientClass: 'from-teal-500 to-green-600'
+                },
+                {
+                    id: 'khoa-hoc-seo-master',
+                    name: 'Khóa học SEO Master',
+                    category: 'Khóa Học/TUT MMO',
+                    price: 2500000,
+                    icon: 'graduation-cap',
+                    description: 'Khóa học SEO từ cơ bản đến nâng cao',
+                    gradientClass: 'from-amber-500 to-yellow-600'
+                },
+                {
+                    id: 'instagram-clone-premium',
+                    name: 'Instagram Clone Premium',
+                    category: 'Tài khoản Social khác',
+                    price: 250000,
+                    icon: 'instagram',
+                    description: 'Tài khoản Instagram clone chất lượng cao',
+                    gradientClass: 'from-pink-500 to-purple-600'
+                },
+                {
+                    id: 'youtube-clone-vip',
+                    name: 'YouTube Clone VIP',
+                    category: 'Tài khoản Social khác',
+                    price: 400000,
+                    icon: 'youtube',
+                    description: 'Tài khoản YouTube clone chất lượng cao',
+                    gradientClass: 'from-red-500 to-pink-600'
+                },
+                {
+                    id: 'office-365-business',
+                    name: 'Office 365 Business',
+                    category: 'License Phần Mềm',
+                    price: 600000,
+                    icon: 'file-text',
+                    description: 'License Office 365 Business chính hãng',
+                    gradientClass: 'from-blue-500 to-cyan-600'
+                },
+                {
+                    id: 'adobe-creative-suite',
+                    name: 'Adobe Creative Suite',
+                    category: 'License Phần Mềm',
+                    price: 1500000,
+                    icon: 'palette',
+                    description: 'Bộ công cụ Adobe Creative Suite đầy đủ',
+                    gradientClass: 'from-purple-500 to-pink-600'
+                }
+            ];
+
+            // Filter products based on search term
+            this.searchResults = allProducts.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.category.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm)
+            );
+
+            // Add to search history
+            this.addToSearchHistory(query);
+
+            this.isSearching = false;
+        },
+
+        // Add search term to history
+        addToSearchHistory(query) {
+            if (!query || query.trim().length < 2) return;
+            
+            const trimmedQuery = query.trim();
+            // Remove if already exists
+            this.searchHistory = this.searchHistory.filter(item => item !== trimmedQuery);
+            // Add to beginning
+            this.searchHistory.unshift(trimmedQuery);
+            // Keep only last 10 searches
+            this.searchHistory = this.searchHistory.slice(0, 10);
+            
+            // Save to localStorage
+            try {
+                localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
+            } catch (error) {
+                console.warn('Failed to save search history:', error);
+            }
+        },
+
+        // Load search history from localStorage
+        loadSearchHistory() {
+            try {
+                const saved = localStorage.getItem('searchHistory');
+                if (saved) {
+                    this.searchHistory = JSON.parse(saved);
+                }
+            } catch (error) {
+                console.warn('Failed to load search history:', error);
+                this.searchHistory = [];
+            }
+        },
+
+        // Clear search history
+        clearSearchHistory() {
+            this.searchHistory = [];
+            try {
+                localStorage.removeItem('searchHistory');
+            } catch (error) {
+                console.warn('Failed to clear search history:', error);
+            }
+        },
+
+        // Handle search form submission
+        handleSearch(event) {
+            event.preventDefault();
+            const query = this.searchQuery || this.mobileSearchQuery;
+            if (query && query.trim().length >= 2) {
+                this.performSearch(query);
+                // Redirect to search page with query
+                window.location.href = `/search.html?q=${encodeURIComponent(query.trim())}`;
+            }
+        },
+
+        // Handle search input change
+        handleSearchInput(event) {
+            const query = event.target.value;
+            this.searchQuery = query;
+            this.mobileSearchQuery = query;
+            
+            // Perform live search if query is long enough
+            if (query && query.trim().length >= 2) {
+                this.performSearch(query);
+            } else {
+                this.searchResults = [];
+            }
+        },
+
+        // Clear search
+        clearSearch() {
+            this.searchQuery = '';
+            this.mobileSearchQuery = '';
+            this.searchResults = [];
         }
     };
 }

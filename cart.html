@@ -659,21 +659,21 @@
   }
 
   /* Responsive Text */
-  .text-responsive-sm {
-    @apply text-sm sm:text-base lg:text-lg;
-  }
-
-  .text-responsive-md {
-    @apply text-base md:text-lg;
-  }
-
-  .text-responsive-lg {
-    @apply text-lg sm:text-xl lg:text-2xl;
-  }
-
-  .text-responsive-xl {
-    @apply text-3xl sm:text-3xl lg:text-4xl;
-  }
+  .text-responsive-xs {
+	@apply text-xs sm:text-sm;
+	}
+	.text-responsive-sm {
+	@apply text-sm sm:text-lg;
+	}
+	.text-responsive-md {
+	@apply text-base md:text-lg;
+	}
+	.text-responsive-lg {
+	@apply text-lg sm:text-xl ;
+	}
+	.text-responsive-xl {
+	@apply text-3xl sm:text-3xl lg:text-4xl;
+    }
 
   /* Hover Effects */
   .hover-lift {
@@ -2667,7 +2667,7 @@
             <!-- Cart Header -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 lg:mb-8 gap-4">
                 <div class="flex-1 min-w-0">
-                    <h1 class="text-responsive-lg font-medium text-gray-900 mb-2">Giỏ hàng của bạn</h1>
+                    <h1 class="text-responsive-lg font-bold text-gray-900 mb-2">Giỏ hàng của bạn</h1>
                     <p class="text-responsive-sm text-gray-600" x-text="`${cartItems.length} sản phẩm • Tổng cộng: ${formatPrice(cartTotal)}`">3 sản phẩm • Tổng cộng: 1.397.000đ</p>
                 </div>
                 <div class="flex-shrink-0">
@@ -2689,10 +2689,10 @@
                             <div class="relative bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm" x-data="{ selected: item.selected, quantity: item.quantity }" :data-product-id="item.id">
                                 <div class="flex gap-3 lg:gap-4">
                                     <a class="flex-shrink-0 relative" :href="`/product/${item.id}`">
-                                        <div class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gray-100 rounded-lg lg:rounded-xl overflow-hidden">
+                                        <div class=" bg-gray-100 rounded-lg lg:rounded-xl overflow-hidden">
                                             <img :src="item.image || 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=200&h=200&fit=crop&crop=center'" 
                                                  :alt="item.name" 
-                                                 class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
+                                                 class="w-20 h-20 object-contain hover:scale-105 transition-transform duration-300">
                                         </div>
                                         <!-- Delete button positioned on image -->
                                         <button @click="window.cartManager.removeFromCart(item.id)" 
@@ -2704,14 +2704,14 @@
                                         </button>
                                     </a>
                                     <div class="flex-1 min-w-0">
+                                        <p class="text-responsive-xs text-gray-600 " x-text="item.category"></p>
                                         <a :href="`/product/${item.id}`">
-                                            <h3 class="font-medium text-gray-900 mb-1 lg:mb-2 hover:text-green-600 transition-colors line-clamp-2 text-responsive-sm" x-text="item.name"></h3>
+                                            <h3 class="text-responsive-sm font-medium text-gray-900  hover:text-green-600 transition-colors line-clamp-2 " x-text="item.name"></h3>
                                         </a>
-                                        <p class="text-xs sm:text-sm text-gray-600 mb-2" x-text="item.category"></p>
                                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
                                             <div class="flex items-center gap-2 flex-wrap">
-                                                <span class="text-responsive-sm  text-green-600" x-text="formatPrice(item.price)"></span>
-                                                <span class="text-xs sm:text-sm text-gray-500 line-through" x-text="formatPrice(item.originalPrice || item.price)" x-show="item.originalPrice && item.originalPrice > item.price"></span>
+                                                <span class="text-responsive-sm  text-green-600 mt-2" x-text="formatPrice(item.price)"></span>
+                                                <span class="text-responsive-xs text-gray-500 line-through" x-text="formatPrice(item.originalPrice || item.price)" x-show="item.originalPrice && item.originalPrice > item.price"></span>
                                                 
                                             </div>
                                             <div class="flex items-center gap-2 lg:gap-3 justify-between">
@@ -2778,9 +2778,9 @@
                                 <span class="text-red-600" x-text="formatPrice(discount)">0₫</span>
                             </div>
                             <div class="border-t border-gray-200 pt-3 lg:pt-4">
-                                <div class="flex justify-between text-responsive-md font-medium ">
-                                    <span>Tổng cộng:</span>
-                                    <span class="text-green-600" x-text="formatPrice(cartTotal)">0₫</span>
+                                <div class="flex justify-between  font-medium ">
+                                    <span class="text-responsive-lg">Tổng cộng:</span>
+                                    <span class="text-green-600 text-responsive-lg" x-text="formatPrice(cartTotal)">0₫</span>
                                 </div>
                             </div>
                         </div>
