@@ -97,7 +97,7 @@
 
   /* Button Styles */
   .btn {
-    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
+    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-md transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
   }
   /* đặt tên gì phổ biến hơn để các nhu cầu tương tự cũng dùng được đi, đặt tên cart nó chỉ dùng cho cart à */
   .btn-overflow{
@@ -129,6 +129,9 @@
   }
 
   /* Button Sizes */
+  .btn-xs{
+    @apply px-2 py-1 h-6 text-xs rounded-sm;
+  }
   .btn-sm {
     @apply px-3 py-1.5 h-8 text-sm;
   }
@@ -145,9 +148,9 @@
     @apply px-8 py-4 h-14 text-lg;
   }
 
-  /* Input Styles */
-  .input {
-    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
+ /* Input Styles */
+ .input {
+    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
   }
 
   .input-lg {
@@ -184,7 +187,7 @@
         
   /* Card Styles */
   .card {
-    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+    @apply sm:border border-gray-200 bg-white shadow-md rounded-md hover:shadow-lg transition-all duration-300 transform;
   }
 
   .card-header {
@@ -213,7 +216,7 @@
 
   /* Badge Styles */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-md border;
+    @apply inline-flex items-center px-1 py-0.5 text-xs font-medium rounded-sm;
   }
 
   .badge-primary {
@@ -254,24 +257,20 @@
 
   /* Section Styles */
   .section {
-    @apply py-12 lg:py-16;
-  }
-
-  .section-sm {
-    @apply py-8 lg:py-12;
-  }
-
-  .section-lg {
-    @apply py-16 lg:py-24;
-  }
-
-  .section-title {
-    @apply text-2xl lg:text-3xl font-bold text-gray-900 mb-2;
-  }
-
-  .section-subtitle {
-    @apply text-gray-600 mb-8 lg:mb-12;
-  }
+			@apply py-12 lg:py-16;
+			}
+			.section-sm {
+			@apply py-8 lg:py-12;
+			}
+			.section-lg {
+			@apply py-16 lg:py-24;
+			}
+			.section-title {
+			@apply text-2xl sm:text-3xl font-bold text-gray-900 mb-2;
+			}
+			.section-subtitle {
+			@apply text-gray-600 mb-8 lg:mb-12;
+			}
 
   /* Grid Layouts */
   .grid-cols-auto {
@@ -345,20 +344,17 @@
 
   /* Pagination Styles */
   .pagination {
-    @apply flex items-center justify-center space-x-2;
-  }
-
-  .pagination-item {
-    @apply flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700;
-  }
-
-  .pagination-item.active {
-    @apply text-white bg-blue-600 border-blue-600;
-  }
-
-  .pagination-item.disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
+			@apply flex items-center justify-center space-x-2;
+			}
+			.pagination-item {
+			@apply flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-all duration-200;
+			}
+			.pagination-item.active {
+			@apply text-white bg-gradient-to-r from-emerald-500 to-green-600 border-emerald-600 hover:from-emerald-600 hover:to-green-700;
+			}
+			.pagination-item.disabled {
+			@apply opacity-50 cursor-not-allowed hover:bg-white hover:text-gray-500;
+			}
 
   /* Alert Styles */
   .alert {
@@ -640,21 +636,22 @@
   }
 
   /* Responsive Text */
-  .text-responsive-sm {
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+    }
+    .text-responsive-sm {
     @apply text-sm sm:text-base;
-  }
-
-  .text-responsive-md {
-    @apply text-base sm:text-lg;
-  }
-
-  .text-responsive-lg {
+    }
+    .text-responsive-md {
+    @apply text-base md:text-lg;
+    }
+    .text-responsive-lg {
     @apply text-lg sm:text-xl lg:text-2xl;
-  }
+    }
+    .text-responsive-xl {
+    @apply text-3xl sm:text-3xl lg:text-4xl;
+    }
 
-  .text-responsive-xl {
-    @apply text-xl sm:text-2xl lg:text-3xl;
-  }
 
   /* Hover Effects */
   .hover-lift {
@@ -1163,9 +1160,118 @@
   );box-sizing:border-box}.blaze-track>*{box-sizing:border-box;width:var(--slide-width);flex-shrink:0}
 /* End BlazerSlider */
 
-/* Hot Products Slider CSS Variables */
-.hot-products-slider.blaze-slider {
-    --slides-to-show: 1;
+  /* Products Page Custom Styles */
+  .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+
+  .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+
+  /* Product Card Hover Effects */
+  .product-card {
+      transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Category Navigation Scroll */
+  .category-nav {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+  }
+
+  .category-nav::-webkit-scrollbar {
+      display: none;
+  }
+
+  /* Filter Sidebar Mobile */
+  @media (max-width: 1024px) {
+      .filter-sidebar {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 80%;
+          max-width: 320px;
+          height: 100vh;
+          z-index: 50;
+          transition: left 0.3s ease;
+      }
+
+      .filter-sidebar.open {
+          left: 0;
+      }
+
+      .filter-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 40;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+      }
+
+      .filter-overlay.open {
+          opacity: 1;
+          visibility: visible;
+      }
+  }
+
+  /* Search Bar Focus Effect */
+  .search-input:focus {
+      transform: scale(1.02);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  }
+
+  /* Price Animation */
+  .price-highlight {
+      animation: pricePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pricePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+  }
+
+  /* Badge Animations */
+  .badge-hot {
+      animation: badgePulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes badgePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+  }
+
+  /* Loading States */
+  .loading-skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+  }
+
+  /* Hot Products Slider CSS Variables */
+  .hot-products-slider.blaze-slider {
+      --slides-to-show: 1;
     --slide-gap: 1rem;
 }
 
@@ -1242,10 +1348,12 @@
     </script>
 
     <!-- Header Component JS -->
+    <script src="js/cart-manager.js"></script>
     <script src="js/header.js"></script>
+    <!-- Homepage Component JS -->
+    <script src="js/homemmo.js"></script>
     <!-- BlazeSlider JS -->
     <script src="js/blaze-slider.js"></script>
- 
     <!-- Lucide Icons - Custom Build -->
     <!-- <script src="js/lucide-custom.min.js"></script> -->
     <!-- Hiện tại đang Development nên tôi dùng CDN của Lucide trước -->
@@ -1360,7 +1468,10 @@
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <span class="hidden sm:inline">🔥 Flash Sale - Giảm đến 70%</span>
+                        <div class="hidden sm:flex items-center space-x-2">
+                            <i data-lucide="flame" class="w-4 h-4"></i>
+                            <span>Flash Sale - Giảm đến 70%</span>
+                        </div>
                         <a href="/support" class="hover:text-emerald-200 transition-colors">Liên hệ</a>
                     </div>
                 </div>
@@ -1737,6 +1848,13 @@
 
                 <!-- Right side -->
                 <div class="flex items-center space-x-0 xl:space-x-3">
+                    <!-- Post Button -->
+                    <button @click="handlePostClick()" class="btn btn-primary">
+                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                        <span class="hidden sm:inline">Đăng Bán</span>
+                        <span class="sm:hidden">Đăng</span>
+                    </button>
+
                     <!-- Shopping Cart -->
                     <button @click="toggleCart()" class="hidden lg:flex mr-3 xl:mr-0 btn btn-overflow btn-ghost relative">
                         <i data-lucide="shopping-cart" class="w-5 h-5"></i>
@@ -1746,15 +1864,24 @@
                               x-show="cartCount > 0" x-text="cartCount">0</span>
                     </button>
 
-                    <!-- Post Button -->
-                    <button @click="handlePostClick()" class="btn btn-primary">
-                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
-                        <span class="hidden sm:inline">Đăng Bán</span>
-                        <span class="sm:hidden">Đăng</span>
-                    </button>
+                    
 
-                    <!-- Auth Section -->
-                    <div class="flex items-center">
+                    <!-- Mobile Menu -->
+                    <section class="lg:hidden flex items-center space-x-2 pl-2">
+                        <!-- Mobile Cart -->
+                        <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
+                            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                            <span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
+                                  x-show="cartCount > 0" x-text="cartCount">0</span>
+                        </button>
+                    
+                        <!-- Mobile search -->
+                        <button @click="openMobileMenu(true)" class="btn btn-ghost btn-sm p-2 h-8 w-8">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </button>
+
+                        <!-- Auth Section -->
+                        <div class="flex items-center">
                         <!-- Login Buttons (show by default) -->
                         <div id="loginButtons" class="flex items-center space-x-3">
                             <!-- Desktop Login Button -->
@@ -1764,11 +1891,7 @@
                                 Đăng Nhập
                             </button>
 
-                            <!-- Mobile Login Icon -->
-                            <button @click="openAuthModal(); authTab = 'login'; errors = {}; isLoading = false"
-                                class="xl:hidden btn btn-ghost btn-sm p-2 h-8 w-8">
-                                <i data-lucide="users" class="w-6 h-6"></i>
-                            </button>
+                           
                         </div>
 
                         <!-- User Dropdown (hidden by default) -->
@@ -1779,35 +1902,79 @@
                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGLy8P0ACAAA//8CbgGIf795rQAAAABJRU5ErkJggg==                                "
                                     alt="User" class="w-8 h-8 rounded-full">
                                 <span id="userName" class="hidden lg:block text-sm font-medium">User</span>
-                        </button>
+                            </button>
                             <div x-ref="userMenu"
-                                class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 hidden">
-                                <a href="/newfeed"
-                                    class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">Newfeed</a>
-                                <a href="/u/me" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">Hồ Sơ</a>
+                                class="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 hidden">
+                                
+                                <!-- User Info Section -->
+                                <div class="px-4 py-3 border-b border-gray-100">
+                                    <div class="flex flex-col">
+                                        <p class="text-sm font-semibold text-gray-900" id="userName">John Doe</p>
+                                        <p class="text-xs text-gray-500" id="userEmail">john@example.com</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dashboard Link -->
+                                <a href="dashboard.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="layout-dashboard" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Dashboard
+                                </a>
+
+                                <!-- Profile Link -->
+                                <a href="profile.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="user" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Profile
+                                </a>
+                                
+                                <!-- My Orders Link -->
+                                <a href="orders.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <div class="flex items-center">
+                                        <i data-lucide="package" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                        My Orders
+                                    </div>
+                                    <span class="text-xs font-semibold text-blue-600">1</span>
+                                </a>
+                                
+                                <!-- Wallet Link -->
+                                <a href="wallet.html" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <div class="flex items-center">
+                                        <i data-lucide="wallet" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                        Wallet
+                                    </div>
+                                    <span class="text-xs font-semibold text-green-600" x-text="formatPrice(walletBalance)">1.350.000 ₫</span>
+                                </a>
+                                
+                                <!-- Favorites Link -->
+                                <a href="favorites.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="heart" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Favorites
+                                </a>
+                                
+                                
+                                <!-- Separator -->
+                                <div class="border-t border-gray-100 my-2"></div>
+                                
+                                <!-- Settings Link -->
+                                <a href="settings.html" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <i data-lucide="settings" class="w-4 h-4 mr-3 text-gray-500"></i>
+                                    Settings
+                                </a>
+                                
+                                <!-- Logout Button -->
                                 <button @click="logout()"
-                                    class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Đăng
-                                    Xuất</button>
+                                    class="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-50">
+                                    <i data-lucide="log-out" class="w-4 h-4 mr-3"></i>
+                                    Log out
+                                </button>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Mobile Menu -->
-                    <div class="lg:hidden flex items-center space-x-2 pl-2">
-                        <!-- Mobile Cart -->
-                        <button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
-                            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                            <span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
-                                  x-show="cartCount > 0" x-text="cartCount">0</span>
-                        </button>
-                        
-                        <button @click="openMobileMenu(true)" class="btn btn-ghost btn-sm p-2 h-8 w-8">
-                            <i data-lucide="search" class="w-6 h-6"></i>
-                        </button>
+                        </div>
+                    
+                        <!-- Mobile menu -->
                         <button @click="openMobileMenu()" class="btn btn-ghost btn-sm p-2 h-8 w-8">
                             <i data-lucide="menu" class="w-6 h-6"></i>
                         </button>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -2310,7 +2477,7 @@
                         </button>
                         <button @click="viewCart()" class="w-full btn btn-outline">
                             <i data-lucide="shopping-cart" class="w-4 h-4 mr-2"></i>
-                            Xem giỏ hàng
+                            <a href="/cart.html">Xem giỏ hàng</a>
                         </button>
                     </div>
                 </div>
@@ -2571,608 +2738,15 @@
                 </div>
             </div>
         </div>
-    </header>
 
+        
+    </header> 
+       
     <!-- Main Content Area -->
     <main class="min-h-screen bg-gray-50">
-        <div class="container mx-auto px-4 py-12 ">
-            <!-- Breadcrumbs -->
-            <!-- <nav class="flex items-center flex-wrap gap-1 text-responsive-xs text-gray-500 py-4">
-                <a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
-                    <path d="m9 18 6-6-6-6"></path>
-                </svg>
-                <a class="hover:text-emerald-600 whitespace-nowrap" href="#">Blog</a>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
-                    <path d="m9 18 6-6-6-6"></path>
-                </svg>
-                <span class="hover:text-emerald-600 truncate min-w-0" title="Proxy Có Thực Sự Đáng Tin Cậy Như Các Gian Hàng Đang Đồn Thổi???">Proxy Có Thực Sự Đáng Tin Cậy Như Các Gian Hàng Đang Đồn Thổi???</span>
-            </nav> -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
-                <!-- Main blog post content -->
-                <div class="lg:col-span-2">
-                    <!-- Blog Post Header -->
-                    <article class="card overflow-hidden">
-                        <!-- Featured Image -->
-                        <div class="relative h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-emerald-500 to-green-600">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                                 alt="Proxy Security" 
-                                 class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/20"></div>
-                            <div class="absolute bottom-4 left-4 right-4">
-                                <div class="flex items-center space-x-2 text-white/90 text-sm mb-2">
-                                    <span class="bg-emerald-500/80 px-2 py-1 rounded-full text-xs">MMO Tools</span>
-                                    <span class="bg-blue-500/80 px-2 py-1 rounded-full text-xs">Security</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Post Content -->
-                        <div class="p-6 sm:p-8">
-                            <!-- Title -->
-                            <h1 class="section-title  mb-4 ">
-                                Proxy Có Thực Sự Đáng Tin Cậy Như Các Gian Hàng Đang Đồn Thổi???
-                            </h1>
-
-                            <!-- Meta Info -->
-                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                                        <i data-lucide="user" class="w-4 h-4 text-emerald-600"></i>
-                                    </div>
-                                    <span>Admin MMO Store</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>15 Tháng 12, 2024</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <i data-lucide="clock" class="w-4 h-4"></i>
-                                    <span>8 phút đọc</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <i data-lucide="eye" class="w-4 h-4"></i>
-                                    <span>2,847 lượt xem</span>
-                                </div>
-                            </div>
-
-                            <!-- Social Share -->
-                            <div class="flex items-center justify-between py-4 border-t border-b border-gray-100 mb-6">
-                                <div class="flex items-center space-x-4">
-                                    <span class="text-sm text-gray-600">Chia sẻ:</span>
-                                    <div class="flex space-x-2">
-                                        <button class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                            <i data-lucide="facebook" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="w-8 h-8 bg-blue-400 text-white rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
-                                            <i data-lucide="twitter" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="w-8 h-8 bg-green-500 text-white rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors">
-                                            <i data-lucide="message-circle" class="w-4 h-4"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="flex items-center space-x-1 text-emerald-600 hover:text-emerald-700 transition-colors">
-                                        <i data-lucide="heart" class="w-4 h-4"></i>
-                                        <span class="text-sm">24</span>
-                                    </button>
-                                    <button class="flex items-center space-x-1 text-gray-500 hover:text-gray-700 transition-colors">
-                                        <i data-lucide="bookmark" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Article Content -->
-                            <div class="prose prose-lg max-w-none">
-                                <div class="text-lg text-gray-600 leading-relaxed mb-6">
-                                    <p class="font-medium text-gray-900">
-                                        Trong thế giới MMO hiện đại, proxy đã trở thành một công cụ không thể thiếu. Nhưng liệu tất cả những lời quảng cáo về độ tin cậy của proxy có thực sự đúng như vậy? Hãy cùng tìm hiểu sự thật đằng sau những lời đồn thổi này.
-                                    </p>
-                                </div>
-
-                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Proxy là gì và tại sao nó quan trọng?</h2>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    Proxy server hoạt động như một trung gian giữa thiết bị của bạn và internet. Khi bạn sử dụng proxy, yêu cầu của bạn sẽ được gửi đến proxy server trước, sau đó proxy sẽ chuyển tiếp yêu cầu đến website đích và trả về kết quả cho bạn.
-                                </p>
-
-                                <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 my-6">
-                                    <div class="flex items-start space-x-3">
-                                        <i data-lucide="info" class="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0"></i>
-                                        <div>
-                                            <h4 class="font-semibold text-emerald-800 mb-2">Lợi ích chính của Proxy:</h4>
-                                            <ul class="text-emerald-700 space-y-1 text-sm">
-                                                <li>• Ẩn danh IP thực của bạn</li>
-                                                <li>• Truy cập nội dung bị chặn địa lý</li>
-                                                <li>• Tăng tốc độ tải trang</li>
-                                                <li>• Bảo mật dữ liệu cá nhân</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Những lời đồn thổi phổ biến về Proxy</h2>
-                                
-                                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">1. "Proxy miễn phí cũng tốt như proxy trả phí"</h3>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    <strong>Sự thật:</strong> Đây là một trong những quan niệm sai lầm phổ biến nhất. Proxy miễn phí thường có tốc độ chậm, không ổn định và có thể thu thập dữ liệu của bạn. Proxy trả phí chất lượng cao sẽ mang lại hiệu suất tốt hơn và bảo mật cao hơn.
-                                </p>
-
-                                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">2. "Tất cả proxy đều an toàn 100%"</h3>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    <strong>Sự thật:</strong> Không có gì là 100% an toàn trên internet. Ngay cả proxy tốt nhất cũng có thể bị tấn công hoặc có lỗ hổng bảo mật. Điều quan trọng là chọn nhà cung cấp proxy uy tín và cập nhật thường xuyên.
-                                </p>
-
-                                <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6">
-                                    <div class="flex items-start space-x-3">
-                                        <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"></i>
-                                        <div>
-                                            <h4 class="font-semibold text-red-800 mb-2">Cảnh báo:</h4>
-                                            <p class="text-red-700 text-sm">
-                                                Một số proxy miễn phí có thể chứa malware hoặc thu thập thông tin cá nhân của bạn. Luôn kiểm tra danh tiếng của nhà cung cấp trước khi sử dụng.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Cách chọn Proxy đáng tin cậy</h2>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-                                    <div class="bg-white border border-gray-200 rounded-lg p-4">
-                                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
-                                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i>
-                                            Tiêu chí tốt
-                                        </h4>
-                                        <ul class="text-sm text-gray-600 space-y-2">
-                                            <li>• Tốc độ cao và ổn định</li>
-                                            <li>• Không ghi log hoạt động</li>
-                                            <li>• Hỗ trợ nhiều giao thức</li>
-                                            <li>• Dịch vụ khách hàng tốt</li>
-                                            <li>• Giá cả hợp lý</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-white border border-gray-200 rounded-lg p-4">
-                                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
-                                            <i data-lucide="x-circle" class="w-5 h-5 text-red-500 mr-2"></i>
-                                            Cần tránh
-                                        </h4>
-                                        <ul class="text-sm text-gray-600 space-y-2">
-                                            <li>• Tốc độ chậm, thường xuyên lỗi</li>
-                                            <li>• Ghi log và bán dữ liệu</li>
-                                            <li>• Hỗ trợ kém</li>
-                                            <li>• Giá quá rẻ hoặc quá đắt</li>
-                                            <li>• Không có chính sách bảo mật</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Kết luận</h2>
-                                <p class="text-gray-700 leading-relaxed mb-6">
-                                    Proxy có thể là công cụ hữu ích cho công việc MMO, nhưng không phải tất cả proxy đều đáng tin cậy như quảng cáo. Việc chọn lựa cẩn thận và hiểu rõ về rủi ro là điều quan trọng. Hãy đầu tư vào những dịch vụ proxy chất lượng từ các nhà cung cấp uy tín để đảm bảo an toàn và hiệu quả.
-                                </p>
-
-                                <div class="card bg-gradient-to-r from-emerald-500 to-green-600 text-white p-6  my-8">
-                                    <h3 class="text-responsive-lg font-bold mb-3">Tìm Proxy chất lượng cao?</h3>
-                                    <p class="text-responsive-sm mb-4">MMO Store cung cấp các gói proxy premium với tốc độ cao, bảo mật tuyệt đối và hỗ trợ 24/7.</p>
-                                    <a href="products.html" class="flex items-center gap-2 text-responsive-sm "> Xem sản phẩm
-                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Tags -->
-                            <div class="border-t border-gray-100 pt-6 mt-8">
-                                <h4 class="font-semibold text-responsive-sm mb-3">Tags:</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="badge badge-secondary cursor-pointer">Proxy</span>
-                                    <span class="badge badge-secondary cursor-pointer">MMO Tools</span>
-                                    <span class="badge badge-secondary cursor-pointer">Bảo mật</span>
-                                    <span class="badge badge-secondary cursor-pointer">Internet</span>
-                                    <span class="badge badge-secondary cursor-pointer">Anonymity</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Author Bio -->
-                    <div class="card p-6 mt-8">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center">
-                                <span class="text-white font-bold text-xl">A</span>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-semibold text-gray-900 text-lg">Admin MMO Store</h4>
-                                <p class="text-emerald-600 text-sm mb-3">Chuyên gia MMO & Digital Marketing</p>
-                                <p class="text-gray-600 text-sm leading-relaxed">
-                                    Với hơn 5 năm kinh nghiệm trong lĩnh vực MMO và digital marketing, tôi chia sẻ những kiến thức thực tế và cập nhật nhất về các công cụ và chiến lược MMO hiệu quả.
-                                </p>
-                                <div class="flex space-x-3 mt-4">
-                                    <a href="#" class="text-emerald-600 hover:text-emerald-700 transition-colors">
-                                        <i data-lucide="facebook" class="w-4 h-4"></i>
-                                    </a>
-                                    <a href="#" class="text-emerald-600 hover:text-emerald-700 transition-colors">
-                                        <i data-lucide="twitter" class="w-4 h-4"></i>
-                                    </a>
-                                    <a href="#" class="text-emerald-600 hover:text-emerald-700 transition-colors">
-                                        <i data-lucide="linkedin" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Comments Section -->
-                    <div class="card p-6 mt-8">
-                        <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-xl font-semibold text-gray-900">Bình luận (8)</h3>
-                            <div class="flex items-center space-x-2 text-sm text-gray-500">
-                                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                                <span>Thảo luận về bài viết</span>
-                            </div>
-                        </div>
-
-                        <!-- Comment Form -->
-                        <div class="bg-gray-50 rounded-lg p-4 mb-6">
-                            <h4 class="font-medium text-gray-900 mb-3">Viết bình luận</h4>
-                            <form class="space-y-4">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Tên *</label>
-                                        <input type="text" 
-                                               class="w-full input" 
-                                               placeholder="Nhập tên của bạn">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-                                        <input type="email" 
-                                               class="w-full input" 
-                                               placeholder="Nhập email của bạn">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Bình luận *</label>
-                                    <textarea rows="4" 
-                                              class="w-full input" 
-                                              placeholder="Chia sẻ suy nghĩ của bạn về bài viết..."></textarea>
-                                </div>
-                                <div class="flex flex-col gap-4">
-                                    <label class="flex items-center space-x-2 text-sm text-gray-600">
-                                        <input type="checkbox" >
-                                        <span class="text-responsive-xs">Thông báo cho tôi khi có bình luận mới</span>
-                                    </label>
-                                    <button type="submit" 
-                                            class="btn btn-primary btn-md w-full">
-                                        Gửi bình luận
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Comments List -->
-                        <div class="space-y-6">
-                            <!-- Comment 1 -->
-                            <div class="flex space-x-4">
-                                <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-emerald-600 font-semibold">M</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center space-x-2">
-                                                <h5 class="font-medium text-gray-900">Minh Tuấn</h5>
-                                                <span class="text-xs text-gray-500">2 giờ trước</span>
-                                            </div>
-                                            <button class="text-gray-400 hover:text-gray-600 transition-colors">
-                                                <i data-lucide="more-horizontal" class="w-4 h-4"></i>
-                                            </button>
-                                        </div>
-                                        <p class="text-gray-700 text-sm leading-relaxed mb-3">
-                                            Bài viết rất hay! Mình đã sử dụng proxy miễn phí trước đây và thực sự gặp nhiều vấn đề về tốc độ và bảo mật. Sau khi chuyển sang proxy trả phí thì hiệu quả hơn rất nhiều.
-                                        </p>
-                                        <div class="flex items-center space-x-4 text-xs text-gray-500">
-                                            <button class="flex items-center space-x-1 hover:text-emerald-600 transition-colors">
-                                                <i data-lucide="thumbs-up" class="w-3 h-3"></i>
-                                                <span>12</span>
-                                            </button>
-                                            <button class="flex items-center space-x-1 hover:text-emerald-600 transition-colors">
-                                                <i data-lucide="thumbs-down" class="w-3 h-3"></i>
-                                                <span>0</span>
-                                            </button>
-                                            <button class="hover:text-emerald-600 transition-colors">Trả lời</button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Reply -->
-                                    <div class="ml-6 mt-4">
-                                        <div class="flex space-x-3">
-                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <span class="text-blue-600 font-semibold text-sm">A</span>
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="bg-white border border-gray-200 rounded-lg p-3">
-                                                    <div class="flex items-center justify-between mb-2">
-                                                        <div class="flex items-center space-x-2">
-                                                            <h6 class="font-medium text-gray-900 text-sm">Admin MMO Store</h6>
-                                                            <span class="text-xs text-gray-500">1 giờ trước</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-gray-700 text-sm leading-relaxed mb-2">
-                                                        Cảm ơn bạn đã chia sẻ kinh nghiệm! Đúng vậy, việc đầu tư vào proxy chất lượng sẽ mang lại hiệu quả lâu dài hơn nhiều so với việc sử dụng proxy miễn phí.
-                                                    </p>
-                                                    <div class="flex items-center space-x-3 text-xs text-gray-500">
-                                                        <button class="flex items-center space-x-1 hover:text-emerald-600 transition-colors">
-                                                            <i data-lucide="thumbs-up" class="w-3 h-3"></i>
-                                                            <span>5</span>
-                                                        </button>
-                                                        <button class="hover:text-emerald-600 transition-colors">Trả lời</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Comment 2 -->
-                            <div class="flex space-x-4">
-                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-purple-600 font-semibold">H</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center space-x-2">
-                                                <h5 class="font-medium text-gray-900">Hương Lan</h5>
-                                                <span class="text-xs text-gray-500">5 giờ trước</span>
-                                            </div>
-                                            <button class="text-gray-400 hover:text-gray-600 transition-colors">
-                                                <i data-lucide="more-horizontal" class="w-4 h-4"></i>
-                                            </button>
-                                        </div>
-                                        <p class="text-gray-700 text-sm leading-relaxed mb-3">
-                                            Mình đang tìm hiểu về proxy cho dự án SEO. Bạn có thể recommend một số nhà cung cấp proxy uy tín không? Mình nghe nói MMO Store có dịch vụ proxy tốt.
-                                        </p>
-                                        <div class="flex items-center space-x-4 text-xs text-gray-500">
-                                            <button class="flex items-center space-x-1 hover:text-emerald-600 transition-colors">
-                                                <i data-lucide="thumbs-up" class="w-3 h-3"></i>
-                                                <span>8</span>
-                                            </button>
-                                            <button class="flex items-center space-x-1 hover:text-emerald-600 transition-colors">
-                                                <i data-lucide="thumbs-down" class="w-3 h-3"></i>
-                                                <span>0</span>
-                                            </button>
-                                            <button class="hover:text-emerald-600 transition-colors">Trả lời</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Comment 3 -->
-                            <div class="flex space-x-4">
-                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-orange-600 font-semibold">D</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center space-x-2">
-                                                <h5 class="font-medium text-gray-900">Đức Minh</h5>
-                                                <span class="text-xs text-gray-500">1 ngày trước</span>
-                                            </div>
-                                            <button class="text-gray-400 hover:text-gray-600 transition-colors">
-                                                <i data-lucide="more-horizontal" class="w-4 h-4"></i>
-                                            </button>
-                                        </div>
-                                        <p class="text-gray-700 text-sm leading-relaxed mb-3">
-                                            Bài viết rất chi tiết và hữu ích! Mình đã bookmark lại để tham khảo. Cảm ơn admin đã chia sẻ những thông tin quan trọng về proxy.
-                                        </p>
-                                        <div class="flex items-center space-x-4 text-xs text-gray-500">
-                                            <button class="flex items-center space-x-1 hover:text-emerald-600 transition-colors">
-                                                <i data-lucide="thumbs-up" class="w-3 h-3"></i>
-                                                <span>15</span>
-                                            </button>
-                                            <button class="flex items-center space-x-1 hover:text-emerald-600 transition-colors">
-                                                <i data-lucide="thumbs-down" class="w-3 h-3"></i>
-                                                <span>0</span>
-                                            </button>
-                                            <button class="hover:text-emerald-600 transition-colors">Trả lời</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Load More Comments -->
-                            <div class="text-center pt-4">
-                                <button class="text-emerald-600 hover:text-emerald-700 font-medium text-sm transition-colors">
-                                    Xem thêm bình luận (5)
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <div class="lg:col-span-1">
-                    <div class="space-y-6">
-                        <!-- Search Box -->
-                        <div class="card p-6">
-                            <h3 class="font-semibold text-gray-900 mb-4">Tìm kiếm bài viết</h3>
-                            <div class="relative">
-                                <input type="text" 
-                                       placeholder="Nhập từ khóa..." 
-                                       class="input pl-10">
-                                <i data-lucide="search" class="size-4 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-                            </div>
-                        </div>
-
-                        <!-- Related Posts -->
-                        <div class="card p-6">
-                            <h3 class="font-semibold text-gray-900 mb-4">Bài viết liên quan</h3>
-                            <div class="space-y-4">
-                                <div class="flex space-x-3">
-                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                                             alt="SEO Tools" 
-                                             class="w-full h-full object-cover rounded-lg">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
-                                            Top 10 Công Cụ SEO Miễn Phí Hiệu Quả Nhất 2024
-                                        </h4>
-                                        <p class="text-xs text-gray-500">12 Tháng 12, 2024</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex space-x-3">
-                                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                                             alt="Analytics" 
-                                             class="w-full h-full object-cover rounded-lg">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
-                                            Cách Phân Tích Dữ Liệu Website Hiệu Quả
-                                        </h4>
-                                        <p class="text-xs text-gray-500">10 Tháng 12, 2024</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex space-x-3">
-                                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                                             alt="Social Media" 
-                                             class="w-full h-full object-cover rounded-lg">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
-                                            Chiến Lược Social Media Marketing 2024
-                                        </h4>
-                                        <p class="text-xs text-gray-500">8 Tháng 12, 2024</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex space-x-3">
-                                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                                             alt="Email Marketing" 
-                                             class="w-full h-full object-cover rounded-lg">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
-                                            Email Marketing: Từ A-Z Cho Người Mới Bắt Đầu
-                                        </h4>
-                                        <p class="text-xs text-gray-500">5 Tháng 12, 2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Categories -->
-                        <div class="card p-6">
-                            <h3 class="font-semibold text-gray-900 mb-4">Danh mục</h3>
-                            <div class="space-y-2">
-                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-                                    <span>MMO Tools</span>
-                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">12</span>
-                                </a>
-                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-                                    <span>SEO & Marketing</span>
-                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">8</span>
-                                </a>
-                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-                                    <span>Bảo mật</span>
-                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">6</span>
-                                </a>
-                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-                                    <span>Social Media</span>
-                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">15</span>
-                                </a>
-                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-                                    <span>Tips & Tricks</span>
-                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">9</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Popular Tags -->
-                        <div class="card p-6">
-                            <h3 class="font-semibold text-gray-900 mb-4">Tags phổ biến</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm hover:bg-emerald-200 transition-colors cursor-pointer">Proxy</span>
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition-colors cursor-pointer">SEO</span>
-                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm hover:bg-green-200 transition-colors cursor-pointer">Marketing</span>
-                                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm hover:bg-purple-200 transition-colors cursor-pointer">Social Media</span>
-                                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm hover:bg-orange-200 transition-colors cursor-pointer">Analytics</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm hover:bg-red-200 transition-colors cursor-pointer">Bảo mật</span>
-                                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm hover:bg-yellow-200 transition-colors cursor-pointer">Tools</span>
-                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm hover:bg-indigo-200 transition-colors cursor-pointer">MMO</span>
-                            </div>
-                        </div>
-
-                        <!-- Recent Comments -->
-                        <div class="card p-6">
-                            <h3 class="font-semibold text-gray-900 mb-4">Bình luận gần đây</h3>
-                            <div class="space-y-4">
-                                <div class="flex space-x-3">
-                                    <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <span class="text-emerald-600 font-semibold text-sm">A</span>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <p class="text-sm text-gray-600 mb-1">
-                                            <span class="font-medium text-gray-900">Anh Minh</span> bình luận về 
-                                            <span class="text-emerald-600 hover:underline cursor-pointer">"Top 10 Công Cụ SEO..."</span>
-                                        </p>
-                                        <p class="text-xs text-gray-500">2 giờ trước</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex space-x-3">
-                                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <span class="text-blue-600 font-semibold text-sm">T</span>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <p class="text-sm text-gray-600 mb-1">
-                                            <span class="font-medium text-gray-900">Thu Hà</span> bình luận về 
-                                            <span class="text-emerald-600 hover:underline cursor-pointer">"Chiến Lược Social Media..."</span>
-                                        </p>
-                                        <p class="text-xs text-gray-500">5 giờ trước</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex space-x-3">
-                                    <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <span class="text-purple-600 font-semibold text-sm">D</span>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <p class="text-sm text-gray-600 mb-1">
-                                            <span class="font-medium text-gray-900">Đức Anh</span> bình luận về 
-                                            <span class="text-emerald-600 hover:underline cursor-pointer">"Email Marketing: Từ A-Z..."</span>
-                                        </p>
-                                        <p class="text-xs text-gray-500">1 ngày trước</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Newsletter Signup -->
-                        <div class="card bg-gradient-to-br from-emerald-500 to-green-600 p-6 text-white">
-                            <h3 class="font-semibold text-lg mb-2">Đăng ký nhận tin</h3>
-                            <p class="text-emerald-100 text-sm mb-4">Nhận những bài viết mới nhất về MMO và Digital Marketing</p>
-                            <div class="space-y-3">
-                                <input type="email" 
-                                       placeholder="Nhập email của bạn..." 
-                                       class="input ">
-                                <button class="btn btn-primary btn-md w-full">
-                                    Đăng ký ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </main>
-    
-
+   
     <!-- Footer -->
     <footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
         <div class="container mx-auto px-4 py-12">
@@ -3209,14 +2783,14 @@
                 <div class="col-start-1 lg:col-start-2">
                     <h3 class="font-semibold text-lg mb-4">Sản Phẩm</h3>
                     <ul class="space-y-2 text-emerald-200">
-                        <li><a href="/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
-                        <li><a href="/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
-                        <li><a href="/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
-                        <li><a href="/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
-                        <li><a href="/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
-                        <li><a href="/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
-                        <li><a href="/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
-                        <li><a href="/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
+                        <li><a href="/products/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
+                        <li><a href="/products/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
+                        <li><a href="/products/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
+                        <li><a href="/products/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
+                        <li><a href="/products/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
+                        <li><a href="/products/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
+                        <li><a href="/products/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
+                        <li><a href="/products/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
                     </ul>
                 </div>
 
@@ -3269,6 +2843,404 @@
             </div>
         </div>
     </footer>
+
+    <!-- Products Page JavaScript -->
+    <script>
+        // Products Page Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Product Search Functionality
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-input + button');
+            
+            if (searchInput && searchButton) {
+                searchButton.addEventListener('click', function() {
+                    performSearch();
+                });
+
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+
+            // Category Filter Functionality
+            const categoryButtons = document.querySelectorAll('.category-nav button');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('bg-emerald-600', 'text-white');
+                        btn.classList.add('text-gray-600', 'hover:text-emerald-600', 'hover:bg-emerald-50');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.remove('text-gray-600', 'hover:text-emerald-600', 'hover:bg-emerald-50');
+                    this.classList.add('bg-emerald-600', 'text-white');
+                    
+                    // Filter products by category
+                    filterProductsByCategory(this.textContent.trim());
+                });
+            });
+
+            // Sort Functionality
+            const sortSelect = document.querySelector('select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function() {
+                    sortProducts(this.value);
+                });
+            }
+
+            // Filter Sidebar Toggle (Mobile)
+            const filterToggle = document.querySelector('[data-lucide="filter"]')?.parentElement;
+            const filterSidebar = document.querySelector('.filter-sidebar');
+            const filterOverlay = document.createElement('div');
+            filterOverlay.className = 'filter-overlay';
+            document.body.appendChild(filterOverlay);
+
+            if (filterToggle && filterSidebar) {
+                filterToggle.addEventListener('click', function() {
+                    filterSidebar.classList.toggle('open');
+                    filterOverlay.classList.toggle('open');
+                });
+
+                filterOverlay.addEventListener('click', function() {
+                    filterSidebar.classList.remove('open');
+                    filterOverlay.classList.remove('open');
+                });
+            }
+
+            // Price Range Filter
+            const priceRadios = document.querySelectorAll('input[name="price"]');
+            priceRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    filterProductsByPrice(this.value);
+                });
+            });
+
+            // Rating Filter
+            const ratingCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            ratingCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    applyFilters();
+                });
+            });
+
+            // Clear Filters
+            const clearFiltersBtn = document.querySelector('button:contains("Clear All Filters")');
+            if (clearFiltersBtn) {
+                clearFiltersBtn.addEventListener('click', function() {
+                    clearAllFilters();
+                });
+            }
+
+            // View Toggle (Grid/List)
+            const viewButtons = document.querySelectorAll('[data-lucide="grid-3x3"], [data-lucide="list"]');
+            const productsGrid = document.querySelector('.grid');
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    viewButtons.forEach(btn => {
+                        btn.parentElement.classList.remove('text-emerald-600', 'bg-emerald-50', 'border-emerald-300');
+                        btn.parentElement.classList.add('text-gray-400', 'border-gray-300');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.parentElement.classList.remove('text-gray-400', 'border-gray-300');
+                    this.parentElement.classList.add('text-emerald-600', 'bg-emerald-50', 'border-emerald-300');
+                    
+                    // Toggle view
+                    if (this.getAttribute('data-lucide') === 'list') {
+                        productsGrid.classList.remove('grid-cols-1', 'md:grid-cols-2', 'xl:grid-cols-3');
+                        productsGrid.classList.add('grid-cols-1');
+                    } else {
+                        productsGrid.classList.remove('grid-cols-1');
+                        productsGrid.classList.add('grid-cols-1', 'md:grid-cols-2', 'xl:grid-cols-3');
+                    }
+                });
+            });
+
+            // Pagination
+            const paginationButtons = document.querySelectorAll('nav button');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!this.classList.contains('bg-emerald-600')) {
+                        // Remove active class from all buttons
+                        paginationButtons.forEach(btn => {
+                            btn.classList.remove('bg-emerald-600', 'text-white');
+                            btn.classList.add('text-gray-700', 'hover:text-emerald-600', 'border-gray-300', 'hover:bg-emerald-50');
+                        });
+                        
+                        // Add active class to clicked button
+                        this.classList.remove('text-gray-700', 'hover:text-emerald-600', 'border-gray-300', 'hover:bg-emerald-50');
+                        this.classList.add('bg-emerald-600', 'text-white');
+                        
+                        // Handle pagination
+                        const pageNumber = this.textContent.trim();
+                        if (!isNaN(pageNumber)) {
+                            goToPage(parseInt(pageNumber));
+                        }
+                    }
+                });
+            });
+
+            // Add to Cart Functionality
+            const addToCartButtons = document.querySelectorAll('button:contains("Add to Cart")');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h3').textContent;
+                    const productPrice = productCard.querySelector('.text-2xl').textContent;
+                    
+                    addToCart(productName, productPrice);
+                });
+            });
+
+            // Wishlist Functionality
+            const wishlistButtons = document.querySelectorAll('[data-lucide="heart"]');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('text-red-500');
+                    this.classList.toggle('text-gray-600');
+                    
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h3').textContent;
+                    
+                    toggleWishlist(productName);
+                });
+            });
+        });
+
+        // Search Function
+        function performSearch() {
+            const searchTerm = document.querySelector('.search-input').value.trim();
+            if (searchTerm) {
+                console.log('Searching for:', searchTerm);
+                // Implement search logic here
+                filterProducts(searchTerm);
+            }
+        }
+
+        // Filter Products by Category
+        function filterProductsByCategory(category) {
+            console.log('Filtering by category:', category);
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const categorySpan = card.querySelector('.text-sm.font-medium');
+                const cardCategory = categorySpan.textContent.trim();
+                
+                if (category === 'All Products' || cardCategory.toLowerCase().includes(category.toLowerCase())) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            updateResultsCount();
+        }
+
+        // Filter Products by Price
+        function filterProductsByPrice(priceRange) {
+            console.log('Filtering by price:', priceRange);
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const priceElement = card.querySelector('.text-2xl');
+                const price = parseFloat(priceElement.textContent.replace('$', ''));
+                let show = true;
+                
+                switch(priceRange) {
+                    case 'Under $10':
+                        show = price < 10;
+                        break;
+                    case '$10 - $50':
+                        show = price >= 10 && price <= 50;
+                        break;
+                    case '$50 - $100':
+                        show = price >= 50 && price <= 100;
+                        break;
+                    case 'Over $100':
+                        show = price > 100;
+                        break;
+                    default:
+                        show = true;
+                }
+                
+                card.style.display = show ? 'block' : 'none';
+            });
+            
+            updateResultsCount();
+        }
+
+        // Sort Products
+        function sortProducts(sortBy) {
+            console.log('Sorting by:', sortBy);
+            const productsGrid = document.querySelector('.grid');
+            const productCards = Array.from(document.querySelectorAll('.product-card'));
+            
+            productCards.sort((a, b) => {
+                switch(sortBy) {
+                    case 'Price: Low to High':
+                        const priceA = parseFloat(a.querySelector('.text-2xl').textContent.replace('$', ''));
+                        const priceB = parseFloat(b.querySelector('.text-2xl').textContent.replace('$', ''));
+                        return priceA - priceB;
+                    
+                    case 'Price: High to Low':
+                        const priceA2 = parseFloat(a.querySelector('.text-2xl').textContent.replace('$', ''));
+                        const priceB2 = parseFloat(b.querySelector('.text-2xl').textContent.replace('$', ''));
+                        return priceB2 - priceA2;
+                    
+                    case 'Rating':
+                        const ratingA = a.querySelectorAll('[data-lucide="star"].fill-current').length;
+                        const ratingB = b.querySelectorAll('[data-lucide="star"].fill-current').length;
+                        return ratingB - ratingA;
+                    
+                    default:
+                        return 0;
+                }
+            });
+            
+            // Re-append sorted cards
+            productCards.forEach(card => {
+                productsGrid.appendChild(card);
+            });
+        }
+
+        // Apply All Filters
+        function applyFilters() {
+            console.log('Applying all filters');
+            // Implement combined filter logic here
+            updateResultsCount();
+        }
+
+        // Clear All Filters
+        function clearAllFilters() {
+            console.log('Clearing all filters');
+            
+            // Reset price filters
+            const priceRadios = document.querySelectorAll('input[name="price"]');
+            priceRadios[0].checked = true; // Select "All Prices"
+            
+            // Reset rating filters
+            const ratingCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            ratingCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Show all products
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            updateResultsCount();
+        }
+
+        // Update Results Count
+        function updateResultsCount() {
+            const visibleProducts = document.querySelectorAll('.product-card[style*="block"], .product-card:not([style*="none"])');
+            const totalProducts = document.querySelectorAll('.product-card').length;
+            
+            const resultsText = document.querySelector('.text-gray-600');
+            if (resultsText) {
+                resultsText.innerHTML = `Showing <span class="font-semibold text-gray-900">${visibleProducts.length}</span> of <span class="font-semibold text-gray-900">${totalProducts}</span> products`;
+            }
+        }
+
+        // Go to Page
+        function goToPage(pageNumber) {
+            console.log('Going to page:', pageNumber);
+            // Implement pagination logic here
+        }
+
+        // Add to Cart
+        function addToCart(productName, productPrice) {
+            console.log('Adding to cart:', productName, productPrice);
+            
+            // Show notification
+            showNotification(`${productName} added to cart!`, 'success');
+            
+            // Update cart count (if cart manager exists)
+            if (window.cartManager) {
+                window.cartManager.addItem({
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
+        }
+
+        // Toggle Wishlist
+        function toggleWishlist(productName) {
+            console.log('Toggling wishlist for:', productName);
+            
+            // Show notification
+            showNotification(`${productName} added to wishlist!`, 'info');
+        }
+
+        // Show Notification
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white transition-all duration-300 transform translate-x-full`;
+            
+            // Set background color based on type
+            switch(type) {
+                case 'success':
+                    notification.classList.add('bg-emerald-600');
+                    break;
+                case 'error':
+                    notification.classList.add('bg-red-600');
+                    break;
+                case 'warning':
+                    notification.classList.add('bg-yellow-600');
+                    break;
+                default:
+                    notification.classList.add('bg-blue-600');
+            }
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Filter Products (General)
+        function filterProducts(searchTerm) {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                const productDescription = card.querySelector('p').textContent.toLowerCase();
+                const category = card.querySelector('.text-sm.font-medium').textContent.toLowerCase();
+                
+                const matches = productName.includes(searchTerm.toLowerCase()) ||
+                              productDescription.includes(searchTerm.toLowerCase()) ||
+                              category.includes(searchTerm.toLowerCase());
+                
+                card.style.display = matches ? 'block' : 'none';
+            });
+            
+            updateResultsCount();
+        }
+    </script>
 
     <!-- Initialize Lucide Icons -->
     <script>
