@@ -1127,13 +1127,13 @@
 			<div class="container">
 				<div class="flex-between h-16">
 					<!-- Logo -->
-					<a href="/" class="flex items-center space-x-3 group">
-						<div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex-center shadow-lg group-hover:shadow-glow transition-shadow duration-300">
-							<span class="text-white font-bold text-xl">M</span>
+					<a href="homemmo.html" class="flex items-center space-x-3 group">
+						<div class="size-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex-center shadow-lg group-hover:shadow-glow transition-shadow duration-300">
+							<span class="text-white font-bold text-responsive-lg">M</span>
 						</div>
 						<div class="hidden sm:block">
-							<h1 class="text-xl font-bold text-gradient">MMO Store</h1>
-							<p class="text-xs text-gray-500">Premium Digital Products</p>
+							<h1 class="text-responsive-lg font-bold text-gradient">MMO Store</h1>
+							<p class="text-responsive-xs text-gray-500">Premium Digital Products</p>
 						</div>
 					</a>
 					<!-- Desktop Navigation -->
@@ -1471,7 +1471,7 @@
 					<!-- Right side -->
 					<div class="flex items-center gap-2">
 						<!-- Post Button -->
-						<button @click="handlePostClick()" class="btn btn-primary btn-sm lg:btn-md">
+						<button @click="handlePostClick()" class="btn btn-primary btn-md">
 						<i data-lucide="plus" class="w-4 h-4 mr-2"></i>
 						<span class="hidden sm:inline">Đăng Bán</span>
 						<span class="sm:hidden">Đăng</span>
@@ -1487,14 +1487,14 @@
 						<!-- Mobile Menu -->
 						<section class="lg:hidden flex items-center space-x-2 ">
 							<!-- Mobile Cart -->
-							<button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
-							<i data-lucide="shopping-cart" class="w-6 h-6"></i>
-							<span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
+							<button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-md p-2  relative">
+							<i data-lucide="shopping-cart" class="size-5"></i>
+							<span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-responsive-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
 								x-show="cartCount > 0" x-text="cartCount">0</span>
 							</button>
 							<!-- Mobile Search -->
-							<button @click="openMobileMenu(true)" class="btn btn-ghost btn-sm p-2 h-8 w-8">
-							<i data-lucide="search" class="w-6 h-6"></i>
+							<button @click="openMobileMenu(true)" class="btn btn-ghost btn-md p-2 ">
+							<i data-lucide="search" class="size-5"></i>
 							</button>
 							<!-- Auth Section -->
 							<div class="flex items-center">
@@ -1567,8 +1567,8 @@
 									</div>
 								</div>
 							</div>
-							<button @click="openMobileMenu()" class="btn btn-ghost btn-sm p-2 h-8 w-8">
-							<i data-lucide="menu" class="w-6 h-6"></i>
+							<button @click="openMobileMenu()" class="btn btn-ghost btn-md p-2 ">
+							<i data-lucide="menu" class="w-5 h-5"></i>
 							</button>
 						</section>
 					</div>
@@ -1588,7 +1588,7 @@
 					x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
 					style="height: 100vh; height: 100dvh;">
 					<!-- Mobile Menu Header -->
-					<div class="bg-gradient-to-r from-emerald-500 to-green-600 p-6 text-white">
+					<!-- <div class="bg-gradient-to-r from-emerald-500 to-green-600 p-6 text-white">
 						<div class="flex items-center justify-between">
 							<div>
 								<h2 class="text-xl font-bold">MMO Store</h2>
@@ -1598,7 +1598,7 @@
 							<i data-lucide="x" class="w-6 h-6"></i>
 							</button>
 						</div>
-					</div>
+					</div> -->
 					<!-- Mobile Search -->
 					<div class="p-4 pb-0">
 						<form action="search.html" method="GET" class="relative">
@@ -2294,7 +2294,7 @@
 						<div class="text-left">
 							<h1 class="text-responsive-xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
 								MMO Store
-								<span class="block sm:inline text-gradient bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+								<span class="block  text-gradient bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
 								Premium Digital Products
 								</span>
 							</h1>
@@ -2302,12 +2302,12 @@
 								Sàn bán tài nguyên số chuyên nghiệp cho MMO - Backlink, tài khoản social, data & tools, license phần mềm và dịch vụ MMO chất lượng cao
 							</p>
 							<div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-								<button class="btn btn-primary btn-sm lg:btn-lg w-full sm:w-auto">
-								<i data-lucide="shopping-bag" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
+								<button class="btn btn-primary btn-md w-full sm:w-auto">
+								<i data-lucide="shopping-bag" class="size-5 mr-2"></i>
 								Khám phá sản phẩm
 								</button>
-								<button class="btn btn-outline btn-sm lg:btn-lg w-full sm:w-auto">
-								<i data-lucide="play" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
+								<button class="btn btn-outline btn-md w-full sm:w-auto">
+								<i data-lucide="play" class="size-5 mr-2"></i>
 								Xem demo
 								</button>
 							</div>
@@ -2622,12 +2622,12 @@
 					<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
 						<div class="text-left mb-2 flex-1">
 							<h2 class="section-title">Sản phẩm nổi bật</h2>
-							<p class="text-sm sm:text-base text-gray-600">Những sản phẩm Hot trong cộng đồng MMO</p>
+							<p class="text-responsive-sm text-gray-600">Những sản phẩm Hot trong cộng đồng MMO</p>
 						</div>
 						<div class="flex-shrink-0 w-full sm:w-auto">
 							<button onclick="window.location.href='/products'" 
-								class="btn btn-outline w-full sm:w-auto btn-sm sm:btn-md">
-							<i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
+								class="btn btn-outline w-full sm:w-auto btn-md">
+							<i data-lucide="arrow-right" class="size-5 mr-2"></i>
 							Xem Thêm
 							</button>
 						</div>
