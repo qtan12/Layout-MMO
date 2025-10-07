@@ -346,23 +346,19 @@
     @apply flex justify-end space-x-2 pt-4 border-t;
   }
 
-  /* Pagination Styles */
-   
+ /* Pagination Styles */
  .pagination {
-    @apply flex items-center justify-center space-x-2;
-}
-
-.pagination-item {
-    @apply flex items-center justify-center w-6 h-6 md:w-10 md:h-10 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-all duration-200;
-}
-
-.pagination-item.active {
-    @apply text-white bg-gradient-to-r from-emerald-500 to-green-600 border-emerald-600 ;
-}
-
-.pagination-item.disabled {
-    @apply opacity-50 cursor-not-allowed hover:bg-white hover:text-gray-500;
-}
+			@apply flex items-center justify-center space-x-2;
+			}
+			.pagination-item {
+			@apply flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-all duration-200;
+			}
+			.pagination-item.active {
+			@apply text-white bg-gradient-to-r from-emerald-500 to-green-600 border-emerald-600 hover:from-emerald-600 hover:to-green-700;
+			}
+			.pagination-item.disabled {
+			@apply opacity-50 cursor-not-allowed hover:bg-white hover:text-gray-500;
+			}
 
 
   /* Alert Styles */
@@ -2757,11 +2753,11 @@
             <!-- Breadcrumb -->
         <nav class="flex items-center text-responsive-xs text-gray-500  p-4">
             <a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right size-4 flex-shrink-0">
                 <path d="m9 18 6-6-6-6"></path>
             </svg>
             <a class="hover:text-emerald-600 whitespace-nowrap" href="#">Sản phẩm</a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right size-4 flex-shrink-0">
                 <path d="m9 18 6-6-6-6"></path>
             </svg>
             <a class="hover:text-emerald-600 whitespace-nowrap" href="/email">Email</a>
@@ -2945,10 +2941,10 @@
 							<div class="flex items-center justify-start gap-2 mt-4">
 								<div class="flex space-x-1 ">
 									<div class="flex text-yellow-500">
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
 									</div>
 									<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
 								</div>
@@ -2984,10 +2980,10 @@
 							<div class="flex items-center justify-start gap-2 mt-4">
 								<div class="flex space-x-1 ">
 									<div class="flex text-yellow-500">
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
 									</div>
 									<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
 								</div>
@@ -3024,10 +3020,10 @@
 							<div class="flex items-center justify-start gap-2 mt-4">
 								<div class="flex space-x-1 ">
 									<div class="flex text-yellow-500">
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-										<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
+										<i data-lucide="star" class="size-4 fill-current"></i>
 									</div>
 									<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
 								</div>
