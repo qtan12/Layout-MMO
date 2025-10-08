@@ -2653,26 +2653,24 @@
 						</div>
 
 						<!-- Pagination -->
-						<div class="flex items-center justify-center space-x-1 sm:space-x-2 mt-6 sm:mt-8">
-							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">
-								<i data-lucide="chevron-left" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-							</button>
-							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm bg-emerald-600 text-white rounded-lg">1</button>
-							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">2</button>
-							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">3</button>
-							<span class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-400 hidden sm:inline">...</span>
-							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">5</button>
-							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">
-								<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-							</button>
+						<div class="m-6  flex  justify-center">
+							<nav class="pagination">
+								<a href="#" class="pagination-item disabled text-responsive-sm">&laquo;</a>
+								<a href="#" class="pagination-item active text-responsive-sm">1</a>
+								<a href="#" class="pagination-item text-responsive-sm">2</a>
+								<a href="#" class="pagination-item text-responsive-sm">3</a>
+								<span class="pagination-item text-responsive-sm">...</span>
+								<a href="#" class="pagination-item text-responsive-sm">125</a>
+								<a href="#" class="pagination-item text-responsive-sm">&raquo;</a>
+							</nav>
 						</div>
 					</div>
 
 					<!-- Sidebar -->
 					<div class="lg:col-span-1 mt-6 lg:mt-0">
 						<!-- Related Tags -->
-						<div class="card p-4 sm:p-6 mb-4 sm:mb-6">
-							<h3 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Tags liên quan</h3>
+						<div class="card p-4 sm:p-6 mb-6">
+							<h3 class="text-responsive-md font-bold text-gray-900 mb-3 sm:mb-4">Tags liên quan</h3>
 							<div class="flex flex-wrap gap-1.5 sm:gap-2">
 								<a href="#" class="badge badge-primary text-xs sm:text-sm">MMO Tools</a>
 								<a href="#" class="badge badge-primary text-xs sm:text-sm">Security</a>
@@ -2686,17 +2684,17 @@
 						</div>
 
 						<!-- Popular Posts -->
-						<div class="card p-4 sm:p-6 mb-4 sm:mb-6">
-							<h3 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Bài viết phổ biến</h3>
+						<div class="card p-4 sm:p-6 mb-6">
+							<h3 class="text-responsive-md font-bold text-gray-900 mb-3 sm:mb-4">Bài viết phổ biến</h3>
 							<div class="space-y-3 sm:space-y-4">
 								<div class="flex space-x-2 sm:space-x-3">
-									<div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg flex-shrink-0">
+									<div class="w-16 h-16 ">
 										<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
 												 alt="Popular Post" 
 												 class="w-full h-full object-cover rounded-lg">
 									</div>
 									<div class="flex-1 min-w-0">
-										<h4 class="text-xs sm:text-sm font-semibold text-gray-900 mb-1 line-clamp-2">
+										<h4 class="text-responsive-sm font-semibold mb-1 line-clamp-2">
 											<a href="#" class="hover:text-emerald-600 transition-colors">Proxy Có Thực Sự Đáng Tin Cậy?</a>
 										</h4>
 										<div class="flex items-center space-x-1 sm:space-x-2 text-xs text-gray-500">
@@ -2708,13 +2706,13 @@
 									</div>
 								</div>
 								<div class="flex space-x-2 sm:space-x-3">
-									<div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex-shrink-0">
+									<div class="w-16 h-16 ">
 										<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
 												 alt="Popular Post" 
 												 class="w-full h-full object-cover rounded-lg">
 									</div>
 									<div class="flex-1 min-w-0">
-										<h4 class="text-xs sm:text-sm font-semibold text-gray-900 mb-1 line-clamp-2">
+										<h4 class="text-responsive-sm font-semibold mb-1 line-clamp-2">
 											<a href="#" class="hover:text-emerald-600 transition-colors">Hướng Dẫn Cài Đặt Proxy</a>
 										</h4>
 										<div class="flex items-center space-x-1 sm:space-x-2 text-xs text-gray-500">
@@ -2726,13 +2724,13 @@
 									</div>
 								</div>
 								<div class="flex space-x-2 sm:space-x-3">
-									<div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex-shrink-0">
+									<div class="w-16 h-16 ">
 										<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
 												 alt="Popular Post" 
 												 class="w-full h-full object-cover rounded-lg">
 									</div>
 									<div class="flex-1 min-w-0">
-										<h4 class="text-xs sm:text-sm font-semibold text-gray-900 mb-1 line-clamp-2">
+										<h4 class="text-responsive-sm font-semibold mb-1 line-clamp-2">
 											<a href="#" class="hover:text-emerald-600 transition-colors">So Sánh Top 10 Proxy 2024</a>
 										</h4>
 										<div class="flex items-center space-x-1 sm:space-x-2 text-xs text-gray-500">
@@ -2747,16 +2745,17 @@
 						</div>
 
 						<!-- Newsletter -->
-						<div class="card bg-gradient-to-br from-emerald-500 to-green-600 text-white p-4 sm:p-6">
-							<h3 class="text-base sm:text-lg font-bold mb-2 sm:mb-3">Đăng ký nhận tin</h3>
-							<p class="text-xs sm:text-sm mb-3 sm:mb-4">Nhận thông báo về các bài viết mới nhất về Proxy và MMO Tools</p>
-							<div class="space-y-2 sm:space-y-3">
-								<input type="email" placeholder="Email của bạn" 
-									   class="w-full px-3 py-2 text-gray-900 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-white/50">
-								<button class="w-full bg-white text-emerald-600 py-2 rounded-lg font-medium text-xs sm:text-sm hover:bg-gray-100 transition-colors">
-									Đăng ký
+						<div class="card p-4 bg-gradient-to-r from-emerald-600 to-green-700  text-white">
+							<h3 class="text-responsive-lg font-semibold ">Đăng Ký Newsletter</h3>
+							<p class="text-emerald-100 text-responsive-sm mb-4">
+								Nhận tin tức mới nhất về MMO
+							</p>
+							<form class="space-y-3">
+								<input type="email" placeholder="Email của bạn" class="input text-gray-900 ">
+								<button type="submit" class="w-full btn btn-primary btn-md">
+									Đăng Ký
 								</button>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>

@@ -2458,14 +2458,14 @@
 
 			<!-- News Content -->
 			<section class="py-8 sm:py-12">
-				<div class="container mx-auto px-4">
+				<div class="container mx-auto px-4 py-4">
 					<div class="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
 						<!-- Main News Grid -->
 						<div class="lg:col-span-3">
 							<!-- Featured News -->
 							<div class="mb-8 sm:mb-12">
 								<h2 class="section-title">Tin Tức Nổi Bật</h2>
-								<div class="card overflow-hidden">
+								<div class="card overflow-hidden mt-6">
 									<div class="md:flex">
 										<div class="md:w-1/2 relative">
 											<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
@@ -3054,54 +3054,56 @@
 							</div>
 
 							<!-- Categories -->
-							<div class="card mb-6 lg:mb-8">
-								<div class="card-content">
-									<h3 class="text-responsive-md font-bold text-gray-900 mb-4">Danh Mục</h3>
+							<div class="card p-6 mb-6 lg:mb-8">
+								<h3 class="font-bold text-gray-900 mb-4 text-responsive-md">Danh mục</h3>
 								<div class="space-y-2">
-									<a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-										<span>MMO</span>
-										<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-responsive-xs">12</span>
+									<a href="#" class="group flex items-center justify-between p-2 ">
+										<div class="flex items-center">
+											<div class="size-2 bg-emerald-500 rounded-full mr-3 group-hover:scale-125 transition-transform"></div>
+											<span class="text-responsive-sm font-medium">MMO Tools</span>
+										</div>
+										<span class="badge badge-primary">12</span>
 									</a>
-									<a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-										<span>Công Nghệ</span>
-										<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-responsive-xs">8</span>
+									<a href="#" class="group flex items-center justify-between p-2 ">
+										<div class="flex items-center">
+											<div class="size-2 bg-emerald-500 rounded-full mr-3 group-hover:scale-125 transition-transform"></div>
+											<span class="text-responsive-sm font-medium">SEO & Marketing</span>
+										</div>
+										<span class="badge badge-primary">8</span>
 									</a>
-									<a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-										<span>SEO</span>
-										<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-responsive-xs">15</span>
+									<a href="#" class="group flex items-center justify-between p-2 ">
+										<div class="flex items-center">
+											<div class="size-2 bg-emerald-500 rounded-full mr-3 group-hover:scale-125 transition-transform"></div>
+											<span class="text-responsive-sm font-medium">Bảo mật</span>
+										</div>
+										<span class="badge badge-primary">6</span>
 									</a>
-									<a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-										<span>Social Media</span>
-										<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-responsive-xs">6</span>
+									<a href="#" class="group flex items-center justify-between p-2 ">
+										<div class="flex items-center">
+											<div class="size-2 bg-emerald-500 rounded-full mr-3 group-hover:scale-125 transition-transform"></div>
+											<span class="text-responsive-sm font-medium">Social Media</span>
+										</div>
+										<span class="badge badge-primary">15</span>
 									</a>
-									<a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-										<span>E-commerce</span>
-										<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-responsive-xs">9</span>
+									<a href="#" class="group flex items-center justify-between p-2 ">
+										<div class="flex items-center">
+											<div class="size-2 bg-emerald-500 rounded-full mr-3 group-hover:scale-125 transition-transform"></div>
+											<span class="text-responsive-sm font-medium">Tips & Tricks</span>
+										</div>
+										<span class="badge badge-primary">9</span>
 									</a>
-									<a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-										<span>Tools</span>
-										<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-responsive-xs">11</span>
-									</a>
-									<a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
-										<span>Tutorial</span>
-										<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-responsive-xs">7</span>
-									</a>
-								</div>
 								</div>
 							</div>
 
 							<!-- Newsletter -->
-							<div class="bg-gradient-to-r from-emerald-600 to-green-700 rounded-xl p-4 sm:p-6 text-white">
-								<h3 class="text-lg sm:text-xl font-bold mb-2">Đăng Ký Newsletter</h3>
-								<p class="text-emerald-100 text-sm mb-4">
-									Nhận tin tức mới nhất về MMO và digital marketing
+							<div class="card p-4 bg-gradient-to-r from-emerald-600 to-green-700  text-white">
+								<h3 class="text-responsive-lg font-semibold ">Đăng Ký Newsletter</h3>
+								<p class="text-emerald-100 text-responsive-sm mb-4">
+									Nhận tin tức mới nhất về MMO
 								</p>
 								<form class="space-y-3">
-									<input type="email" 
-										   placeholder="Email của bạn" 
-										   class="input text-gray-900 ">
-									<button type="submit" 
-											class="w-full btn btn-primary btn-md">
+									<input type="email" placeholder="Email của bạn" class="input text-gray-900 ">
+									<button type="submit" class="w-full btn btn-primary btn-md">
 										Đăng Ký
 									</button>
 								</form>

@@ -659,6 +659,10 @@
   }
 
   /* Responsive Text */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
   .text-responsive-sm {
     @apply text-sm sm:text-base;
   }
@@ -2574,30 +2578,30 @@
         </div>
 
         <!-- Order Details -->
-        <div class="container mx-auto px-4 py-6 sm:py-8">
+        <div class="container mx-auto py-6 sm:py-8">
             <div class="max-w-4xl mx-auto">
                 <!-- Order Summary Card -->
-                <div class="card mb-6 sm:mb-8">
+                <div class="card mb-6 ">
                     <div class="card-content">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                        <div class="grid grid-cols-1 gap-6">
                             <!-- Order Info -->
                             <div class="space-y-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Thông tin đơn hàng</h3>
+                                <h3 class="text-responsive-md font-semibold border-b border-gray-200 pb-2">Thông tin đơn hàng</h3>
                                 <div class="space-y-2 sm:space-y-3">
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Mã đơn hàng:</span>
-                                        <span class="font-mono text-emerald-600 text-sm sm:text-base break-all">#ORD-20241215-ABC</span>
+                                    <div class="flex flex-row justify-between ">
+                                        <span class="text-responsive-sm text-gray-600">Mã đơn hàng:</span>
+                                        <span class="font-mono text-emerald-600 text-responsive-sm ">#ORD-20241215-ABC</span>
                                     </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Ngày đặt:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">15/12/2024, 14:30</span>
+                                    <div class="flex flex-row justify-between ">
+                                        <span class="text-responsive-sm text-gray-600">Ngày đặt:</span>
+                                        <span class="text-gray-900 text-responsive-sm ">15/12/2024, 14:30</span>
                                     </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Phương thức thanh toán:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">Ví số dư</span>
+                                    <div class="flex flex-row justify-between ">
+                                        <span class="text-responsive-sm text-gray-600">Phương thức thanh toán:</span>
+                                        <span class="text-gray-900 text-responsive-sm ">Ví số dư</span>
                                     </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Trạng thái:</span>
+                                    <div class="flex flex-row justify-between ">
+                                        <span class="text-responsive-sm text-gray-600">Trạng thái:</span>
                                         <span class="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs sm:text-sm font-medium w-fit">
                                             <i data-lucide="check-circle" class="w-3 h-3"></i>
                                             Đã thanh toán
@@ -2608,23 +2612,23 @@
 
                             <!-- Customer Info -->
                             <div class="space-y-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Thông tin khách hàng</h3>
+                                <h3 class="text-responsive-md font-semibold border-b border-gray-200 pb-2">Thông tin khách hàng</h3>
                                 <div class="space-y-2 sm:space-y-3">
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Họ và tên:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">Nguyễn Văn A</span>
+                                    <div class="flex flex-row justify-between">
+                                        <span class="text-responsive-sm text-gray-600">Họ và tên:</span>
+                                        <span class="text-gray-900 text-responsive-sm ">Nguyễn Văn A</span>
                                     </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Email:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base break-all">nguyenvana@email.com</span>
+                                    <div class="flex flex-row justify-between">
+                                        <span class="text-responsive-sm text-gray-600">Email:</span>
+                                        <span class="text-gray-900 text-responsive-sm break-all">nguyenvana@email.com</span>
                                     </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Số điện thoại:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">0123456789</span>
+                                    <div class="flex flex-row justify-between">
+                                        <span class="text-responsive-sm text-gray-600">Số điện thoại:</span>
+                                        <span class="text-gray-900 text-responsive-sm ">0123456789</span>
                                     </div>
-                                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                                        <span class="text-sm sm:text-base text-gray-600">Tên đăng nhập:</span>
-                                        <span class="text-gray-900 text-sm sm:text-base">nguyenvana123</span>
+                                    <div class="flex flex-row justify-between">
+                                        <span class="text-responsive-sm text-gray-600">Tên đăng nhập:</span>
+                                        <span class="text-gray-900 text-responsive-sm ">nguyenvana123</span>
                                     </div>
                                 </div>
                             </div>
@@ -2633,99 +2637,99 @@
                 </div>
 
                 <!-- Order Items -->
-                <div class="card mb-6 sm:mb-8">
+                <div class="card mb-6">
                     <div class="card-header">
-                        <h2 class="card-title text-responsive-lg">Sản phẩm đã mua</h2>
+                        <h2 class="text-responsive-md font-bold">Sản phẩm đã mua</h2>
                         <p class="card-description text-responsive-sm">3 sản phẩm</p>
                     </div>
                     <div class="card-content">
-                        <div class="">
+                        <div class=" bg-gray-50">
                             <!-- Order Item 1 -->
-                            <div class="flex flex-col space-y-3 p-3 sm:p-4 bg-gray-50 rounded-lg">
-                                <div class="flex items-center space-x-3 sm:space-x-4">
-                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                            <div class="flex flex-col space-y-3 p-3  rounded-lg">
+                                <div class="flex space-x-4">
+                                    <div class="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=100&h=100&fit=crop&crop=center" 
                                              alt="Backlink Premium" 
                                              class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <h3 class="font-medium text-gray-900 text-sm sm:text-base">Backlink Premium</h3>
-                                        <p class="text-xs sm:text-sm text-gray-500">SEO & Link Building</p>
+                                      <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
+                                      <h3 class="font-medium text-responsive-sm text-gray-900">Backlink Premium</h3>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫500,000</span>
-                                        <span class="text-xs text-gray-500">x1</span>
+                                    <div class="flex items-center gap-2  text-responsive-sm">
+                                        <span class=" font-semibold text-emerald-600">₫500,000</span>
+                                        <span class="text-responsive-sm text-gray-500">x1</span>
                                     </div>
-                                    <span class="text-base sm:text-lg font-bold text-emerald-600">₫500,000</span>
+                                    <span class="text-responsive-md font-semibold text-emerald-600">₫500,000</span>
                                 </div>
                             </div>
 
                             <!-- Order Item 2 -->
-                            <div class="flex flex-col space-y-3 p-3 sm:p-4 bg-gray-50 rounded-lg">
-                                <div class="flex items-center space-x-3 sm:space-x-4">
-                                    <div class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                            <div class="flex flex-col space-y-3 p-3  rounded-lg">
+                                <div class="flex space-x-4">
+                                    <div class="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=100&h=100&fit=crop&crop=center" 
                                              alt="Tài khoản Gmail" 
                                              class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <h3 class="font-medium text-gray-900 text-sm sm:text-base">Tài khoản Gmail</h3>
-                                        <p class="text-xs sm:text-sm text-gray-500">Email Accounts</p>
+                                      <p class="text-responsive-xs text-gray-500">Email Accounts</p>
+                                      <h3 class="font-medium text-gray-900 text-responsive-sm ">Tài khoản Gmail</h3>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫200,000</span>
-                                        <span class="text-xs text-gray-500">x2</span>
+                                    <div class="flex items-center gap-2  text-responsive-sm">
+                                        <span class="text-responsive-sm font-semibold text-emerald-600">₫200,000</span>
+                                        <span class="text-responsive-sm text-gray-500">x2</span>
                                     </div>
-                                    <span class="text-base sm:text-lg font-bold text-emerald-600">₫400,000</span>
+                                    <span class="text-responsive-md font-semibold text-emerald-600">₫400,000</span>
                                 </div>
                             </div>
 
                             <!-- Order Item 3 -->
-                            <div class="flex flex-col space-y-3 p-3 sm:p-4 bg-gray-50 rounded-lg">
-                                <div class="flex items-center space-x-3 sm:space-x-4">
-                                    <div class="w-12 h-12 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                            <div class="flex flex-col space-y-3 p-3  rounded-lg">
+                                <div class="flex space-x-4">
+                                    <div class="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?w=100&h=100&fit=crop&crop=center" 
                                              alt="Tài khoản Facebook Clone" 
                                              class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <h3 class="font-medium text-gray-900 text-sm sm:text-base">Tài khoản Facebook Clone</h3>
-                                        <p class="text-xs sm:text-sm text-gray-500">Facebook Accounts</p>
+                                      <p class="text-responsive-xs text-gray-500">Facebook Accounts</p>
+                                      <h3 class="font-medium text-gray-900 text-responsive-sm">Tài khoản Facebook Clone</h3>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xs sm:text-sm font-semibold text-emerald-600">₫300,000</span>
+                                    <div class="flex items-center gap-2  text-responsive-sm">
+                                        <span class="text-responsive-sm font-semibold text-emerald-600">₫300,000</span>
                                         <span class="text-xs text-gray-500">x1</span>
                                     </div>
-                                    <span class="text-base sm:text-lg font-bold text-emerald-600">₫300,000</span>
+                                    <span class="text-responsive-md font-semibold text-emerald-600">₫300,000</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Order Total -->
-                        <div class="border-t border-gray-200 pt-4 mt-4 sm:mt-6">
+                        <div class="border-t border-gray-200 pt-4 ">
                             <div class="space-y-2 sm:space-y-3">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs sm:text-sm text-gray-600">Tạm tính:</span>
-                                    <span class="text-xs sm:text-sm font-semibold text-gray-900">₫1,200,000</span>
+                                    <span class="text-responsive-sm">Tạm tính:</span>
+                                    <span class="text-responsive-sm ">₫1,200,000</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs sm:text-sm text-gray-600">Phí giao dịch:</span>
-                                    <span class="text-xs sm:text-sm font-semibold text-green-600">Miễn phí</span>
+                                    <span class="text-responsive-sm">Phí giao dịch:</span>
+                                    <span class="text-responsive-sm text-green-600">Miễn phí</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs sm:text-sm text-gray-600">Giảm giá:</span>
-                                    <span class="text-xs sm:text-sm font-semibold text-red-600">-₫100,000</span>
+                                    <span class="text-responsive-sm">Giảm giá:</span>
+                                    <span class="text-responsive-sm font-semibold text-red-600">-₫100,000</span>
                                 </div>
                                 <div class="border-t border-gray-200 pt-2 sm:pt-3">
                                     <div class="flex justify-between items-center">
-                                        <span class="text-base sm:text-lg font-bold text-gray-900">Tổng cộng:</span>
-                                        <span class="text-lg sm:text-xl font-bold text-emerald-600">₫1,100,000</span>
+                                        <span class="text-responsive-md font-bold text-gray-900">Tổng cộng:</span>
+                                        <span class="text-responsive-md font-bold text-emerald-600">₫1,100,000</span>
                                     </div>
                                 </div>
                             </div>
@@ -2736,15 +2740,15 @@
                 <!-- Digital Product Delivery -->
                 <div class="card mb-6 sm:mb-8">
                     <div class="card-header">
-                        <h2 class="card-title text-lg sm:text-xl">Thông tin giao hàng</h2>
-                        <p class="card-description text-sm sm:text-base">Sản phẩm số sẽ được gửi qua email</p>
+                        <h2 class="text-responsive-md font-semibold">Thông tin giao hàng</h2>
+                        <p class="card-description text-responsive-sm">Sản phẩm số sẽ được gửi qua email</p>
                     </div>
                     <div class="card-content">
-                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 ">
                             <div class="flex items-start gap-2 sm:gap-3">
                                 <i data-lucide="download" class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mt-0.5 flex-shrink-0"></i>
                                 <div class="min-w-0">
-                                    <h3 class="font-medium text-blue-900 mb-2 text-sm sm:text-base">Sản phẩm số đã được gửi</h3>
+                                    <h3 class="font-medium text-blue-900 mb-2 text-responsive-sm">Sản phẩm số đã được gửi</h3>
                                     <p class="text-xs sm:text-sm text-blue-800 mb-3">
                                         Các sản phẩm số của bạn đã được gửi đến email <strong class="break-all">nguyenvana@email.com</strong>. 
                                         Vui lòng kiểm tra hộp thư chính và thư mục spam.
@@ -2819,7 +2823,7 @@
                             <div class="text-xs text-emerald-200 -mt-1">Premium Digital Products</div>
                         </div>
                     </a>
-                    <p class="text-emerald-200 text-sm leading-relaxed">
+                    <p class="text-emerald-200 text-responsive-sm leading-relaxed">
                         Sàn bán tài nguyên số chuyên nghiệp cho MMO, cung cấp backlink, tài khoản social, data & tools, license phần mềm và các dịch vụ MMO chất lượng cao.
                     </p>
                     <div class="flex space-x-3">
@@ -2838,9 +2842,9 @@
 
                 <!-- Sản Phẩm -->
                 <div class="col-start-1 lg:col-start-2">
-                    <h3 class="font-semibold text-lg mb-4">Sản Phẩm</h3>
+                    <h3 class="font-semibold text-responsive-lg mb-4">Sản Phẩm</h3>
                     <ul class="space-y-2 text-emerald-200">
-                        <li><a href="/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
+                        <li><a href="/backlink" class="hover:text-white text-responsive-sm transition-colors">Backlink/Textlink/Entity</a></li>
                         <li><a href="/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
                         <li><a href="/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
                         <li><a href="/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
