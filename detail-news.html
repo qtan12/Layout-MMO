@@ -97,7 +97,7 @@
 
   /* Button Styles */
   .btn {
-    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-md transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
+    @apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
   }
   /* đặt tên gì phổ biến hơn để các nhu cầu tương tự cũng dùng được đi, đặt tên cart nó chỉ dùng cho cart à */
   .btn-overflow{
@@ -129,9 +129,6 @@
   }
 
   /* Button Sizes */
-  .btn-xs{
-    @apply px-2 py-1 h-6 text-xs rounded-sm;
-  }
   .btn-sm {
     @apply px-3 py-1.5 h-8 text-sm;
   }
@@ -150,7 +147,7 @@
 
   /* Input Styles */
   .input {
-    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
+    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
   }
 
   .input-lg {
@@ -186,8 +183,8 @@
         }
         
   /* Card Styles */
-   .card {
-    @apply sm:border border-gray-200 bg-white shadow-md rounded-md hover:shadow-lg transition-all duration-300 transform;
+  .card {
+    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
   }
 
   .card-header {
@@ -216,12 +213,11 @@
 
   /* Badge Styles */
   .badge {
-    @apply inline-flex items-center px-1 py-0.5 text-xs font-medium rounded-sm;
-  }
-
-  .badge-primary {
-    @apply bg-emerald-50 text-emerald-700 border-emerald-200;
-  }
+			@apply inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full;
+			}
+			.badge-primary {
+			@apply bg-emerald-100 text-emerald-700 border-emerald-200;
+			}
 
   .badge-secondary {
     @apply bg-gray-50 text-gray-700 border-gray-200;
@@ -255,7 +251,6 @@
     @apply bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-0 shadow-sm;
   }
 
-
   /* Section Styles */
   .section {
     @apply py-12 lg:py-16;
@@ -270,7 +265,7 @@
   }
 
   .section-title {
-    @apply text-lg lg:text-2xl font-bold text-gray-900 mb-2;
+    @apply text-2xl lg:text-3xl font-bold text-gray-900 mb-2;
   }
 
   .section-subtitle {
@@ -349,17 +344,20 @@
 
   /* Pagination Styles */
   .pagination {
-			@apply flex items-center justify-center space-x-2;
-			}
-			.pagination-item {
-			@apply flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-all duration-200;
-			}
-			.pagination-item.active {
-			@apply text-white bg-gradient-to-r from-emerald-500 to-green-600 border-emerald-600 hover:from-emerald-600 hover:to-green-700;
-			}
-			.pagination-item.disabled {
-			@apply opacity-50 cursor-not-allowed hover:bg-white hover:text-gray-500;
-			}
+    @apply flex items-center justify-center space-x-2;
+  }
+
+  .pagination-item {
+    @apply flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700;
+  }
+
+  .pagination-item.active {
+    @apply text-white bg-blue-600 border-blue-600;
+  }
+
+  .pagination-item.disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
 
   /* Alert Styles */
   .alert {
@@ -642,23 +640,20 @@
 
   /* Responsive Text */
   .text-responsive-xs {
-    @apply text-xs sm:text-sm;
-  }
-  .text-responsive-sm {
-    @apply text-sm sm:text-base;
-  }
-
-  .text-responsive-md {
-    @apply text-base md:text-lg;
-  }
-
-  .text-responsive-lg {
-    @apply text-lg sm:text-xl lg:text-2xl;
-  }
-
-  .text-responsive-xl {
-    @apply text-3xl sm:text-3xl lg:text-4xl;
-  }
+			@apply text-xs sm:text-sm;
+			}
+			.text-responsive-sm {
+			@apply text-sm sm:text-base;
+			}
+			.text-responsive-md {
+			@apply text-base md:text-lg;
+			}
+			.text-responsive-lg {
+			@apply text-lg sm:text-xl lg:text-2xl;
+			}
+			.text-responsive-xl {
+			@apply text-xl sm:text-2xl lg:text-3xl;
+			}
 
   /* Hover Effects */
   .hover-lift {
@@ -1246,14 +1241,14 @@
     </script>
 
     <!-- Header Component JS -->
-    <script src="js/cart-manager.js"></script>
     <script src="js/header.js"></script>
-    <!-- Homepage Component JS -->
-    <script src="js/homemmo.js"></script>
     <!-- BlazeSlider JS -->
     <script src="js/blaze-slider.js"></script>
+ 
     <!-- Lucide Icons - Custom Build -->
-    <script src="js/lucide-custom.min.js"></script>
+    <!-- <script src="js/lucide-custom.min.js"></script> -->
+    <!-- Hiện tại đang Development nên tôi dùng CDN của Lucide trước -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
     <!-- Initialize BlazeSlider -->
     <script>
@@ -1343,7 +1338,7 @@
 </head>
 
 <body class="min-h-screen bg-white">
-   <!-- header -->
+    <!-- header -->
 		<header class="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm sticky top-0 z-50" x-data="headerComponent()">
 			<!-- Top Bar -->
 			<div class="bg-gradient-to-r from-emerald-500 to-green-600 text-white py-2">
@@ -2537,133 +2532,623 @@
 			</div>
 		</header>
 
-
     <!-- Main Content Area -->
     <main class="min-h-screen bg-gray-50">
-        <!-- Kết quả search -->
-        <section class="py-8">
-            <div class="container">
-                <div
-                    x-data="{
-                        q: '',
-                        sort: 'relevance',
-                        page: 1,
-                        perPage: 12,
-                        allItems: [
-                            { id: 'backlink-premium', name: 'Backlink Premium', category: 'SEO & Link Building', price: 500000, icon: 'link' },
-                            { id: 'facebook-clone-vip', name: 'Facebook Clone VIP', category: 'Tài khoản Facebook', price: 150000, icon: 'facebook' },
-                            { id: 'tools-seo-pro', name: 'Tools SEO Pro', category: 'Data & Tools MMO', price: 1200000, icon: 'search' },
-                            { id: 'gmail-clone-vip', name: 'Gmail Clone VIP', category: 'Tài khoản Email', price: 200000, icon: 'mail' },
-                            { id: 'tiktok-clone-premium', name: 'TikTok Clone Premium', category: 'Tài khoản Social khác', price: 300000, icon: 'music' },
-                            { id: 'windows-11-pro', name: 'Windows 11 Pro License', category: 'License Phần Mềm', price: 800000, icon: 'monitor' },
-                            { id: 'instagram-clone-vip', name: 'Instagram Clone VIP', category: 'Tài khoản Social khác', price: 250000, icon: 'instagram' },
-                            { id: 'photoshop-license', name: 'Photoshop License', category: 'License Phần Mềm', price: 1500000, icon: 'image' }
-                        ],
-                        get filtered() {
-                            if (!this.q) return this.allItems;
-                            const t = this.q.toLowerCase();
-                            return this.allItems.filter(i => 
-                                i.name.toLowerCase().includes(t) ||
-                                i.category.toLowerCase().includes(t)
-                            );
-                        },
-                        get sorted() {
-                            const arr = [...this.filtered];
-                            if (this.sort === 'price_asc') arr.sort((a,b)=>a.price-b.price);
-                            if (this.sort === 'price_desc') arr.sort((a,b)=>b.price-a.price);
-                            return arr;
-                        },
-                        get total() { return this.sorted.length; },
-                        get totalPages() { return Math.max(1, Math.ceil(this.total / this.perPage)); },
-                        get paged() {
-                            const start = (this.page - 1) * this.perPage;
-                            return this.sorted.slice(start, start + this.perPage);
-                        },
-                        formatPrice(v){
-                            try { return new Intl.NumberFormat('vi-VN').format(v) + '₫'; } catch(e) { return v + '₫'; }
-                        },
-                        addToCart(item) {
-                            // Gọi function addToCart từ cart-manager.js
-                            if (typeof window.addToCart === 'function') {
-                                window.addToCart(item);
-                            } else {
-                                console.log('Adding to cart:', item);
-                            }
-                        }
-                    }"
-                    x-init="(() => { const params = new URLSearchParams(window.location.search); q = params.get('q') || ''; page = 1; })()"
-                    class="space-y-4"
-                >
-                        <div class="flex items-center gap-2">
-                            <h2 class="text-responsive-lg font-bold text-gray-900">Kết quả tìm kiếm</h2>
-                            <template x-if="q">
-                                <span class="text-responsive-sm text-gray-500">cho “<span x-text="q"></span>”</span>
-                            </template>
-                            <span class="text-responsive-sm text-gray-500" x-text="'(' + total + ' kết quả)'">
-                            </span>
+        <div class="container mx-auto py-6">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center flex-wrap gap-1 text-responsive-xs text-gray-500 mb-6">
+                <a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+                    <path d="m9 18 6-6-6-6"></path>
+                </svg>
+                <a class="hover:text-emerald-600 whitespace-nowrap" href="#">Blog</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+                    <path d="m9 18 6-6-6-6"></path>
+                </svg>
+                <span class="hover:text-emerald-600 truncate min-w-0" title="Proxy Có Thực Sự Đáng Tin Cậy Như Các Gian Hàng Đang Đồn Thổi???">Proxy Có Thực Sự Đáng Tin Cậy Như Các Gian Hàng Đang Đồn Thổi???</span>
+            </nav>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
+                <!-- Main blog post content -->
+                <div class="lg:col-span-2">
+                    <!-- Blog Post Header -->
+                    <article class="card overflow-hidden">
+                        <!-- Featured Image -->
+                        <div class="relative h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-emerald-500 to-green-600">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Proxy Security" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-2 text-white/90 text-sm mb-2">
+                                    <span class="bg-emerald-500/80 px-2 py-1 rounded-full text-xs">MMO Tools</span>
+                                    <span class="bg-blue-500/80 px-2 py-1 rounded-full text-xs">Security</span>
+                                </div>
+                            </div>
                         </div>
 
-                    <div x-show="total === 0" class="bg-white border rounded-lg p-8 text-center">
-                        <i data-lucide="search" class="w-10 h-10 text-gray-300 mx-auto mb-3"></i>
-                        <div class="text-gray-700 font-medium">Không tìm thấy kết quả</div>
-                        <div class="text-gray-500 text-sm">Thử từ khóa khác hoặc kiểm tra chính tả</div>
-                    </div>
+                        <!-- Post Content -->
+                        <div class="p-6 sm:p-8">
+                            <!-- Title -->
+                            <h1 class="section-title  mb-4 ">
+                                Proxy Có Thực Sự Đáng Tin Cậy Như Các Gian Hàng Đang Đồn Thổi???
+                            </h1>
 
-                    <div x-show="total > 0" class="grid grid-cols-1 sm:grid-cols-3 gap-4" x-effect="lucide.createIcons()">
-                        <template x-for="item in paged" :key="item.id">
-                            <div class="bg-white card p-4">
-                                <div class="flex items-center mb-3">
-                                    <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                        <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                            <!-- Meta Info -->
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                                        <i data-lucide="user" class="w-4 h-4 text-emerald-600"></i>
                                     </div>
-                                    <div class="flex-1 min-w-0">
-                                        <p class="text-responsive-xs text-gray-500" x-text="item.category"></p>
-                                        <h4 class="font-bold text-responsive-sm line-clamp-3" x-text="item.name"></h4>
+                                    <span>Admin MMO Store</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>15 Tháng 12, 2024</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>8 phút đọc</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                    <span>2,847 lượt xem</span>
+                                </div>
+                            </div>
+
+                            <!-- Social Share -->
+                            <div class="flex items-center justify-between py-4 border-t border-b border-gray-100 mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-sm text-gray-600">Chia sẻ:</span>
+                                    <div class="flex space-x-2">
+                                        <button class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="w-8 h-8 bg-blue-400 text-white rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
+                                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="w-8 h-8 bg-green-500 text-white rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors">
+                                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-start gap-2 mt-4">
-                                    <div class="flex space-x-1 ">
-                                        <div class="flex text-yellow-500">
-                                            <i data-lucide="star" class="size-4 fill-current"></i>
-                                            <i data-lucide="star" class="size-4 fill-current"></i>
-                                            <i data-lucide="star" class="size-4 fill-current"></i>
-                                            <i data-lucide="star" class="size-4 fill-current"></i>
-                                        </div>
-                                        <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                    </div>
-                                    <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                        <span>•</span>
-                                        <span>Đã bán 900</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between mt-4">
-                                    <span class="text-lg font-bold text-emerald-600" x-text="formatPrice(item.price)"></span>
-                                    <button @click="addToCart(item)" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="size-4 mr-1"></i>
-                                        Thêm giỏ hàng
+                                <div class="flex items-center space-x-2">
+                                    <button class="flex items-center space-x-1 text-emerald-600 hover:text-emerald-700 transition-colors">
+                                        <i data-lucide="heart" class="w-4 h-4"></i>
+                                        <span class="text-sm">24</span>
+                                    </button>
+                                    <button class="flex items-center space-x-1 text-gray-500 hover:text-gray-700 transition-colors">
+                                        <i data-lucide="bookmark" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
-                        </template>
+
+                            <!-- Article Content -->
+                            <div class="prose prose-lg max-w-none">
+                                <div class="text-lg text-gray-600 leading-relaxed mb-6">
+                                    <p class="font-medium text-gray-900">
+                                        Trong thế giới MMO hiện đại, proxy đã trở thành một công cụ không thể thiếu. Nhưng liệu tất cả những lời quảng cáo về độ tin cậy của proxy có thực sự đúng như vậy? Hãy cùng tìm hiểu sự thật đằng sau những lời đồn thổi này.
+                                    </p>
+                                </div>
+
+                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Proxy là gì và tại sao nó quan trọng?</h2>
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    Proxy server hoạt động như một trung gian giữa thiết bị của bạn và internet. Khi bạn sử dụng proxy, yêu cầu của bạn sẽ được gửi đến proxy server trước, sau đó proxy sẽ chuyển tiếp yêu cầu đến website đích và trả về kết quả cho bạn.
+                                </p>
+
+                                <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 my-6">
+                                    <div class="flex items-start space-x-3">
+                                        <i data-lucide="info" class="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-emerald-800 mb-2">Lợi ích chính của Proxy:</h4>
+                                            <ul class="text-emerald-700 space-y-1 text-sm">
+                                                <li>• Ẩn danh IP thực của bạn</li>
+                                                <li>• Truy cập nội dung bị chặn địa lý</li>
+                                                <li>• Tăng tốc độ tải trang</li>
+                                                <li>• Bảo mật dữ liệu cá nhân</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Những lời đồn thổi phổ biến về Proxy</h2>
+                                
+                                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">1. "Proxy miễn phí cũng tốt như proxy trả phí"</h3>
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    <strong>Sự thật:</strong> Đây là một trong những quan niệm sai lầm phổ biến nhất. Proxy miễn phí thường có tốc độ chậm, không ổn định và có thể thu thập dữ liệu của bạn. Proxy trả phí chất lượng cao sẽ mang lại hiệu suất tốt hơn và bảo mật cao hơn.
+                                </p>
+
+                                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">2. "Tất cả proxy đều an toàn 100%"</h3>
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    <strong>Sự thật:</strong> Không có gì là 100% an toàn trên internet. Ngay cả proxy tốt nhất cũng có thể bị tấn công hoặc có lỗ hổng bảo mật. Điều quan trọng là chọn nhà cung cấp proxy uy tín và cập nhật thường xuyên.
+                                </p>
+
+                                <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6">
+                                    <div class="flex items-start space-x-3">
+                                        <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-red-800 mb-2">Cảnh báo:</h4>
+                                            <p class="text-red-700 text-sm">
+                                                Một số proxy miễn phí có thể chứa malware hoặc thu thập thông tin cá nhân của bạn. Luôn kiểm tra danh tiếng của nhà cung cấp trước khi sử dụng.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Cách chọn Proxy đáng tin cậy</h2>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i>
+                                            Tiêu chí tốt
+                                        </h4>
+                                        <ul class="text-sm text-gray-600 space-y-2">
+                                            <li>• Tốc độ cao và ổn định</li>
+                                            <li>• Không ghi log hoạt động</li>
+                                            <li>• Hỗ trợ nhiều giao thức</li>
+                                            <li>• Dịch vụ khách hàng tốt</li>
+                                            <li>• Giá cả hợp lý</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                            <i data-lucide="x-circle" class="w-5 h-5 text-red-500 mr-2"></i>
+                                            Cần tránh
+                                        </h4>
+                                        <ul class="text-sm text-gray-600 space-y-2">
+                                            <li>• Tốc độ chậm, thường xuyên lỗi</li>
+                                            <li>• Ghi log và bán dữ liệu</li>
+                                            <li>• Hỗ trợ kém</li>
+                                            <li>• Giá quá rẻ hoặc quá đắt</li>
+                                            <li>• Không có chính sách bảo mật</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Kết luận</h2>
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    Proxy có thể là công cụ hữu ích cho công việc MMO, nhưng không phải tất cả proxy đều đáng tin cậy như quảng cáo. Việc chọn lựa cẩn thận và hiểu rõ về rủi ro là điều quan trọng. Hãy đầu tư vào những dịch vụ proxy chất lượng từ các nhà cung cấp uy tín để đảm bảo an toàn và hiệu quả.
+                                </p>
+
+                                <div class="card bg-gradient-to-r from-emerald-500 to-green-600 text-white p-6  my-8">
+                                    <h3 class="text-responsive-lg font-bold mb-3">Tìm Proxy chất lượng cao?</h3>
+                                    <p class="text-responsive-sm mb-4">MMO Store cung cấp các gói proxy premium với tốc độ cao, bảo mật tuyệt đối và hỗ trợ 24/7.</p>
+                                    <a href="products.html" class="flex items-center gap-2 text-responsive-sm "> Xem sản phẩm
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Tags -->
+                            <div class="border-t border-gray-100 pt-6 mt-8">
+                                <h4 class="font-semibold text-responsive-sm mb-3">Tags:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="badge badge-primary cursor-pointer">Proxy</span>
+                                    <span class="badge badge-primary cursor-pointer">MMO Tools</span>
+                                    <span class="badge badge-primary cursor-pointer">Bảo mật</span>
+                                    <span class="badge badge-primary cursor-pointer">Internet</span>
+                                    <span class="badge badge-primary cursor-pointer">Anonymity</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Author Bio -->
+                    <div class="card p-4 mt-8">
+                        <div class="flex items-start space-x-2">
+                            <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">A</span>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900 text-responsive-md">Admin MMO Store</h4>
+                                <p class="text-emerald-600 text-responsive-sm mb-3">Chuyên gia MMO & Digital Marketing</p>
+                                <p class="text-gray-600 text-responsive-sm leading-relaxed">
+                                    Với hơn 5 năm kinh nghiệm trong lĩnh vực MMO và digital marketing, tôi chia sẻ những kiến thức thực tế và cập nhật nhất về các công cụ và chiến lược MMO hiệu quả.
+                                </p>
+                                <div class="flex space-x-2 mt-4">
+                                    <a href="#" class="text-emerald-600 hover:text-emerald-700 transition-colors">
+                                        <i data-lucide="facebook" class="w-4 h-4"></i>
+                                    </a>
+                                    <a href="#" class="text-emerald-600 hover:text-emerald-700 transition-colors">
+                                        <i data-lucide="twitter" class="w-4 h-4"></i>
+                                    </a>
+                                    <a href="#" class="text-emerald-600 hover:text-emerald-700 transition-colors">
+                                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Pagination -->
-								<div class="mt-6 sm:mt-8 flex justify-center">
-									<nav class="pagination">
-										<a href="#" class="pagination-item disabled text-responsive-xs">&laquo;</a>
-										<a href="#" class="pagination-item active text-responsive-xs">1</a>
-										<a href="#" class="pagination-item text-responsive-xs">2</a>
-										<a href="#" class="pagination-item text-responsive-xs">3</a>
-										<span class="pagination-item text-responsive-xs">...</span>
-										<a href="#" class="pagination-item text-responsive-xs">125</a>
-										<a href="#" class="pagination-item text-responsive-xs">&raquo;</a>
-									</nav>
-								</div>
+                    <!-- Comments Section -->
+                    <div class="card p-6 mt-8" x-data="commentSystem()">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-semibold text-gray-900">Bình luận (<span x-text="totalComments"></span>)</h3>
+                            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                <span>Thảo luận về bài viết</span>
+                            </div>
+                        </div>
+
+                        <!-- Comment Form -->
+                        <div class="card p-4 mb-6">
+                            <h4 class="font-medium text-gray-900 mb-3">Viết bình luận</h4>
+                            <form class="space-y-4" @submit.prevent="submitComment">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Tên *</label>
+                                        <input type="text" 
+                                               x-model="commentForm.name"
+                                               class="w-full input" 
+                                               :class="{'border-red-500': commentForm.errors.name}"
+                                               placeholder="Nhập tên của bạn"
+                                               required>
+                                        <p x-show="commentForm.errors.name" x-text="commentForm.errors.name" class="text-red-500 text-xs mt-1"></p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                                        <input type="email" 
+                                               x-model="commentForm.email"
+                                               class="w-full input" 
+                                               :class="{'border-red-500': commentForm.errors.email}"
+                                               placeholder="Nhập email của bạn"
+                                               required>
+                                        <p x-show="commentForm.errors.email" x-text="commentForm.errors.email" class="text-red-500 text-xs mt-1"></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Bình luận *</label>
+                                    <textarea rows="4" 
+                                              x-model="commentForm.content"
+                                              class="w-full input" 
+                                              :class="{'border-red-500': commentForm.errors.content}"
+                                              placeholder="Chia sẻ suy nghĩ của bạn về bài viết..."
+                                              required></textarea>
+                                    <p x-show="commentForm.errors.content" x-text="commentForm.errors.content" class="text-red-500 text-xs mt-1"></p>
+                                </div>
+                                <div class="flex flex-col gap-4">
+                                    <label class="flex items-center space-x-2 text-sm text-gray-600">
+                                        <input type="checkbox" x-model="commentForm.notify">
+                                        <span class="text-responsive-xs">Thông báo cho tôi khi có bình luận mới</span>
+                                    </label>
+                                    <button type="submit" 
+                                            class="btn btn-primary btn-md w-full"
+                                            :disabled="commentForm.submitting"
+                                            :class="{'opacity-50 cursor-not-allowed': commentForm.submitting}">
+                                        <span x-show="!commentForm.submitting">Gửi bình luận</span>
+                                        <span x-show="commentForm.submitting">Đang gửi...</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Comments List -->
+                        <div class="space-y-6">
+                            <template x-for="comment in visibleComments" :key="comment.id">
+                                <div class="flex space-x-2">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" 
+                                         :class="comment.avatarBg">
+                                        <span class="font-semibold" :class="comment.avatarText" x-text="comment.initial"></span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="bg-gray-100 rounded-lg p-4">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <div class="flex items-center space-x-2">
+                                                    <h5 class="font-medium text-gray-900" x-text="comment.name"></h5>
+                                                    <span class="text-xs text-gray-500" x-text="comment.timeAgo"></span>
+                                                </div>
+                                                <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                                                    <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                            <p class="text-gray-700 text-sm leading-relaxed mb-3" x-text="comment.content"></p>
+                                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                                <button @click="voteComment(comment.id, 'like')" 
+                                                        class="flex items-center space-x-1 transition-colors"
+                                                        :class="comment.userVote === 'like' ? 'text-emerald-600' : 'hover:text-emerald-600'">
+                                                    <i data-lucide="thumbs-up" class="w-3 h-3"></i>
+                                                    <span x-text="comment.likes"></span>
+                                                </button>
+                                                <button @click="voteComment(comment.id, 'dislike')" 
+                                                        class="flex items-center space-x-1 transition-colors"
+                                                        :class="comment.userVote === 'dislike' ? 'text-red-600' : 'hover:text-emerald-600'">
+                                                    <i data-lucide="thumbs-down" class="w-3 h-3"></i>
+                                                    <span x-text="comment.dislikes"></span>
+                                                </button>
+                                                <button @click="toggleReply(comment.id)" 
+                                                        class="hover:text-emerald-600 transition-colors">
+                                                    Trả lời
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Reply Form -->
+                                        <div x-show="comment.showReply" x-transition class="ml-6 mt-4">
+                                            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                                                <h6 class="font-medium text-gray-900 mb-3">Trả lời bình luận</h6>
+                                                <form @submit.prevent="submitReply(comment.id)">
+                                                    <div class="space-y-3">
+                                                        <div>
+                                                            <label class="block text-sm font-medium text-gray-700 mb-1">Tên *</label>
+                                                            <input type="text" 
+                                                                   x-model="replyForm.name"
+                                                                   class="w-full input text-sm" 
+                                                                   placeholder="Nhập tên của bạn"
+                                                                   required>
+                                                        </div>
+                                                        <div>
+                                                            <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                                                            <input type="email" 
+                                                                   x-model="replyForm.email"
+                                                                   class="w-full input text-sm" 
+                                                                   placeholder="Nhập email của bạn"
+                                                                   required>
+                                                        </div>
+                                                        <div>
+                                                            <label class="block text-sm font-medium text-gray-700 mb-1">Trả lời *</label>
+                                                            <textarea rows="3" 
+                                                                      x-model="replyForm.content"
+                                                                      class="w-full input text-sm" 
+                                                                      placeholder="Viết trả lời của bạn..."
+                                                                      required></textarea>
+                                                        </div>
+                                                        <div class="flex gap-2">
+                                                            <button type="submit" 
+                                                                    class="btn btn-primary btn-sm"
+                                                                    :disabled="replyForm.submitting">
+                                                                <span x-show="!replyForm.submitting">Gửi trả lời</span>
+                                                                <span x-show="replyForm.submitting">Đang gửi...</span>
+                                                            </button>
+                                                            <button type="button" 
+                                                                    @click="cancelReply(comment.id)"
+                                                                    class="btn btn-secondary btn-sm">
+                                                                Hủy
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <!-- Replies -->
+                                        <template x-for="reply in comment.replies" :key="reply.id">
+                                            <div class="ml-6 mt-4">
+                                                <div class="card p-3">
+                                                    <!-- Reply Header -->
+                                                    <div class="flex items-center space-x-3 mb-3">
+                                                        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" 
+                                                             :class="reply.avatarBg">
+                                                            <span class="font-semibold text-sm" :class="reply.avatarText" x-text="reply.initial"></span>
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <div class="flex items-center flex-wrap sm:gap-2">
+                                                                <h6 class="font-medium text-gray-900 text-sm" x-text="reply.name"></h6>
+                                                                <span class="text-xs text-gray-500" x-text="reply.timeAgo"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Reply Content -->
+                                                    <p class="text-gray-700 text-sm leading-relaxed mb-3" x-text="reply.content"></p>
+                                                    
+                                                    <!-- Reply Actions -->
+                                                    <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                                        <button @click="voteReply(comment.id, reply.id, 'like')" 
+                                                                class="flex items-center space-x-1 transition-colors hover:text-emerald-600"
+                                                                :class="reply.userVote === 'like' ? 'text-emerald-600' : 'text-gray-500'">
+                                                            <i data-lucide="thumbs-up" class="w-3 h-3"></i>
+                                                            <span x-text="reply.likes"></span>
+                                                        </button>
+                                                        <button @click="voteReply(comment.id, reply.id, 'dislike')" 
+                                                                class="flex items-center space-x-1 transition-colors hover:text-red-600"
+                                                                :class="reply.userVote === 'dislike' ? 'text-red-600' : 'text-gray-500'">
+                                                            <i data-lucide="thumbs-down" class="w-3 h-3"></i>
+                                                            <span x-text="reply.dislikes"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Load More Comments -->
+                            <div x-show="hasMoreComments" class="text-center pt-4">
+                                <button @click="loadMoreComments" 
+                                        class="text-emerald-600 hover:text-emerald-700 font-medium text-sm transition-colors"
+                                        :disabled="loadingMore"
+                                        :class="{'opacity-50 cursor-not-allowed': loadingMore}">
+                                    <span x-show="!loadingMore">Xem thêm bình luận (<span x-text="remainingComments"></span>)</span>
+                                    <span x-show="loadingMore">Đang tải...</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="space-y-6">
+                        <!-- Search Box -->
+                        <div class="card p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4">Tìm kiếm bài viết</h3>
+                            <div class="relative">
+                                <input type="text" 
+                                       placeholder="Nhập từ khóa..." 
+                                       class="input pl-10">
+                                <i data-lucide="search" class="size-4 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                            </div>
+                        </div>
+
+                        <!-- Related Posts -->
+                        <div class="card p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4">Bài viết liên quan</h3>
+                            <div class="space-y-4">
+                                <div class="flex space-x-3">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                             alt="SEO Tools" 
+                                             class="w-full h-full object-cover rounded-lg">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
+                                            Top 10 Công Cụ SEO Miễn Phí Hiệu Quả Nhất 2024
+                                        </h4>
+                                        <p class="text-xs text-gray-500">12 Tháng 12, 2024</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-3">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                             alt="Analytics" 
+                                             class="w-full h-full object-cover rounded-lg">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
+                                            Cách Phân Tích Dữ Liệu Website Hiệu Quả
+                                        </h4>
+                                        <p class="text-xs text-gray-500">10 Tháng 12, 2024</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-3">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                             alt="Social Media" 
+                                             class="w-full h-full object-cover rounded-lg">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
+                                            Chiến Lược Social Media Marketing 2024
+                                        </h4>
+                                        <p class="text-xs text-gray-500">8 Tháng 12, 2024</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-3">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                             alt="Email Marketing" 
+                                             class="w-full h-full object-cover rounded-lg">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="font-medium text-gray-900 text-sm leading-tight mb-1 hover:text-emerald-600 transition-colors cursor-pointer">
+                                            Email Marketing: Từ A-Z Cho Người Mới Bắt Đầu
+                                        </h4>
+                                        <p class="text-xs text-gray-500">5 Tháng 12, 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categories -->
+                        <div class="card p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4">Danh mục</h3>
+                            <div class="space-y-2">
+                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
+                                    <span>MMO Tools</span>
+                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">12</span>
+                                </a>
+                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
+                                    <span>SEO & Marketing</span>
+                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">8</span>
+                                </a>
+                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
+                                    <span>Bảo mật</span>
+                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">6</span>
+                                </a>
+                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
+                                    <span>Social Media</span>
+                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">15</span>
+                                </a>
+                                <a href="#" class="flex items-center justify-between text-sm text-gray-600 hover:text-emerald-600 transition-colors">
+                                    <span>Tips & Tricks</span>
+                                    <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs">9</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Popular Tags -->
+                        <div class="card p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4">Tags phổ biến</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-primary cursor-pointer">Proxy</span>
+                                <span class="badge badge-primary cursor-pointer">SEO</span>
+                                <span class="badge badge-primary cursor-pointer">Marketing</span>
+                                <span class="badge badge-primary cursor-pointer">Social Media</span>
+                                <span class="badge badge-primary cursor-pointer">Analytics</span>
+                                <span class="badge badge-primary cursor-pointer">Bảo mật</span>
+                                <span class="badge badge-primary cursor-pointer">Tools</span>
+                                <span class="badge badge-primary cursor-pointer">MMO</span>
+                            </div>
+                        </div>
+
+                        <!-- Recent Comments -->
+                        <div class="card p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4">Bình luận gần đây</h3>
+                            <div class="space-y-4">
+                                <div class="flex space-x-3">
+                                    <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-emerald-600 font-semibold text-sm">A</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm text-gray-600 mb-1">
+                                            <span class="font-medium text-gray-900">Anh Minh</span> bình luận về 
+                                            <span class="text-emerald-600 hover:underline cursor-pointer">"Top 10 Công Cụ SEO..."</span>
+                                        </p>
+                                        <p class="text-xs text-gray-500">2 giờ trước</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-3">
+                                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-blue-600 font-semibold text-sm">T</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm text-gray-600 mb-1">
+                                            <span class="font-medium text-gray-900">Thu Hà</span> bình luận về 
+                                            <span class="text-emerald-600 hover:underline cursor-pointer">"Chiến Lược Social Media..."</span>
+                                        </p>
+                                        <p class="text-xs text-gray-500">5 giờ trước</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-3">
+                                    <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-purple-600 font-semibold text-sm">D</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm text-gray-600 mb-1">
+                                            <span class="font-medium text-gray-900">Đức Anh</span> bình luận về 
+                                            <span class="text-emerald-600 hover:underline cursor-pointer">"Email Marketing: Từ A-Z..."</span>
+                                        </p>
+                                        <p class="text-xs text-gray-500">1 ngày trước</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Newsletter Signup -->
+                        <div class="card bg-gradient-to-br from-emerald-500 to-green-600 p-6 text-white">
+                            <h3 class="font-semibold text-lg mb-2">Đăng ký nhận tin</h3>
+                            <p class="text-emerald-100 text-sm mb-4">Nhận những bài viết mới nhất về MMO và Digital Marketing</p>
+                            <div class="space-y-3">
+                                <input type="email" 
+                                       placeholder="Nhập email của bạn..." 
+                                       class="input ">
+                                <button class="btn btn-primary btn-md w-full">
+                                    Đăng ký ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-
+        </div>
     </main>
+    
 
     <!-- Footer -->
     <footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
@@ -2673,14 +3158,14 @@
                 <div class="space-y-4 col-span-2 lg:col-span-1 col-start-1">
                     <a href="/" class="flex items-center space-x-2">
                         <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-sm">
-                            <span class="text-white font-bold text-responsive-lg">M</span>
+                            <span class="text-white font-bold text-xl">M</span>
                         </div>
                         <div>
-                            <div class="font-bold text-responsive-lg">MMO Store</div>
-                            <div class="text-responsive-xs text-emerald-200 -mt-1">Premium Digital Products</div>
+                            <div class="font-bold text-xl">MMO Store</div>
+                            <div class="text-xs text-emerald-200 -mt-1">Premium Digital Products</div>
                         </div>
                     </a>
-                    <p class="text-emerald-200 text-responsive-sm leading-relaxed">
+                    <p class="text-emerald-200 text-sm leading-relaxed">
                         Sàn bán tài nguyên số chuyên nghiệp cho MMO, cung cấp backlink, tài khoản social, data & tools, license phần mềm và các dịch vụ MMO chất lượng cao.
                     </p>
                     <div class="flex space-x-3">
@@ -2699,52 +3184,52 @@
 
                 <!-- Sản Phẩm -->
                 <div class="col-start-1 lg:col-start-2">
-                    <h3 class="font-semibold text-responsive-lg mb-4">Sản Phẩm</h3>
+                    <h3 class="font-semibold text-lg mb-4">Sản Phẩm</h3>
                     <ul class="space-y-2 text-emerald-200">
-                        <li><a href="/products/backlink" class="hover:text-white text-responsive-sm transition-colors">Backlink/Textlink/Entity</a></li>
-                        <li><a href="/products/email" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Email</a></li>
-                        <li><a href="/products/facebook" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Facebook</a></li>
-                        <li><a href="/products/social" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Social khác</a></li>
-                        <li><a href="/products/data-tools" class="hover:text-white text-responsive-sm transition-colors">Data & Tools MMO</a></li>
-                        <li><a href="/products/license" class="hover:text-white text-responsive-sm transition-colors">License Phần Mềm</a></li>
-                        <li><a href="/products/vpn-proxy" class="hover:text-white text-responsive-sm transition-colors">VPN/Proxy/Server</a></li>
-                        <li><a href="/products/course" class="hover:text-white text-responsive-sm transition-colors">Khóa Học/TUT MMO</a></li>
+                        <li><a href="/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
+                        <li><a href="/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
+                        <li><a href="/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
+                        <li><a href="/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
+                        <li><a href="/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
+                        <li><a href="/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
+                        <li><a href="/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
+                        <li><a href="/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
                     </ul>
                 </div>
 
                 <!-- Dịch Vụ -->
                 <div class="col-start-2 lg:col-start-3">
-                    <h3 class="font-semibold text-responsive-lg mb-4">Dịch Vụ</h3>
+                    <h3 class="font-semibold text-lg mb-4">Dịch Vụ</h3>
                     <ul class="space-y-2 text-emerald-200">
-                        <li><a href="/services/website" class="hover:text-white text-responsive-sm transition-colors">Thiết kế Website</a></li>
-                        <li><a href="/services/engagement" class="hover:text-white text-responsive-sm transition-colors">Tăng tương tác</a></li>
-                        <li><a href="/services/marketing" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ Marketing</a></li>
-                        <li><a href="/services/software" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ phần mềm</a></li>
-                        <li><a href="/services/web" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ website</a></li>
-                        <li><a href="/services/seo" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ SEO</a></li>
-                        <li><a href="/support" class="hover:text-white text-responsive-sm transition-colors">Hỗ trợ khách hàng</a></li>
-                        <li><a href="/warranty" class="hover:text-white text-responsive-sm transition-colors">Bảo hành</a></li>
+                        <li><a href="/services/website" class="hover:text-white transition-colors">Thiết kế Website</a></li>
+                        <li><a href="/services/engagement" class="hover:text-white transition-colors">Tăng tương tác</a></li>
+                        <li><a href="/services/marketing" class="hover:text-white transition-colors">Dịch vụ Marketing</a></li>
+                        <li><a href="/services/software" class="hover:text-white transition-colors">Dịch vụ phần mềm</a></li>
+                        <li><a href="/services/web" class="hover:text-white transition-colors">Dịch vụ website</a></li>
+                        <li><a href="/services/seo" class="hover:text-white transition-colors">Dịch vụ SEO</a></li>
+                        <li><a href="/support" class="hover:text-white transition-colors">Hỗ trợ khách hàng</a></li>
+                        <li><a href="/warranty" class="hover:text-white transition-colors">Bảo hành</a></li>
                     </ul>
                 </div>
 
                 <!-- Liên Hệ -->
                 <div class="col-span-2 lg:col-span-1 col-start-1 lg:col-start-4">
-                    <h3 class="font-semibold text-responsive-lg mb-4">Liên Hệ</h3>
-                    <div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block text-responsive-sm">
-                        <div class="flex items-start space-x-3 text-responsive-sm">
+                    <h3 class="font-semibold text-lg mb-4">Liên Hệ</h3>
+                    <div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block">
+                        <div class="flex items-start space-x-3">
                             <i data-lucide="headphones" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
-                            <div class="text-responsive-sm">
+                            <div class="text-sm">
                                 Hỗ trợ 24/7<br>
                                 <span class="text-emerald-300">support@mmostore.com</span>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-3 text-responsive-sm">
+                        <div class="flex items-center space-x-3">
                             <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
-                            <div class="text-responsive-sm">+84 123 456 789</div>
+                            <div class="text-sm">+84 123 456 789</div>
                         </div>
-                        <div class="flex items-center space-x-3 text-responsive-sm">
+                        <div class="flex items-center space-x-3">
                             <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
-                            <div class="text-responsive-sm">info@mmostore.com</div>
+                            <div class="text-sm">info@mmostore.com</div>
                         </div>
                     </div>
                 </div>
@@ -2764,9 +3249,413 @@
 
     <!-- Initialize Lucide Icons -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-        });
+        lucide.createIcons();
+    </script>
+
+    <!-- Alpine.js Comment System -->
+    <script>
+        function commentSystem() {
+            return {
+                // Data
+                totalComments: 8,
+                visibleComments: [],
+                allComments: [],
+                commentsPerPage: 3,
+                currentPage: 1,
+                loadingMore: false,
+                
+                // Forms
+                commentForm: {
+                    name: '',
+                    email: '',
+                    content: '',
+                    notify: false,
+                    submitting: false,
+                    errors: {}
+                },
+                
+                replyForm: {
+                    name: '',
+                    email: '',
+                    content: '',
+                    submitting: false
+                },
+
+                // Computed
+                get hasMoreComments() {
+                    return this.visibleComments.length < this.allComments.length;
+                },
+                
+                get remainingComments() {
+                    return this.allComments.length - this.visibleComments.length;
+                },
+
+                // Methods
+                init() {
+                    this.loadComments();
+                    
+                    // Initialize Lucide icons after DOM is ready
+                    this.$nextTick(() => {
+                        lucide.createIcons();
+                    });
+                },
+
+                loadComments() {
+                    // Sample comments data
+                    this.allComments = [
+                        {
+                            id: 1,
+                            name: 'Minh Tuấn',
+                            email: 'minhtuan@example.com',
+                            content: 'Bài viết rất hay! Mình đã sử dụng proxy miễn phí trước đây và thực sự gặp nhiều vấn đề về tốc độ và bảo mật. Sau khi chuyển sang proxy trả phí thì hiệu quả hơn rất nhiều.',
+                            timeAgo: '2 giờ trước',
+                            likes: 12,
+                            dislikes: 0,
+                            userVote: null,
+                            initial: 'M',
+                            avatarBg: 'bg-emerald-100',
+                            avatarText: 'text-emerald-600',
+                            showReply: false,
+                            replies: [
+                                {
+                                    id: 1,
+                                    name: 'Admin MMO Store',
+                                    email: 'admin@mmostore.com',
+                                    content: 'Cảm ơn bạn đã chia sẻ kinh nghiệm! Đúng vậy, việc đầu tư vào proxy chất lượng sẽ mang lại hiệu quả lâu dài hơn nhiều so với việc sử dụng proxy miễn phí.',
+                                    timeAgo: '1 giờ trước',
+                                    likes: 5,
+                                    dislikes: 0,
+                                    userVote: null,
+                                    initial: 'A',
+                                    avatarBg: 'bg-blue-100',
+                                    avatarText: 'text-blue-600'
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Hương Lan',
+                            email: 'huonglan@example.com',
+                            content: 'Mình đang tìm hiểu về proxy cho dự án SEO. Bạn có thể recommend một số nhà cung cấp proxy uy tín không? Mình nghe nói MMO Store có dịch vụ proxy tốt.',
+                            timeAgo: '5 giờ trước',
+                            likes: 8,
+                            dislikes: 0,
+                            userVote: null,
+                            initial: 'H',
+                            avatarBg: 'bg-purple-100',
+                            avatarText: 'text-purple-600',
+                            showReply: false,
+                            replies: []
+                        },
+                        {
+                            id: 3,
+                            name: 'Đức Minh',
+                            email: 'ducminh@example.com',
+                            content: 'Bài viết rất chi tiết và hữu ích! Mình đã bookmark lại để tham khảo. Cảm ơn admin đã chia sẻ những thông tin quan trọng về proxy.',
+                            timeAgo: '1 ngày trước',
+                            likes: 15,
+                            dislikes: 0,
+                            userVote: null,
+                            initial: 'D',
+                            avatarBg: 'bg-orange-100',
+                            avatarText: 'text-orange-600',
+                            showReply: false,
+                            replies: []
+                        },
+                        {
+                            id: 4,
+                            name: 'Thảo Nguyên',
+                            email: 'thaonguyen@example.com',
+                            content: 'Mình đã sử dụng proxy của MMO Store được 3 tháng rồi, chất lượng rất tốt. Tốc độ nhanh và ổn định.',
+                            timeAgo: '2 ngày trước',
+                            likes: 6,
+                            dislikes: 0,
+                            userVote: null,
+                            initial: 'T',
+                            avatarBg: 'bg-pink-100',
+                            avatarText: 'text-pink-600',
+                            showReply: false,
+                            replies: []
+                        },
+                        {
+                            id: 5,
+                            name: 'Văn Hùng',
+                            email: 'vanhung@example.com',
+                            content: 'Cảm ơn admin đã chia sẻ bài viết hữu ích. Mình sẽ thử sử dụng proxy trả phí để cải thiện hiệu suất công việc.',
+                            timeAgo: '3 ngày trước',
+                            likes: 4,
+                            dislikes: 0,
+                            userVote: null,
+                            initial: 'V',
+                            avatarBg: 'bg-indigo-100',
+                            avatarText: 'text-indigo-600',
+                            showReply: false,
+                            replies: []
+                        }
+                    ];
+                    
+                    this.visibleComments = this.allComments.slice(0, this.commentsPerPage);
+                },
+
+                async submitComment() {
+                    this.commentForm.submitting = true;
+                    this.commentForm.errors = {};
+
+                    // Validation
+                    if (!this.commentForm.name.trim()) {
+                        this.commentForm.errors.name = 'Vui lòng nhập tên';
+                    }
+                    if (!this.commentForm.email.trim()) {
+                        this.commentForm.errors.email = 'Vui lòng nhập email';
+                    } else if (!this.isValidEmail(this.commentForm.email)) {
+                        this.commentForm.errors.email = 'Email không hợp lệ';
+                    }
+                    if (!this.commentForm.content.trim()) {
+                        this.commentForm.errors.content = 'Vui lòng nhập nội dung bình luận';
+                    }
+
+                    if (Object.keys(this.commentForm.errors).length > 0) {
+                        this.commentForm.submitting = false;
+                        this.showNotification('Vui lòng kiểm tra lại thông tin đã nhập!', 'warning');
+                        return;
+                    }
+
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    // Add new comment
+                    const newComment = {
+                        id: Date.now(),
+                        name: this.commentForm.name,
+                        email: this.commentForm.email,
+                        content: this.commentForm.content,
+                        timeAgo: 'Vừa xong',
+                        likes: 0,
+                        dislikes: 0,
+                        userVote: null,
+                        initial: this.commentForm.name.charAt(0).toUpperCase(),
+                        avatarBg: this.getRandomAvatarBg(),
+                        avatarText: this.getRandomAvatarText(),
+                        showReply: false,
+                        replies: []
+                    };
+
+                    this.allComments.unshift(newComment);
+                    this.totalComments++;
+                    
+                    // Reset form
+                    this.commentForm = {
+                        name: '',
+                        email: '',
+                        content: '',
+                        notify: false,
+                        submitting: false,
+                        errors: {}
+                    };
+
+                    // Show success message
+                    this.showNotification('Bình luận đã được gửi thành công!', 'success');
+                    
+                    // Reinitialize Lucide icons
+                    this.$nextTick(() => {
+                        lucide.createIcons();
+                    });
+                },
+
+                async submitReply(commentId) {
+                    this.replyForm.submitting = true;
+
+                    // Validation for reply form
+                    if (!this.replyForm.name.trim() || !this.replyForm.email.trim() || !this.replyForm.content.trim()) {
+                        this.replyForm.submitting = false;
+                        this.showNotification('Vui lòng điền đầy đủ thông tin!', 'warning');
+                        return;
+                    }
+
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 800));
+
+                    const comment = this.allComments.find(c => c.id === commentId);
+                    if (comment) {
+                        const newReply = {
+                            id: Date.now(),
+                            name: this.replyForm.name,
+                            email: this.replyForm.email,
+                            content: this.replyForm.content,
+                            timeAgo: 'Vừa xong',
+                            likes: 0,
+                            dislikes: 0,
+                            userVote: null,
+                            initial: this.replyForm.name.charAt(0).toUpperCase(),
+                            avatarBg: this.getRandomAvatarBg(),
+                            avatarText: this.getRandomAvatarText()
+                        };
+
+                        comment.replies.push(newReply);
+                        comment.showReply = false;
+                    }
+
+                    // Reset form
+                    this.replyForm = {
+                        name: '',
+                        email: '',
+                        content: '',
+                        submitting: false
+                    };
+
+                    this.showNotification('Trả lời đã được gửi thành công!', 'success');
+                    
+                    // Reinitialize Lucide icons
+                    this.$nextTick(() => {
+                        lucide.createIcons();
+                    });
+                },
+
+                toggleReply(commentId) {
+                    const comment = this.allComments.find(c => c.id === commentId);
+                    if (comment) {
+                        comment.showReply = !comment.showReply;
+                        
+                        // Reinitialize Lucide icons when reply form is shown
+                        if (comment.showReply) {
+                            this.$nextTick(() => {
+                                lucide.createIcons();
+                            });
+                        }
+                    }
+                },
+
+                cancelReply(commentId) {
+                    const comment = this.allComments.find(c => c.id === commentId);
+                    if (comment) {
+                        comment.showReply = false;
+                    }
+                    this.replyForm = {
+                        name: '',
+                        email: '',
+                        content: '',
+                        submitting: false
+                    };
+                },
+
+                voteComment(commentId, voteType) {
+                    const comment = this.allComments.find(c => c.id === commentId);
+                    if (!comment) return;
+
+                    if (comment.userVote === voteType) {
+                        // Remove vote
+                        if (voteType === 'like') comment.likes--;
+                        else comment.dislikes--;
+                        comment.userVote = null;
+                    } else {
+                        // Change vote
+                        if (comment.userVote === 'like') comment.likes--;
+                        else if (comment.userVote === 'dislike') comment.dislikes--;
+
+                        if (voteType === 'like') comment.likes++;
+                        else comment.dislikes++;
+                        comment.userVote = voteType;
+                    }
+                    
+                    // Show vote notification
+                    const voteMessage = voteType === 'like' ? 'Bạn đã thích bình luận này!' : 'Bạn đã không thích bình luận này!';
+                    this.showNotification(voteMessage, 'info');
+                    
+                    // Reinitialize Lucide icons after vote
+                    this.$nextTick(() => {
+                        lucide.createIcons();
+                    });
+                },
+
+                voteReply(commentId, replyId, voteType) {
+                    const comment = this.allComments.find(c => c.id === commentId);
+                    if (!comment) return;
+
+                    const reply = comment.replies.find(r => r.id === replyId);
+                    if (!reply) return;
+
+                    if (reply.userVote === voteType) {
+                        // Remove vote
+                        if (voteType === 'like') reply.likes--;
+                        else reply.dislikes--;
+                        reply.userVote = null;
+                    } else {
+                        // Change vote
+                        if (reply.userVote === 'like') reply.likes--;
+                        else if (reply.userVote === 'dislike') reply.dislikes--;
+
+                        if (voteType === 'like') reply.likes++;
+                        else reply.dislikes++;
+                        reply.userVote = voteType;
+                    }
+                    
+                    // Show vote notification for reply
+                    const voteMessage = voteType === 'like' ? 'Bạn đã thích trả lời này!' : 'Bạn đã không thích trả lời này!';
+                    this.showNotification(voteMessage, 'info');
+                    
+                    // Reinitialize Lucide icons after vote
+                    this.$nextTick(() => {
+                        lucide.createIcons();
+                    });
+                },
+
+                async loadMoreComments() {
+                    this.loadingMore = true;
+                    
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    const startIndex = this.visibleComments.length;
+                    const endIndex = startIndex + this.commentsPerPage;
+                    const newComments = this.allComments.slice(startIndex, endIndex);
+                    
+                    if (newComments.length === 0) {
+                        this.loadingMore = false;
+                        this.showNotification('Không còn bình luận nào để tải thêm!', 'info');
+                        return;
+                    }
+                    
+                    this.visibleComments.push(...newComments);
+                    this.loadingMore = false;
+                    
+                    // Show load more notification
+                    this.showNotification(`Đã tải thêm ${newComments.length} bình luận!`, 'success');
+                    
+                    // Reinitialize Lucide icons
+                    this.$nextTick(() => {
+                        lucide.createIcons();
+                    });
+                },
+
+                // Utility functions
+                isValidEmail(email) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                },
+
+                getRandomAvatarBg() {
+                    const colors = ['bg-emerald-100', 'bg-blue-100', 'bg-purple-100', 'bg-orange-100', 'bg-pink-100', 'bg-indigo-100', 'bg-red-100', 'bg-yellow-100'];
+                    return colors[Math.floor(Math.random() * colors.length)];
+                },
+
+                getRandomAvatarText() {
+                    const colors = ['text-emerald-600', 'text-blue-600', 'text-purple-600', 'text-orange-600', 'text-pink-600', 'text-indigo-600', 'text-red-600', 'text-yellow-600'];
+                    return colors[Math.floor(Math.random() * colors.length)];
+                },
+
+                showNotification(message, type = 'info') {
+                    // Use FastNotice library for professional notifications
+                    const options = {
+                        title: type === 'success' ? 'Thành công!' : 
+                               type === 'error' ? 'Lỗi!' : 
+                               type === 'warning' ? 'Cảnh báo!' : 'Thông báo',
+                        duration: 4000
+                    };
+                    
+                    FastNotice.show(message, type, options);
+                }
+            }
+        }
     </script>
 </body>
 

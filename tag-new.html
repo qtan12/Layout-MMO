@@ -83,7 +83,7 @@
 			}
 			/* Button Styles */
 			.btn {
-			@apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
+			@apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-md transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
 			}
 			/* đặt tên gì phổ biến hơn để các nhu cầu tương tự cũng dùng được đi, đặt tên cart nó chỉ dùng cho cart à */
 			.btn-overflow{
@@ -108,6 +108,9 @@
 			@apply bg-green-500 hover:bg-green-600 text-white focus:ring-green-500/20;
 			}
 			/* Button Sizes */
+			.btn-xs{
+			@apply px-2 py-1 h-6 text-xs rounded-sm;
+			}
 			.btn-sm {
 			@apply px-3 py-1.5 h-8 text-sm;
 			}
@@ -152,7 +155,7 @@
 			}
 			/* Card Styles */
 			.card {
-			@apply rounded-xl border border-gray-200 bg-white shadow-sm;
+			@apply sm:border border-gray-200 bg-white shadow-md rounded-md hover:shadow-lg transition-all duration-300 transform;
 			}
 			.card-header {
 			@apply flex flex-col space-y-1.5 p-6 pb-4;
@@ -174,10 +177,13 @@
 			}
 			/* Badge Styles */
 			.badge {
-			@apply inline-flex items-center px-1 py-0.5 text-xs font-medium rounded-sm;
+			@apply inline-flex items-center px-2.5 py-1.5 text-xs font-semibold rounded-full;
+			}
+			.badge-title {
+				@apply bg-emerald-100 backdrop-blur-sm text-emerald-700 text-xs sm:text-sm  mb-4;
 			}
 			.badge-primary {
-			@apply bg-emerald-50 text-emerald-700 border-emerald-200;
+			@apply bg-emerald-100 text-emerald-700 border-emerald-200;
 			}
 			.badge-secondary {
 			@apply bg-gray-50 text-gray-700 border-gray-200;
@@ -214,7 +220,7 @@
 			@apply py-16 lg:py-24;
 			}
 			.section-title {
-			@apply text-lg lg:text-2xl font-bold text-gray-900 mb-2;
+			@apply text-2xl sm:text-3xl font-bold text-gray-900 mb-2;
 			}
 			.section-subtitle {
 			@apply text-gray-600 mb-8 lg:mb-12;
@@ -229,7 +235,8 @@
 			.grid-cols-auto-lg {
 			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 			}
-			/* Tab Styles */
+			
+            /* Tab Styles */
 			.tabs {
 			@apply w-full;
 			}
@@ -252,11 +259,12 @@
 			}
 			}
 			.tabs-trigger {
-			@apply py-2.5 px-4 text-sm font-medium  transition-all disabled:pointer-events-none;
+			@apply py-2.5 px-4 text-sm font-medium transition-all disabled:pointer-events-none ;
 			}
 			.tabs-content {
 			@apply p-4 mt-2 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2;
 			}
+
 			/* Dropdown Styles */
 			.dropdown {
 			@apply relative inline-block text-left;
@@ -288,7 +296,6 @@
 			.modal-footer {
 			@apply flex justify-end space-x-2 pt-4 border-t;
 			}
-
 			/* Pagination Styles */
 			.pagination {
 			@apply flex items-center justify-center space-x-2;
@@ -302,7 +309,6 @@
 			.pagination-item.disabled {
 			@apply opacity-50 cursor-not-allowed hover:bg-white hover:text-gray-500;
 			}
-            
 			/* Alert Styles */
 			.alert {
 			@apply relative w-full rounded-lg border p-4 flex items-start;
@@ -526,7 +532,7 @@
 			@apply text-xs sm:text-sm;
 			}
 			.text-responsive-sm {
-			@apply text-sm;
+			@apply text-sm sm:text-base;
 			}
 			.text-responsive-md {
 			@apply text-base md:text-lg;
@@ -535,7 +541,7 @@
 			@apply text-lg sm:text-xl lg:text-2xl;
 			}
 			.text-responsive-xl {
-			@apply text-3xl sm:text-3xl lg:text-4xl;
+			@apply text-2xl sm:text-5xl;
 			}
 			/* Hover Effects */
 			.hover-lift {
@@ -1005,6 +1011,8 @@
 		<!-- Header Component JS -->
 		<script src="js/cart-manager.js"></script>
 		<script src="js/header.js"></script>
+		<!-- Homepage Component JS -->
+		<script src="js/homemmo.js"></script>
 		<!-- BlazeSlider JS -->
 		<script src="js/blaze-slider.js"></script>
 		<!-- Lucide Icons - Custom Build -->
@@ -1030,24 +1038,16 @@
 			        });
 			    }
 			
-			    // Initialize Related Products Slider
-			    const relatedProductsSlider = document.querySelector('.related-products-slider');
-			    if (relatedProductsSlider) {
-			        new BlazeSlider(relatedProductsSlider, {
+			    // Initialize Testimonials Slider
+			    const testimonialsSlider = document.querySelector('.testimonials-slider');
+			    if (testimonialsSlider) {
+			        new BlazeSlider(testimonialsSlider, {
 			            all: {
-			                enableAutoplay: false,
-			                transitionDuration: 500,
-			                slidesToShow: 4,
-			                slidesToScroll: 1,
-			            },
-			            '(max-width: 1024px)': {
-			                slidesToShow: 3,
-			            },
-			            '(max-width: 768px)': {
-			                slidesToShow: 2,
-			            },
-			            '(max-width: 640px)': {
+			                enableAutoplay: true,
+			                autoplayInterval: 6000,
+			                transitionDuration: 600,
 			                slidesToShow: 1,
+			                slidesToScroll: 1,
 			            }
 			        });
 			    }
@@ -1107,69 +1107,56 @@
 			outline: 2px solid #10b981;
 			outline-offset: 2px;
 			}
-			/* Related Products Slider */
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 4;
-			--slide-gap: 1.5rem;
-			}
-			@media (max-width: 1024px) {
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 4;
-			}
-			}
-			@media (max-width: 768px) {
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 3;
-			}
-			}
-			@media (max-width: 640px) {
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 2;
-			}
-			}
-			@media (max-width: 480px) {
-			.related-products-slider.blaze-slider {
+			
+			/* Testimonials Slider */
+			.testimonials-slider.blaze-slider {
 			--slides-to-show: 1;
+			--slide-gap: 0px;
 			}
-			}
-			/* Related Products Slider Navigation */
-			.related-products-slider .blaze-prev, 
-			.related-products-slider .blaze-next {
+			
+			/* Testimonials Slider Navigation */
+			.testimonials-slider .blaze-prev, 
+			.testimonials-slider .blaze-next {
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
-			z-index: 10;
 			width: 48px;
 			height: 48px;
 			background: white;
-			border: 2px solid #e5e7eb;
+			border: 1px solid #e5e7eb;
 			border-radius: 50%;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+			z-index: 10;
 			transition: all 0.3s ease;
 			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 			}
-			.related-products-slider .blaze-prev {
+			
+			.testimonials-slider .blaze-prev {
 			left: -24px;
 			}
-			.related-products-slider .blaze-next {
+			
+			.testimonials-slider .blaze-next {
 			right: -24px;
 			}
-			.related-products-slider .blaze-prev:hover,
-			.related-products-slider .blaze-next:hover {
+			
+			.testimonials-slider .blaze-prev:hover,
+			.testimonials-slider .blaze-next:hover {
 			background: #10b981;
 			border-color: #10b981;
 			color: white;
 			transform: translateY(-50%) scale(1.1);
 			}
-			.related-products-slider .blaze-prev:active,
-			.related-products-slider .blaze-next:active {
+			
+			.testimonials-slider .blaze-prev:active,
+			.testimonials-slider .blaze-next:active {
 			transform: translateY(-50%) scale(0.95);
 			}
-			/* Related Products Slider Pagination */
-			.related-products-slider .blaze-pagination {
+			
+			/* Testimonials Slider Pagination */
+			.testimonials-slider .blaze-pagination {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -1178,49 +1165,59 @@
 			padding: 0 16px;
 			font-size: 0;
 			}
-			.related-products-slider .blaze-pagination button {
+			
+			.testimonials-slider .blaze-pagination button {
 			width: 12px;
 			height: 12px;
 			border-radius: 50%;
 			border: none;
-			background: rgba(49, 198, 99, 0.7);
+			background: rgba(16, 185, 129, 0.3);
 			cursor: pointer;
 			transition: all 0.3s ease;
 			outline: none;
 			}
-			.related-products-slider .blaze-pagination button.active {
+			
+			.testimonials-slider .blaze-pagination button.active {
 			background-color: #10b981;
 			transform: scale(1.2);
 			}
-			.related-products-slider .blaze-pagination button:hover {
+			
+			.testimonials-slider .blaze-pagination button:hover {
 			background-color: rgba(16, 185, 129, 0.8);
 			transform: scale(1.1);
 			}
-			.related-products-slider .blaze-pagination button.active:hover {
+			
+			.testimonials-slider .blaze-pagination button.active:hover {
 			background-color: #059669;
 			transform: scale(1.3);
 			}
-			.related-products-slider .blaze-pagination button:focus {
+			
+			.testimonials-slider .blaze-pagination button:focus {
 			outline: 2px solid #10b981;
 			outline-offset: 2px;
 			}
+			
 			/* Responsive navigation buttons */
 			@media (max-width: 768px) {
-			.related-products-slider .blaze-prev,
-			.related-products-slider .blaze-next {
+			.testimonials-slider .blaze-prev,
+			.testimonials-slider .blaze-next {
 			width: 40px;
 			height: 40px;
 			}
-			.related-products-slider .blaze-prev {
+			
+			.testimonials-slider .blaze-prev {
 			left: -20px;
 			}
-			.related-products-slider .blaze-next {
+			
+			.testimonials-slider .blaze-next {
 			right: -20px;
 			}
 			}
+			
 			@media (max-width: 640px) {
-			.related-products-slider .blaze-prev,
-			.related-products-slider .blaze-next {
+			.testimonials-slider .blaze-prev,
+			.testimonials-slider .blaze-next {
+			display: none;
 			}
 			}
 		</style>
@@ -2419,756 +2416,351 @@
 				</div>
 			</div>
 		</header>
+		
 		<!-- Main Content Area -->
-		<main class="min-h-screen bg-gray-50" x-data="productDetailComponent()">
-			<div class="container mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6">
-				<nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6 overflow-x-auto pb-2">
+		<main class="min-h-screen bg-gray-50">
+			<div class="container mx-auto py-6">
+				<!-- Breadcrumbs -->
+				<nav class="flex items-center flex-wrap gap-1 text-responsive-xs text-gray-500 mb-6">
 					<a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
-					<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
-					<a class="hover:text-emerald-600 whitespace-nowrap" href="/categories">Danh mục</a>
-					<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
-					<a class="hover:text-emerald-600 whitespace-nowrap hidden sm:inline" href="/accounts">Tài khoản Premium</a>
-					<a class="hover:text-emerald-600 whitespace-nowrap sm:hidden" href="/accounts">Tài khoản</a>
-					<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
-					<span class="text-gray-900 text-xs sm:text-sm truncate">Netflix Premium 1 Năm - 4K Ultra HD</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+						<path d="m9 18 6-6-6-6"></path>
+					</svg>
+					<a class="hover:text-emerald-600 whitespace-nowrap" href="#">Blog</a>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+						<path d="m9 18 6-6-6-6"></path>
+					</svg>
+					<span class="hover:text-emerald-600 truncate min-w-0" title="Tag: Proxy">Tag: Proxy</span>
 				</nav>
-				<!-- Ảnh -->
-				<section class="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
-					<div class="space-y-2 sm:space-y-3">
-						<!-- Ảnh chính -->
-						<img alt="Netflix Premium 1 Năm - 4K Ultra HD" class="w-full h-48 sm:h-64 lg:h-80 object-contain" src="/placeholder.svg?height=500&width=500&text=Netflix+Main">
-						
-						<!-- Ảnh phụ (Thumbnails) -->
-						<div class="grid grid-cols-4 gap-1 sm:gap-2 mt-3">
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 1" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=1">
-							</div>
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 2" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=2">
-							</div>
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 3" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=3">
-							</div>
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 4" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=4">
-							</div>
-						</div>
-						 
-						<div class="grid grid-cols-3 gap-2 sm:gap-3 pt-4 border-t border-gray-200">
-							<div class="text-center">
-								<i data-lucide="shield" class="w-6 h-6 text-emerald-600 mx-auto mb-1"></i>
-								<p class="text-xs font-medium text-gray-900">Bảo hành 12 tháng</p>
-								<p class="text-xs text-gray-500">Thay thế miễn phí</p>
-							</div>
-							<div class="text-center">
-								<i data-lucide="truck" class="w-6 h-6 text-blue-600 mx-auto mb-1"></i>
-								<p class="text-xs font-medium text-gray-900">Giao hàng tức thì</p>
-								<p class="text-xs text-gray-500">Nhận ngay sau thanh toán</p>
-							</div>
-							<div class="text-center">
-								<i data-lucide="headphones" class="w-6 h-6 text-purple-600 mx-auto mb-1"></i>
-								<p class="text-xs font-medium text-gray-900">Hỗ trợ 24/7</p>
-								<p class="text-xs text-gray-500">Tư vấn miễn phí</p>
-							</div>
-						</div>
-					</div>
-					<!-- Column right -->
-					<div class="space-y-3 sm:space-y-4 lg:space-y-5">
-						<div>
-							<h1 class="text-responsive-lg font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">Netflix Premium 1 Năm - 4K Ultra HD</h1>
-							<div class="flex flex-row gap-2 items-center  ">
-								<div class="flex items-center space-x-1">
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
-									<span class=" text-gray-500 ml-1 text-responsive-xs">4.8</span>
-								</div>
-								<span class="text-gray-500 text-responsive-xs">(1247 đánh giá)</span><span class="text-gray-500 hidden sm:inline">•</span><span class="text-gray-500 text-responsive-xs">3420 đã bán</span>
-							</div>
-						</div>
-						<div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-md p-2 sm:p-4 ">
-							<div class="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-1">
-								<div class="flex items-center space-x-2 sm:space-x-3">
-									<span class="text-responsive-lg font-semibold text-emerald-600" x-text="getSelectedPrice()">899.000đ</span>
-									<span class="text-responsive-xs text-gray-500 line-through">2.990.000đ</span>
-								</div>
-							</div>
-						</div>
-						<!-- Số lượng -->
-						<div class="space-y-3">
-							<div class="flex flex-row items-start sm:items-center sm:space-x-3">
-								<div class="flex items-center space-x-2 flex-1 min-w-0">
-									<span class="font-bold text-gray-900 whitespace-nowrap text-responsive-sm">Số lượng:</span>
-									<div class="flex items-center btn btn-outline btn-sm w-fit flex-shrink-0">
-										<button @click="decreaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-l-lg">
-											<i data-lucide="minus" class="w-3 h-3"></i>
-										</button>
-										<span class="w-8 text-center text-responsive-xs" x-text="quantity">1</span>
-										<button @click="increaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-r-lg">
-											<i data-lucide="plus" class="w-3 h-3"></i>
-										</button>
-									</div>
-									<span class="text-responsive-xs text-gray-500 whitespace-nowrap">(50 có sẵn)</span>
-								</div>
-								<button @click="share()" class="btn btn-outline btn-md  flex-shrink-0">
-									<i data-lucide="share-2" class="w-4 h-4"></i>
-								</button>
-							</div>
-						</div>
-						<!-- Chọn loại -->
-						<div class="space-y-3">
-							<h3 class="font-bold text-gray-900 text-responsive-sm">Chọn loại Gmail:</h3>
-							<div class="grid grid-cols-2 gap-2">
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-20-50' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-20-50" 
-									@change="selectGmailType('gmail-vn-aged-20-50')"
-									:checked="selectedGmailType === 'gmail-vn-aged-20-50'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-20-50' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 20-50 Ngày - 899.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-30-80' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-30-80" 
-									@change="selectGmailType('gmail-vn-aged-30-80')"
-									:checked="selectedGmailType === 'gmail-vn-aged-30-80'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-30-80' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 30-80 Ngày - 999.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-40-90' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-40-90" 
-									@change="selectGmailType('gmail-vn-aged-40-90')"
-									:checked="selectedGmailType === 'gmail-vn-aged-40-90'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-40-90' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 40-90 Ngày - 1.099.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-60-120' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-60-120" 
-									@change="selectGmailType('gmail-vn-aged-60-120')"
-									:checked="selectedGmailType === 'gmail-vn-aged-60-120'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-60-120' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 60-120 Ngày - 1.199.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-new-1day' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-new-1day" 
-									@change="selectGmailType('gmail-vn-new-1day')"
-									:checked="selectedGmailType === 'gmail-vn-new-1day'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-new-1day' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Mới Reg 1 Ngày - 799.000đ
-								</span>
-								</label>
-							</div>
-						</div>
-						<div class="flex flex-row gap-3 mt-4">
-							<button @click="addToCart()" :disabled="isAddingToCart" class="btn btn-primary btn-md w-full flex items-center justify-center gap-2" :class="isAddingToCart ? 'opacity-50 cursor-not-allowed' : ''">
-								<i data-lucide="shopping-cart" class="w-5 h-5"></i>
-								<span class="text-responsive-sm ">Thêm vào giỏ</span>
-							</button>
-							<button @click="buyNow()" :disabled="isBuyingNow" class="btn btn-secondary btn-md w-full flex items-center justify-center gap-2" :class="isBuyingNow ? 'opacity-50 cursor-not-allowed' : ''">
-								<i data-lucide="zap" class="w-5 h-5"></i>
-								<span class="text-responsive-sm ">Mua Ngay</span>
-							</button>
-						</div>
-					</div>
-					<div>
-						<h3 class="font-bold text-gray-900 mb-2 text-responsive-sm">Tính năng nổi bật</h3>
-						<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Chất lượng 4K Ultra HD</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Hỗ trợ 4 thiết bị cùng lúc</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Thư viện phim khổng lồ</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Không quảng cáo</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Tải xuống offline</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Hỗ trợ HDR</span>
-							</div>
-						</div>
-					</div>
-			</section>
-			<!-- Thông tin sản phẩm -->
-			<section class="card mb-8">
-				<div dir="ltr" data-orientation="horizontal" class="w-full">
-					<div class="border-b border-gray-200">
-						<div class="w-full overflow-hidden">
-							<div role="tablist" aria-orientation="horizontal" class="tabs-list" tabindex="0" data-orientation="horizontal" style="outline: none;">
-								<button type="button" role="tab" @click="setActiveTab('description')" :aria-selected="isTabActive('description')" class="tabs-trigger" :class="isTabActive('description') ? 'text-emerald-600 ' : ''">Mô tả</button>
-								<button type="button" role="tab" @click="setActiveTab('specifications')" :aria-selected="isTabActive('specifications')" class="tabs-trigger" :class="isTabActive('specifications') ? ' text-emerald-600' : ''">Thông số</button>
-								<button type="button" role="tab" @click="setActiveTab('reviews')" :aria-selected="isTabActive('reviews')" class="tabs-trigger" :class="isTabActive('reviews') ? ' text-emerald-600' : ''">
-								<span class="hidden sm:inline">Đánh giá (1247)</span>
-								<span class="sm:hidden">Đánh giá</span>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div x-show="isTabActive('description')" role="tabpanel" class="tabs-content">
-						<div class="prose max-w-none">
-							<h3 class="text-responsive-sm font-medium text-gray-900 mb-2 sm:mb-3">Mô tả sản phẩm</h3>
-							<p class="text-gray-500  mb-3 sm:mb-4 text-responsive-xs leading-relaxed">Tài khoản Netflix Premium chính hãng với chất lượng 4K Ultra HD, hỗ trợ 4 thiết bị cùng lúc. Bảo hành 12 tháng, thay thế miễn phí nếu có lỗi.</p>
-							<div class="bg-emerald-50 rounded-md p-2 sm:p-4">
-								<h4 class="font-semibold text-emerald-800 mb-2 text-responsive-xs">Lưu ý quan trọng:</h4>
-								<ul class="text-emerald-700 text-responsive-xs space-y-1">
-									<li>• Tài khoản được giao ngay sau khi thanh toán thành công</li>
-									<li>• Vui lòng không thay đổi thông tin tài khoản để tránh bị khóa</li>
-									<li>• Liên hệ hỗ trợ nếu gặp bất kỳ vấn đề nào</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div x-show="isTabActive('specifications')" role="tabpanel" class="tabs-content">
-						<div class="prose max-w-none">
-							<h3 class="text-responsive-sm font-medium text-gray-900 mb-3 sm:mb-4">Thông số kỹ thuật</h3>
-							<div class="space-y-3 sm:space-y-4">
-								<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-									<div>
-										<span class="text-gray-900 text-responsive-xs ">Chất lượng video:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">4K Ultra HD</span>
-									</div>
-									<div>
-										<span class="text-gray-900 text-responsive-xs">Số thiết bị:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">4 thiết bị cùng lúc</span>
-									</div>
-									<div>
-										<span class="text-gray-900 text-responsive-xs">Hỗ trợ HDR:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">Có</span>
-									</div>
-									<div>
-										<span class="text-gray-900 text-responsive-xs ">Tải xuống offline:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">Có</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div x-show="isTabActive('reviews')" role="tabpanel" class="tabs-content">
-						<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
-							<div class="lg:col-span-1">
-								<div class="card sticky top-24">
-									<div class="card-header">
-										<h3 class="card-title text-lg sm:text-xl">Viết đánh giá của bạn</h3>
-										<p class="card-description text-sm">Chia sẻ trải nghiệm của bạn với sản phẩm này.</p>
-									</div>
-									<div class="card-content">
-										<form class="space-y-3 sm:space-y-4">
-											<div>
-												<label for="review-name" class="block text-responsive-sm font-medium text-gray-900 mb-1">Tên của bạn</label>
-												<input type="text" id="review-name" class="input input-md" placeholder="Nhập tên của bạn">
-											</div>
-											<div>
-												<label class="block text-responsive-sm font-medium text-gray-900 mb-1">Đánh giá</label>
-												<div x-data="{ rating: 0, hoverRating: 0 }" class="rating">
-													<template x-for="star in 5">
-														<button type="button" @click="rating = star" @mouseover="hoverRating = star" @mouseleave="hoverRating = 0" class="focus:outline-none">
-														<svg class="rating-star w-5 h-5" :class="{ 'filled': hoverRating >= star || rating >= star, 'empty': hoverRating < star && rating < star }" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														</button>
-													</template>
-												</div>
-											</div>
-											<div>
-												<label for="review-comment" class="block text-responsive-sm font-medium text-gray-900 mb-1">Bình luận</label>
-												<textarea id="review-comment" rows="3" class="input input-md" placeholder="Viết bình luận của bạn ở đây..."></textarea>
-											</div>
-											<button type="submit" class="btn btn-primary btn-md w-full">Gửi đánh giá</button>
-										</form>
-									</div>
-								</div>
-							</div>
-							<div class="lg:col-span-2">
-								<div class="flex-between mb-4 sm:mb-6 ">
-									<h3 class="text-responsive-md font-bold">Đánh giá (1247)</h3>
-								</div>
-								<div class="space-y-4 sm:space-y-6">
-									<!-- Review 1 -->
-									<div class="border-b pb-4 sm:pb-6">
-										<div class="flex items-start">
-											<img src="https://i.pravatar.cc/40?u=a042581f4e29026704d" alt="Avatar" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-3 sm:mr-4">
-											<div class="flex-1">
-												<div class="flex-between">
-													<div>
-														<p class="font-semibold text-gray-800 text-sm sm:text-base">Nguyễn Văn Hùng</p>
-														<p class="text-xs text-gray-500">2 ngày trước</p>
-													</div>
-													<div class="rating">
-														<!-- Stars will be dynamically generated, this is a static example -->
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-													</div>
-												</div>
-												<p class="text-gray-700 mt-2 text-sm sm:text-base">Sản phẩm tuyệt vời! Giao hàng nhanh, hỗ trợ nhiệt tình. Sẽ tiếp tục ủng hộ shop trong tương lai.</p>
-											</div>
-										</div>
-									</div>
-									<!-- Review 2 -->
-									<div class="border-b pb-4 sm:pb-6">
-										<div class="flex items-start">
-											<img src="https://i.pravatar.cc/40?u=a042581f4e29026704e" alt="Avatar" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-3 sm:mr-4">
-											<div class="flex-1">
-												<div class="flex-between">
-													<div>
-														<p class="font-semibold text-gray-800 text-sm sm:text-base">Trần Thị Bích</p>
-														<p class="text-xs text-gray-500">1 tuần trước</p>
-													</div>
-													<div class="rating">
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24._88 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star empty w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-													</div>
-												</div>
-												<p class="text-gray-700 mt-2 text-sm sm:text-base">Chất lượng tốt, giá cả hợp lý. Tuy nhiên phần hướng dẫn sử dụng hơi khó hiểu một chút.</p>
-											</div>
-										</div>
-									</div>
-									<!-- Review 3 -->
-									<div>
-										<div class="flex items-start">
-											<img src="https://i.pravatar.cc/40?u=a042581f4e29026704f" alt="Avatar" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-3 sm:mr-4">
-											<div class="flex-1">
-												<div class="flex-between">
-													<div>
-														<p class="font-semibold text-gray-800 text-sm sm:text-base">Lê Minh Đức</p>
-														<p class="text-xs text-gray-500">3 tuần trước</p>
-													</div>
-													<div class="rating">
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-														<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-															<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-														</svg>
-													</div>
-												</div>
-												<p class="text-gray-700 mt-2 text-sm sm:text-base">Rất đáng tiền. Mọi thứ hoạt động hoàn hảo.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Pagination -->
-								<div class="mt-6 sm:mt-8 flex justify-center">
-									<nav class="pagination">
-										<a href="#" class="pagination-item disabled text-responsive-xs">&laquo;</a>
-										<a href="#" class="pagination-item active text-responsive-xs">1</a>
-										<a href="#" class="pagination-item text-responsive-xs">2</a>
-										<a href="#" class="pagination-item text-responsive-xs">3</a>
-										<span class="pagination-item text-responsive-xs">...</span>
-										<a href="#" class="pagination-item text-responsive-xs">125</a>
-										<a href="#" class="pagination-item text-responsive-xs">&raquo;</a>
-									</nav>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			
-			</div>
-			<!-- sản phẩm liên quan -->
-			<section class="related-products-slider section">
-				<div class="container">
-					<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
-						<div class="text-left mb-3 sm:mb-0 flex-1">
-							<h2 class="section-title">Sản phẩm liên quan</h2>
-						</div>
-						<div class="flex-shrink-0 w-full sm:w-auto">
-							<button onclick="window.location.href='/products'" class="btn btn-outline w-full sm:w-auto btn-md">
-								<i data-lucide="arrow-right" class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2"></i>
-								Xem Thêm
-							</button>
-						</div>
-					</div>
-					<!-- Related Products Slider -->
-					<div class="related-products-slider blaze-slider" data-slides-to-show="4" data-slides-to-scroll="1">
-						<div class="blaze-container">
-							<div class="blaze-track-container">
-								<div class="blaze-track">
-									<!-- Product 1 -->
-									<div class="blaze-slide">
-										<div class="bg-white card p-4">
-											<div class="flex items-center mb-3">
-												<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-													<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0">
-													<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-													<h4 class="font-semibold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
-												</div>
-											</div>
-											<div class="flex items-center justify-start gap-2 mt-4">
-												<div class="flex space-x-1 ">
-													<div class="flex text-yellow-500">
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-													</div>
-													<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-												</div>
-												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-													<span>•</span>
-													<span>Đã bán 900</span>
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-4">
-												<span class="text-lg font-bold text-emerald-600">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-													})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-												Thêm
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 2 -->
-									<div class="blaze-slide">
-										<div class="bg-white card p-4">
-											<div class="flex items-center mb-3">
-												<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-													<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0">
-													<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-													<h4 class="font-semibold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
-												</div>
-											</div>
-											<div class="flex items-center justify-start gap-2 mt-4">
-												<div class="flex space-x-1 ">
-													<div class="flex text-yellow-500">
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-													</div>
-													<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-												</div>
-												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-													<span>•</span>
-													<span>Đã bán 900</span>
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-4">
-												<span class="text-lg font-bold text-emerald-600">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-													})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-												Thêm
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 1 -->
-									<div class="blaze-slide">
-										<div class="bg-white card p-4">
-											<div class="flex items-center mb-3">
-												<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-													<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0">
-													<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-													<h4 class="font-semibold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
-												</div>
-											</div>
-											<div class="flex items-center justify-start gap-2 mt-4">
-												<div class="flex space-x-1 ">
-													<div class="flex text-yellow-500">
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-													</div>
-													<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-												</div>
-												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-													<span>•</span>
-													<span>Đã bán 900</span>
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-4">
-												<span class="text-lg font-bold text-emerald-600">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-													})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-												Thêm
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 1 -->
-									<div class="blaze-slide">
-										<div class="bg-white card p-4">
-											<div class="flex items-center mb-3">
-												<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-													<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0">
-													<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-													<h4 class="font-semibold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
-												</div>
-											</div>
-											<div class="flex items-center justify-start gap-2 mt-4">
-												<div class="flex space-x-1 ">
-													<div class="flex text-yellow-500">
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-													</div>
-													<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-												</div>
-												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-													<span>•</span>
-													<span>Đã bán 900</span>
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-4">
-												<span class="text-lg font-bold text-emerald-600">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-													})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-												Thêm
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 1 -->
-									<div class="blaze-slide">
-										<div class="bg-white card p-4">
-											<div class="flex items-center mb-3">
-												<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-													<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0">
-													<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-													<h4 class="font-semibold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
-												</div>
-											</div>
-											<div class="flex items-center justify-start gap-2 mt-4">
-												<div class="flex space-x-1 ">
-													<div class="flex text-yellow-500">
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-													</div>
-													<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-												</div>
-												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-													<span>•</span>
-													<span>Đã bán 900</span>
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-4">
-												<span class="text-lg font-bold text-emerald-600">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-													})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-												Thêm
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 1 -->
-									<div class="blaze-slide">
-										<div class="bg-white card p-4">
-											<div class="flex items-center mb-3">
-												<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-													<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0">
-													<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-													<h4 class="font-semibold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
-												</div>
-											</div>
-											<div class="flex items-center justify-start gap-2 mt-4">
-												<div class="flex space-x-1 ">
-													<div class="flex text-yellow-500">
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-													</div>
-													<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-												</div>
-												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-													<span>•</span>
-													<span>Đã bán 900</span>
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-4">
-												<span class="text-lg font-bold text-emerald-600">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-													})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-												Thêm
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 1 -->
-									<div class="blaze-slide">
-										<div class="bg-white card p-4">
-											<div class="flex items-center mb-3">
-												<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-													<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0">
-													<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-													<h4 class="font-semibold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
-												</div>
-											</div>
-											<div class="flex items-center justify-start gap-2 mt-4">
-												<div class="flex space-x-1 ">
-													<div class="flex text-yellow-500">
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-														<i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current"></i>
-													</div>
-													<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-												</div>
-												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-													<span>•</span>
-													<span>Đã bán 900</span>
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-4">
-												<span class="text-lg font-bold text-emerald-600">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-													})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-												Thêm
-												</button>
-											</div>
-										</div>
-									</div>
 
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+					<!-- Main Content -->
+					<div class="lg:col-span-2">
+						<!-- Tag Header -->
+						<div class="card p-4 sm:p-6 mb-6 lg:mb-8">
+							<div class="flex flex-row items-center space-x-4 mb-4">
+								<div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+									<i data-lucide="tag" class="w-6 h-6 sm:w-8 sm:h-8 text-white"></i>
+								</div>
+								<div class="flex-1 min-w-0">
+									<h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Tag: Proxy</h1>
+									<p class="text-sm sm:text-base text-gray-600">Tất cả bài viết liên quan đến Proxy</p>
 								</div>
 							</div>
-							<!-- Navigation buttons -->
-							<button class="blaze-prev" aria-label="Previous slide">
-							<i data-lucide="chevron-left" class="size-5"></i>
+							<div class="flex flex-row sm:items-center space-x-4  text-responsive-xs text-gray-500">
+								<div class="flex items-center space-x-1">
+									<i data-lucide="file-text" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
+									<span>12 bài viết</span>
+								</div>
+								<div class="flex items-center space-x-1">
+									<i data-lucide="eye" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
+									<span class="hidden sm:inline">15,847 lượt xem</span>
+									<span class="sm:hidden">15.8k lượt xem</span>
+								</div>
+								<div class="flex items-center space-x-1">
+									<i data-lucide="calendar" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
+									<span class="hidden sm:inline">Cập nhật: 15/12/2024</span>
+									<span class="sm:hidden">15/12/2024</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Posts Grid -->
+						<div class="space-y-4 sm:space-y-6">
+							<!-- Post 1 -->
+							<article class="card overflow-hidden hover:shadow-lg transition-shadow">
+								<div class="flex flex-col sm:flex-row">
+								<div class="w-full sm:w-1/3">
+									<div class="relative h-48 sm:h-full bg-gradient-to-br from-emerald-500 to-green-600">
+										<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+												 alt="Proxy Security" 
+												 class="w-full h-full object-cover">
+										<div class="absolute inset-0 bg-black/20"></div>
+										<!-- Tags on image -->
+										<div class="absolute top-3 left-3 flex flex-wrap gap-1.5 ">
+											<span class="badge badge-primary ">MMO Tools</span>
+											<span class="badge badge-primary ">Security</span>
+										</div>
+									</div>
+								</div>
+								<div class="w-full sm:w-2/3 p-4 ">
+										<h3 class="text-responsive-md font-bold text-gray-900 mb-2  hover:text-emerald-600 transition-colors line-clamp-2">
+											<a href="detail-news.html">Proxy Có Thực Sự Đáng Tin Cậy Như Các Gian Hàng Đang Đồn Thổi???</a>
+										</h3>
+										<p class="text-responsive-sm text-gray-500 mb-3  line-clamp-2 sm:line-clamp-3">
+											Trong thế giới MMO hiện đại, proxy đã trở thành một công cụ không thể thiếu. Nhưng liệu tất cả những lời quảng cáo về độ tin cậy của proxy có thực sự đúng như vậy?
+										</p>
+										<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+											<div class="flex items-center space-x-3 sm:space-x-4 text-responsive-sm text-gray-500">
+												<div class="flex items-center space-x-1">
+													<i data-lucide="calendar" class="size-4 flex-shrink-0"></i>
+													<span>15/12</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="eye" class="size-4 flex-shrink-0"></i>
+													<span class="inline">2,847</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="clock" class="size-4 flex-shrink-0"></i>
+													<span>8 phút</span>
+												</div>
+											</div>
+											<a href="detail-news.html" class="text-emerald-600 hover:text-emerald-700 font-medium text-responsive-sm  self-end">
+												Đọc thêm <i data-lucide="arrow-right" class="size-4 inline ml-1"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+
+							<!-- Post 2 -->
+							<article class="card overflow-hidden hover:shadow-lg transition-shadow">
+								<div class="flex flex-col sm:flex-row">
+								<div class="w-full sm:w-1/3">
+									<div class="relative h-48 sm:h-full bg-gradient-to-br from-blue-500 to-purple-600">
+										<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+												 alt="Proxy Setup" 
+												 class="w-full h-full object-cover">
+										<div class="absolute inset-0 bg-black/20"></div>
+										<!-- Tags on image -->
+										<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+											<span class="badge badge-primary">Tutorial</span>
+											<span class="badge badge-primary">Setup</span>
+										</div>
+									</div>
+								</div>
+								<div class="w-full sm:w-2/3 p-4 ">
+										<h3 class="text-responsive-md font-bold text-gray-900 mb-2  hover:text-emerald-600 transition-colors line-clamp-2">
+											<a href="#">Hướng Dẫn Cài Đặt Proxy Cho Người Mới Bắt Đầu</a>
+										</h3>
+										<p class="text-responsive-sm text-gray-500 mb-3  line-clamp-2 sm:line-clamp-3">
+											Bạn muốn bắt đầu sử dụng proxy nhưng không biết cách cài đặt? Bài viết này sẽ hướng dẫn chi tiết từ A-Z cách cài đặt và cấu hình proxy cho người mới.
+										</p>
+										<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+											<div class="flex items-center space-x-3 sm:space-x-4 text-responsive-sm text-gray-500">
+												<div class="flex items-center space-x-1">
+													<i data-lucide="calendar" class="size-4 flex-shrink-0"></i>
+													<span>12/12</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="eye" class="size-4 flex-shrink-0"></i>
+													<span class="inline">1,923</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="clock" class="size-4 flex-shrink-0"></i>
+													<span>12 phút</span>
+												</div>
+											</div>
+											<a href="#" class="text-emerald-600 hover:text-emerald-700 font-medium text-responsive-sm self-end">
+												Đọc thêm <i data-lucide="arrow-right" class="size-4 inline ml-1"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+
+							<!-- Post 3 -->
+							<article class="card overflow-hidden hover:shadow-lg transition-shadow">
+								<div class="flex flex-col sm:flex-row">
+								<div class="w-full sm:w-1/3">
+									<div class="relative h-48 sm:h-full bg-gradient-to-br from-orange-500 to-red-600">
+										<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+												 alt="Proxy Comparison" 
+												 class="w-full h-full object-cover">
+										<div class="absolute inset-0 bg-black/20"></div>
+										<!-- Tags on image -->
+										<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+											<span class="badge badge-primary ">Review</span>
+											<span class="badge badge-primary ">Comparison</span>
+										</div>
+									</div>
+								</div>
+								<div class="w-full sm:w-2/3 p-4 ">
+										<h3 class="text-responsive-md font-bold text-gray-900 mb-2  hover:text-emerald-600 transition-colors line-clamp-2">
+											<a href="#">So Sánh Top 10 Dịch Vụ Proxy Tốt Nhất 2024</a>
+										</h3>
+										<p class="text-responsive-sm text-gray-500 mb-3  line-clamp-2 sm:line-clamp-3">
+											Đánh giá chi tiết các dịch vụ proxy hàng đầu hiện tại, so sánh giá cả, tốc độ, độ ổn định và các tính năng nổi bật của từng nhà cung cấp.
+										</p>
+										<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+											<div class="flex items-center space-x-3 sm:space-x-4 text-responsive-sm text-gray-500">
+												<div class="flex items-center space-x-1">
+													<i data-lucide="calendar" class="size-4 flex-shrink-0"></i>
+													<span>10/12</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="eye" class="size-4 flex-shrink-0"></i>
+													<span class="inline">3,156</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="clock" class="size-4 flex-shrink-0"></i>
+													<span>15 phút</span>
+												</div>
+											</div>
+											<a href="#" class="text-emerald-600 hover:text-emerald-700 font-medium text-responsive-sm self-end">
+												Đọc thêm <i data-lucide="arrow-right" class="w-3 h-3 sm:w-4 sm:h-4 inline ml-1"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+
+							<!-- Post 4 -->
+							<article class="card overflow-hidden hover:shadow-lg transition-shadow">
+								<div class="flex flex-col sm:flex-row">
+								<div class="w-full sm:w-1/3">
+									<div class="relative h-48 sm:h-full bg-gradient-to-br from-teal-500 to-cyan-600">
+										<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" 
+												 alt="Proxy Security" 
+												 class="w-full h-full object-cover">
+										<div class="absolute inset-0 bg-black/20"></div>
+										<!-- Tags on image -->
+										<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+											<span class="badge badge-primary">Security</span>
+											<span class="badge badge-primary">Privacy</span>
+										</div>
+									</div>
+								</div>
+								<div class="w-full sm:w-2/3 p-4 ">
+										<h3 class="text-responsive-md font-bold text-gray-900 mb-2  hover:text-emerald-600 transition-colors line-clamp-2">
+											<a href="#">Bảo Mật Khi Sử Dụng Proxy: Những Điều Cần Biết</a>
+										</h3>
+										<p class="text-responsive-sm text-gray-500 mb-3  line-clamp-2 sm:line-clamp-3">
+											Proxy có thể giúp bảo vệ quyền riêng tư nhưng cũng có thể gây rủi ro nếu không sử dụng đúng cách. Tìm hiểu cách sử dụng proxy an toàn và hiệu quả.
+										</p>
+										<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-1 sm:space-y-0">
+											<div class="flex items-center space-x-3 sm:space-x-4 text-responsive-sm text-gray-500">
+												<div class="flex items-center space-x-1">
+													<i data-lucide="calendar" class="size-4 flex-shrink-0"></i>
+													<span>08/12</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="eye" class="size-4 flex-shrink-0"></i>
+													<span class="inline">2,341</span>
+												</div>
+												<div class="flex items-center space-x-1">
+													<i data-lucide="clock" class="size-4 flex-shrink-0"></i>
+													<span>10 phút</span>
+												</div>
+											</div>
+											<a href="#" class="text-emerald-600 hover:text-emerald-700 font-medium text-responsive-sm self-end">
+												Đọc thêm <i data-lucide="arrow-right" class="size-4 inline ml-1"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+
+						<!-- Pagination -->
+						<div class="flex items-center justify-center space-x-1 sm:space-x-2 mt-6 sm:mt-8">
+							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">
+								<i data-lucide="chevron-left" class="w-3 h-3 sm:w-4 sm:h-4"></i>
 							</button>
-							<button class="blaze-next" aria-label="Next slide">
-							<i data-lucide="chevron-right" class="size-5"></i>
+							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm bg-emerald-600 text-white rounded-lg">1</button>
+							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">2</button>
+							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">3</button>
+							<span class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-400 hidden sm:inline">...</span>
+							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">5</button>
+							<button class="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-500 hover:text-emerald-600 transition-colors">
+								<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4"></i>
 							</button>
 						</div>
-						<!-- Pagination dots -->
-						<div class="blaze-pagination"></div>
+					</div>
+
+					<!-- Sidebar -->
+					<div class="lg:col-span-1 mt-6 lg:mt-0">
+						<!-- Related Tags -->
+						<div class="card p-4 sm:p-6 mb-4 sm:mb-6">
+							<h3 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Tags liên quan</h3>
+							<div class="flex flex-wrap gap-1.5 sm:gap-2">
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">MMO Tools</a>
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">Security</a>
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">VPN</a>
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">Privacy</a>
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">Internet</a>
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">Anonymity</a>
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">Tutorial</a>
+								<a href="#" class="badge badge-primary text-xs sm:text-sm">Review</a>
+							</div>
+						</div>
+
+						<!-- Popular Posts -->
+						<div class="card p-4 sm:p-6 mb-4 sm:mb-6">
+							<h3 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Bài viết phổ biến</h3>
+							<div class="space-y-3 sm:space-y-4">
+								<div class="flex space-x-2 sm:space-x-3">
+									<div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg flex-shrink-0">
+										<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+												 alt="Popular Post" 
+												 class="w-full h-full object-cover rounded-lg">
+									</div>
+									<div class="flex-1 min-w-0">
+										<h4 class="text-xs sm:text-sm font-semibold text-gray-900 mb-1 line-clamp-2">
+											<a href="#" class="hover:text-emerald-600 transition-colors">Proxy Có Thực Sự Đáng Tin Cậy?</a>
+										</h4>
+										<div class="flex items-center space-x-1 sm:space-x-2 text-xs text-gray-500">
+											<span class="hidden sm:inline">2,847 lượt xem</span>
+											<span class="sm:hidden">2.8k</span>
+											<span>•</span>
+											<span>15/12</span>
+										</div>
+									</div>
+								</div>
+								<div class="flex space-x-2 sm:space-x-3">
+									<div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex-shrink-0">
+										<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+												 alt="Popular Post" 
+												 class="w-full h-full object-cover rounded-lg">
+									</div>
+									<div class="flex-1 min-w-0">
+										<h4 class="text-xs sm:text-sm font-semibold text-gray-900 mb-1 line-clamp-2">
+											<a href="#" class="hover:text-emerald-600 transition-colors">Hướng Dẫn Cài Đặt Proxy</a>
+										</h4>
+										<div class="flex items-center space-x-1 sm:space-x-2 text-xs text-gray-500">
+											<span class="hidden sm:inline">1,923 lượt xem</span>
+											<span class="sm:hidden">1.9k</span>
+											<span>•</span>
+											<span>12/12</span>
+										</div>
+									</div>
+								</div>
+								<div class="flex space-x-2 sm:space-x-3">
+									<div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex-shrink-0">
+										<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+												 alt="Popular Post" 
+												 class="w-full h-full object-cover rounded-lg">
+									</div>
+									<div class="flex-1 min-w-0">
+										<h4 class="text-xs sm:text-sm font-semibold text-gray-900 mb-1 line-clamp-2">
+											<a href="#" class="hover:text-emerald-600 transition-colors">So Sánh Top 10 Proxy 2024</a>
+										</h4>
+										<div class="flex items-center space-x-1 sm:space-x-2 text-xs text-gray-500">
+											<span class="hidden sm:inline">3,156 lượt xem</span>
+											<span class="sm:hidden">3.1k</span>
+											<span>•</span>
+											<span>10/12</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Newsletter -->
+						<div class="card bg-gradient-to-br from-emerald-500 to-green-600 text-white p-4 sm:p-6">
+							<h3 class="text-base sm:text-lg font-bold mb-2 sm:mb-3">Đăng ký nhận tin</h3>
+							<p class="text-xs sm:text-sm mb-3 sm:mb-4">Nhận thông báo về các bài viết mới nhất về Proxy và MMO Tools</p>
+							<div class="space-y-2 sm:space-y-3">
+								<input type="email" placeholder="Email của bạn" 
+									   class="w-full px-3 py-2 text-gray-900 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-white/50">
+								<button class="w-full bg-white text-emerald-600 py-2 rounded-lg font-medium text-xs sm:text-sm hover:bg-gray-100 transition-colors">
+									Đăng ký
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</main>
 		<!-- Footer -->
 		<footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
@@ -3178,14 +2770,14 @@
 					<div class="space-y-4 col-span-2 lg:col-span-1 col-start-1">
 						<a href="/" class="flex items-center space-x-2">
 							<div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-sm">
-								<span class="text-white font-bold text-xl">M</span>
+								<span class="text-white font-bold text-responsive-lg">M</span>
 							</div>
 							<div>
-								<div class="font-bold text-xl">MMO Store</div>
-								<div class="text-xs text-emerald-200 -mt-1">Premium Digital Products</div>
+								<div class="font-bold text-responsive-lg">MMO Store</div>
+								<div class="text-responsive-xs text-emerald-200 -mt-1">Premium Digital Products</div>
 							</div>
 						</a>
-						<p class="text-emerald-200 text-sm leading-relaxed">
+						<p class="text-emerald-200 text-responsive-sm leading-relaxed">
 							Sàn bán tài nguyên số chuyên nghiệp cho MMO, cung cấp backlink, tài khoản social, data & tools, license phần mềm và các dịch vụ MMO chất lượng cao.
 						</p>
 						<div class="flex space-x-3">
@@ -3203,50 +2795,50 @@
 					</div>
 					<!-- Sản Phẩm -->
 					<div class="col-start-1 lg:col-start-2">
-						<h3 class="font-semibold text-lg mb-4">Sản Phẩm</h3>
+						<h3 class="font-semibold text-responsive-lg mb-4">Sản Phẩm</h3>
 						<ul class="space-y-2 text-emerald-200">
-							<li><a href="/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
-							<li><a href="/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
-							<li><a href="/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
-							<li><a href="/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
-							<li><a href="/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
-							<li><a href="/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
-							<li><a href="/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
-							<li><a href="/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
+							<li><a href="/products/backlink" class="hover:text-white text-responsive-sm transition-colors">Backlink/Textlink/Entity</a></li>
+							<li><a href="/products/email" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Email</a></li>
+							<li><a href="/products/facebook" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Facebook</a></li>
+							<li><a href="/products/social" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Social khác</a></li>
+							<li><a href="/products/data-tools" class="hover:text-white text-responsive-sm transition-colors">Data & Tools MMO</a></li>
+							<li><a href="/products/license" class="hover:text-white text-responsive-sm transition-colors">License Phần Mềm</a></li>
+							<li><a href="/products/vpn-proxy" class="hover:text-white text-responsive-sm transition-colors">VPN/Proxy/Server</a></li>
+							<li><a href="/products/course" class="hover:text-white text-responsive-sm transition-colors">Khóa Học/TUT MMO</a></li>
 						</ul>
 					</div>
 					<!-- Dịch Vụ -->
 					<div class="col-start-2 lg:col-start-3">
-						<h3 class="font-semibold text-lg mb-4">Dịch Vụ</h3>
+						<h3 class="font-semibold text-responsive-lg mb-4">Dịch Vụ</h3>
 						<ul class="space-y-2 text-emerald-200">
-							<li><a href="/services/website" class="hover:text-white transition-colors">Thiết kế Website</a></li>
-							<li><a href="/services/engagement" class="hover:text-white transition-colors">Tăng tương tác</a></li>
-							<li><a href="/services/marketing" class="hover:text-white transition-colors">Dịch vụ Marketing</a></li>
-							<li><a href="/services/software" class="hover:text-white transition-colors">Dịch vụ phần mềm</a></li>
-							<li><a href="/services/web" class="hover:text-white transition-colors">Dịch vụ website</a></li>
-							<li><a href="/services/seo" class="hover:text-white transition-colors">Dịch vụ SEO</a></li>
-							<li><a href="/support" class="hover:text-white transition-colors">Hỗ trợ khách hàng</a></li>
-							<li><a href="/warranty" class="hover:text-white transition-colors">Bảo hành</a></li>
+							<li><a href="/services/website" class="hover:text-white text-responsive-sm transition-colors">Thiết kế Website</a></li>
+							<li><a href="/services/engagement" class="hover:text-white text-responsive-sm transition-colors">Tăng tương tác</a></li>
+							<li><a href="/services/marketing" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ Marketing</a></li>
+							<li><a href="/services/software" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ phần mềm</a></li>
+							<li><a href="/services/web" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ website</a></li>
+							<li><a href="/services/seo" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ SEO</a></li>
+							<li><a href="/support" class="hover:text-white text-responsive-sm transition-colors">Hỗ trợ khách hàng</a></li>
+							<li><a href="/warranty" class="hover:text-white text-responsive-sm transition-colors">Bảo hành</a></li>
 						</ul>
 					</div>
 					<!-- Liên Hệ -->
 					<div class="col-span-2 lg:col-span-1 col-start-1 lg:col-start-4">
-						<h3 class="font-semibold text-lg mb-4">Liên Hệ</h3>
-						<div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block">
-							<div class="flex items-start space-x-3">
+						<h3 class="font-semibold text-responsive-lg mb-4">Liên Hệ</h3>
+						<div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block text-responsive-sm">
+							<div class="flex items-start space-x-3 text-responsive-sm">
 								<i data-lucide="headphones" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
-								<div class="text-sm">
+								<div class="text-responsive-sm">
 									Hỗ trợ 24/7<br>
 									<span class="text-emerald-300">support@mmostore.com</span>
 								</div>
 							</div>
-							<div class="flex items-center space-x-3">
+							<div class="flex items-center space-x-3 text-responsive-sm">
 								<i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
-								<div class="text-sm">+84 123 456 789</div>
+								<div class="text-responsive-sm">+84 123 456 789</div>
 							</div>
-							<div class="flex items-center space-x-3">
+							<div class="flex items-center space-x-3 text-responsive-sm">
 								<i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
-								<div class="text-sm">info@mmostore.com</div>
+								<div class="text-responsive-sm">info@mmostore.com</div>
 							</div>
 						</div>
 					</div>
@@ -3266,7 +2858,5 @@
 		<script>
 			lucide.createIcons();
 		</script>
-		<!-- Product Detail JavaScript -->
-		<script src="js/detail.js"></script>
 	</body>
 </html>
