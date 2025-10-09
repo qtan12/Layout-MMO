@@ -125,6 +125,16 @@
 			.btn-xl {
 			@apply px-8 py-4 h-14 text-lg;
 			}
+			/* Warning Button */
+			.btn-warning {
+			@apply bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all;
+			}
+			.btn-danger {
+			@apply bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all;
+			}
+			.btn-success {
+			@apply bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all;
+			}
 			/* Input Styles */
 			.input {
 			@apply flex h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:placeholder:text-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all;
@@ -154,6 +164,31 @@
 			}
 			.input-icon input:focus + .icon {
 			color: #10B981;
+			}
+			/* Text Styles */
+			.text-primary {
+			@apply text-emerald-700 hover:text-green-400;
+			}
+			.text-secondary {
+			@apply text-gray-600 hover:text-emerald-600;
+			}
+			.text-muted {
+			@apply text-gray-500 hover:text-gray-700;
+			}
+			.text-success {
+			@apply text-green-500 hover:text-green-700;
+			}
+			.text-warning {
+			@apply text-yellow-500 hover:text-yellow-700;
+			}
+			.text-danger {
+			@apply text-red-500 hover:text-red-700;
+			}
+			.text-info {
+			@apply text-emerald-500 hover:text-emerald-700;
+			}
+			.text-hot {
+			@apply text-red-500 hover:text-red-700;
 			}
 			/* Card Styles */
 			.card {
@@ -222,7 +257,7 @@
 			@apply py-16 lg:py-24;
 			}
 			.section-title {
-			@apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2;
+			@apply text-2xl sm:text-4xl font-bold text-gray-900 mb-2;
 			}
 			.section-subtitle {
 			@apply text-gray-600 mb-8 lg:mb-12;
@@ -591,16 +626,7 @@
 			.bg-icon i {
 			@apply w-5 h-5 text-white;
 			}
-			/* Warning Button */
-			.btn-warning {
-			@apply bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all;
-			}
-			.btn-danger {
-			@apply bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all;
-			}
-			.btn-success {
-			@apply bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all;
-			}
+
 			/* Toggle Switch Styles */
 			.toggle {
 			@apply relative inline-flex items-center cursor-pointer;
@@ -795,7 +821,7 @@
 			@apply whitespace-nowrap overflow-hidden text-ellipsis;
 			}
 			.one-line { 
-			@apply whitespace-nowrap; 
+			@apply line-clamp-1; 
 			}
 			.two-lines {
 			display: -webkit-box;
@@ -933,6 +959,31 @@
 			background: #94a3b8;
 			}
 			}
+
+			.item-title{
+				@apply text-primary font-bold text-responsive-sm one-line mb-2;
+			}
+			.item-thumbnail{
+				@apply w-12 h-12 rounded-lg mr-3 overflow-hidden;
+			}
+			.item-category{
+				@apply text-responsive-xs text-primary font-bold;
+			}
+			.item-price{
+				@apply text-responsive-md font-bold text-emerald-600;
+			}
+			.item-rating{
+				@apply text-yellow-500 size-4 fill-current;
+			}
+			.item-cart{
+				@apply text-primary size-4 fill-current;
+			}
+			.item-user{
+				@apply text-primary size-4 fill-current;
+			}
+			.item-link{
+				@apply link-primary text-responsive-xs;
+			}
 		</style>
 		<style type="text/css">
 			/* BlazerSlider */
@@ -1003,7 +1054,7 @@
 			// Khởi tạo FastNotice với cấu hình tùy chỉnh sau khi DOM sẵn sàng
 			document.addEventListener('DOMContentLoaded', function () {
 			    window.fastNotice = new FastNotice({
-			        position: 'bottom-right',    // Vị trí mặc định
+			        position: 'top-center',    // Vị trí mặc định
 			        duration: 3000,              // Thời gian hiển thị (ms)
 			        maxNotifications: 3          // Số notification tối đa
 			    });
@@ -1286,8 +1337,8 @@
 												<i data-lucide="link"></i>
 											</div>
 											<div>
-												<div class="text-lg">Backlink/Textlink/Entity</div>
-												<div class="text-xs text-gray-500">SEO & Link Building</div>
+												<div class="text-responsive-sm">Backlink/Textlink/Entity</div>
+												<div class="text-responsive-xs text-gray-500">SEO & Link Building</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1303,8 +1354,8 @@
 												<i data-lucide="mail"></i>
 											</div>
 											<div>
-												<div class="text-lg">Tài khoản Email</div>
-												<div class="text-xs text-gray-500">Email Accounts</div>
+												<div class="text-responsive-sm">Tài khoản Email</div>
+												<div class="text-responsive-xs text-gray-500">Email Accounts</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1320,8 +1371,8 @@
 												<i data-lucide="facebook"></i>
 											</div>
 											<div>
-												<div class="text-lg">Tài khoản Facebook</div>
-												<div class="text-xs text-gray-500">Facebook Accounts</div>
+												<div class="text-responsive-sm">Tài khoản Facebook</div>
+												<div class="text-responsive-xs text-gray-500">Facebook Accounts</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1341,8 +1392,8 @@
 												<i data-lucide="users"></i>
 											</div>
 											<div>
-												<div class="text-lg">Tài khoản Social khác</div>
-												<div class="text-xs text-gray-500">Social Media Accounts</div>
+												<div class="text-responsive-sm">Tài khoản Social khác</div>
+												<div class="text-responsive-xs text-gray-500">Social Media Accounts</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1359,8 +1410,8 @@
 												<i data-lucide="database"></i>
 											</div>
 											<div>
-												<div class="text-lg">Data & Tools MMO</div>
-												<div class="text-xs text-gray-500">Data & Automation Tools</div>
+												<div class="text-responsive-sm">Data & Tools MMO</div>
+												<div class="text-responsive-xs text-gray-500">Data & Automation Tools</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1377,8 +1428,8 @@
 												<i data-lucide="key"></i>
 											</div>
 											<div>
-												<div class="text-lg">License Phần Mềm</div>
-												<div class="text-xs text-gray-500">Software Licenses</div>
+												<div class="text-responsive-sm">License Phần Mềm</div>
+												<div class="text-responsive-xs text-gray-500">Software Licenses</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1397,8 +1448,8 @@
 												<i data-lucide="shield-check"></i>
 											</div>
 											<div>
-												<div class="text-lg">VPN/Proxy/Server</div>
-												<div class="text-xs text-gray-500">Infrastructure & Security</div>
+												<div class="text-responsive-sm">VPN/Proxy/Server</div>
+												<div class="text-responsive-xs text-gray-500">Infrastructure & Security</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1415,8 +1466,8 @@
 												<i data-lucide="graduation-cap"></i>
 											</div>
 											<div>
-												<div class="text-lg">Khóa Học/TUT MMO</div>
-												<div class="text-xs text-gray-500">Learning & Tutorials</div>
+												<div class="text-responsive-sm">Khóa Học/TUT MMO</div>
+												<div class="text-responsive-xs text-gray-500">Learning & Tutorials</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1428,14 +1479,14 @@
 									</div>
 									<!-- Featured Products -->
 									<div class="dropdown-col">
-										<div class="bg-gradient-to-r from-emerald-50 to-green-50 rounded-lg p-4 border border-emerald-200">
+										<div class="card bg-gradient-to-r from-emerald-100 to-green-100 p-4 ">
 											<div class="flex items-center mb-3">
-												<div class="bg-icon" style="width: 2rem; height: 2rem;">
-													<i data-lucide="star" style="width: 1rem; height: 1rem;"></i>
+												<div class="bg-icon">
+													<i data-lucide="star" class="size-5"></i>
 												</div>
 												<div>
-													<div class="font-semibold text-gray-900">Sản phẩm nổi bật</div>
-													<div class="text-xs text-gray-500">Featured Products</div>
+													<div class="text-responsive-sm font-semibold text-gray-900">Sản phẩm nổi bật</div>
+													<div class="text-responsive-xs text-gray-500">Featured Products</div>
 												</div>
 											</div>
 											<ul class="space-y-2 pl-4">
@@ -1729,7 +1780,7 @@
 								<p class="text-emerald-100 text-sm">Premium Digital Products</p>
 							</div>
 							<button @click="closeMobileMenu()" class="text-white hover:text-gray-200 transition-colors">
-							<i data-lucide="x" class="w-6 h-6"></i>
+							<i data-lucide="x" class="size-5"></i>
 							</button>
 						</div>
 					</div>
@@ -1748,7 +1799,7 @@
 							<div x-data="{ expanded: false }">
 								<div @click="expanded = !expanded" class="mobile-menu-expandable">
 									<a href="/products" class="flex items-center space-x-3">
-									<i data-lucide="package" class="w-5 h-5 text-gray-600"></i>
+									<i data-lucide="package" class="size-5 text-gray-600"></i>
 									<span class="font-medium text-gray-900">Sản Phẩm</span>
 									</a>
 									<i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 transition-transform"
@@ -1757,7 +1808,7 @@
 								<div x-show="expanded" x-transition class="ml-3 space-y-1 mt-1">
 									<!-- Backlink/Textlink/Entity -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="link" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="link" class="size-4 mr-2"></i>
 										Backlink/Textlink/Entity
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1773,7 +1824,7 @@
 									</div>
 									<!-- Tài khoản Email -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="mail" class="size-4 mr-2"></i>
 										Tài khoản Email
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1789,7 +1840,7 @@
 									</div>
 									<!-- Tài khoản Facebook -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="facebook" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="facebook" class="size-4 mr-2"></i>
 										Tài khoản Facebook
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1808,7 +1859,7 @@
 									</div>
 									<!-- Tài khoản Social khác -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="users" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="users" class="size-4 mr-2"></i>
 										Tài khoản Social khác
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1830,7 +1881,7 @@
 									</div>
 									<!-- Data & Tools MMO -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="database" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="database" class="size-4 mr-2"></i>
 										Data & Tools MMO
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1849,7 +1900,7 @@
 									</div>
 									<!-- License Phần Mềm -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="key" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="key" class="size-4 mr-2"></i>
 										License Phần Mềm
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1865,7 +1916,7 @@
 									</div>
 									<!-- VPN/Proxy/Server -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="shield-check" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="shield-check" class="size-4 mr-2"></i>
 										VPN/Proxy/Server
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1884,7 +1935,7 @@
 									</div>
 									<!-- Khóa Học/TUT MMO -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="graduation-cap" class="size-4 mr-2"></i>
 										Khóa Học/TUT MMO
 									</div>
 									<div class="ml-4 space-y-1">
@@ -1907,7 +1958,7 @@
 							<div x-data="{ expanded: false }">
 								<div @click="expanded = !expanded" class="mobile-menu-expandable">
 									<a href="/services" class="flex items-center space-x-3">
-									<i data-lucide="settings" class="w-5 h-5 text-gray-600"></i>
+									<i data-lucide="settings" class="size-5 text-gray-600"></i>
 									<span class="font-medium text-gray-900">Dịch Vụ</span>
 									</a>
 									<i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 transition-transform"
@@ -2178,7 +2229,7 @@
 							</button>
 							<button @click="viewCart()" class="w-full btn btn-outline">
 							<i data-lucide="shopping-cart" class="w-4 h-4 mr-2"></i>
-							<a href="/cart.html">Xem giỏ hàng</a>
+							<a href="./cart.html">Xem giỏ hàng</a>
 							</button>
 						</div>
 					</div>
@@ -2458,7 +2509,7 @@
 												<div class="blaze-slide">
 													<div class="grid grid-cols-1 gap-4">
 														<!-- Product 1: Backlink Premium -->
-														<div class="bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg p-4 text-white cursor-pointer hover:scale-105 transition-transform">
+														<div class="card bg-gradient-to-br from-emerald-500 to-green-600 p-4 text-white cursor-pointer hover:scale-105 transition-transform">
 															<div class="flex items-center mb-3">
 																<div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mr-3">
 																	<i data-lucide="link" class="w-5 h-5"></i>
@@ -2753,7 +2804,7 @@
 			<!-- Featured Products Section -->
 			<section class="py-16">
 				<div class="container mx-auto ">
-					<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+					<div class="flex flex-col sm:flex-row mb-2">
 						<div class="text-left mb-2 flex-1">
 							<h2 class="section-title">Sản phẩm <span class="text-gradient">nổi bật</span></h2>
 							<p class="text-responsive-sm text-gray-600">Những sản phẩm Hot trong cộng đồng MMO</p>
@@ -2811,48 +2862,277 @@
 							</div>
 						</div> -->
 					</div>
+					
+					<!-- San pham nổi bật -->
 					<!-- Card item -->
-					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+						
+						
 						<!-- Product 1: Backlink Premium -->
-						<div class="bg-white card p-4">
-							<div class="flex items-center mb-3">
-								<div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-									<img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+						<div class="card p-4">
+							<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							<div class="flex">
+								<div class="item-thumbnail">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
 								</div>
-								<div class="flex-1 min-w-0">
-									<p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-									<h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-								</div>
-							</div>
-							<div class="flex items-center justify-start gap-2 mt-4">
-								<div class="flex space-x-1 ">
-									<div class="flex text-yellow-500">
-										<i data-lucide="star" class="size-4 fill-current"></i>
-										<i data-lucide="star" class="size-4 fill-current"></i>
-										<i data-lucide="star" class="size-4 fill-current"></i>
-										<i data-lucide="star" class="size-4 fill-current"></i>
+								<div class="flex-1 min-w-0 space-y-1">
+									<div class="flex items-center justify-between gap-2">
+										<a href="#" class="item-category">SEO & Link Building</a>
+										<div class="flex space-x-1 ">
+											<i data-lucide="star" class="item-rating"></i>
+											<span class="text-responsive-xs text-gray-500 ">4.9</span>
+										</div>
 									</div>
-									<span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-								</div>
-								<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-									<span>•</span>
-									<span>Đã bán 900</span>
+									
+									<div class="flex items-center justify-between gap-2">
+										<div class="flex gap-1">
+											<i data-lucide="user" class="item-user"></i>
+											<a href="#" class="item-link">John Doe</a>
+										</div>
+										<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+											<i data-lucide="shopping-cart" class="item-cart"></i>
+											<span>900</span>
+										</div>
+									</div>
+									
 								</div>
 							</div>
-							<div class="flex items-center justify-between mt-4">
-								<span class="text-lg font-bold text-emerald-600">500,000₫</span>
+							<div class="flex items-center justify-between">
+								<span class="item-price">500,000₫</span>
 								<button onclick="addToCart({
 									id: 'backlink-premium',
 									name: 'Backlink Premium',
 									category: 'SEO & Link Building',
 									price: 500000,
 									icon: 'link'
-									})" class="btn btn-primary btn-md ">
-								<i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-								Thêm giỏ hàng
+								})" class="btn btn-primary">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
 								</button>
 							</div>
 						</div>
+						
+						<!-- Product 1: Backlink Premium -->
+						<div class="card p-4">
+							<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							<div class="flex">
+								<div class="item-thumbnail">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+									<div class="flex items-center justify-between gap-2">
+										<a href="#" class="item-category">SEO & Link Building</a>
+										<div class="flex space-x-1 ">
+											<i data-lucide="star" class="item-rating"></i>
+											<span class="text-responsive-xs text-gray-500 ">4.9</span>
+										</div>
+									</div>
+									
+									<div class="flex items-center justify-between gap-2">
+										<div class="flex gap-1">
+											<i data-lucide="user" class="item-user"></i>
+											<a href="#" class="item-link">John Doe</a>
+										</div>
+										<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+											<i data-lucide="shopping-cart" class="item-cart"></i>
+											<span>900</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="flex items-center justify-between">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+								})" class="btn btn-primary">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							</div>
+						</div>
+
+						<!-- Product 1: Backlink Premium -->
+						<div class="card p-4">
+							<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							<div class="flex">
+								<div class="item-thumbnail">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+									<div class="flex items-center justify-between gap-2">
+										<a href="#" class="item-category">SEO & Link Building</a>
+										<div class="flex space-x-1 ">
+											<i data-lucide="star" class="item-rating"></i>
+											<span class="text-responsive-xs text-gray-500 ">4.9</span>
+										</div>
+									</div>
+									
+									<div class="flex items-center justify-between gap-2">
+										<div class="flex gap-1">
+											<i data-lucide="user" class="item-user"></i>
+											<a href="#" class="item-link">John Doe</a>
+										</div>
+										<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+											<i data-lucide="shopping-cart" class="item-cart"></i>
+											<span>900</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="flex items-center justify-between">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+								})" class="btn btn-primary">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							</div>
+						</div>
+
+						<!-- Product 1: Backlink Premium -->
+						<div class="card p-4">
+							<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							<div class="flex">
+								<div class="item-thumbnail">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+									<div class="flex items-center justify-between gap-2">
+										<a href="#" class="item-category">SEO & Link Building</a>
+										<div class="flex space-x-1 ">
+											<i data-lucide="star" class="item-rating"></i>
+											<span class="text-responsive-xs text-gray-500 ">4.9</span>
+										</div>
+									</div>
+									
+									<div class="flex items-center justify-between gap-2">
+										<div class="flex gap-1">
+											<i data-lucide="user" class="item-user"></i>
+											<a href="#" class="item-link">John Doe</a>
+										</div>
+										<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+											<i data-lucide="shopping-cart" class="item-cart"></i>
+											<span>900</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="flex items-center justify-between">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+								})" class="btn btn-primary">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							</div>
+						</div>
+
+						<!-- Product 1: Backlink Premium -->
+						<div class="card p-4">
+							<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							<div class="flex">
+								<div class="item-thumbnail">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+									<div class="flex items-center justify-between gap-2">
+										<a href="#" class="item-category">SEO & Link Building</a>
+										<div class="flex space-x-1 ">
+											<i data-lucide="star" class="item-rating"></i>
+											<span class="text-responsive-xs text-gray-500 ">4.9</span>
+										</div>
+									</div>
+									
+									<div class="flex items-center justify-between gap-2">
+										<div class="flex gap-1">
+											<i data-lucide="user" class="item-user"></i>
+											<a href="#" class="item-link">John Doe</a>
+										</div>
+										<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+											<i data-lucide="shopping-cart" class="item-cart"></i>
+											<span>900</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="flex items-center justify-between">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+								})" class="btn btn-primary">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							</div>
+						</div>
+
+						<!-- Product 1: Backlink Premium -->
+						<div class="card p-4">
+							<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							<div class="flex">
+								<div class="item-thumbnail">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+									<div class="flex items-center justify-between gap-2">
+										<a href="#" class="item-category">SEO & Link Building</a>
+										<div class="flex space-x-1 ">
+											<i data-lucide="star" class="item-rating"></i>
+											<span class="text-responsive-xs text-gray-500 ">4.9</span>
+										</div>
+									</div>
+									
+									<div class="flex items-center justify-between gap-2">
+										<div class="flex gap-1">
+											<i data-lucide="user" class="item-user"></i>
+											<a href="#" class="item-link">John Doe</a>
+										</div>
+										<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+											<i data-lucide="shopping-cart" class="item-cart"></i>
+											<span>900</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="flex items-center justify-between">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+									id: 'backlink-premium',
+									name: 'Backlink Premium',
+									category: 'SEO & Link Building',
+									price: 500000,
+									icon: 'link'
+								})" class="btn btn-primary">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 			</section>
@@ -2883,335 +3163,335 @@
                         </div>
 
                         <!-- Tab Content -->
-                        <div class="tabs-content" x-show="activeTab === 'all'">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
-                                <!-- Product Item 1 -->
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- Add more product items as needed -->
-                               
+                        <div class="tabs-content px-0" x-show="activeTab === 'all'">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                                
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+
+
                             </div>
                             <div class="text-center mt-12">
                                 <a href="products.html" class="btn btn-primary btn-md">Xem tất cả Sản phẩm <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i></a>
                             </div>
                         </div>
-                        <div class="tabs-content" x-show="activeTab === 'vpn'">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
-                                <!-- Product Item 1 -->
+                        <div class="tabs-content px-0" x-show="activeTab === 'vpn'">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
                                 
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
-                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
-                                        <div class="flex space-x-1 ">
-                                            <div class="flex text-yellow-500">
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                            </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
-                                        </div>
-                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
-                                            <span>•</span>
-                                            <span>Đã bán 900</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
-                                        <button onclick="addToCart({
-                                            id: 'backlink-premium',
-                                            name: 'Backlink Premium',
-                                            category: 'SEO & Link Building',
-                                            price: 500000,
-                                            icon: 'link'
-                                            })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
-                                        Thêm giỏ hàng
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- Add more product items as needed -->
-                               
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+								<!-- Product 1: Backlink Premium -->
+								<div class="card p-4">
+									<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+									<div class="flex">
+										<div class="item-thumbnail">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+										</div>
+										<div class="flex-1 min-w-0 space-y-1">
+											<a href="#" class="item-category">SEO & Link Building</a>
+											<div class="flex items-center justify-between gap-2">
+												<div class="flex space-x-1 ">
+													<i data-lucide="star" class="item-rating"></i>
+													<span class="text-responsive-xs text-gray-500 ">4.9</span>
+												</div>
+												<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+													<i data-lucide="shopping-cart" class="item-cart"></i>
+													<span>Bán: 900</span>
+												</div>
+											</div>
+											<div class="flex gap-1">
+													<i data-lucide="user" class="item-user"></i>
+													<a href="#" class="item-link">John Doe</a>
+											</div>
+										</div>
+									</div>
+									<div class="flex items-center justify-between">
+										<span class="item-price">500,000₫</span>
+										<button onclick="addToCart({
+											id: 'backlink-premium',
+											name: 'Backlink Premium',
+											category: 'SEO & Link Building',
+											price: 500000,
+											icon: 'link'
+										})" class="btn btn-primary">
+										<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+										Mua
+										</button>
+									</div>
+								</div>
+
+
                             </div>
+							<!-- Button Xem tất cả -->
                             <div class="text-center mt-12">
                                 <a href="products.html" class="btn btn-primary btn-md">Xem tất cả Sản phẩm <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i></a>
                             </div>
@@ -3229,7 +3509,7 @@
             <!-- section Dịch vụ -->
             <section class="section" x-data="{ activeTab: 'all' }">
                 <div class="container mx-auto">
-                    <h2 class="section-title">Khám phá <span class="text-gradient">dịch vụ</span></h2>
+                    <h2 class="section-title">Khám phá <span class="text-gradient">Dịch vụ</span></h2>
                     <!-- Tabs -->
                     <div class="tabs">
                         <div class="tabs-list  ">
@@ -3253,27 +3533,24 @@
 
                         <!-- Tab Content -->
                         <div class="tabs-content" x-show="activeTab === 'all'">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
                                 <!-- Product Item 1 -->
-                                <div class="bg-white card p-4">
+                                <div class="card p-4">
                                     <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
                                             <h4 class="font-bold text-responsive-sm line-clamp-3">Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg</h4>
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
+                                    <div class="flex gap-2 mt-4">
                                         <div class="flex space-x-1 ">
                                             <div class="flex text-yellow-500">
                                                 <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
                                             </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+                                            <span class="text-responsive-xs text-gray-500 ">5.0</span>
                                         </div>
                                         <div class="flex gap-1 text-responsive-xs text-gray-500 ">
                                             <span>•</span>
@@ -3281,7 +3558,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
                                         <button onclick="addToCart({
                                             id: 'backlink-premium',
                                             name: 'Backlink Premium',
@@ -3289,30 +3566,27 @@
                                             price: 500000,
                                             icon: 'link'
                                             })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
                                         Thêm giỏ hàng
                                         </button>
                                     </div>
                                 </div>
-                                <div class="bg-white card p-4">
+                                <div class="card p-4">
                                     <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
                                             <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
+                                    <div class="flex gap-2 mt-4">
                                         <div class="flex space-x-1 ">
                                             <div class="flex text-yellow-500">
                                                 <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
                                             </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
                                         </div>
                                         <div class="flex gap-1 text-responsive-xs text-gray-500 ">
                                             <span>•</span>
@@ -3320,7 +3594,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
                                         <button onclick="addToCart({
                                             id: 'backlink-premium',
                                             name: 'Backlink Premium',
@@ -3328,30 +3602,27 @@
                                             price: 500000,
                                             icon: 'link'
                                             })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
                                         Thêm giỏ hàng
                                         </button>
                                     </div>
                                 </div>
-                                <div class="bg-white card p-4">
+                                <div class="card p-4">
                                     <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
                                             <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
+                                    <div class="flex gap-2 mt-4">
                                         <div class="flex space-x-1 ">
                                             <div class="flex text-yellow-500">
                                                 <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
                                             </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
                                         </div>
                                         <div class="flex gap-1 text-responsive-xs text-gray-500 ">
                                             <span>•</span>
@@ -3359,7 +3630,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
                                         <button onclick="addToCart({
                                             id: 'backlink-premium',
                                             name: 'Backlink Premium',
@@ -3367,30 +3638,27 @@
                                             price: 500000,
                                             icon: 'link'
                                             })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
                                         Thêm giỏ hàng
                                         </button>
                                     </div>
                                 </div>
-                                <div class="bg-white card p-4">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                <div class="card p-4">
+                                    <div class="flex  mb-3">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
                                             <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
+                                    <div class="flex gap-2 mt-4">
                                         <div class="flex space-x-1 ">
                                             <div class="flex text-yellow-500">
                                                 <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
                                             </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
                                         </div>
                                         <div class="flex gap-1 text-responsive-xs text-gray-500 ">
                                             <span>•</span>
@@ -3398,7 +3666,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
                                         <button onclick="addToCart({
                                             id: 'backlink-premium',
                                             name: 'Backlink Premium',
@@ -3406,30 +3674,27 @@
                                             price: 500000,
                                             icon: 'link'
                                             })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
                                         Thêm giỏ hàng
                                         </button>
                                     </div>
                                 </div>
-                                <div class="bg-white card p-4">
+                                <div class="card p-4">
                                     <div class="flex items-center mb-3">
-                                        <div class="w-16 h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                                            <img src="https://via.placeholder.com/64x64/ffffff/000000?text=BL" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
                                             <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-start gap-2 mt-4">
+                                    <div class="flex gap-2 mt-4">
                                         <div class="flex space-x-1 ">
                                             <div class="flex text-yellow-500">
                                                 <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
-                                                <i data-lucide="star" class="size-4 fill-current"></i>
                                             </div>
-                                            <span class="text-responsive-xs text-gray-500 ">17 đánh giá</span>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
                                         </div>
                                         <div class="flex gap-1 text-responsive-xs text-gray-500 ">
                                             <span>•</span>
@@ -3437,7 +3702,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between mt-4">
-                                        <span class="text-lg font-bold text-emerald-600">500,000₫</span>
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
                                         <button onclick="addToCart({
                                             id: 'backlink-premium',
                                             name: 'Backlink Premium',
@@ -3445,21 +3710,206 @@
                                             price: 500000,
                                             icon: 'link'
                                             })" class="btn btn-primary btn-md">
-                                        <i data-lucide="shopping-cart" class="w-3 h-3 mr-1"></i>
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
                                         Thêm giỏ hàng
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-12">
-                                <a href="services.html" class="btn btn-primary btn-md">Xem tất cả Sản phẩm <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i></a>
+                                <a href="services.html" class="btn btn-primary btn-md">Xem tất cả Dịch vụ <i data-lucide="arrow-right" class="size-5 ml-2"></i></a>
                             </div>
                         </div>
                         <div class="tabs-content" x-show="activeTab === 'vpn'">
                            <p class="text-center text-gray-500">Chưa có sản phẩm trong danh mục VPN.</p>
                         </div>
-                        <div class="tabs-content" x-show="activeTab === 'keys'">
-                            <p class="text-center text-gray-500">Chưa có sản phẩm trong danh mục License Keys.</p>
+                        <div class="tabs-content" x-show="activeTab === 'license-key'">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                                <!-- Product Item 1 -->
+                                <div class="card p-4">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-16 h-16 rounded-lg  mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Hotmail VN siêu trâu - không cần verify sđt xzjc qirwu zhxv vnmfk wqiury hjg" class="w-full h-full object-cover rounded-lg">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-responsive-xs text-gray-500">License Key</p>
+                                            <h4 class="font-bold text-responsive-sm line-clamp-3">License Key Google, Microsoft, Adobe, ... Đủ tất cả</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 mt-4">
+                                        <div class="flex space-x-1 ">
+                                            <div class="flex text-yellow-500">
+                                                <i data-lucide="star" class="size-4 fill-current"></i>
+                                            </div>
+                                            <span class="text-responsive-xs text-gray-500 ">5.0</span>
+                                        </div>
+                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
+                                            <span>•</span>
+                                            <span>Đã bán 900</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-4">
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
+                                        <button onclick="addToCart({
+                                            id: 'backlink-premium',
+                                            name: 'Backlink Premium',
+                                            category: 'SEO & Link Building',
+                                            price: 500000,
+                                            icon: 'link'
+                                            })" class="btn btn-primary btn-md">
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+                                        Thêm giỏ hàng
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card p-4">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-16 h-16 rounded-lg  mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="License Key Microsoft, Adobe, ... Đủ tất cả" class="w-full h-full object-cover rounded-lg">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-responsive-xs text-gray-500">License Key</p>
+                                            <h4 class="font-bold text-responsive-sm line-clamp-2">License Key Microsoft, Adobe, ... Đủ tất cả</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 mt-4">
+                                        <div class="flex space-x-1 ">
+                                            <div class="flex text-yellow-500">
+                                                <i data-lucide="star" class="size-4 fill-current"></i>
+                                            </div>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
+                                        </div>
+                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
+                                            <span>•</span>
+                                            <span>Đã bán 900</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-4">
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
+                                        <button onclick="addToCart({
+                                            id: 'backlink-premium',
+                                            name: 'Backlink Premium',
+                                            category: 'SEO & Link Building',
+                                            price: 500000,
+                                            icon: 'link'
+                                            })" class="btn btn-primary btn-md">
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+                                        Thêm giỏ hàng
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card p-4">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
+                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 mt-4">
+                                        <div class="flex space-x-1 ">
+                                            <div class="flex text-yellow-500">
+                                                <i data-lucide="star" class="size-4 fill-current"></i>
+                                            </div>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
+                                        </div>
+                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
+                                            <span>•</span>
+                                            <span>Đã bán 900</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-4">
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
+                                        <button onclick="addToCart({
+                                            id: 'backlink-premium',
+                                            name: 'Backlink Premium',
+                                            category: 'SEO & Link Building',
+                                            price: 500000,
+                                            icon: 'link'
+                                            })" class="btn btn-primary btn-md">
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+                                        Thêm giỏ hàng
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card p-4">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
+                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 mt-4">
+                                        <div class="flex space-x-1 ">
+                                            <div class="flex text-yellow-500">
+                                                <i data-lucide="star" class="size-4 fill-current"></i>
+                                            </div>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
+                                        </div>
+                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
+                                            <span>•</span>
+                                            <span>Đã bán 900</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-4">
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
+                                        <button onclick="addToCart({
+                                            id: 'backlink-premium',
+                                            name: 'Backlink Premium',
+                                            category: 'SEO & Link Building',
+                                            price: 500000,
+                                            icon: 'link'
+                                            })" class="btn btn-primary btn-md">
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+                                        Thêm giỏ hàng
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card p-4">
+                                    <div class="flex  mb-3">
+                                        <div class="w-16 h-16 rounded-lg mr-3 overflow-hidden">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-responsive-xs text-gray-500">SEO & Link Building</p>
+                                            <h4 class="font-bold text-responsive-sm line-clamp-2">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 mt-4">
+                                        <div class="flex space-x-1 ">
+                                            <div class="flex text-yellow-500">
+                                                <i data-lucide="star" class="size-4 fill-current"></i>
+                                            </div>
+                                            <span class="text-responsive-xs text-gray-500 ">4.8</span>
+                                        </div>
+                                        <div class="flex gap-1 text-responsive-xs text-gray-500 ">
+                                            <span>•</span>
+                                            <span>Đã bán 900</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-4">
+                                        <span class="text-responsive-md font-bold text-emerald-600">500,000₫</span>
+                                        <button onclick="addToCart({
+                                            id: 'backlink-premium',
+                                            name: 'Backlink Premium',
+                                            category: 'SEO & Link Building',
+                                            price: 500000,
+                                            icon: 'link'
+                                            })" class="btn btn-primary btn-md">
+                                        <i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+                                        Thêm giỏ hàng
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-12">
+                                <a href="services.html" class="btn btn-primary btn-md">Xem tất cả Dịch vụ <i data-lucide="arrow-right" class="size-5 ml-2"></i></a>
+                            </div>
                         </div>
                         <div class="tabs-content" x-show="activeTab === 'accounts'">
                             <p class="text-center text-gray-500">Chưa có sản phẩm trong danh mục Tài khoản Premium.</p>

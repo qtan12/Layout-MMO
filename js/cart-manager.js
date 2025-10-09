@@ -24,6 +24,7 @@ class CartManager {
         
         this.saveToStorage();
         this.notifyListeners('add', item);
+        this.showNotification(`${item.name} đã được thêm vào giỏ hàng!`, 'success');
         return item;
     }
 
@@ -33,6 +34,7 @@ class CartManager {
         this.cartItems = this.cartItems.filter(item => item.id !== itemId);
         this.saveToStorage();
         this.notifyListeners('remove', item);
+        this.showNotification(`${item.name} đã được xóa khỏi giỏ hàng!`, 'info');
         return item;
     }
 
@@ -43,6 +45,7 @@ class CartManager {
             item.quantity = Math.max(1, quantity);
             this.saveToStorage();
             this.notifyListeners('update', item);
+            this.showNotification(`${item.name} đã được cập nhật số lượng!`, 'info');
         }
         return item;
     }
@@ -53,6 +56,7 @@ class CartManager {
         this.cartItems = [];
         this.saveToStorage();
         this.notifyListeners('clear');
+        this.showNotification(`Tất cả sản phẩm đã được xóa khỏi giỏ hàng!`, 'warning');
     }
 
     // Get cart count (total quantity)
