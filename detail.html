@@ -214,7 +214,7 @@
 			@apply py-16 lg:py-24;
 			}
 			.section-title {
-			@apply text-lg lg:text-2xl font-bold text-gray-900 mb-2;
+			@apply text-lg sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2;
 			}
 			.section-subtitle {
 			@apply text-gray-600 mb-8 lg:mb-12;
@@ -1602,13 +1602,13 @@
 					<div class="flex items-center gap-2">
 						<!-- Post Button -->
 						<button @click="handlePostClick()" class="btn btn-primary btn-md">
-						<i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+						<i data-lucide="plus" class="size-5 mr-2"></i>
 						<span class="hidden sm:inline">Đăng Bán</span>
 						<span class="sm:hidden">Đăng</span>
 						</button>
 						<!-- Shopping Cart -->
 						<button @click="toggleCart()" class="hidden lg:flex mr-3 xl:mr-0 btn btn-overflow btn-ghost relative">
-							<i data-lucide="shopping-cart" class="w-5 h-5"></i>
+							<i data-lucide="shopping-cart" class="size-5"></i>
 							<span class="hidden sm:inline ml-2">Giỏ hàng</span>
 							<!-- Cart Badge -->
 							<span class="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium" 
@@ -1617,14 +1617,14 @@
 						<!-- Mobile Menu -->
 						<section class="lg:hidden flex items-center space-x-2 pl-2">
 							<!-- Mobile Cart -->
-							<button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-sm p-2 h-8 w-8 relative">
-								<i data-lucide="shopping-cart" class="w-6 h-6"></i>
-								<span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium" 
+							<button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-md p-2 relative">
+								<i data-lucide="shopping-cart" class="size-5"></i>
+								<span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full size-4 flex items-center justify-center font-medium" 
 									  x-show="cartCount > 0" x-text="cartCount">0</span>
 							</button>
 							
-							<button @click="openMobileMenu(true)" class="btn btn-ghost btn-sm p-2 h-8 w-8">
-								<i data-lucide="search" class="w-6 h-6"></i>
+							<button @click="openMobileMenu(true)" class="btn btn-ghost btn-md p-2 ">
+								<i data-lucide="search" class="size-5"></i>
 							</button>
 						</section>
 						<!-- Auth Section -->
@@ -1634,7 +1634,7 @@
 								<!-- Desktop Login Button -->
 								<button @click="openAuthModal(); authTab = 'login'; errors = {}; isLoading = false"
 									class="hidden xl:flex btn btn-outline">
-									<i data-lucide="log-in" class="w-4 h-4 mr-2"></i>
+									<i data-lucide="log-in" class="size-4 mr-2"></i>
 									Đăng Nhập
 								</button>
 							</div>
@@ -1700,8 +1700,8 @@
 								</div>
 							</div>
 						</section>
-						<button @click="openMobileMenu()" class="btn btn-ghost btn-sm p-2 h-8 w-8 lg:hidden">
-							<i data-lucide="menu" class="w-6 h-6"></i>
+						<button @click="openMobileMenu()" class="btn btn-ghost btn-md p-2  lg:hidden">
+							<i data-lucide="menu" class="size-5"></i>
 						</button>
 					</div>
 				</div>
