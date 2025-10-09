@@ -1660,7 +1660,7 @@
 						<span class="sm:hidden">Đăng</span>
 						</button>
 						<!-- Shopping Cart -->
-						<button @click="toggleCart()" class="hidden lg:flex mr-3 xl:mr-0 btn btn-overflow btn-ghost relative">
+						<button @click="toggleCart()" class="hidden lg:flex mr-2 xl:mr-0 btn btn-overflow btn-ghost relative">
 							<i data-lucide="shopping-cart" class="size-5"></i>
 							<span class="hidden sm:inline ml-2">Giỏ hàng</span>
 							<!-- Cart Badge -->
@@ -1692,7 +1692,7 @@
 								</button>
 							</div>
 							<!-- User Dropdown (hidden by default) -->
-							<div id="userDropdown" class="relative group ml-2 hidden">
+							<div id="userDropdown" class="relative group mr-2 lg:mr-0 hidden">
 								<button class="flex items-center space-x-2"
 									@click="$refs.userMenu.classList.toggle('hidden')">
 									<img id="userAvatar"
@@ -2255,11 +2255,11 @@
 					<div class="p-6 py-4 border-b border-gray-100">
 						<!-- Tab Buttons -->
 						<div class="tabs-list">
-							<button @click="authTab = 'login'; errors = {}; isLoading = false" class="tabs-trigger"
+							<button @click="authTab = 'login'; errors = {}; isLoading = false" class="btn tabs-trigger"
 								:class="authTab === 'login' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">
 							Đăng Nhập
 							</button>
-							<button @click="authTab = 'register'; errors = {}; isLoading = false" class="tabs-trigger"
+							<button @click="authTab = 'register'; errors = {}; isLoading = false" class="btn tabs-trigger"
 								:class="authTab === 'register' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">
 							Đăng Ký
 							</button>
