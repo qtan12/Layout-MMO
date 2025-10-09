@@ -1667,15 +1667,15 @@
 							<span class="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium" 
 								x-show="cartCount > 0" x-text="cartCount">0</span>
 						</button>
-						<!-- Mobile Menu -->
-						<section class="lg:hidden flex items-center space-x-2 pl-2">
+						<!-- Mobile Icon -->
+						<section class="lg:hidden flex items-center space-x-2">
 							<!-- Mobile Cart -->
 							<button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-md p-2 relative">
 								<i data-lucide="shopping-cart" class="size-5"></i>
 								<span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full size-4 flex items-center justify-center font-medium" 
 									  x-show="cartCount > 0" x-text="cartCount">0</span>
 							</button>
-							
+							<!-- Mobile Search -->
 							<button @click="openMobileMenu(true)" class="btn btn-ghost btn-md p-2 ">
 								<i data-lucide="search" class="size-5"></i>
 							</button>
@@ -1753,7 +1753,7 @@
 								</div>
 							</div>
 						</section>
-						<button @click="openMobileMenu()" class="btn btn-ghost btn-md p-2  lg:hidden">
+						<button @click="openMobileMenu()" class="btn btn-ghost btn-md p-2 -ml-2 lg:hidden">
 							<i data-lucide="menu" class="size-5"></i>
 						</button>
 					</div>
