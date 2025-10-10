@@ -9,6 +9,8 @@
 		<script type="text/javascript">
 			const API_URL = "https://panel.dongnai.net/api/v2/";
 		</script>
+		<!-- Custom CSS with Roboto font -->
+		<link rel="stylesheet" href="css/style.css">
 		<!-- Tailwind CSS CDN -->
 		<script src="js/tailwindcss.3.js"></script>
 		<!-- Tailwind CSS Globals -->
@@ -17,6 +19,7 @@
 			display: none;
 			}
 		</style>
+		<!-- tailwindcss -->
 		<style type="text/tailwindcss">
 			@layer base {
 			:root {
@@ -46,7 +49,7 @@
 			}
 			body {
 			@apply bg-white text-gray-900 font-sans;
-			font-family: 'Inter', sans-serif;
+			font-family: 'Roboto', sans-serif;
 			}
 			}
 			@layer components {
@@ -83,7 +86,7 @@
 			}
 			/* Button Styles */
 			.btn {
-			@apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-lg transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
+			@apply inline-flex items-center justify-center text-sm px-4 py-2 h-10 rounded-md transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap overflow-hidden text-ellipsis;
 			}
 			/* đặt tên gì phổ biến hơn để các nhu cầu tương tự cũng dùng được đi, đặt tên cart nó chỉ dùng cho cart à */
 			.btn-overflow{
@@ -108,6 +111,9 @@
 			@apply bg-green-500 hover:bg-green-600 text-white focus:ring-green-500/20;
 			}
 			/* Button Sizes */
+			.btn-xs{
+			@apply px-2 py-1 h-6 text-xs rounded-sm;
+			}
 			.btn-sm {
 			@apply px-3 py-1.5 h-8 text-sm;
 			}
@@ -119,6 +125,16 @@
 			}
 			.btn-xl {
 			@apply px-8 py-4 h-14 text-lg;
+			}
+			/* Warning Button */
+			.btn-warning {
+			@apply bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all;
+			}
+			.btn-danger {
+			@apply bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all;
+			}
+			.btn-success {
+			@apply bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all;
 			}
 			/* Input Styles */
 			.input {
@@ -150,9 +166,34 @@
 			.input-icon input:focus + .icon {
 			color: #10B981;
 			}
+			/* Text Styles */
+			.text-primary {
+			@apply text-emerald-700 hover:text-green-400;
+			}
+			.text-secondary {
+			@apply text-gray-600 hover:text-emerald-600;
+			}
+			.text-muted {
+			@apply text-gray-500 hover:text-gray-700;
+			}
+			.text-success {
+			@apply text-green-500 hover:text-green-700;
+			}
+			.text-warning {
+			@apply text-yellow-500 hover:text-yellow-700;
+			}
+			.text-danger {
+			@apply text-red-500 hover:text-red-700;
+			}
+			.text-info {
+			@apply text-emerald-500 hover:text-emerald-700;
+			}
+			.text-hot {
+			@apply text-red-500 hover:text-red-700;
+			}
 			/* Card Styles */
 			.card {
-			@apply rounded-xl border border-gray-200 bg-white shadow-sm;
+			@apply sm:border border-gray-200 bg-white shadow-md rounded-md hover:shadow-lg transition-all duration-300 transform;
 			}
 			.card-header {
 			@apply flex flex-col space-y-1.5 p-6 pb-4;
@@ -174,10 +215,13 @@
 			}
 			/* Badge Styles */
 			.badge {
-			@apply inline-flex items-center px-1 py-0.5 text-xs font-medium rounded-sm;
+			@apply inline-flex items-center px-2.5 py-1.5 text-xs font-semibold rounded-full;
+			}
+			.badge-title {
+				@apply bg-emerald-100 backdrop-blur-sm text-emerald-700 text-xs sm:text-sm  mb-4;
 			}
 			.badge-primary {
-			@apply bg-emerald-50 text-emerald-700 border-emerald-200;
+			@apply bg-emerald-100 text-emerald-700 border-emerald-200;
 			}
 			.badge-secondary {
 			@apply bg-gray-50 text-gray-700 border-gray-200;
@@ -214,7 +258,7 @@
 			@apply py-16 lg:py-24;
 			}
 			.section-title {
-			@apply text-lg sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2;
+			@apply text-2xl sm:text-4xl font-bold text-gray-900 mb-2;
 			}
 			.section-subtitle {
 			@apply text-gray-600 mb-8 lg:mb-12;
@@ -229,12 +273,13 @@
 			.grid-cols-auto-lg {
 			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 			}
-			/* Tab Styles */
+			
+            /* Tab Styles */
 			.tabs {
 			@apply w-full;
 			}
 			.tabs-list {
-			@apply flex bg-gray-100 rounded-xl p-1 gap-2;
+			@apply flex bg-gray-100 rounded-md ;
 			}
 			/* Mobile scrollable tabs */
 			@media (max-width: 640px) {
@@ -252,11 +297,12 @@
 			}
 			}
 			.tabs-trigger {
-			@apply py-2.5 px-4 text-sm font-medium  transition-all disabled:pointer-events-none;
+			@apply py-2.5 px-4 text-sm font-medium transition-all disabled:pointer-events-none ;
 			}
 			.tabs-content {
 			@apply p-4 mt-2 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2;
 			}
+
 			/* Dropdown Styles */
 			.dropdown {
 			@apply relative inline-block text-left;
@@ -288,7 +334,6 @@
 			.modal-footer {
 			@apply flex justify-end space-x-2 pt-4 border-t;
 			}
-
 			/* Pagination Styles */
 			.pagination {
 			@apply flex items-center justify-center space-x-2;
@@ -302,7 +347,6 @@
 			.pagination-item.disabled {
 			@apply opacity-50 cursor-not-allowed hover:bg-white hover:text-gray-500;
 			}
-            
 			/* Alert Styles */
 			.alert {
 			@apply relative w-full rounded-lg border p-4 flex items-start;
@@ -526,7 +570,7 @@
 			@apply text-xs sm:text-sm;
 			}
 			.text-responsive-sm {
-			@apply text-sm;
+			@apply text-sm sm:text-base;
 			}
 			.text-responsive-md {
 			@apply text-base md:text-lg;
@@ -535,7 +579,7 @@
 			@apply text-lg sm:text-xl lg:text-2xl;
 			}
 			.text-responsive-xl {
-			@apply text-3xl sm:text-3xl lg:text-4xl;
+			@apply text-2xl sm:text-5xl;
 			}
 			/* Hover Effects */
 			.hover-lift {
@@ -583,16 +627,7 @@
 			.bg-icon i {
 			@apply w-5 h-5 text-white;
 			}
-			/* Warning Button */
-			.btn-warning {
-			@apply bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all;
-			}
-			.btn-danger {
-			@apply bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all;
-			}
-			.btn-success {
-			@apply bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all;
-			}
+
 			/* Toggle Switch Styles */
 			.toggle {
 			@apply relative inline-flex items-center cursor-pointer;
@@ -787,7 +822,7 @@
 			@apply whitespace-nowrap overflow-hidden text-ellipsis;
 			}
 			.one-line { 
-			@apply whitespace-nowrap; 
+			@apply line-clamp-1; 
 			}
 			.two-lines {
 			display: -webkit-box;
@@ -925,7 +960,33 @@
 			background: #94a3b8;
 			}
 			}
+
+			.item-title{
+				@apply text-primary font-bold text-responsive-sm one-line mb-2;
+			}
+			.item-thumbnail{
+				@apply w-14 h-14 rounded-lg mr-3 overflow-hidden;
+			}
+			.item-category{
+				@apply text-responsive-xs text-primary font-bold;
+			}
+			.item-price{
+				@apply text-responsive-md font-bold text-emerald-600;
+			}
+			.item-rating{
+				@apply text-yellow-500 size-4 fill-current;
+			}
+			.item-cart{
+				@apply text-primary size-4 fill-current;
+			}
+			.item-user{
+				@apply text-primary size-4 fill-current;
+			}
+			.item-link{
+				@apply link-primary text-responsive-xs;
+			}
 		</style>
+
 		<style type="text/css">
 			/* BlazerSlider */
 			.blaze-slider{--slides-to-show:1;--slide-gap:20px;direction:ltr}.blaze-container{position:relative}.blaze-track-container{overflow:hidden}.blaze-track{will-change:transform;touch-action:pan-y;display:flex;gap:var(--slide-gap);--slide-width:calc(
@@ -984,6 +1045,336 @@
 			outline-offset: 2px;
 			}
 		</style>
+
+	<style>
+		.hot-products-slider.blaze-slider {
+		--slides-to-show: 2;
+		--slide-gap: 1rem;
+		}
+		@media (max-width: 640px) {
+		.hot-products-slider.blaze-slider {
+		--slides-to-show: 1;
+		}
+		}
+		/* Custom pagination dots styling */
+		.hot-products-slider .blaze-pagination {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+		margin: 16px 0;
+		padding: 0 16px;
+		/* i want no display text */
+		font-size: 0;
+		}
+		.hot-products-slider .blaze-prev, .hot-products-slider .blaze-next{display: none;}
+		.hot-products-slider .blaze-pagination button {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		border: none;
+		background: rgba(49, 198, 99, 0.7);
+		cursor: pointer;
+		transition: all 0.3s ease;
+		outline: none;
+		}
+		.hot-products-slider .blaze-pagination button.active {
+		background-color: #10b981;
+		transform: scale(1.2);
+		}
+		.hot-products-slider .blaze-pagination button:hover {
+		background-color: rgba(255, 255, 255, 0.6);
+		transform: scale(1.1);
+		}
+		.hot-products-slider .blaze-pagination button.active:hover {
+		background-color: #059669;
+		transform: scale(1.3);
+		}
+		/* Focus states for accessibility */
+		.hot-products-slider .blaze-pagination button:focus {
+		outline: 2px solid #10b981;
+		outline-offset: 2px;
+		}
+		
+		/* Testimonials Slider */
+		.testimonials-slider.blaze-slider {
+		--slides-to-show: 1;
+		--slide-gap: 0px;
+		}
+		
+		/* Testimonials Slider Navigation */
+		.testimonials-slider .blaze-prev, 
+		.testimonials-slider .blaze-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 48px;
+		height: 48px;
+		background: white;
+		border: 1px solid #e5e7eb;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		z-index: 10;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+		}
+		
+		.testimonials-slider .blaze-prev {
+		left: -24px;
+		}
+		
+		.testimonials-slider .blaze-next {
+		right: -24px;
+		}
+		
+		.testimonials-slider .blaze-prev:hover,
+		.testimonials-slider .blaze-next:hover {
+		background: #10b981;
+		border-color: #10b981;
+		color: white;
+		transform: translateY(-50%) scale(1.1);
+		}
+		
+		.testimonials-slider .blaze-prev:active,
+		.testimonials-slider .blaze-next:active {
+		transform: translateY(-50%) scale(0.95);
+		}
+		
+		/* Testimonials Slider Pagination */
+		.testimonials-slider .blaze-pagination {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+		margin: 24px 0 0 0;
+		padding: 0 16px;
+		font-size: 0;
+		}
+		
+		.testimonials-slider .blaze-pagination button {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		border: none;
+		background: rgba(16, 185, 129, 0.3);
+		cursor: pointer;
+		transition: all 0.3s ease;
+		outline: none;
+		}
+		
+		.testimonials-slider .blaze-pagination button.active {
+		background-color: #10b981;
+		transform: scale(1.2);
+		}
+		
+		.testimonials-slider .blaze-pagination button:hover {
+		background-color: rgba(16, 185, 129, 0.8);
+		transform: scale(1.1);
+		}
+		
+		.testimonials-slider .blaze-pagination button.active:hover {
+		background-color: #059669;
+		transform: scale(1.3);
+		}
+		
+		.testimonials-slider .blaze-pagination button:focus {
+		outline: 2px solid #10b981;
+		outline-offset: 2px;
+		}
+		
+		/* Responsive navigation buttons */
+		@media (max-width: 768px) {
+		.testimonials-slider .blaze-prev,
+		.testimonials-slider .blaze-next {	
+		width: 40px;
+		height: 40px;
+		}
+		
+		.testimonials-slider .blaze-prev {
+		left: -20px;
+		}
+		
+		.testimonials-slider .blaze-next {
+		right: -20px;
+		}
+		}
+		
+		@media (max-width: 640px) {
+		.testimonials-slider .blaze-prev,
+		.testimonials-slider .blaze-next {
+		display: none;
+		}
+		}
+	</style>
+	
+	<!-- BlazeSlider CSS Variables to prevent layout shift -->
+	<style>
+		.hot-products-slider.blaze-slider {
+		--slides-to-show: 2;
+		--slide-gap: 1rem;
+		}
+		@media (max-width: 640px) {
+		.hot-products-slider.blaze-slider {
+		--slides-to-show: 1;
+		}
+		}
+		/* Custom pagination dots styling */
+		.hot-products-slider .blaze-pagination {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+		margin: 16px 0;
+		padding: 0 16px;
+		/* i want no display text */
+		font-size: 0;
+		}
+		.hot-products-slider .blaze-prev, .hot-products-slider .blaze-next{display: none;}
+		.hot-products-slider .blaze-pagination button {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		border: none;
+		background: rgba(49, 198, 99, 0.7);
+		cursor: pointer;
+		transition: all 0.3s ease;
+		outline: none;
+		}
+		.hot-products-slider .blaze-pagination button.active {
+		background-color: #10b981;
+		transform: scale(1.2);
+		}
+		.hot-products-slider .blaze-pagination button:hover {
+		background-color: rgba(255, 255, 255, 0.6);
+		transform: scale(1.1);
+		}
+		.hot-products-slider .blaze-pagination button.active:hover {
+		background-color: #059669;
+		transform: scale(1.3);
+		}
+		/* Focus states for accessibility */
+		.hot-products-slider .blaze-pagination button:focus {
+		outline: 2px solid #10b981;
+		outline-offset: 2px;
+		}
+		/* Related Products Slider */
+		.related-products-slider.blaze-slider {
+		--slides-to-show: 4;
+		--slide-gap: 1.5rem;
+		}
+		@media (max-width: 1290px) {
+		.related-products-slider.blaze-slider {
+		--slides-to-show: 3;
+		}
+		}
+		@media (max-width: 1024px) {
+		.related-products-slider.blaze-slider {
+		--slides-to-show: 2;
+		}
+		}
+		
+		@media (max-width: 640px) {
+		.related-products-slider.blaze-slider {
+		--slides-to-show: 1;
+		}
+		}
+
+		/* Related Products Slider Navigation */
+		.related-products-slider .blaze-prev, 
+		.related-products-slider .blaze-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10;
+		width: 48px;
+		height: 48px;
+		background: white;
+		border: 2px solid #e5e7eb;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+		}
+		.related-products-slider .blaze-prev {
+		left: -24px;
+		}
+		.related-products-slider .blaze-next {
+		right: -24px;
+		}
+		.related-products-slider .blaze-prev:hover,
+		.related-products-slider .blaze-next:hover {
+		background: #10b981;
+		border-color: #10b981;
+		color: white;
+		transform: translateY(-50%) scale(1.1);
+		}
+		.related-products-slider .blaze-prev:active,
+		.related-products-slider .blaze-next:active {
+		transform: translateY(-50%) scale(0.95);
+		}
+		/* Related Products Slider Pagination */
+		.related-products-slider .blaze-pagination {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+		margin: 24px 0 0 0;
+		padding: 0 16px;
+		font-size: 0;
+		}
+		.related-products-slider .blaze-pagination button {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		border: none;
+		background: rgba(49, 198, 99, 0.7);
+		cursor: pointer;
+		transition: all 0.3s ease;
+		outline: none;
+		}
+		.related-products-slider .blaze-pagination button.active {
+		background-color: #10b981;
+		transform: scale(1.2);
+		}
+		.related-products-slider .blaze-pagination button:hover {
+		background-color: rgba(16, 185, 129, 0.8);
+		transform: scale(1.1);
+		}
+		.related-products-slider .blaze-pagination button.active:hover {
+		background-color: #059669;
+		transform: scale(1.3);
+		}
+		.related-products-slider .blaze-pagination button:focus {
+		outline: 2px solid #10b981;
+		outline-offset: 2px;
+		}
+		/* Responsive navigation buttons */
+		@media (max-width: 768px) {
+		.related-products-slider .blaze-prev,
+		.related-products-slider .blaze-next {
+		width: 40px;
+		height: 40px;
+		}
+		.related-products-slider .blaze-prev {
+		left: -20px;
+		}
+		.related-products-slider .blaze-next {
+		right: -20px;
+		}
+		}
+		@media (max-width: 640px) {
+		.related-products-slider .blaze-prev,
+		.related-products-slider .blaze-next {
+		}
+		}
+	</style>
+
 		<!-- Alpine.js CDN -->
 		<script src="js/alpinejs.3.15.0.js" defer></script>
 		<!-- Image Fallback Utility -->
@@ -995,7 +1386,7 @@
 			// Khởi tạo FastNotice với cấu hình tùy chỉnh sau khi DOM sẵn sàng
 			document.addEventListener('DOMContentLoaded', function () {
 			    window.fastNotice = new FastNotice({
-			        position: 'bottom-right',    // Vị trí mặc định
+			        position: 'top-center',    // Vị trí mặc định
 			        duration: 3000,              // Thời gian hiển thị (ms)
 			        maxNotifications: 3          // Số notification tối đa
 			    });
@@ -1005,6 +1396,8 @@
 		<!-- Header Component JS -->
 		<script src="js/cart-manager.js"></script>
 		<script src="js/header.js"></script>
+		<!-- Homepage Component JS -->
+		<script src="js/homemmo.js"></script>
 		<!-- BlazeSlider JS -->
 		<script src="js/blaze-slider.js"></script>
 		<!-- Lucide Icons - Custom Build -->
@@ -1030,24 +1423,16 @@
 			        });
 			    }
 			
-			    // Initialize Related Products Slider
-			    const relatedProductsSlider = document.querySelector('.related-products-slider');
-			    if (relatedProductsSlider) {
-			        new BlazeSlider(relatedProductsSlider, {
+			    // Initialize Testimonials Slider
+			    const testimonialsSlider = document.querySelector('.testimonials-slider');
+			    if (testimonialsSlider) {
+			        new BlazeSlider(testimonialsSlider, {
 			            all: {
-			                enableAutoplay: false,
-			                transitionDuration: 500,
-			                slidesToShow: 4,
-			                slidesToScroll: 1,
-			            },
-			            '(max-width: 1024px)': {
-			                slidesToShow: 3,
-			            },
-			            '(max-width: 768px)': {
-			                slidesToShow: 2,
-			            },
-			            '(max-width: 640px)': {
+			                enableAutoplay: true,
+			                autoplayInterval: 6000,
+			                transitionDuration: 600,
 			                slidesToShow: 1,
+			                slidesToScroll: 1,
 			            }
 			        });
 			    }
@@ -1058,170 +1443,9 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<!-- BlazeSlider CSS Variables to prevent layout shift -->
-		<style>
-			.hot-products-slider.blaze-slider {
-			--slides-to-show: 2;
-			--slide-gap: 1rem;
-			}
-			@media (max-width: 640px) {
-			.hot-products-slider.blaze-slider {
-			--slides-to-show: 1;
-			}
-			}
-			/* Custom pagination dots styling */
-			.hot-products-slider .blaze-pagination {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 8px;
-			margin: 16px 0;
-			padding: 0 16px;
-			/* i want no display text */
-			font-size: 0;
-			}
-			.hot-products-slider .blaze-prev, .hot-products-slider .blaze-next{display: none;}
-			.hot-products-slider .blaze-pagination button {
-			width: 12px;
-			height: 12px;
-			border-radius: 50%;
-			border: none;
-			background: rgba(49, 198, 99, 0.7);
-			cursor: pointer;
-			transition: all 0.3s ease;
-			outline: none;
-			}
-			.hot-products-slider .blaze-pagination button.active {
-			background-color: #10b981;
-			transform: scale(1.2);
-			}
-			.hot-products-slider .blaze-pagination button:hover {
-			background-color: rgba(255, 255, 255, 0.6);
-			transform: scale(1.1);
-			}
-			.hot-products-slider .blaze-pagination button.active:hover {
-			background-color: #059669;
-			transform: scale(1.3);
-			}
-			/* Focus states for accessibility */
-			.hot-products-slider .blaze-pagination button:focus {
-			outline: 2px solid #10b981;
-			outline-offset: 2px;
-			}
-			/* Related Products Slider */
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 4;
-			--slide-gap: 1.5rem;
-			}
-			@media (max-width: 1290px) {
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 3;
-			}
-			}
-			@media (max-width: 1024px) {
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 2;
-			}
-			}
-			
-			@media (max-width: 640px) {
-			.related-products-slider.blaze-slider {
-			--slides-to-show: 1;
-			}
-			}
 		
-			/* Related Products Slider Navigation */
-			.related-products-slider .blaze-prev, 
-			.related-products-slider .blaze-next {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			z-index: 10;
-			width: 48px;
-			height: 48px;
-			background: white;
-			border: 2px solid #e5e7eb;
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-			transition: all 0.3s ease;
-			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-			}
-			.related-products-slider .blaze-prev {
-			left: -24px;
-			}
-			.related-products-slider .blaze-next {
-			right: -24px;
-			}
-			.related-products-slider .blaze-prev:hover,
-			.related-products-slider .blaze-next:hover {
-			background: #10b981;
-			border-color: #10b981;
-			color: white;
-			transform: translateY(-50%) scale(1.1);
-			}
-			.related-products-slider .blaze-prev:active,
-			.related-products-slider .blaze-next:active {
-			transform: translateY(-50%) scale(0.95);
-			}
-			/* Related Products Slider Pagination */
-			.related-products-slider .blaze-pagination {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 8px;
-			margin: 24px 0 0 0;
-			padding: 0 16px;
-			font-size: 0;
-			}
-			.related-products-slider .blaze-pagination button {
-			width: 12px;
-			height: 12px;
-			border-radius: 50%;
-			border: none;
-			background: rgba(49, 198, 99, 0.7);
-			cursor: pointer;
-			transition: all 0.3s ease;
-			outline: none;
-			}
-			.related-products-slider .blaze-pagination button.active {
-			background-color: #10b981;
-			transform: scale(1.2);
-			}
-			.related-products-slider .blaze-pagination button:hover {
-			background-color: rgba(16, 185, 129, 0.8);
-			transform: scale(1.1);
-			}
-			.related-products-slider .blaze-pagination button.active:hover {
-			background-color: #059669;
-			transform: scale(1.3);
-			}
-			.related-products-slider .blaze-pagination button:focus {
-			outline: 2px solid #10b981;
-			outline-offset: 2px;
-			}
-			/* Responsive navigation buttons */
-			@media (max-width: 768px) {
-			.related-products-slider .blaze-prev,
-			.related-products-slider .blaze-next {
-			width: 40px;
-			height: 40px;
-			}
-			.related-products-slider .blaze-prev {
-			left: -20px;
-			}
-			.related-products-slider .blaze-next {
-			right: -20px;
-			}
-			}
-			@media (max-width: 640px) {
-			.related-products-slider .blaze-prev,
-			.related-products-slider .blaze-next {
-			}
-			}
-		</style>
 	</head>
+
 	<body class="min-h-screen bg-white">
 		<!-- header -->
 		<header class="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm sticky top-0 z-50" x-data="headerComponent()">
@@ -2176,7 +2400,7 @@
 							</button>
 							<button @click="viewCart()" class="w-full btn btn-outline">
 							<i data-lucide="shopping-cart" class="w-4 h-4 mr-2"></i>
-							<a href="./cart.html">Xem giỏ hàng</a>
+							<a href="/cart.html">Xem giỏ hàng</a>
 							</button>
 						</div>
 					</div>
@@ -2418,7 +2642,7 @@
 		</header>
 		<!-- Main Content Area -->
 		<main class="min-h-screen bg-gray-50" x-data="productDetailComponent()">
-			<div class="container mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6">
+			<section class="container mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6">
 				<nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6 overflow-x-auto pb-2">
 					<a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
 					<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
@@ -2430,7 +2654,7 @@
 					<span class="text-gray-900 text-xs sm:text-sm truncate">Netflix Premium 1 Năm - 4K Ultra HD</span>
 				</nav>
 				<!-- Ảnh -->
-				<section class="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
+				<div class="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
 					<div class="space-y-2 sm:space-y-3">
 						<!-- Ảnh chính -->
 						<img alt="Netflix Premium 1 Năm - 4K Ultra HD" class="w-full h-48 sm:h-64 lg:h-80 object-contain" src="/placeholder.svg?height=500&width=500&text=Netflix+Main">
@@ -2471,21 +2695,21 @@
 					</div>
 					<!-- Column right -->
 					<div class="space-y-3 sm:space-y-4 lg:space-y-5">
-						<div>
-							<h1 class="text-responsive-lg font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">Netflix Premium 1 Năm - 4K Ultra HD</h1>
-							<div class="flex flex-row gap-2 items-center  ">
-								<div class="flex items-center space-x-1">
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-									<i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
-									<span class=" text-gray-500 ml-1 text-responsive-xs">4.8</span>
-								</div>
-								<span class="text-gray-500 text-responsive-xs">(1247 đánh giá)</span><span class="text-gray-500 hidden sm:inline">•</span><span class="text-gray-500 text-responsive-xs">3420 đã bán</span>
+						
+						<h1 class="text-responsive-lg font-bold text-gray-900 mb-2 sm:mb-0">Netflix Premium 1 Năm - 4K Ultra HD</h1>
+						<div class="flex flex-row gap-2 items-center mb-2 ">
+							<div class="flex items-center space-x-1">
+								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+								<i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
+								<span class=" text-gray-500 ml-1 text-responsive-xs">4.8</span>
 							</div>
+							<span class="text-gray-500 text-responsive-xs">(1247 đánh giá)</span><span class="text-gray-500 hidden sm:inline">•</span><span class="text-gray-500 text-responsive-xs">3420 đã bán</span>
 						</div>
-						<div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-md p-2 sm:p-4 ">
+							
+						<div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-md p-4 mb-2">
 							<div class="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-1">
 								<div class="flex items-center space-x-2 sm:space-x-3">
 									<span class="text-responsive-lg font-semibold text-emerald-600" x-text="getSelectedPrice()">899.000đ</span>
@@ -2495,7 +2719,7 @@
 						</div>
 						<!-- Số lượng -->
 						<div class="space-y-3">
-							<div class="flex flex-row items-start sm:items-center sm:space-x-3">
+							<div class="flex flex-row items-start sm:items-center sm:space-x-3  mb-2 ">
 								<div class="flex items-center space-x-2 flex-1 min-w-0">
 									<span class="font-bold text-gray-900 whitespace-nowrap text-responsive-sm">Số lượng:</span>
 									<div class="flex items-center btn btn-outline btn-sm w-fit flex-shrink-0">
@@ -2595,8 +2819,9 @@
 								<span class="text-responsive-sm ">Mua Ngay</span>
 							</button>
 						</div>
+						
 					</div>
-					<div>
+					<div class="mb-2 ">
 						<h3 class="font-bold text-gray-900 mb-2 text-responsive-sm">Tính năng nổi bật</h3>
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 							<div class="flex items-center space-x-2">
@@ -2625,11 +2850,130 @@
 							</div>
 						</div>
 					</div>
+					
+				</div>
+			</section>
+			
+			<!-- Seller -->
+			<section class="container mb-8">
+				<div class="card">
+					<div class="card-content">
+						<!-- Mobile Layout -->
+						<div class="block sm:hidden">
+							<!-- Seller Profile -->
+							<div class="flex items-center gap-3 mb-4">
+								<img src="https://via.placeholder.com/80x80/ffffff/000000?text=TH" 
+									 alt="Vinfast" 
+									 class="w-12 h-12 rounded-full object-cover">
+								<div class="flex-1 min-w-0">
+									<h3 class="text-lg font-bold text-gray-900 truncate">Vinfast</h3>
+									<p class="text-sm text-gray-600">Online 3 Giờ Trước</p>
+								</div>
+							</div>
+							
+							<!-- Action Buttons Mobile -->
+							<div class="flex gap-2 mb-4">
+								<button class="btn btn-primary btn-sm flex-1">
+									<i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
+									Chat Ngay
+								</button>
+								<button class="btn btn-secondary btn-sm flex-1">
+									<i data-lucide="store" class="w-4 h-4 mr-2"></i>
+									Xem Shop
+								</button>
+							</div>
+							
+							<!-- Stats flex Mobile -->
+							<div class="flex flex-1 gap-6 justify-center border-t border-gray-200">
+								<div class="flex flex-col items-center p-3  rounded-lg">
+									<div class="text-sm font-bold text-emerald-600">82</div>
+									<div class="text-xs text-gray-500 ">Đánh Giá</div>
+								</div>
+								
+								<div class="flex flex-col items-center p-3  rounded-lg">
+									<div class="text-sm font-bold text-emerald-600">68</div>
+									<div class="text-xs text-gray-500">Sản phẩm</div>
+								</div>
+								<div class="flex flex-col items-center p-3 rounded-lg">
+									<div class="text-sm font-bold text-emerald-600">97%</div>
+									<div class="text-xs text-gray-500">Phản hồi chat</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<!-- Desktop Layout -->
+						<div class="hidden sm:flex flex-row gap-4">
+							<!-- Seller Profile Picture and Favorite Button -->
+							<div class="flex flex-col items-center sm:items-start">
+								<div class="relative">
+									<img src="https://via.placeholder.com/80x80/ffffff/000000?text=TH" 
+										 alt="Vinfast" 
+										 class="w-12 h-12 rounded-full object-cover">
+								</div>
+							</div>
+
+							<!-- Seller Info -->
+							<div class="flex min-w-0">
+								<div class="flex flex-col gap-2">
+									<div class="flex-1 min-w-0">
+										<h3 class="text-lg font-bold text-gray-900 truncate">Vinfast</h3>
+										<p class="text-sm text-gray-600">Online 3 Giờ Trước</p>
+									</div>
+									
+									<!-- Action Buttons -->
+									<div class="flex gap-2">
+										<button class="btn btn-primary">
+											<i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
+											Chat Ngay
+										</button>
+										<button class="btn btn-secondary ">
+											<i data-lucide="store" class="w-4 h-4 mr-2"></i>
+											Xem Shop
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="grid grid-cols-3 flex-1 gap-6 border-l border-gray-200 p-6">
+								<div class="flex flex-row justify-between items-center">
+									<div class="text-responsive-xs text-gray-500">Đánh Giá</div>
+									<div class="text-responsive-xs font-bold text-emerald-600">82</div>
+								</div>
+								<div class="flex flex-row justify-between items-center">
+									<div class="text-responsive-xs text-gray-500">Tỉ lệ phản hồi</div>
+									<div class="text-responsive-xs font-bold text-emerald-600">93%</div>
+								</div>
+								<div class="flex flex-row justify-between items-center">
+									<div class="text-responsive-xs text-gray-500">Tham gia</div>
+									<div class="text-responsive-xs font-bold text-emerald-600">4 năm trước</div>
+								</div>
+								<div class="flex flex-row justify-between items-center">
+									<div class="text-responsive-xs text-gray-500">Sản phẩm</div>
+									<div class="text-responsive-xs font-bold text-emerald-600">68</div>
+								</div>
+								<div class="flex flex-row justify-between items-center">
+									<div class="text-responsive-xs text-gray-500">Thời gian phản hồi</div>
+									<div class="text-responsive-xs font-bold text-emerald-600">trong vài giờ</div>
+								</div>
+								<div class="flex flex-row justify-between items-center">
+									<div class="text-responsive-xs text-gray-500">Người theo dõi</div>
+									<div class="text-responsive-xs font-bold text-emerald-600">1,2k</div>
+								</div>
+							</div>
+						</div>
+							
+							
+						</div>
+						
+
+						
+					</div>
+				</div>
 			</section>
 			<!-- Thông tin sản phẩm -->
-			<section class="card mb-8">
-				<div dir="ltr" data-orientation="horizontal" class="w-full">
-					<div class="border-b border-gray-200">
+			<section class="container">
+				<div class="card mb-8 ">
+					<div dir="ltr" data-orientation="horizontal" class="w-full">
 						<div class="w-full overflow-hidden">
 							<div role="tablist" aria-orientation="horizontal" class="tabs-list" tabindex="0" data-orientation="horizontal" style="outline: none;">
 								<button type="button" role="tab" @click="setActiveTab('description')" :aria-selected="isTabActive('description')" class="tabs-trigger" :class="isTabActive('description') ? 'text-emerald-600 ' : ''">Mô tả</button>
@@ -2640,7 +2984,6 @@
 								</button>
 							</div>
 						</div>
-					</div>
 					<div x-show="isTabActive('description')" role="tabpanel" class="tabs-content">
 						<div class="prose max-w-none">
 							<h3 class="text-responsive-sm font-medium text-gray-900 mb-2 sm:mb-3">Mô tả sản phẩm</h3>
@@ -2834,9 +3177,8 @@
 						</div>
 					</div>
 				</div>
+				</div>
 			</section>
-			
-			</div>
 			<!-- sản phẩm liên quan -->
 			<section class="related-products-slider section">
 				<div class="container">
