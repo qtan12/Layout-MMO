@@ -2478,7 +2478,7 @@ display: none;
        
     <!-- Main Content Area -->
     <main class="min-h-screen bg-gray-50">
-        <div class="container mx-auto px-4 lg:py-6" x-data="{ filterOpen: false }">
+        <div class="container mx-auto lg:py-6" x-data="{ filterOpen: false }">
             <!-- Breadcrumb -->
         <nav class="flex items-center text-responsive-xs text-gray-500  p-4">
             <a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
@@ -2491,7 +2491,7 @@ display: none;
             </svg>
             <a class="hover:text-emerald-600 whitespace-nowrap" href="/email">Email</a>
         </nav>
-            <div class="flex flex-col lg:flex-row ">
+            <div class="flex flex-col lg:flex-row gap-4">
                 <!-- Sidebar Filters -->
                 <aside class="w-full lg:w-80 flex-shrink-0">
                     <!-- Mobile Overlay -->
@@ -2501,7 +2501,7 @@ display: none;
                          class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"></div>
                     
                     <!-- Filter Panel -->
-                    <div class="bg-white  shadow-sm  p-6 lg:sticky lg:top-4"
+                    <div class="card  p-6 lg:sticky lg:top-4"
                          :class="filterOpen ? 'fixed inset-y-0 left-0 w-80 z-50 overflow-y-auto lg:relative lg:inset-auto lg:w-full' : 'hidden lg:block'"
                          x-transition:enter="transition ease-out duration-300"
                          x-transition:enter-start="-translate-x-full"
@@ -2624,7 +2624,7 @@ display: none;
                 <!-- Products Section -->
                 <div class="flex-1">
                     <!-- Header with Sort and View Options -->
-                    <div class="bg-white  p-4 mb-6 lg:mb-6">
+                    <div class="card  p-6 mb-4 ">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                             <div>
                                 <h2 class="section-title font-bold text-gray-900">Gian hàng Tài Khoản Email</h2>
@@ -2655,7 +2655,7 @@ display: none;
                     
 
                     <!-- Products Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Product Card 1 -->
                         <div class="card p-4">
                           <a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>

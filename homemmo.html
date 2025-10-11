@@ -279,7 +279,10 @@
 			@apply w-full;
 			}
 			.tabs-list {
-			@apply flex bg-gray-100 rounded-md;
+			@apply flex justify-around items-center bg-gray-100 rounded-md p-1 gap-2;
+			}
+			.tabs-list > * {
+				@apply flex-1;
 			}
 			/* Mobile scrollable tabs */
 			@media (max-width: 640px) {
@@ -2411,9 +2414,9 @@
 				x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
 				x-transition:leave-end="opacity-0" class="modal-overlay hidden" @click="closeAuthModal()"
 				style="height: 100vh; height: 100dvh;">
-				<div class="modal-content max-w-md rounded-2xl" @click.stop>
+				<div class="modal-content max-w-md max-h-[90vh] overflow-y-auto rounded-xl" @click.stop>
 					<!-- Modal Header -->
-					<div class="flex items-center justify-between p-6 pb-0">
+					<div class="flex items-center justify-between p-4 sm:p-6 pb-0">
 						<h3 class="text-xl font-bold text-gray-900">
 							<span x-show="authTab === 'login'">Đăng Nhập</span>
 							<span x-show="authTab === 'register'">Tạo Tài Khoản</span>
@@ -2422,7 +2425,7 @@
 						<i data-lucide="x" class="w-5 h-5"></i>
 						</button>
 					</div>
-					<div class="p-6 py-4 border-b border-gray-100">
+					<div class="p-4 sm:p-6 py-3 border-b border-gray-100">
 						<!-- Tab Buttons -->
 						<div class="tabs-list">
 							<button @click="authTab = 'login'; errors = {}; isLoading = false" class="btn tabs-trigger"
@@ -2436,35 +2439,35 @@
 						</div>
 					</div>
 					<!-- Modal Body -->
-					<div class="p-6">
+					<div class="p-4 sm:p-6">
 						<!-- General Error Message -->
 						<!-- Login Form -->
-						<form x-show="authTab === 'login'" @submit.prevent="handleLogin()" class="space-y-5">
+						<form x-show="authTab === 'login'" @submit.prevent="handleLogin()" class="space-y-4">
 							<div>
 								<label for="login-email" class="block text-sm font-semibold text-gray-700 mb-2">Tên đăng
 								nhập</label>
 								<div class="input-icon">
 									<input type="text" id="login-email" x-model="loginForm.email"
-										class="input input-lg rounded-xl"
+										class="input"
 										:class="errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập tên đăng nhập">
 									<i data-lucide="user" class="icon"></i>
 								</div>
 								<p x-show="errors.email" x-text="errors.email"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="login-password" class="block text-sm font-semibold text-gray-700 mb-2">Mật
 								khẩu</label>
 								<div class="input-icon">
 									<input type="password" id="login-password" x-model="loginForm.password"
-										class="input input-lg rounded-xl"
+										class="input "
 										:class="errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập mật khẩu">
 									<i data-lucide="lock" class="icon"></i>
 								</div>
 								<p x-show="errors.password" x-text="errors.password"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div class="flex items-center justify-between">
 								<label class="flex items-center">
@@ -2488,7 +2491,7 @@
 							</button>
 						</form>
 						<!-- Social Login Buttons - Login -->
-						<div x-show="authTab === 'login'" class="space-y-4 mt-5 pb-4">
+						<div x-show="authTab === 'login'" class="space-y-3 mt-4 pb-2">
 							<!-- Divider -->
 							<div class="relative">
 								<div class="absolute inset-0 flex items-center">
@@ -2529,71 +2532,71 @@
 							</div>
 						</div>
 						<!-- Register Form -->
-						<form x-show="authTab === 'register'" @submit.prevent="handleRegister()" class="space-y-5 pb-4">
+						<form x-show="authTab === 'register'" @submit.prevent="handleRegister()" class="space-y-4 pb-2">
 							<div>
 								<label for="register-fullname" class="block text-sm font-semibold text-gray-700 mb-2">Họ và
 								tên</label>
 								<div class="input-icon">
 									<input type="text" id="register-fullname" x-model="registerForm.fullname"
-										class="input input-lg rounded-xl"
+										class="input "
 										:class="errors.fullname ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập họ và tên">
 									<i data-lucide="user" class="icon"></i>
 								</div>
 								<p x-show="errors.fullname" x-text="errors.fullname"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="register-username" class="block text-sm font-semibold text-gray-700 mb-2">Tên
 								đăng nhập</label>
 								<div class="input-icon">
 									<input type="text" id="register-username" x-model="registerForm.username"
-										class="input input-lg rounded-xl"
+										class="input "
 										:class="errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập tên đăng nhập">
 									<i data-lucide="user-check" class="icon"></i>
 								</div>
 								<p x-show="errors.username" x-text="errors.username"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="register-email"
 									class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
 								<div class="input-icon">
 									<input type="email" id="register-email" x-model="registerForm.email"
-										class="input input-lg rounded-xl"
+										class="input "
 										:class="errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập email của bạn">
 									<i data-lucide="mail" class="icon"></i>
 								</div>
 								<p x-show="errors.email" x-text="errors.email"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="register-phone" class="block text-sm font-semibold text-gray-700 mb-2">Số điện
 								thoại</label>
 								<div class="input-icon">
 									<input type="tel" id="register-phone" x-model="registerForm.phone"
-										class="input input-lg rounded-xl"
+										class="input "
 										:class="errors.phone ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập số điện thoại">
 									<i data-lucide="phone" class="icon"></i>
 								</div>
 								<p x-show="errors.phone" x-text="errors.phone"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="register-password" class="block text-sm font-semibold text-gray-700 mb-2">Mật
 								khẩu</label>
 								<div class="input-icon">
 									<input type="password" id="register-password" x-model="registerForm.password"
-										class="input input-lg rounded-xl"
+										class="input "
 										:class="errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập mật khẩu (ít nhất 6 ký tự)">
 									<i data-lucide="lock" class="icon"></i>
 								</div>
 								<p x-show="errors.password" x-text="errors.password"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="register-confirm-password"

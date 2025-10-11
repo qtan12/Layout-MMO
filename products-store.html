@@ -57,6 +57,101 @@
 			.container {
 			@apply mx-auto px-4;
 			}
+			
+			/* Store specific styles */
+			.line-clamp-2 {
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			}
+			
+			.product-card {
+			transition: all 0.3s ease;
+			}
+			
+			.product-card:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+			}
+			
+			.category-btn.active {
+			background: linear-gradient(135deg, #10b981, #059669);
+			}
+			
+			.category-btn:hover {
+			transform: translateY(-1px);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+			}
+			
+			/* Responsive text sizes */
+			.text-responsive-xs {
+			font-size: 0.75rem;
+			line-height: 1rem;
+			}
+			
+			.text-responsive-sm {
+			font-size: 0.875rem;
+			line-height: 1.25rem;
+			}
+			
+			.text-responsive-base {
+			font-size: 1rem;
+			line-height: 1.5rem;
+			}
+			
+			.text-responsive-lg {
+			font-size: 1.125rem;
+			line-height: 1.75rem;
+			}
+			
+			.text-responsive-xl {
+			font-size: 1.25rem;
+			line-height: 1.75rem;
+			}
+			
+			.text-responsive-2xl {
+			font-size: 1.5rem;
+			line-height: 2rem;
+			}
+			
+			.text-responsive-3xl {
+			font-size: 1.875rem;
+			line-height: 2.25rem;
+			}
+			
+			/* Animation for notifications */
+			@keyframes slideInRight {
+			from {
+				transform: translateX(100%);
+				opacity: 0;
+			}
+			to {
+				transform: translateX(0);
+				opacity: 1;
+			}
+			}
+			
+			@keyframes slideOutRight {
+			from {
+				transform: translateX(0);
+				opacity: 1;
+			}
+			to {
+				transform: translateX(100%);
+				opacity: 0;
+			}
+			}
+			
+			.notification-enter {
+			animation: slideInRight 0.3s ease-out;
+			}
+			
+			.notification-exit {
+			animation: slideOutRight 0.3s ease-in;
+			}
+			
 			@media (min-width: 640px) {
 			.container {
 			max-width: 640px;
@@ -279,7 +374,7 @@
 			@apply w-full;
 			}
 			.tabs-list {
-			@apply flex bg-gray-100 rounded-md;
+			@apply flex bg-gray-100 rounded-md p-1;
 			}
 			/* Mobile scrollable tabs */
 			@media (max-width: 640px) {
@@ -2641,11 +2736,406 @@
 		</header>
 		<!-- Main Content Area -->
 		<main class="min-h-screen bg-gray-50">
-			
+			<!-- Store Header -->
+			<div class="bg-gradient-to-r from-emerald-600 via-green-700 to-emerald-800 text-white">
+				<div class="container mx-auto  py-8 sm:py-12 ">
+					<div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+						<!-- Store Info -->
+						<div class="flex flex-row space-x-4 w-full lg:w-auto">
+							<div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="store" class="lucide lucide-store w-6 h-6 sm:w-10 sm:h-10"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"></path><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"></path><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"></path></svg>
+							</div>
+							<div class="flex flex-col">
+								<h1 class="text-responsive-lg font-bold ">Gian Hàng MMO Store</h1>
+								<p class="text-emerald-200 text-responsive-sm mb-3">Sản phẩm &amp; Dịch vụ MMO chuyên nghiệp</p>
+								<div class="flex flex-row items-center space-x-4">
+									<div class="flex items-center space-x-1">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 text-yellow-400 fill-current"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+										<span class="text-responsive-xs">4.9/5 (1,234 đánh giá)</span>
+									</div>
+									<div class="flex items-center space-x-1">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users w-4 h-4"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+										<span class="text-responsive-xs">2,456 khách hàng</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Store Stats -->
+						<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full lg:w-auto">
+							<div class="bg-white/10 rounded-lg p-3 text-center">
+								<div class="text-responsive-lg font-bold">500+</div>
+								<div class="text-responsive-xs text-emerald-200">Sản phẩm</div>
+							</div>
+							<div class="bg-white/10 rounded-lg p-3 text-center">
+								<div class="text-responsive-lg font-bold">99%</div>
+								<div class="text-responsive-xs text-emerald-200">Hài lòng</div>
+							</div>
+							<div class="bg-white/10 rounded-lg p-3 text-center">
+								<div class="text-responsive-lg font-bold">24/7</div>
+								<div class="text-responsive-xs text-emerald-200">Hỗ trợ</div>
+							</div>
+							<div class="bg-white/10 rounded-lg p-3 text-center">
+								<div class="text-responsive-lg font-bold">5+</div>
+								<div class="text-responsive-xs text-emerald-200">Năm kinh nghiệm</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Store Content -->
+			<div class="container py-8" x-data="{ filterOpen: false }">
+				<div class="flex flex-col lg:flex-row gap-4">
+					<!-- Sidebar Filters -->
+					<aside class="w-full lg:w-80 flex-shrink-0">
+						<!-- Mobile Overlay -->
+						<div x-show="filterOpen" 
+							 @click="filterOpen = false"
+							 x-transition.opacity
+							 class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"></div>
+						
+						<!-- Filter Panel -->
+						<div class="card  p-6 lg:sticky "
+							 :class="filterOpen ? 'fixed inset-y-0 left-0 w-80 z-50 overflow-y-auto lg:relative lg:inset-auto lg:w-full' : 'hidden lg:block'"
+							 x-transition:enter="transition ease-out duration-300"
+							 x-transition:enter-start="-translate-x-full"
+							 x-transition:enter-end="translate-x-0"
+							 x-transition:leave="transition ease-in duration-300"
+							 x-transition:leave-start="translate-x-0"
+							 x-transition:leave-end="-translate-x-full">
+							
+							<!-- Mobile Header with Close Button -->
+							<div class="flex items-center justify-between mb-6 lg:block">
+								<h2 class="text-responsive-lg font-semibold text-gray-900">Lọc</h2>
+								<button @click="filterOpen = false" class="lg:hidden p-2 hover:bg-gray-100 rounded-lg">
+									<i data-lucide="x" class="w-5 h-5 text-gray-600"></i>
+								</button>
+							</div>
+							
+							<!-- Category Filter -->
+							<div class="mb-6">
+								<h3 class="text-responsive-sm font-medium text-gray-900 mb-3">Danh mục</h3>
+								<div class="space-y-2">
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" checked>
+										<span class="ml-2 text-responsive-sm ">Backlink/Textlink/Entity</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Tài khoản Email</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Tài khoản Facebook</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Tài khoản Social khác</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Data & Tools MMO</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">License Phần mềm</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">VPN/Proxy/Server</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Khóa học/TUT MMO</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" checked>
+										<span class="ml-2 text-responsive-sm ">Thiết kế Website</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Tăng tương tác</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Dịch vụ Marketing</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Dịch vụ phần mềm</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Dịch vụ website</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Dịch vụ SEO</span>
+									</label>
+								</div>
+							</div>
+	
+							<!-- Price Range -->
+							<div class="mb-6">
+								<h3 class="text-responsive-sm font-medium text-gray-900 mb-3">Giá</h3>
+								<div class="space-y-2">
+									<label class="flex items-center">
+										<input type="radio" name="price" class="text-emerald-600 focus:ring-emerald-500" checked>
+										<span class="ml-2 text-responsive-sm ">Tất cả</span>
+									</label>
+									<label class="flex items-center">
+										<input type="radio" name="price" class="text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Dưới 100₫</span>
+									</label>
+									<label class="flex items-center">
+										<input type="radio" name="price" class="text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">100,000₫ - 500,000₫</span>
+									</label>
+									<label class="flex items-center">
+										<input type="radio" name="price" class="text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">500,000₫ - 1,000,000₫</span>
+									</label>
+									<label class="flex items-center">
+										<input type="radio" name="price" class="text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm ">Trên 1,000,000₫</span>
+									</label>
+								</div>
+							</div>
+	
+							<!-- Rating Filter -->
+							<div class="mb-6">
+								<h3 class="text-responsive-sm font-medium text-gray-900 mb-3">Đánh giá</h3>
+								<div class="space-y-2">
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" checked>
+										<span class="ml-2 text-responsive-sm ">Tất cả</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm  flex items-center">
+											<div class="flex text-yellow-400 mr-2">
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+											</div>
+											5 Sao
+										</span>
+									</label>
+									<label class="flex items-center">
+										<input type="checkbox" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+										<span class="ml-2 text-responsive-sm  flex items-center">
+											<div class="flex text-yellow-400 mr-2">
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 fill-current"></i>
+												<i data-lucide="star" class="w-3 h-3 text-gray-300"></i>
+											</div>
+											4+ Sao
+										</span>
+									</label>
+								</div>
+							</div>
+	
+							<!-- Action Buttons -->
+							<div class="space-y-2">
+								<button class="w-full btn btn-secondary btn-md ">
+									Xóa tất cả
+								</button>
+								<button @click="filterOpen = false" class="lg:hidden w-full btn btn-primary btn-md">
+									Áp dụng
+								</button>
+							</div>
+						</div>
+					</aside>
+	
+					<!-- Products Section -->
+					<div class="flex-1">
+						<!-- Header with Sort and View Options -->
+						<div class="card  p-6 mb-4 ">
+							<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+								<div>
+									<h2 class="section-title font-bold text-gray-900">Gian hàng</h2>
+									<p class="text-gray-600 text-responsive-sm mt-1">Hiển thị 1-12 gian hàng</p>
+								</div>
+								<div class="flex  justify-between">
+									<!-- Mobile Filter Button -->
+									<div class="lg:hidden">
+										<button @click="filterOpen = true" class="btn btn-outline btn-md">
+											<i data-lucide="sliders-horizontal" class="w-4 h-4 mr-1.5"></i>
+											<span>Lọc</span>
+										</button>
+									</div>
+									<div class="flex items-center gap-2">
+										<label class="text-responsive-sm  flex-shrink-0">Sắp xếp:</label>
+										<select class="btn btn-outline btn-md">
+											<option>Phổ biến</option>
+											<option>Giá thấp đến cao</option>
+											<option>Giá cao đến thấp</option>
+											<option>Ngày mới nhất</option>
+											<option>Đánh giá tốt nhất</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						
+	
+						<!-- Products Grid -->
+						<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+							<!-- Product Card 1 -->
+							<div class="card p-4">
+							  <a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							  <div class="flex">
+								<div class="item-thumbnail">
+								  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+								  <div class="flex items-center justify-between gap-2">
+									<a href="#" class="item-category">Tài khoản Email</a>
+									<div class="flex space-x-1 ">
+									  <i data-lucide="star" class="item-rating"></i>
+									  <span class="text-responsive-xs text-gray-500 ">4.9</span>
+									</div>
+								  </div>
+								  
+								  <div class="flex items-center justify-between gap-2">
+									<div class="flex gap-1">
+									  <i data-lucide="user" class="item-user"></i>
+									  <a href="#" class="item-link">John Doe</a>
+									</div>
+									<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+									  <i data-lucide="shopping-cart" class="item-cart"></i>
+									  <span>900</span>
+									</div>
+								  </div>
+								  
+								</div>
+							  </div>
+							  <div class="flex items-center justify-between mt-1">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+								  id: 'backlink-premium',
+								  name: 'Backlink Premium',
+								  category: 'SEO & Link Building',
+								  price: 500000,
+								  icon: 'link'
+								})" class="btn btn-primary btn-sm">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							  </div>
+							</div>
+							<!-- Product card 2 -->
+							<div class="card p-4">
+							  <a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							  <div class="flex">
+								<div class="item-thumbnail">
+								  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+								  <div class="flex items-center justify-between gap-2">
+									<a href="#" class="item-category">Tài khoản Email</a>
+									<div class="flex space-x-1 ">
+									  <i data-lucide="star" class="item-rating"></i>
+									  <span class="text-responsive-xs text-gray-500 ">4.9</span>
+									</div>
+								  </div>
+								  
+								  <div class="flex items-center justify-between gap-2">
+									<div class="flex gap-1">
+									  <i data-lucide="user" class="item-user"></i>
+									  <a href="#" class="item-link">John Doe</a>
+									</div>
+									<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+									  <i data-lucide="shopping-cart" class="item-cart"></i>
+									  <span>900</span>
+									</div>
+								  </div>
+								  
+								</div>
+							  </div>
+							  <div class="flex items-center justify-between mt-1">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+								  id: 'backlink-premium',
+								  name: 'Backlink Premium',
+								  category: 'SEO & Link Building',
+								  price: 500000,
+								  icon: 'link'
+								})" class="btn btn-primary btn-sm">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							  </div>
+							</div>
+							<!-- Product card 3 -->
+							<div class="card p-4">
+							  <a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
+							  <div class="flex">
+								<div class="item-thumbnail">
+								  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
+								</div>
+								<div class="flex-1 min-w-0 space-y-1">
+								  <div class="flex items-center justify-between gap-2">
+									<a href="#" class="item-category">Tài khoản Facebook</a>
+									<div class="flex space-x-1 ">
+									  <i data-lucide="star" class="item-rating"></i>
+									  <span class="text-responsive-xs text-gray-500 ">4.9</span>
+									</div>
+								  </div>
+								  
+								  <div class="flex items-center justify-between gap-2">
+									<div class="flex gap-1">
+									  <i data-lucide="user" class="item-user"></i>
+									  <a href="#" class="item-link">John Doe</a>
+									</div>
+									<div class="flex gap-1 text-responsive-xs text-gray-500 ">
+									  <i data-lucide="shopping-cart" class="item-cart"></i>
+									  <span>900</span>
+									</div>
+								  </div>
+								  
+								</div>
+							  </div>
+							  <div class="flex items-center justify-between mt-1">
+								<span class="item-price">500,000₫</span>
+								<button onclick="addToCart({
+								  id: 'backlink-premium',
+								  name: 'Backlink Premium',
+								  category: 'SEO & Link Building',
+								  price: 500000,
+								  icon: 'link'
+								})" class="btn btn-primary btn-sm">
+								<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
+								Mua
+								</button>
+							  </div>
+							</div>
+						</div>
+	
+						<!-- Pagination -->
+						<div class="m-6  flex  justify-center">
+							<nav class="pagination">
+								<a href="#" class="pagination-item disabled text-responsive-sm">&laquo;</a>
+								<a href="#" class="pagination-item active text-responsive-sm">1</a>
+								<a href="#" class="pagination-item text-responsive-sm">2</a>
+								<a href="#" class="pagination-item text-responsive-sm">3</a>
+								<span class="pagination-item text-responsive-sm">...</span>
+								<a href="#" class="pagination-item text-responsive-sm">125</a>
+								<a href="#" class="pagination-item text-responsive-sm">&raquo;</a>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
 		</main>
 		<!-- Footer -->
 		<footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
-			<div class="container mx-auto px-4 py-12">
+			<div class="container mx-auto py-12">
 				<div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
 					<!-- Logo & Description -->
 					<div class="space-y-4 col-span-2 lg:col-span-1 col-start-1">
@@ -2738,6 +3228,301 @@
 		<!-- Initialize Lucide Icons -->
 		<script>
 			lucide.createIcons();
+		</script>
+
+		<!-- Store JavaScript -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				// Category Filter
+				const categoryButtons = document.querySelectorAll('.category-btn');
+				const productCards = document.querySelectorAll('.product-card');
+				
+				categoryButtons.forEach(button => {
+					button.addEventListener('click', function() {
+						// Remove active class from all buttons
+						categoryButtons.forEach(btn => {
+							btn.classList.remove('active');
+							btn.querySelector('.absolute').classList.add('opacity-0');
+							btn.classList.remove('text-white');
+							btn.classList.add('bg-gray-50', 'text-gray-700');
+						});
+						
+						// Add active class to clicked button
+						this.classList.add('active');
+						this.querySelector('.absolute').classList.remove('opacity-0');
+						this.classList.add('text-white');
+						this.classList.remove('bg-gray-50', 'text-gray-700');
+						
+						// Filter products
+						const category = this.getAttribute('data-category');
+						filterProducts(category);
+					});
+				});
+				
+				function filterProducts(category) {
+					productCards.forEach(card => {
+						if (category === 'all' || card.getAttribute('data-category') === category) {
+							card.style.display = 'block';
+						} else {
+							card.style.display = 'none';
+						}
+					});
+				}
+				
+				// Search Functionality
+				const searchInput = document.getElementById('searchInput');
+				const clearSearchBtn = searchInput.parentElement.querySelector('button');
+				
+				searchInput.addEventListener('input', function() {
+					const searchTerm = this.value.toLowerCase();
+					
+					// Show/hide clear button
+					if (searchTerm.length > 0) {
+						clearSearchBtn.style.display = 'block';
+					} else {
+						clearSearchBtn.style.display = 'none';
+					}
+					
+					// Filter products
+					productCards.forEach(card => {
+						const title = card.querySelector('h3').textContent.toLowerCase();
+						const description = card.querySelector('p').textContent.toLowerCase();
+						
+						if (title.includes(searchTerm) || description.includes(searchTerm)) {
+							card.style.display = 'block';
+						} else {
+							card.style.display = 'none';
+						}
+					});
+				});
+				
+				// Clear search
+				clearSearchBtn.addEventListener('click', function() {
+					searchInput.value = '';
+					this.style.display = 'none';
+					
+					// Show all products
+					productCards.forEach(card => {
+						card.style.display = 'block';
+					});
+				});
+				
+				// Sort Functionality
+				const sortSelect = document.getElementById('sortSelect');
+				sortSelect.addEventListener('change', function() {
+					const sortBy = this.value;
+					const productsGrid = document.getElementById('productsGrid');
+					const cards = Array.from(productCards);
+					
+					cards.sort((a, b) => {
+						switch(sortBy) {
+							case 'price-low':
+								return getPrice(a) - getPrice(b);
+							case 'price-high':
+								return getPrice(b) - getPrice(a);
+							case 'rating':
+								return getRating(b) - getRating(a);
+							case 'newest':
+								return 0; // Keep original order for newest
+							case 'popular':
+								return getPopularity(b) - getPopularity(a);
+							default:
+								return 0;
+						}
+					});
+					
+					// Re-append sorted cards
+					cards.forEach(card => productsGrid.appendChild(card));
+				});
+				
+				function getPrice(card) {
+					const priceText = card.querySelector('.text-2xl').textContent;
+					return parseInt(priceText.replace(/[^\d]/g, ''));
+				}
+				
+				function getRating(card) {
+					const stars = card.querySelectorAll('.text-yellow-400').length;
+					return stars;
+				}
+				
+				function getPopularity(card) {
+					const ratingText = card.querySelector('.text-gray-500').textContent;
+					return parseInt(ratingText.replace(/[^\d]/g, ''));
+				}
+				
+				// View Toggle
+				const gridView = document.getElementById('gridView');
+				const listView = document.getElementById('listView');
+				const productsGrid = document.getElementById('productsGrid');
+				
+				gridView.addEventListener('click', function() {
+					productsGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8';
+					this.classList.add('bg-emerald-600', 'text-white');
+					this.classList.remove('text-gray-600');
+					listView.classList.remove('bg-emerald-600', 'text-white');
+					listView.classList.add('text-gray-600');
+					
+					// Reset card layout for grid view
+					productCards.forEach(card => {
+						card.className = 'product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300';
+					});
+				});
+				
+				listView.addEventListener('click', function() {
+					productsGrid.className = 'grid grid-cols-1 gap-6 mb-8';
+					this.classList.add('bg-emerald-600', 'text-white');
+					this.classList.remove('text-gray-600');
+					gridView.classList.remove('bg-emerald-600', 'text-white');
+					gridView.classList.add('text-gray-600');
+					
+					// Update card layout for list view
+					productCards.forEach(card => {
+						card.className = 'product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 flex';
+						const imageContainer = card.querySelector('.relative');
+						const contentContainer = card.querySelector('.p-4');
+						
+						if (imageContainer && contentContainer) {
+							imageContainer.className = 'relative w-48 h-32 flex-shrink-0';
+							contentContainer.className = 'p-4 flex-1';
+						}
+					});
+				});
+				
+				// Quick Filters
+				const quickFilters = document.querySelectorAll('.quick-filter');
+				quickFilters.forEach(filter => {
+					filter.addEventListener('click', function() {
+						// Toggle active state
+						this.classList.toggle('ring-2');
+						this.classList.toggle('ring-emerald-500');
+						
+						// Apply filter logic
+						const filterType = this.getAttribute('data-filter');
+						applyQuickFilter(filterType);
+					});
+				});
+				
+				function applyQuickFilter(filterType) {
+					productCards.forEach(card => {
+						let shouldShow = true;
+						
+						switch(filterType) {
+							case 'sale':
+								shouldShow = card.querySelector('.line-through') !== null;
+								break;
+							case 'new':
+								shouldShow = card.querySelector('.bg-blue-500') !== null;
+								break;
+							case 'hot':
+								const stars = card.querySelectorAll('.text-yellow-400').length;
+								shouldShow = stars >= 5;
+								break;
+							case 'popular':
+								const ratingText = card.querySelector('.text-gray-500').textContent;
+								const rating = parseInt(ratingText.replace(/[^\d]/g, ''));
+								shouldShow = rating >= 100;
+								break;
+						}
+						
+						card.style.display = shouldShow ? 'block' : 'none';
+					});
+				}
+				
+				// Add to Cart functionality
+				const buyButtons = document.querySelectorAll('.bg-emerald-600');
+				buyButtons.forEach(button => {
+					button.addEventListener('click', function(e) {
+						e.preventDefault();
+						const productCard = this.closest('.product-card');
+						const productName = productCard.querySelector('h3').textContent;
+						const productPrice = productCard.querySelector('.text-2xl').textContent;
+						
+						// Show notification
+						showNotification(`Đã thêm "${productName}" vào giỏ hàng!`, 'success');
+						
+						// Here you would typically add to cart logic
+						console.log('Added to cart:', {
+							name: productName,
+							price: productPrice
+						});
+					});
+				});
+				
+				// Wishlist functionality
+				const wishlistButtons = document.querySelectorAll('[data-lucide="heart"]');
+				wishlistButtons.forEach(button => {
+					button.addEventListener('click', function(e) {
+						e.preventDefault();
+						this.classList.toggle('text-red-500');
+						this.classList.toggle('fill-current');
+						
+						if (this.classList.contains('text-red-500')) {
+							showNotification('Đã thêm vào danh sách yêu thích!', 'success');
+						} else {
+							showNotification('Đã xóa khỏi danh sách yêu thích!', 'info');
+						}
+					});
+				});
+				
+				// Notification function
+				function showNotification(message, type = 'info') {
+					// Create notification element
+					const notification = document.createElement('div');
+					notification.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white transition-all duration-300 transform translate-x-full`;
+					
+					// Set color based on type
+					switch(type) {
+						case 'success':
+							notification.classList.add('bg-green-500');
+							break;
+						case 'error':
+							notification.classList.add('bg-red-500');
+							break;
+						case 'warning':
+							notification.classList.add('bg-yellow-500');
+							break;
+						default:
+							notification.classList.add('bg-blue-500');
+					}
+					
+					notification.textContent = message;
+					document.body.appendChild(notification);
+					
+					// Animate in
+					setTimeout(() => {
+						notification.classList.remove('translate-x-full');
+					}, 100);
+					
+					// Remove after 3 seconds
+					setTimeout(() => {
+						notification.classList.add('translate-x-full');
+						setTimeout(() => {
+							document.body.removeChild(notification);
+						}, 300);
+					}, 3000);
+				}
+				
+				// Pagination
+				const paginationButtons = document.querySelectorAll('.flex.justify-center button');
+				paginationButtons.forEach(button => {
+					button.addEventListener('click', function() {
+						// Remove active class from all pagination buttons
+						paginationButtons.forEach(btn => {
+							btn.classList.remove('bg-emerald-600', 'text-white');
+							btn.classList.add('border', 'border-gray-300', 'hover:bg-gray-50');
+						});
+						
+						// Add active class to clicked button
+						if (!this.querySelector('i')) { // Not a navigation button
+							this.classList.add('bg-emerald-600', 'text-white');
+							this.classList.remove('border', 'border-gray-300', 'hover:bg-gray-50');
+						}
+						
+						// Here you would typically load new page content
+						console.log('Page changed');
+					});
+				});
+			});
 		</script>
 	</body>
 </html>
