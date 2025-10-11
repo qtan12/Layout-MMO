@@ -279,7 +279,10 @@
 			@apply w-full;
 			}
 			.tabs-list {
-			@apply flex bg-gray-100 rounded-md ;
+			@apply flex justify-around items-center bg-gray-100 rounded-md p-1 gap-2;
+			}
+			.tabs-list > * {
+				@apply flex-1;
 			}
 			/* Mobile scrollable tabs */
 			@media (max-width: 640px) {
@@ -1209,7 +1212,7 @@
 		}
 		}
 	</style>
-	
+
 	<!-- BlazeSlider CSS Variables to prevent layout shift -->
 	<style>
 		.hot-products-slider.blaze-slider {
@@ -1436,34 +1439,13 @@
 			            }
 			        });
 			    }
-
-			    // Initialize Related Products Slider
-			    const relatedProductsSlider = document.querySelector('.related-products-slider');
-			    if (relatedProductsSlider) {
-			        new BlazeSlider(relatedProductsSlider, {
-			            all: {
-			                enableAutoplay: false,
-			                transitionDuration: 500,
-			                slidesToShow: 4,
-			                slidesToScroll: 1,
-			            },
-			            '(max-width: 1290px)': {
-			                slidesToShow: 3,
-			            },
-			            '(max-width: 1024px)': {
-			                slidesToShow: 2,
-			            },
-			            '(max-width: 640px)': {
-			                slidesToShow: 1,
-			            }
-			        });
-			    }
 			});
 		</script>
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<!-- BlazeSlider CSS Variables to prevent layout shift -->
 		
 	</head>
 
@@ -2998,7 +2980,7 @@
 						<div class="w-full overflow-hidden">
 							<div role="tablist" aria-orientation="horizontal" class="tabs-list" tabindex="0" data-orientation="horizontal" style="outline: none;">
 								<button type="button" role="tab" @click="setActiveTab('description')" :aria-selected="isTabActive('description')" class="tabs-trigger" :class="isTabActive('description') ? 'text-emerald-600 ' : ''">Mô tả</button>
-								<button type="button" role="tab" @click="setActiveTab('specifications')" :aria-selected="isTabActive('specifications')" class="tabs-trigger" :class="isTabActive('specifications') ? ' text-emerald-600' : ''">Thông số</button>
+								<button type="button" role="tab" @click="setActiveTab('specifications')" :aria-selected="isTabActive('specifications')" class="tabs-trigger" :class="isTabActive('specifications') ? ' text-emerald-600' : ''">Tính năng</button>
 								<button type="button" role="tab" @click="setActiveTab('reviews')" :aria-selected="isTabActive('reviews')" class="tabs-trigger" :class="isTabActive('reviews') ? ' text-emerald-600' : ''">
 								<span class="hidden sm:inline">Đánh giá (1247)</span>
 								<span class="sm:hidden">Đánh giá</span>
@@ -3021,26 +3003,28 @@
 					</div>
 					<div x-show="isTabActive('specifications')" role="tabpanel" class="tabs-content">
 						<div class="prose max-w-none">
-							<h3 class="text-responsive-sm font-medium text-gray-900 mb-3 sm:mb-4">Thông số kỹ thuật</h3>
-							<div class="space-y-3 sm:space-y-4">
-								<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-									<div>
-										<span class="text-gray-900 text-responsive-xs ">Chất lượng video:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">4K Ultra HD</span>
-									</div>
-									<div>
-										<span class="text-gray-900 text-responsive-xs">Số thiết bị:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">4 thiết bị cùng lúc</span>
-									</div>
-									<div>
-										<span class="text-gray-900 text-responsive-xs">Hỗ trợ HDR:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">Có</span>
-									</div>
-									<div>
-										<span class="text-gray-900 text-responsive-xs ">Tải xuống offline:</span>
-										<span class="text-gray-500 ml-2 text-responsive-xs">Có</span>
-									</div>
-								</div>
+							<h3 class="text-responsive-sm font-medium text-gray-900 mb-3 sm:mb-4">Tính năng nổi bật</h3>
+							<div class="overflow-hidden rounded-lg">
+								<table class="w-full">
+									<tbody>
+										<tr class="bg-gray-50">
+											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Chất lượng video</td>
+											<td class="px-4 py-3 text-gray-500 text-responsive-xs">4K Ultra HD</td>
+										</tr>
+										<tr class="bg-white">
+											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Số thiết bị</td>
+											<td class="px-4 py-3 text-gray-500 text-responsive-xs">4 thiết bị cùng lúc</td>
+										</tr>
+										<tr class="bg-gray-50">
+											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Hỗ trợ HDR</td>
+											<td class="px-4 py-3 text-gray-500 text-responsive-xs">Có</td>
+										</tr>
+										<tr class="bg-white">
+											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Tải xuống offline</td>
+											<td class="px-4 py-3 text-gray-500 text-responsive-xs">Có</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -3198,6 +3182,208 @@
 						</div>
 					</div>
 				</div>
+				</div>
+			</section>
+			<!-- FAQ Section -->
+			<section class=" container">
+				<div class=" card p-6 ">
+					<h2 class="section-title">Câu hỏi thường gặp</h2>
+					<div class="space-y-4" x-data="faqComponent()">
+						<!-- FAQ Item 1 -->
+						<div class="overflow-hidden">
+							<button 
+								@click="toggleFaq(0)"
+								class="w-full border-b border-gray-200 py-4 text-left  hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+							>
+								<span class="font-medium text-gray-900">Tài khoản Netflix Premium có gì đặc biệt so với gói thường?</span>
+								<i 
+									data-lucide="minus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': openFaqs[0], 'rotate-90': !openFaqs[0] }"
+									x-show="openFaqs[0]"
+								></i>
+								<i 
+									data-lucide="plus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': !openFaqs[0], 'rotate-90': openFaqs[0] }"
+									x-show="!openFaqs[0]"
+								></i>
+							</button>
+							<div 
+								x-show="openFaqs[0]"
+								x-transition:enter="transition ease-out duration-200"
+								x-transition:enter-start="opacity-0 transform -translate-y-2"
+								x-transition:enter-end="opacity-100 transform translate-y-0"
+								x-transition:leave="transition ease-in duration-150"
+								x-transition:leave-start="opacity-100 transform translate-y-0"
+								x-transition:leave-end="opacity-0 transform -translate-y-2"
+								class="py-4 bg-gray-50 "
+							>
+								<div class="flex">
+									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
+									<p class="text-gray-700 leading-relaxed">
+										Tài khoản Netflix Premium cung cấp chất lượng video 4K Ultra HD, hỗ trợ xem đồng thời trên 4 thiết bị, tải xuống không giới hạn và truy cập đầy đủ thư viện nội dung độc quyền. Bạn có thể xem phim, series, phim tài liệu chất lượng cao với âm thanh Dolby Atmos và HDR10+.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ Item 2 -->
+						<div class=" overflow-hidden">
+							<button 
+								@click="toggleFaq(1)"
+								class="w-full border-b border-gray-200 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+							>
+								<span class="font-medium text-gray-900">Tài khoản có thời hạn sử dụng bao lâu và có được gia hạn không?</span>
+								<i 
+									data-lucide="minus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': openFaqs[1], 'rotate-90': !openFaqs[1] }"
+									x-show="openFaqs[1]"
+								></i>
+								<i 
+									data-lucide="plus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': !openFaqs[1], 'rotate-90': openFaqs[1] }"
+									x-show="!openFaqs[1]"
+								></i>
+							</button>
+							<div 
+								x-show="openFaqs[1]"
+								x-transition:enter="transition ease-out duration-200"
+								x-transition:enter-start="opacity-0 transform -translate-y-2"
+								x-transition:enter-end="opacity-100 transform translate-y-0"
+								x-transition:leave="transition ease-in duration-150"
+								x-transition:leave-start="opacity-100 transform translate-y-0"
+								x-transition:leave-end="opacity-0 transform -translate-y-2"
+								class=" py-4 bg-gray-50 "
+							>
+								<div class="flex">
+									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
+									<p class="text-gray-700 leading-relaxed">
+										Tài khoản Netflix Premium có thời hạn sử dụng 1 năm kể từ ngày kích hoạt. Chúng tôi cung cấp bảo hành 30 ngày và hỗ trợ gia hạn với giá ưu đãi. Nếu tài khoản gặp sự cố trong thời gian bảo hành, chúng tôi sẽ thay thế miễn phí.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ Item 3 -->
+						<div class=" overflow-hidden">
+							<button 
+								@click="toggleFaq(2)"
+								class="w-full border-b border-gray-200 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+							>
+								<span class="font-medium text-gray-900">Làm thế nào để nhận tài khoản sau khi thanh toán?</span>
+								<i 
+									data-lucide="minus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': openFaqs[2], 'rotate-90': !openFaqs[2] }"
+									x-show="openFaqs[2]"
+								></i>
+								<i 
+									data-lucide="plus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': !openFaqs[2], 'rotate-90': openFaqs[2] }"
+									x-show="!openFaqs[2]"
+								></i>
+							</button>
+							<div 
+								x-show="openFaqs[2]"
+								x-transition:enter="transition ease-out duration-200"
+								x-transition:enter-start="opacity-0 transform -translate-y-2"
+								x-transition:enter-end="opacity-100 transform translate-y-0"
+								x-transition:leave="transition ease-in duration-150"
+								x-transition:leave-start="opacity-100 transform translate-y-0"
+								x-transition:leave-end="opacity-0 transform -translate-y-2"
+								class=" py-4 bg-gray-50 "
+							>
+								<div class="flex">
+									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
+									<p class="text-gray-700 leading-relaxed">
+										Sau khi thanh toán thành công, thông tin tài khoản sẽ được gửi ngay lập tức qua email và tin nhắn SMS. Bạn sẽ nhận được email chứa email/username và mật khẩu đăng nhập. Thời gian giao hàng thường từ 5-15 phút, tối đa 1 giờ trong trường hợp đặc biệt.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ Item 4 -->
+						<div class=" overflow-hidden">
+							<button 
+								@click="toggleFaq(3)"
+								class="w-full border-b border-gray-200 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+							>
+								<span class="font-medium text-gray-900">Tài khoản có hoạt động trên tất cả thiết bị không?</span>
+								<i 
+									data-lucide="minus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': openFaqs[3], 'rotate-90': !openFaqs[3] }"
+									x-show="openFaqs[3]"
+								></i>
+								<i 
+									data-lucide="plus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': !openFaqs[3], 'rotate-90': openFaqs[3] }"
+									x-show="!openFaqs[3]"
+								></i>
+							</button>
+							<div 
+								x-show="openFaqs[3]"
+								x-transition:enter="transition ease-out duration-200"
+								x-transition:enter-start="opacity-0 transform -translate-y-2"
+								x-transition:enter-end="opacity-100 transform translate-y-0"
+								x-transition:leave="transition ease-in duration-150"
+								x-transition:leave-start="opacity-100 transform translate-y-0"
+								x-transition:leave-end="opacity-0 transform -translate-y-2"
+								class=" py-4 bg-gray-50 "
+							>
+								<div class="flex">
+									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
+									<p class="text-gray-700 leading-relaxed">
+										Có, tài khoản Netflix Premium hoạt động trên tất cả thiết bị bao gồm: Smart TV, máy tính (Windows/Mac), điện thoại (iOS/Android), tablet, PlayStation, Xbox, Apple TV, Chromecast, Roku và các thiết bị streaming khác. Bạn có thể đăng nhập đồng thời trên tối đa 4 thiết bị.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ Item 5 -->
+						<div class=" overflow-hidden">
+							<button 
+								@click="toggleFaq(4)"
+								class="w-full  py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+							>
+								<span class="font-medium text-gray-900">Thời hạn sử dụng tài khoản là bao lâu?</span>
+								<i 
+									data-lucide="minus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': openFaqs[4], 'rotate-90': !openFaqs[4] }"
+									x-show="openFaqs[4]"
+								></i>
+								<i 
+									data-lucide="plus" 
+									class="w-5 h-5 text-gray-600 transition-transform duration-200"
+									:class="{ 'rotate-0': !openFaqs[4], 'rotate-90': openFaqs[4] }"
+									x-show="!openFaqs[4]"
+								></i>
+							</button>
+							<div 
+								x-show="openFaqs[4]"
+								x-transition:enter="transition ease-out duration-200"
+								x-transition:enter-start="opacity-0 transform -translate-y-2"
+								x-transition:enter-end="opacity-100 transform translate-y-0"
+								x-transition:leave="transition ease-in duration-150"
+								x-transition:leave-start="opacity-100 transform translate-y-0"
+								x-transition:leave-end="opacity-0 transform -translate-y-2"
+								class=" py-4 bg-gray-50 "
+							>
+								<div class="flex">
+									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
+									<p class="text-gray-700 leading-relaxed">
+										Tài khoản Netflix Premium cung cấp chất lượng video 4K Ultra HD, hỗ trợ xem đồng thời trên 4 thiết bị, tải xuống không giới hạn và truy cập đầy đủ thư viện nội dung độc quyền. Bạn có thể xem phim, series, phim tài liệu chất lượng cao với âm thanh Dolby Atmos và HDR10+.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 			<!-- sản phẩm liên quan -->
@@ -3550,6 +3736,8 @@
 					</div>
 				</div>
 			</section>
+			
+			
 		</main>
 		<!-- Footer -->
 		<footer class="bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800 text-white">
