@@ -193,7 +193,7 @@
 			}
 			/* Card Styles */
 			.card {
-			@apply  bg-white shadow-sm rounded-lg transition-all duration-300 transform;
+			@apply sm:border border-gray-200 bg-white shadow-md rounded-md hover:shadow-lg transition-all duration-300 transform;
 			}
 			.card-header {
 			@apply flex flex-col space-y-1.5 p-6 pb-4;
@@ -1439,29 +1439,6 @@
 			            }
 			        });
 			    }
-
-			    // Initialize Related Products Slider
-			    const relatedProductsSlider = document.querySelector('.related-products-slider');
-			    if (relatedProductsSlider) {
-			        new BlazeSlider(relatedProductsSlider, {
-			            all: {
-			                enableAutoplay: false,
-			                transitionDuration: 500,
-			                slidesToShow: 4,
-			                slidesToScroll: 1,
-			                loop: true,
-			            },
-			            '(max-width: 1024px)': {
-			                slidesToShow: 3,
-			            },
-			            '(max-width: 768px)': {
-			                slidesToShow: 2,
-			            },
-			            '(max-width: 640px)': {
-			                slidesToShow: 1,
-			            }
-			        });
-			    }
 			});
 		</script>
 		<!-- Google Fonts -->
@@ -1471,8 +1448,7 @@
 		<!-- BlazeSlider CSS Variables to prevent layout shift -->
 		
 	</head>
-
-	<body class="min-h-screen bg-gray-50">
+	<body class="min-h-screen bg-white">
 		<!-- header -->
 		<header class="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm sticky top-0 z-50" x-data="headerComponent()">
 			<!-- Top Bar -->
@@ -1481,21 +1457,21 @@
 					<div class="flex-between text-sm">
 						<div class="flex items-center space-x-6">
 							<div class="flex items-center space-x-2">
-								<i data-lucide="shield-check" class="w-4 h-4"></i>
+								<i data-lucide="shield-check" class="size-4"></i>
 								<span>Bảo hành 12 tháng</span>
 							</div>
 							<div class="hidden md:flex items-center space-x-2">
-								<i data-lucide="truck" class="w-4 h-4"></i>
+								<i data-lucide="truck" class="size-4"></i>
 								<span>Giao hàng tức thì</span>
 							</div>
 							<div class="hidden lg:flex items-center space-x-2">
-								<i data-lucide="headphones" class="w-4 h-4"></i>
+								<i data-lucide="headphones" class="size-4"></i>
 								<span>Hỗ trợ 24/7</span>
 							</div>
 						</div>
 						<div class="flex items-center space-x-4">
 							<div class="hidden sm:flex items-center space-x-2">
-								<i data-lucide="flame" class="w-4 h-4"></i>
+								<i data-lucide="flame" class="size-4"></i>
 								<span>Flash Sale - Giảm đến 70%</span>
 							</div>
 							<a href="/support" class="hover:text-emerald-200 transition-colors">Liên hệ</a>
@@ -1522,7 +1498,7 @@
 						<div class="nav-dropdown">
 							<a href="/products" class="nav-dropdown-trigger">
 							Sản phẩm
-							<i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform"></i>
+							<i data-lucide="chevron-down" class="size-4 ml-1 transition-transform"></i>
 							</a>
 							<div class="nav-dropdown-menu w-screen max-w-4xl p-8">
 								<!-- Row 1 - Core MMO Products -->
@@ -1534,8 +1510,8 @@
 												<i data-lucide="link"></i>
 											</div>
 											<div>
-												<div class="text-lg">Backlink/Textlink/Entity</div>
-												<div class="text-xs text-gray-500">SEO & Link Building</div>
+												<div class="text-responsive-sm">Backlink/Textlink/Entity</div>
+												<div class="text-responsive-xs text-gray-500">SEO & Link Building</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1551,8 +1527,8 @@
 												<i data-lucide="mail"></i>
 											</div>
 											<div>
-												<div class="text-lg">Tài khoản Email</div>
-												<div class="text-xs text-gray-500">Email Accounts</div>
+												<div class="text-responsive-sm">Tài khoản Email</div>
+												<div class="text-responsive-xs text-gray-500">Email Accounts</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1568,8 +1544,8 @@
 												<i data-lucide="facebook"></i>
 											</div>
 											<div>
-												<div class="text-lg">Tài khoản Facebook</div>
-												<div class="text-xs text-gray-500">Facebook Accounts</div>
+												<div class="text-responsive-sm">Tài khoản Facebook</div>
+												<div class="text-responsive-xs text-gray-500">Facebook Accounts</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1589,8 +1565,8 @@
 												<i data-lucide="users"></i>
 											</div>
 											<div>
-												<div class="text-lg">Tài khoản Social khác</div>
-												<div class="text-xs text-gray-500">Social Media Accounts</div>
+												<div class="text-responsive-sm">Tài khoản Social khác</div>
+												<div class="text-responsive-xs text-gray-500">Social Media Accounts</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1607,8 +1583,8 @@
 												<i data-lucide="database"></i>
 											</div>
 											<div>
-												<div class="text-lg">Data & Tools MMO</div>
-												<div class="text-xs text-gray-500">Data & Automation Tools</div>
+												<div class="text-responsive-sm">Data & Tools MMO</div>
+												<div class="text-responsive-xs text-gray-500">Data & Automation Tools</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1625,8 +1601,8 @@
 												<i data-lucide="key"></i>
 											</div>
 											<div>
-												<div class="text-lg">License Phần Mềm</div>
-												<div class="text-xs text-gray-500">Software Licenses</div>
+												<div class="text-responsive-sm">License Phần Mềm</div>
+												<div class="text-responsive-xs text-gray-500">Software Licenses</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1645,8 +1621,8 @@
 												<i data-lucide="shield-check"></i>
 											</div>
 											<div>
-												<div class="text-lg">VPN/Proxy/Server</div>
-												<div class="text-xs text-gray-500">Infrastructure & Security</div>
+												<div class="text-responsive-sm">VPN/Proxy/Server</div>
+												<div class="text-responsive-xs text-gray-500">Infrastructure & Security</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1663,8 +1639,8 @@
 												<i data-lucide="graduation-cap"></i>
 											</div>
 											<div>
-												<div class="text-lg">Khóa Học/TUT MMO</div>
-												<div class="text-xs text-gray-500">Learning & Tutorials</div>
+												<div class="text-responsive-sm">Khóa Học/TUT MMO</div>
+												<div class="text-responsive-xs text-gray-500">Learning & Tutorials</div>
 											</div>
 										</a>
 										<ul class="space-y-2 pl-4">
@@ -1676,14 +1652,14 @@
 									</div>
 									<!-- Featured Products -->
 									<div class="dropdown-col">
-										<div class="bg-gradient-to-r from-emerald-50 to-green-50 rounded-lg p-4 border border-emerald-200">
+										<div class="card bg-gradient-to-r from-emerald-100 to-green-100 p-4 ">
 											<div class="flex items-center mb-3">
-												<div class="bg-icon" style="width: 2rem; height: 2rem;">
-													<i data-lucide="star" style="width: 1rem; height: 1rem;"></i>
+												<div class="bg-icon">
+													<i data-lucide="star" class="size-5"></i>
 												</div>
 												<div>
-													<div class="font-semibold text-gray-900">Sản phẩm nổi bật</div>
-													<div class="text-xs text-gray-500">Featured Products</div>
+													<div class="text-responsive-sm font-semibold text-gray-900">Sản phẩm nổi bật</div>
+													<div class="text-responsive-xs text-gray-500">Featured Products</div>
 												</div>
 											</div>
 											<ul class="space-y-2 pl-4">
@@ -1857,22 +1833,22 @@
 						<span class="sm:hidden">Đăng</span>
 						</button>
 						<!-- Shopping Cart -->
-						<button @click="toggleCart()" class="hidden lg:flex mr-3 xl:mr-0 btn btn-overflow btn-ghost relative">
+						<button @click="toggleCart()" class="hidden lg:flex mr-2 xl:mr-0 btn btn-overflow btn-ghost relative">
 							<i data-lucide="shopping-cart" class="size-5"></i>
 							<span class="hidden sm:inline ml-2">Giỏ hàng</span>
 							<!-- Cart Badge -->
 							<span class="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium" 
 								x-show="cartCount > 0" x-text="cartCount">0</span>
 						</button>
-						<!-- Mobile Menu -->
-						<section class="lg:hidden flex items-center space-x-2 pl-2">
+						<!-- Mobile Icon -->
+						<section class="lg:hidden flex items-center space-x-2">
 							<!-- Mobile Cart -->
 							<button @click="toggleCart()" class="btn btn-overflow btn-ghost btn-md p-2 relative">
 								<i data-lucide="shopping-cart" class="size-5"></i>
 								<span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full size-4 flex items-center justify-center font-medium" 
 									  x-show="cartCount > 0" x-text="cartCount">0</span>
 							</button>
-							
+							<!-- Mobile Search -->
 							<button @click="openMobileMenu(true)" class="btn btn-ghost btn-md p-2 ">
 								<i data-lucide="search" class="size-5"></i>
 							</button>
@@ -1889,7 +1865,7 @@
 								</button>
 							</div>
 							<!-- User Dropdown (hidden by default) -->
-							<div id="userDropdown" class="relative group ml-2 hidden">
+							<div id="userDropdown" class="relative group mr-2 lg:mr-0 hidden">
 								<button class="flex items-center space-x-2"
 									@click="$refs.userMenu.classList.toggle('hidden')">
 									<img id="userAvatar"
@@ -1950,7 +1926,7 @@
 								</div>
 							</div>
 						</section>
-						<button @click="openMobileMenu()" class="btn btn-ghost btn-md p-2  lg:hidden">
+						<button @click="openMobileMenu()" class="btn btn-ghost btn-md p-2 -ml-2 lg:hidden">
 							<i data-lucide="menu" class="size-5"></i>
 						</button>
 					</div>
@@ -1977,7 +1953,7 @@
 								<p class="text-emerald-100 text-sm">Premium Digital Products</p>
 							</div>
 							<button @click="closeMobileMenu()" class="text-white hover:text-gray-200 transition-colors">
-							<i data-lucide="x" class="w-6 h-6"></i>
+							<i data-lucide="x" class="size-5"></i>
 							</button>
 						</div>
 					</div>
@@ -1996,7 +1972,7 @@
 							<div x-data="{ expanded: false }">
 								<div @click="expanded = !expanded" class="mobile-menu-expandable">
 									<a href="/products" class="flex items-center space-x-3">
-									<i data-lucide="package" class="w-5 h-5 text-gray-600"></i>
+									<i data-lucide="package" class="size-5 text-gray-600"></i>
 									<span class="font-medium text-gray-900">Sản Phẩm</span>
 									</a>
 									<i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 transition-transform"
@@ -2005,7 +1981,7 @@
 								<div x-show="expanded" x-transition class="ml-3 space-y-1 mt-1">
 									<!-- Backlink/Textlink/Entity -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="link" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="link" class="size-4 mr-2"></i>
 										Backlink/Textlink/Entity
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2021,7 +1997,7 @@
 									</div>
 									<!-- Tài khoản Email -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="mail" class="size-4 mr-2"></i>
 										Tài khoản Email
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2037,7 +2013,7 @@
 									</div>
 									<!-- Tài khoản Facebook -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="facebook" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="facebook" class="size-4 mr-2"></i>
 										Tài khoản Facebook
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2056,7 +2032,7 @@
 									</div>
 									<!-- Tài khoản Social khác -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="users" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="users" class="size-4 mr-2"></i>
 										Tài khoản Social khác
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2078,7 +2054,7 @@
 									</div>
 									<!-- Data & Tools MMO -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="database" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="database" class="size-4 mr-2"></i>
 										Data & Tools MMO
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2097,7 +2073,7 @@
 									</div>
 									<!-- License Phần Mềm -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="key" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="key" class="size-4 mr-2"></i>
 										License Phần Mềm
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2113,7 +2089,7 @@
 									</div>
 									<!-- VPN/Proxy/Server -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="shield-check" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="shield-check" class="size-4 mr-2"></i>
 										VPN/Proxy/Server
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2132,7 +2108,7 @@
 									</div>
 									<!-- Khóa Học/TUT MMO -->
 									<div class="mobile-submenu-header">
-										<i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
+										<i data-lucide="graduation-cap" class="size-4 mr-2"></i>
 										Khóa Học/TUT MMO
 									</div>
 									<div class="ml-4 space-y-1">
@@ -2155,7 +2131,7 @@
 							<div x-data="{ expanded: false }">
 								<div @click="expanded = !expanded" class="mobile-menu-expandable">
 									<a href="/services" class="flex items-center space-x-3">
-									<i data-lucide="settings" class="w-5 h-5 text-gray-600"></i>
+									<i data-lucide="settings" class="size-5 text-gray-600"></i>
 									<span class="font-medium text-gray-900">Dịch Vụ</span>
 									</a>
 									<i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 transition-transform"
@@ -2426,7 +2402,7 @@
 							</button>
 							<button @click="viewCart()" class="w-full btn btn-outline">
 							<i data-lucide="shopping-cart" class="w-4 h-4 mr-2"></i>
-							<a href="/cart.html">Xem giỏ hàng</a>
+							<a href="./cart.html">Xem giỏ hàng</a>
 							</button>
 						</div>
 					</div>
@@ -2438,10 +2414,10 @@
 				x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
 				x-transition:leave-end="opacity-0" class="modal-overlay hidden" @click="closeAuthModal()"
 				style="height: 100vh; height: 100dvh;">
-				<div class="modal-content max-w-md rounded-2xl" @click.stop>
+				<div class="modal-content max-w-md max-h-[90vh] overflow-y-auto rounded-xl" @click.stop>
 					<!-- Modal Header -->
-					<div class="flex items-center justify-between p-6 pb-0">
-						<h3 class="text-xl font-bold text-gray-900">
+					<div class="flex items-center justify-between p-4 sm:p-6 pb-0">
+						<h3 class="text-responsive-lg font-bold text-gray-900">
 							<span x-show="authTab === 'login'">Đăng Nhập</span>
 							<span x-show="authTab === 'register'">Tạo Tài Khoản</span>
 						</h3>
@@ -2449,49 +2425,49 @@
 						<i data-lucide="x" class="w-5 h-5"></i>
 						</button>
 					</div>
-					<div class="p-6 py-4 border-b border-gray-100">
+					<div class="p-4 sm:p-6 py-3 border-b border-gray-100">
 						<!-- Tab Buttons -->
 						<div class="tabs-list">
-							<button @click="authTab = 'login'; errors = {}; isLoading = false" class="tabs-trigger"
+							<button @click="authTab = 'login'; errors = {}; isLoading = false" class="btn tabs-trigger"
 								:class="authTab === 'login' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">
 							Đăng Nhập
 							</button>
-							<button @click="authTab = 'register'; errors = {}; isLoading = false" class="tabs-trigger"
+							<button @click="authTab = 'register'; errors = {}; isLoading = false" class="btn tabs-trigger"
 								:class="authTab === 'register' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'">
 							Đăng Ký
 							</button>
 						</div>
 					</div>
 					<!-- Modal Body -->
-					<div class="p-6">
+					<div class="p-4 sm:p-6">
 						<!-- General Error Message -->
 						<!-- Login Form -->
-						<form x-show="authTab === 'login'" @submit.prevent="handleLogin()" class="space-y-5">
+						<form x-show="authTab === 'login'" @submit.prevent="handleLogin()" class="space-y-4">
 							<div>
-								<label for="login-email" class="block text-sm font-semibold text-gray-700 mb-2">Tên đăng
+								<label for="login-email" class="block text-responsive-sm font-semibold text-gray-700 mb-2">Tên đăng
 								nhập</label>
 								<div class="input-icon">
 									<input type="text" id="login-email" x-model="loginForm.email"
-										class="input input-lg rounded-xl"
+										class="input input-lg rounded-lg"
 										:class="errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập tên đăng nhập">
 									<i data-lucide="user" class="icon"></i>
 								</div>
 								<p x-show="errors.email" x-text="errors.email"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
-								<label for="login-password" class="block text-sm font-semibold text-gray-700 mb-2">Mật
+								<label for="login-password" class="block text-responsive-sm font-semibold text-gray-700 mb-2">Mật
 								khẩu</label>
 								<div class="input-icon">
 									<input type="password" id="login-password" x-model="loginForm.password"
-										class="input input-lg rounded-xl"
+										class="input input-lg rounded-lg"
 										:class="errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập mật khẩu">
 									<i data-lucide="lock" class="icon"></i>
 								</div>
 								<p x-show="errors.password" x-text="errors.password"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div class="flex items-center justify-between">
 								<label class="flex items-center">
@@ -2515,7 +2491,7 @@
 							</button>
 						</form>
 						<!-- Social Login Buttons - Login -->
-						<div x-show="authTab === 'login'" class="space-y-4 mt-5 pb-4">
+						<div x-show="authTab === 'login'" class="space-y-3 mt-4 pb-2">
 							<!-- Divider -->
 							<div class="relative">
 								<div class="absolute inset-0 flex items-center">
@@ -2556,84 +2532,84 @@
 							</div>
 						</div>
 						<!-- Register Form -->
-						<form x-show="authTab === 'register'" @submit.prevent="handleRegister()" class="space-y-5 pb-4">
+						<form x-show="authTab === 'register'" @submit.prevent="handleRegister()" class="space-y-4 pb-2">
 							<div>
-								<label for="register-fullname" class="block text-sm font-semibold text-gray-700 mb-2">Họ và
+								<label for="register-fullname" class="block text-responsive-sm font-semibold text-gray-700 mb-2">Họ và
 								tên</label>
 								<div class="input-icon">
 									<input type="text" id="register-fullname" x-model="registerForm.fullname"
-										class="input input-lg rounded-xl"
+										class="input input-lg rounded-lg"
 										:class="errors.fullname ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập họ và tên">
 									<i data-lucide="user" class="icon"></i>
 								</div>
 								<p x-show="errors.fullname" x-text="errors.fullname"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
-								<label for="register-username" class="block text-sm font-semibold text-gray-700 mb-2">Tên
+								<label for="register-username" class="block text-responsive-sm font-semibold text-gray-700 mb-2">Tên
 								đăng nhập</label>
 								<div class="input-icon">
 									<input type="text" id="register-username" x-model="registerForm.username"
-										class="input input-lg rounded-xl"
+										class="input input-lg rounded-lg"
 										:class="errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập tên đăng nhập">
 									<i data-lucide="user-check" class="icon"></i>
 								</div>
 								<p x-show="errors.username" x-text="errors.username"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="register-email"
-									class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+									class="block text-responsive-sm font-semibold text-gray-700 mb-2">Email</label>
 								<div class="input-icon">
 									<input type="email" id="register-email" x-model="registerForm.email"
-										class="input input-lg rounded-xl"
+										class="input input-lg rounded-lg"
 										:class="errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập email của bạn">
 									<i data-lucide="mail" class="icon"></i>
 								</div>
 								<p x-show="errors.email" x-text="errors.email"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
-								<label for="register-phone" class="block text-sm font-semibold text-gray-700 mb-2">Số điện
+								<label for="register-phone" class="block text-responsive-sm font-semibold text-gray-700 mb-2">Số điện
 								thoại</label>
 								<div class="input-icon">
 									<input type="tel" id="register-phone" x-model="registerForm.phone"
-										class="input input-lg rounded-xl"
+										class="input input-lg rounded-lg"
 										:class="errors.phone ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập số điện thoại">
 									<i data-lucide="phone" class="icon"></i>
 								</div>
 								<p x-show="errors.phone" x-text="errors.phone"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
-								<label for="register-password" class="block text-sm font-semibold text-gray-700 mb-2">Mật
+								<label for="register-password" class="block text-responsive-sm font-semibold text-gray-700 mb-2">Mật
 								khẩu</label>
 								<div class="input-icon">
 									<input type="password" id="register-password" x-model="registerForm.password"
-										class="input input-lg rounded-xl"
+										class="input input-lg rounded-lg"
 										:class="errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập mật khẩu (ít nhất 6 ký tự)">
 									<i data-lucide="lock" class="icon"></i>
 								</div>
 								<p x-show="errors.password" x-text="errors.password"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label for="register-confirm-password"
-									class="block text-sm font-semibold text-gray-700 mb-2">Xác nhận mật khẩu</label>
+									class="block text-responsive-sm font-semibold text-gray-700 mb-2">Xác nhận mật khẩu</label>
 								<div class="input-icon">
 									<input type="password" id="register-confirm-password"
-										x-model="registerForm.confirmPassword" class="input input-lg rounded-xl"
+										x-model="registerForm.confirmPassword" class="input input-lg rounded-lg"
 										:class="errors.confirmPassword ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''"
 										placeholder="Nhập lại mật khẩu">
 									<i data-lucide="shield-check" class="icon"></i>
 								</div>
 								<p x-show="errors.confirmPassword" x-text="errors.confirmPassword"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<div>
 								<label class="flex items-start">
@@ -2646,7 +2622,7 @@
 								</span>
 								</label>
 								<p x-show="errors.agree" x-text="errors.agree"
-									class="text-red-500 text-xs mt-1.5 font-medium"></p>
+									class="text-red-500 text-responsive-xs mt-1.5 font-medium"></p>
 							</div>
 							<!-- General Error Message -->
 							<div x-show="errors.general"
@@ -2667,1096 +2643,7 @@
 			</div>
 		</header>
 		<!-- Main Content Area -->
-		<main class="min-h-screen bg-gray-100" x-data="productDetailComponent()">
-			<!-- main content -->
-			<section class="container mx-auto  py-4 sm:py-6">
-				<nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6 overflow-x-auto pb-2">
-					<a class="hover:text-emerald-600 whitespace-nowrap" href="/">Trang chủ</a>
-					<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
-					<a class="hover:text-emerald-600 whitespace-nowrap" href="/categories">Danh mục</a>
-					<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
-					<a class="hover:text-emerald-600 whitespace-nowrap hidden sm:inline" href="/accounts">Tài khoản Premium</a>
-					<a class="hover:text-emerald-600 whitespace-nowrap sm:hidden" href="/accounts">Tài khoản</a>
-					<i data-lucide="chevron-right" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"></i>
-					<span class="text-gray-900 text-xs sm:text-sm truncate">Netflix Premium 1 Năm - 4K Ultra HD</span>
-				</nav>
-				<!-- Ảnh -->
-				<div class="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
-					<div class="space-y-2 sm:space-y-3">
-						<!-- Ảnh chính -->
-						<img alt="Netflix Premium 1 Năm - 4K Ultra HD" class="w-full h-48 sm:h-64 lg:h-80 object-contain" src="/placeholder.svg?height=500&width=500&text=Netflix+Main">
-						
-						<!-- Ảnh phụ (Thumbnails) -->
-						<div class="grid grid-cols-4 gap-1 sm:gap-2 mt-3">
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 1" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=1">
-							</div>
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 2" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=2">
-							</div>
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 3" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=3">
-							</div>
-							<div class="h-16 sm:h-20 cursor-pointer border border-gray-200 rounded-md overflow-hidden hover:border-blue-500 transition-colors">
-								<img alt="Netflix 4" class="w-full h-full object-cover" src="/placeholder.svg?height=80&width=80&text=4">
-							</div>
-						</div>
-						 
-						<div class="grid grid-cols-3 gap-2 sm:gap-3 pt-4 border-t border-gray-200">
-							<div class="text-center">
-								<i data-lucide="shield" class="w-6 h-6 text-emerald-600 mx-auto mb-1"></i>
-								<p class="text-xs font-medium text-gray-900">Bảo hành 12 tháng</p>
-								<p class="text-xs text-gray-500">Thay thế miễn phí</p>
-							</div>
-							<div class="text-center">
-								<i data-lucide="truck" class="w-6 h-6 text-blue-600 mx-auto mb-1"></i>
-								<p class="text-xs font-medium text-gray-900">Giao hàng tức thì</p>
-								<p class="text-xs text-gray-500">Nhận ngay sau thanh toán</p>
-							</div>
-							<div class="text-center">
-								<i data-lucide="headphones" class="w-6 h-6 text-purple-600 mx-auto mb-1"></i>
-								<p class="text-xs font-medium text-gray-900">Hỗ trợ 24/7</p>
-								<p class="text-xs text-gray-500">Tư vấn miễn phí</p>
-							</div>
-						</div>
-					</div>
-					<!-- Column right -->
-					<div class="space-y-3 sm:space-y-4 lg:space-y-5">
-						
-						<h1 class="text-responsive-lg font-bold text-gray-900 mb-2 sm:mb-0">Netflix Premium 1 Năm - 4K Ultra HD</h1>
-						<div class="flex flex-row gap-2 items-center mb-2 ">
-							<div class="flex items-center space-x-1">
-								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-								<i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-								<i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
-								<span class=" text-gray-500 ml-1 text-responsive-xs">4.8</span>
-							</div>
-							<span class="text-gray-500 text-responsive-xs">(1247 đánh giá)</span><span class="text-gray-500 hidden sm:inline">•</span><span class="text-gray-500 text-responsive-xs">3420 đã bán</span>
-						</div>
-							
-						<div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-md p-4 mb-2">
-							<div class="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-1">
-								<div class="flex items-center space-x-2 sm:space-x-3">
-									<span class="text-responsive-lg font-semibold text-emerald-600" x-text="getSelectedPrice()">899.000đ</span>
-									<span class="text-responsive-xs text-gray-500 line-through">2.990.000đ</span>
-								</div>
-							</div>
-						</div>
-						<!-- Số lượng -->
-						<div class="space-y-3">
-							<div class="flex flex-row items-start sm:items-center sm:space-x-3  mb-2 ">
-								<div class="flex items-center space-x-2 flex-1 min-w-0">
-									<span class="font-bold text-gray-900 whitespace-nowrap text-responsive-sm">Số lượng:</span>
-									<div class="flex items-center btn btn-outline btn-sm w-fit flex-shrink-0">
-										<button @click="decreaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-l-lg">
-											<i data-lucide="minus" class="w-3 h-3"></i>
-										</button>
-										<span class="w-8 text-center text-responsive-xs" x-text="quantity">1</span>
-										<button @click="increaseQuantity()" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md px-2 h-8 w-8 rounded-r-lg">
-											<i data-lucide="plus" class="w-3 h-3"></i>
-										</button>
-									</div>
-									<span class="text-responsive-xs text-gray-500 whitespace-nowrap">(50 có sẵn)</span>
-								</div>
-								<button @click="share()" class="btn btn-outline btn-md  flex-shrink-0">
-									<i data-lucide="share-2" class="w-4 h-4"></i>
-								</button>
-							</div>
-						</div>
-						<!-- Chọn loại -->
-						<div class="space-y-3">
-							<h3 class="font-bold text-gray-900 text-responsive-sm">Chọn loại Gmail:</h3>
-							<div class="grid grid-cols-2 gap-2">
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-20-50' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-20-50" 
-									@change="selectGmailType('gmail-vn-aged-20-50')"
-									:checked="selectedGmailType === 'gmail-vn-aged-20-50'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-20-50' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 20-50 Ngày - 899.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-30-80' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-30-80" 
-									@change="selectGmailType('gmail-vn-aged-30-80')"
-									:checked="selectedGmailType === 'gmail-vn-aged-30-80'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-30-80' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 30-80 Ngày - 999.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-40-90' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-40-90" 
-									@change="selectGmailType('gmail-vn-aged-40-90')"
-									:checked="selectedGmailType === 'gmail-vn-aged-40-90'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-40-90' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 40-90 Ngày - 1.099.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-aged-60-120' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-aged-60-120" 
-									@change="selectGmailType('gmail-vn-aged-60-120')"
-									:checked="selectedGmailType === 'gmail-vn-aged-60-120'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-aged-60-120' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Đã Ngâm 60-120 Ngày - 1.199.000đ
-								</span>
-								</label>
-								<label class="flex items-left p-3 btn btn-outline cursor-pointer hover:bg-gray-50" 
-									:class="selectedGmailType === 'gmail-vn-new-1day' ? 'bg-emerald-50 border-emerald-600' : ''">
-								<input type="radio" 
-									name="gmailType" 
-									value="gmail-vn-new-1day" 
-									@change="selectGmailType('gmail-vn-new-1day')"
-									:checked="selectedGmailType === 'gmail-vn-new-1day'"
-									class="mr-3 text-emerald-600 focus:ring-emerald-500 hidden sm:block">
-								<span class="text-responsive-xs text-left whitespace-nowrap  max-w-full w-full overflow-hidden " 
-									:class="selectedGmailType === 'gmail-vn-new-1day' ? 'text-emerald-600' : 'text-gray-900'">
-								Gmail VN Mới Reg 1 Ngày - 799.000đ
-								</span>
-								</label>
-							</div>
-						</div>
-						<div class="flex flex-row gap-3 mt-4">
-							<button @click="addToCart()" :disabled="isAddingToCart" class="btn btn-primary btn-md w-full flex items-center justify-center gap-2" :class="isAddingToCart ? 'opacity-50 cursor-not-allowed' : ''">
-								<i data-lucide="shopping-cart" class="w-5 h-5"></i>
-								<span class="text-responsive-sm ">Thêm vào giỏ</span>
-							</button>
-							<button @click="buyNow()" :disabled="isBuyingNow" class="btn btn-secondary btn-md w-full flex items-center justify-center gap-2" :class="isBuyingNow ? 'opacity-50 cursor-not-allowed' : ''">
-								<i data-lucide="zap" class="w-5 h-5"></i>
-								<span class="text-responsive-sm ">Mua Ngay</span>
-							</button>
-						</div>
-						
-					</div>
-					<div class="mb-2 ">
-						<h3 class="font-bold text-gray-900 mb-2 text-responsive-sm">Tính năng nổi bật</h3>
-						<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Chất lượng 4K Ultra HD</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Hỗ trợ 4 thiết bị cùng lúc</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Thư viện phim khổng lồ</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Không quảng cáo</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Tải xuống offline</span>
-							</div>
-							<div class="flex items-center space-x-2">
-								<i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>
-								<span class="text-responsive-xs text-gray-700">Hỗ trợ HDR</span>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			</section>
-			
-			<!-- Seller -->
-			<section class="container mb-8">
-				<div class="card">
-					<div class="card-content">
-						<!-- Mobile Layout -->
-						<div class="block sm:hidden">
-							<!-- Seller Profile -->
-							<div class="flex items-center gap-3 mb-4">
-								<img src="https://via.placeholder.com/80x80/ffffff/000000?text=TH" 
-									 alt="Vinfast" 
-									 class="w-12 h-12 rounded-full object-cover">
-								<div class="flex-1 min-w-0">
-									<h3 class="text-lg font-bold text-gray-900 truncate">Vinfast</h3>
-									<p class="text-sm text-gray-600">Online 3 Giờ Trước</p>
-								</div>
-							</div>
-							
-							<!-- Action Buttons Mobile -->
-							<div class="flex gap-2 mb-4">
-								<button class="btn btn-primary btn-sm flex-1">
-									<i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
-									Chat Ngay
-								</button>
-								<button class="btn btn-secondary btn-sm flex-1">
-									<i data-lucide="store" class="w-4 h-4 mr-2"></i>
-									Xem Shop
-								</button>
-							</div>
-							
-							<!-- Stats flex Mobile -->
-							<div class="flex flex-1 gap-6 justify-center border-t border-gray-200">
-								<div class="flex flex-col items-center p-3  rounded-lg">
-									<div class="text-sm font-bold text-emerald-600">82</div>
-									<div class="text-xs text-gray-500 ">Đánh Giá</div>
-								</div>
-								
-								<div class="flex flex-col items-center p-3  rounded-lg">
-									<div class="text-sm font-bold text-emerald-600">68</div>
-									<div class="text-xs text-gray-500">Sản phẩm</div>
-								</div>
-								<div class="flex flex-col items-center p-3 rounded-lg">
-									<div class="text-sm font-bold text-emerald-600">97%</div>
-									<div class="text-xs text-gray-500">Phản hồi chat</div>
-								</div>
-								
-							</div>
-						</div>
-						
-						<!-- Desktop Layout -->
-						<div class="hidden sm:flex flex-row gap-4">
-							<!-- Seller Profile Picture and Favorite Button -->
-							<div class="flex flex-col items-center sm:items-start">
-								<div class="relative">
-									<img src="https://via.placeholder.com/80x80/ffffff/000000?text=TH" 
-										 alt="Vinfast" 
-										 class="w-12 h-12 rounded-full object-cover">
-								</div>
-							</div>
-
-							<!-- Seller Info -->
-							<div class="flex min-w-0">
-								<div class="flex flex-col gap-2">
-									<div class="flex-1 min-w-0">
-										<h3 class="text-lg font-bold text-gray-900 truncate">Vinfast</h3>
-										<p class="text-sm text-gray-600">Online 3 Giờ Trước</p>
-									</div>
-									
-									<!-- Action Buttons -->
-									<div class="flex gap-2">
-										<button class="btn btn-primary">
-											<i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
-											Chat Ngay
-										</button>
-										<button class="btn btn-secondary ">
-											<i data-lucide="store" class="w-4 h-4 mr-2"></i>
-											Xem Shop
-										</button>
-									</div>
-								</div>
-							</div>
-							<div class="grid grid-cols-3 flex-1 gap-6 border-l border-gray-200 p-6">
-								<div class="flex flex-row justify-between items-center">
-									<div class="text-responsive-xs text-gray-500">Đánh Giá</div>
-									<div class="text-responsive-xs font-bold text-emerald-600">82</div>
-								</div>
-								<div class="flex flex-row justify-between items-center">
-									<div class="text-responsive-xs text-gray-500">Tỉ lệ phản hồi</div>
-									<div class="text-responsive-xs font-bold text-emerald-600">93%</div>
-								</div>
-								<div class="flex flex-row justify-between items-center">
-									<div class="text-responsive-xs text-gray-500">Tham gia</div>
-									<div class="text-responsive-xs font-bold text-emerald-600">4 năm trước</div>
-								</div>
-								<div class="flex flex-row justify-between items-center">
-									<div class="text-responsive-xs text-gray-500">Sản phẩm</div>
-									<div class="text-responsive-xs font-bold text-emerald-600">68</div>
-								</div>
-								<div class="flex flex-row justify-between items-center">
-									<div class="text-responsive-xs text-gray-500">Thời gian phản hồi</div>
-									<div class="text-responsive-xs font-bold text-emerald-600">trong vài giờ</div>
-								</div>
-								<div class="flex flex-row justify-between items-center">
-									<div class="text-responsive-xs text-gray-500">Người theo dõi</div>
-									<div class="text-responsive-xs font-bold text-emerald-600">1,2k</div>
-								</div>
-							</div>
-						</div>
-							
-							
-						</div>
-						
-
-						
-					</div>
-				</div>
-			</section>
-			<!-- Mô tả sản phẩm -->
-			<section class="container mb-8">
-				<div class="card">
-					<div class="card-content">
-						<div class="prose max-w-none">
-							<h3 class="text-responsive-sm font-medium text-gray-900 mb-2 sm:mb-3">Mô tả sản phẩm</h3>
-							<p class="text-gray-500  mb-3 sm:mb-4 text-responsive-xs leading-relaxed">Tài khoản Netflix Premium chính hãng với chất lượng 4K Ultra HD, hỗ trợ 4 thiết bị cùng lúc. Bảo hành 12 tháng, thay thế miễn phí nếu có lỗi.</p>
-							<div class="bg-emerald-50 rounded-md p-2 sm:p-4">
-								<h4 class="font-semibold text-emerald-800 mb-2 text-responsive-xs">Lưu ý quan trọng:</h4>
-								<ul class="text-emerald-700 text-responsive-xs space-y-1">
-									<li>• Tài khoản được giao ngay sau khi thanh toán thành công</li>
-									<li>• Vui lòng không thay đổi thông tin tài khoản để tránh bị khóa</li>
-									<li>• Liên hệ hỗ trợ nếu gặp bất kỳ vấn đề nào</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Tính năng sản phẩm -->
-			<section class="container mb-8">
-				<div class="card">
-					<div class="card-content">
-						<div class="prose max-w-none">
-							<h3 class="text-responsive-sm font-medium text-gray-900 mb-3 sm:mb-4">Tính năng nổi bật</h3>
-							<div class="overflow-hidden rounded-lg">
-								<table class="w-full">
-									<tbody>
-										<tr class="bg-gray-50">
-											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Chất lượng video</td>
-											<td class="px-4 py-3 text-gray-500 text-responsive-xs">4K Ultra HD</td>
-										</tr>
-										<tr class="bg-white">
-											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Số thiết bị</td>
-											<td class="px-4 py-3 text-gray-500 text-responsive-xs">4 thiết bị cùng lúc</td>
-										</tr>
-										<tr class="bg-gray-50">
-											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Hỗ trợ HDR</td>
-											<td class="px-4 py-3 text-gray-500 text-responsive-xs">Có</td>
-										</tr>
-										<tr class="bg-white">
-											<td class="px-4 py-3 text-gray-900 text-responsive-xs font-medium">Tải xuống offline</td>
-											<td class="px-4 py-3 text-gray-500 text-responsive-xs">Có</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Đánh giá sản phẩm -->
-			<section class="container mb-8">
-				<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
-					<div class="lg:col-span-1">
-						<div class="card sticky top-24">
-							<div class="card-header">
-								<h3 class="card-title text-lg sm:text-xl">Viết đánh giá của bạn</h3>
-								<p class="card-description text-sm">Chia sẻ trải nghiệm của bạn với sản phẩm này.</p>
-							</div>
-							<div class="card-content">
-								<form class="space-y-3 sm:space-y-4">
-									<div>
-										<label for="review-name" class="block text-responsive-sm font-medium text-gray-900 mb-1">Tên của bạn</label>
-										<input type="text" id="review-name" class="input input-md" placeholder="Nhập tên của bạn">
-									</div>
-									<div>
-										<label class="block text-responsive-sm font-medium text-gray-900 mb-1">Đánh giá</label>
-										<div x-data="{ rating: 0, hoverRating: 0 }" class="rating">
-											<template x-for="star in 5">
-												<button type="button" @click="rating = star" @mouseover="hoverRating = star" @mouseleave="hoverRating = 0" class="focus:outline-none">
-												<svg class="rating-star w-5 h-5" :class="{ 'filled': hoverRating >= star || rating >= star, 'empty': hoverRating < star && rating < star }" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												</button>
-											</template>
-										</div>
-									</div>
-									<div>
-										<label for="review-comment" class="block text-responsive-sm font-medium text-gray-900 mb-1">Bình luận</label>
-										<textarea id="review-comment" rows="3" class="input input-md" placeholder="Viết bình luận của bạn ở đây..."></textarea>
-									</div>
-									<button type="submit" class="btn btn-primary btn-md w-full">Gửi đánh giá</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="lg:col-span-2">
-						<div class="flex-between mb-4 sm:mb-6 ">
-							<h3 class="text-responsive-md font-bold">Đánh giá (1247)</h3>
-						</div>
-						<div class="space-y-4 sm:space-y-6">
-							<!-- Review 1 -->
-							<div class="border-b pb-4 sm:pb-6">
-								<div class="flex items-start">
-									<img src="https://i.pravatar.cc/40?u=a042581f4e29026704d" alt="Avatar" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-3 sm:mr-4">
-									<div class="flex-1">
-										<div class="flex-between">
-											<div>
-												<p class="font-semibold text-gray-800 text-sm sm:text-base">Nguyễn Văn Hùng</p>
-												<p class="text-xs text-gray-500">2 ngày trước</p>
-											</div>
-											<div class="rating">
-												<!-- Stars will be dynamically generated, this is a static example -->
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-											</div>
-										</div>
-										<p class="text-gray-700 mt-2 text-sm sm:text-base">Sản phẩm tuyệt vời! Giao hàng nhanh, hỗ trợ nhiệt tình. Sẽ tiếp tục ủng hộ shop trong tương lai.</p>
-									</div>
-								</div>
-							</div>
-							<!-- Review 2 -->
-							<div class="border-b pb-4 sm:pb-6">
-								<div class="flex items-start">
-									<img src="https://i.pravatar.cc/40?u=a042581f4e29026704e" alt="Avatar" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-3 sm:mr-4">
-									<div class="flex-1">
-										<div class="flex-between">
-											<div>
-												<p class="font-semibold text-gray-800 text-sm sm:text-base">Trần Thị Bích</p>
-												<p class="text-xs text-gray-500">1 tuần trước</p>
-											</div>
-											<div class="rating">
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star empty w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-											</div>
-										</div>
-										<p class="text-gray-700 mt-2 text-sm sm:text-base">Chất lượng tốt, giá cả hợp lý. Tuy nhiên phần hướng dẫn sử dụng hơi khó hiểu một chút.</p>
-									</div>
-								</div>
-							</div>
-							<!-- Review 3 -->
-							<div>
-								<div class="flex items-start">
-									<img src="https://i.pravatar.cc/40?u=a042581f4e29026704f" alt="Avatar" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-3 sm:mr-4">
-									<div class="flex-1">
-										<div class="flex-between">
-											<div>
-												<p class="font-semibold text-gray-800 text-sm sm:text-base">Lê Minh Đức</p>
-												<p class="text-xs text-gray-500">3 tuần trước</p>
-											</div>
-											<div class="rating">
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-												<svg class="rating-star filled w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
-													<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69L9.049 2.927z"></path>
-												</svg>
-											</div>
-										</div>
-										<p class="text-gray-700 mt-2 text-sm sm:text-base">Rất đáng tiền. Mọi thứ hoạt động hoàn hảo.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Pagination -->
-						<div class="mt-6 sm:mt-8 flex justify-center">
-							<nav class="pagination">
-								<a href="#" class="pagination-item disabled text-responsive-xs">&laquo;</a>
-								<a href="#" class="pagination-item active text-responsive-xs">1</a>
-								<a href="#" class="pagination-item text-responsive-xs">2</a>
-								<a href="#" class="pagination-item text-responsive-xs">3</a>
-								<span class="pagination-item text-responsive-xs">...</span>
-								<a href="#" class="pagination-item text-responsive-xs">125</a>
-								<a href="#" class="pagination-item text-responsive-xs">&raquo;</a>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- FAQ Section -->
-			<section class=" container">
-				<div class=" card p-6 ">
-					<h2 class="section-title">Câu hỏi thường gặp</h2>
-					<div class="space-y-4" x-data="faqComponent()">
-						<!-- FAQ Item 1 -->
-						<div class="overflow-hidden">
-							<button 
-								@click="toggleFaq(0)"
-								class="w-full border-b border-gray-200 py-4 text-left  hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
-							>
-								<span class="font-medium text-gray-900">Tài khoản Netflix Premium có gì đặc biệt so với gói thường?</span>
-								<i 
-									data-lucide="minus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': openFaqs[0], 'rotate-90': !openFaqs[0] }"
-									x-show="openFaqs[0]"
-								></i>
-								<i 
-									data-lucide="plus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': !openFaqs[0], 'rotate-90': openFaqs[0] }"
-									x-show="!openFaqs[0]"
-								></i>
-							</button>
-							<div 
-								x-show="openFaqs[0]"
-								x-transition:enter="transition ease-out duration-200"
-								x-transition:enter-start="opacity-0 transform -translate-y-2"
-								x-transition:enter-end="opacity-100 transform translate-y-0"
-								x-transition:leave="transition ease-in duration-150"
-								x-transition:leave-start="opacity-100 transform translate-y-0"
-								x-transition:leave-end="opacity-0 transform -translate-y-2"
-								class="py-4 bg-gray-50 "
-							>
-								<div class="flex">
-									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
-									<p class="text-gray-700 leading-relaxed">
-										Tài khoản Netflix Premium cung cấp chất lượng video 4K Ultra HD, hỗ trợ xem đồng thời trên 4 thiết bị, tải xuống không giới hạn và truy cập đầy đủ thư viện nội dung độc quyền. Bạn có thể xem phim, series, phim tài liệu chất lượng cao với âm thanh Dolby Atmos và HDR10+.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- FAQ Item 2 -->
-						<div class=" overflow-hidden">
-							<button 
-								@click="toggleFaq(1)"
-								class="w-full border-b border-gray-200 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
-							>
-								<span class="font-medium text-gray-900">Tài khoản có thời hạn sử dụng bao lâu và có được gia hạn không?</span>
-								<i 
-									data-lucide="minus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': openFaqs[1], 'rotate-90': !openFaqs[1] }"
-									x-show="openFaqs[1]"
-								></i>
-								<i 
-									data-lucide="plus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': !openFaqs[1], 'rotate-90': openFaqs[1] }"
-									x-show="!openFaqs[1]"
-								></i>
-							</button>
-							<div 
-								x-show="openFaqs[1]"
-								x-transition:enter="transition ease-out duration-200"
-								x-transition:enter-start="opacity-0 transform -translate-y-2"
-								x-transition:enter-end="opacity-100 transform translate-y-0"
-								x-transition:leave="transition ease-in duration-150"
-								x-transition:leave-start="opacity-100 transform translate-y-0"
-								x-transition:leave-end="opacity-0 transform -translate-y-2"
-								class=" py-4 bg-gray-50 "
-							>
-								<div class="flex">
-									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
-									<p class="text-gray-700 leading-relaxed">
-										Tài khoản Netflix Premium có thời hạn sử dụng 1 năm kể từ ngày kích hoạt. Chúng tôi cung cấp bảo hành 30 ngày và hỗ trợ gia hạn với giá ưu đãi. Nếu tài khoản gặp sự cố trong thời gian bảo hành, chúng tôi sẽ thay thế miễn phí.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- FAQ Item 3 -->
-						<div class=" overflow-hidden">
-							<button 
-								@click="toggleFaq(2)"
-								class="w-full border-b border-gray-200 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
-							>
-								<span class="font-medium text-gray-900">Làm thế nào để nhận tài khoản sau khi thanh toán?</span>
-								<i 
-									data-lucide="minus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': openFaqs[2], 'rotate-90': !openFaqs[2] }"
-									x-show="openFaqs[2]"
-								></i>
-								<i 
-									data-lucide="plus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': !openFaqs[2], 'rotate-90': openFaqs[2] }"
-									x-show="!openFaqs[2]"
-								></i>
-							</button>
-							<div 
-								x-show="openFaqs[2]"
-								x-transition:enter="transition ease-out duration-200"
-								x-transition:enter-start="opacity-0 transform -translate-y-2"
-								x-transition:enter-end="opacity-100 transform translate-y-0"
-								x-transition:leave="transition ease-in duration-150"
-								x-transition:leave-start="opacity-100 transform translate-y-0"
-								x-transition:leave-end="opacity-0 transform -translate-y-2"
-								class=" py-4 bg-gray-50 "
-							>
-								<div class="flex">
-									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
-									<p class="text-gray-700 leading-relaxed">
-										Sau khi thanh toán thành công, thông tin tài khoản sẽ được gửi ngay lập tức qua email và tin nhắn SMS. Bạn sẽ nhận được email chứa email/username và mật khẩu đăng nhập. Thời gian giao hàng thường từ 5-15 phút, tối đa 1 giờ trong trường hợp đặc biệt.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- FAQ Item 4 -->
-						<div class=" overflow-hidden">
-							<button 
-								@click="toggleFaq(3)"
-								class="w-full border-b border-gray-200 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
-							>
-								<span class="font-medium text-gray-900">Tài khoản có hoạt động trên tất cả thiết bị không?</span>
-								<i 
-									data-lucide="minus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': openFaqs[3], 'rotate-90': !openFaqs[3] }"
-									x-show="openFaqs[3]"
-								></i>
-								<i 
-									data-lucide="plus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': !openFaqs[3], 'rotate-90': openFaqs[3] }"
-									x-show="!openFaqs[3]"
-								></i>
-							</button>
-							<div 
-								x-show="openFaqs[3]"
-								x-transition:enter="transition ease-out duration-200"
-								x-transition:enter-start="opacity-0 transform -translate-y-2"
-								x-transition:enter-end="opacity-100 transform translate-y-0"
-								x-transition:leave="transition ease-in duration-150"
-								x-transition:leave-start="opacity-100 transform translate-y-0"
-								x-transition:leave-end="opacity-0 transform -translate-y-2"
-								class=" py-4 bg-gray-50 "
-							>
-								<div class="flex">
-									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
-									<p class="text-gray-700 leading-relaxed">
-										Có, tài khoản Netflix Premium hoạt động trên tất cả thiết bị bao gồm: Smart TV, máy tính (Windows/Mac), điện thoại (iOS/Android), tablet, PlayStation, Xbox, Apple TV, Chromecast, Roku và các thiết bị streaming khác. Bạn có thể đăng nhập đồng thời trên tối đa 4 thiết bị.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- FAQ Item 5 -->
-						<div class=" overflow-hidden">
-							<button 
-								@click="toggleFaq(4)"
-								class="w-full  py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
-							>
-								<span class="font-medium text-gray-900">Thời hạn sử dụng tài khoản là bao lâu?</span>
-								<i 
-									data-lucide="minus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': openFaqs[4], 'rotate-90': !openFaqs[4] }"
-									x-show="openFaqs[4]"
-								></i>
-								<i 
-									data-lucide="plus" 
-									class="w-5 h-5 text-gray-600 transition-transform duration-200"
-									:class="{ 'rotate-0': !openFaqs[4], 'rotate-90': openFaqs[4] }"
-									x-show="!openFaqs[4]"
-								></i>
-							</button>
-							<div 
-								x-show="openFaqs[4]"
-								x-transition:enter="transition ease-out duration-200"
-								x-transition:enter-start="opacity-0 transform -translate-y-2"
-								x-transition:enter-end="opacity-100 transform translate-y-0"
-								x-transition:leave="transition ease-in duration-150"
-								x-transition:leave-start="opacity-100 transform translate-y-0"
-								x-transition:leave-end="opacity-0 transform -translate-y-2"
-								class=" py-4 bg-gray-50 "
-							>
-								<div class="flex">
-									<div class="w-1 bg-emerald-500 mr-4 flex-shrink-0"></div>
-									<p class="text-gray-700 leading-relaxed">
-										Tài khoản Netflix Premium cung cấp chất lượng video 4K Ultra HD, hỗ trợ xem đồng thời trên 4 thiết bị, tải xuống không giới hạn và truy cập đầy đủ thư viện nội dung độc quyền. Bạn có thể xem phim, series, phim tài liệu chất lượng cao với âm thanh Dolby Atmos và HDR10+.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- sản phẩm liên quan -->
-			<section class="related-products-slider section">
-				<div class="container">
-					<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
-						<div class="text-left mb-3 sm:mb-0 flex-1">
-							<h2 class="section-title">Sản phẩm liên quan</h2>
-						</div>
-						<div class="flex-shrink-0 w-full sm:w-auto">
-							<button onclick="window.location.href='/products'" class="btn btn-outline w-full sm:w-auto btn-md">
-								<i data-lucide="arrow-right" class="size-4 mr-1 sm:mr-2"></i>
-								Xem Thêm
-							</button>
-						</div>
-					</div>
-					<!-- Related Products Slider -->
-					<div class="related-products-slider blaze-slider" data-slides-to-show="4" data-slides-to-scroll="1">
-						<div class="blaze-container">
-							<div class="blaze-track-container">
-								<div class="blaze-track">
-									<!-- Product 1 -->
-									<div class="blaze-slide">
-										<div class="card p-4">
-											<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
-											<div class="flex">
-												<div class="item-thumbnail">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0 space-y-1">
-													<div class="flex items-center justify-between gap-2">
-														<a href="#" class="item-category">SEO & Link Building</a>
-														<div class="flex space-x-1 ">
-															<i data-lucide="star" class="item-rating"></i>
-															<span class="text-responsive-xs text-gray-500 ">4.9</span>
-														</div>
-													</div>
-													
-													<div class="flex items-center justify-between gap-2">
-														<div class="flex gap-1">
-															<i data-lucide="user" class="item-user"></i>
-															<a href="#" class="item-link">John Doe</a>
-														</div>
-														<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-															<i data-lucide="shopping-cart" class="item-cart"></i>
-															<span>900</span>
-														</div>
-													</div>
-													
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-1">
-												<span class="item-price">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-												})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
-												Mua
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 2 -->
-									<div class="blaze-slide">
-										<div class="card p-4">
-											<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
-											<div class="flex">
-												<div class="item-thumbnail">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0 space-y-1">
-													<div class="flex items-center justify-between gap-2">
-														<a href="#" class="item-category">SEO & Link Building</a>
-														<div class="flex space-x-1 ">
-															<i data-lucide="star" class="item-rating"></i>
-															<span class="text-responsive-xs text-gray-500 ">4.9</span>
-														</div>
-													</div>
-													
-													<div class="flex items-center justify-between gap-2">
-														<div class="flex gap-1">
-															<i data-lucide="user" class="item-user"></i>
-															<a href="#" class="item-link">John Doe</a>
-														</div>
-														<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-															<i data-lucide="shopping-cart" class="item-cart"></i>
-															<span>900</span>
-														</div>
-													</div>
-													
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-1">
-												<span class="item-price">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-												})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
-												Mua
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 3 -->
-									<div class="blaze-slide">
-										<div class="card p-4">
-											<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
-											<div class="flex">
-												<div class="item-thumbnail">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0 space-y-1">
-													<div class="flex items-center justify-between gap-2">
-														<a href="#" class="item-category">SEO & Link Building</a>
-														<div class="flex space-x-1 ">
-															<i data-lucide="star" class="item-rating"></i>
-															<span class="text-responsive-xs text-gray-500 ">4.9</span>
-														</div>
-													</div>
-													
-													<div class="flex items-center justify-between gap-2">
-														<div class="flex gap-1">
-															<i data-lucide="user" class="item-user"></i>
-															<a href="#" class="item-link">John Doe</a>
-														</div>
-														<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-															<i data-lucide="shopping-cart" class="item-cart"></i>
-															<span>900</span>
-														</div>
-													</div>
-													
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-1">
-												<span class="item-price">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-												})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
-												Mua
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 4 -->
-									<div class="blaze-slide">
-										<div class="card p-4">
-											<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
-											<div class="flex">
-												<div class="item-thumbnail">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0 space-y-1">
-													<div class="flex items-center justify-between gap-2">
-														<a href="#" class="item-category">SEO & Link Building</a>
-														<div class="flex space-x-1 ">
-															<i data-lucide="star" class="item-rating"></i>
-															<span class="text-responsive-xs text-gray-500 ">4.9</span>
-														</div>
-													</div>
-													
-													<div class="flex items-center justify-between gap-2">
-														<div class="flex gap-1">
-															<i data-lucide="user" class="item-user"></i>
-															<a href="#" class="item-link">John Doe</a>
-														</div>
-														<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-															<i data-lucide="shopping-cart" class="item-cart"></i>
-															<span>900</span>
-														</div>
-													</div>
-													
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-1">
-												<span class="item-price">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-												})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
-												Mua
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 5 -->
-									<div class="blaze-slide">
-										<div class="card p-4">
-											<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
-											<div class="flex">
-												<div class="item-thumbnail">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0 space-y-1">
-													<div class="flex items-center justify-between gap-2">
-														<a href="#" class="item-category">SEO & Link Building</a>
-														<div class="flex space-x-1 ">
-															<i data-lucide="star" class="item-rating"></i>
-															<span class="text-responsive-xs text-gray-500 ">4.9</span>
-														</div>
-													</div>
-													
-													<div class="flex items-center justify-between gap-2">
-														<div class="flex gap-1">
-															<i data-lucide="user" class="item-user"></i>
-															<a href="#" class="item-link">John Doe</a>
-														</div>
-														<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-															<i data-lucide="shopping-cart" class="item-cart"></i>
-															<span>900</span>
-														</div>
-													</div>
-													
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-1">
-												<span class="item-price">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-												})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
-												Mua
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 6 -->
-									<div class="blaze-slide">
-										<div class="card p-4">
-											<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
-											<div class="flex">
-												<div class="item-thumbnail">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0 space-y-1">
-													<div class="flex items-center justify-between gap-2">
-														<a href="#" class="item-category">SEO & Link Building</a>
-														<div class="flex space-x-1 ">
-															<i data-lucide="star" class="item-rating"></i>
-															<span class="text-responsive-xs text-gray-500 ">4.9</span>
-														</div>
-													</div>
-													
-													<div class="flex items-center justify-between gap-2">
-														<div class="flex gap-1">
-															<i data-lucide="user" class="item-user"></i>
-															<a href="#" class="item-link">John Doe</a>
-														</div>
-														<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-															<i data-lucide="shopping-cart" class="item-cart"></i>
-															<span>900</span>
-														</div>
-													</div>
-													
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-1">
-												<span class="item-price">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-												})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
-												Mua
-												</button>
-											</div>
-										</div>
-									</div>
-									<!-- Product 7 -->
-									<div class="blaze-slide">
-										<div class="card p-4">
-											<a href=""><h3 class="item-title">Gmail Việt Nam Đã Ngâm 1-20 Ngày Dùng Siêu Trâu Chưa Qua Dịch Vụ</h3></a>
-											<div class="flex">
-												<div class="item-thumbnail">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Gmail_Icon_%282013-2020%29.svg/250px-Gmail_Icon_%282013-2020%29.svg.png" alt="Backlink Premium" class="w-full h-full object-cover rounded-lg">
-												</div>
-												<div class="flex-1 min-w-0 space-y-1">
-													<div class="flex items-center justify-between gap-2">
-														<a href="#" class="item-category">SEO & Link Building</a>
-														<div class="flex space-x-1 ">
-															<i data-lucide="star" class="item-rating"></i>
-															<span class="text-responsive-xs text-gray-500 ">4.9</span>
-														</div>
-													</div>
-													
-													<div class="flex items-center justify-between gap-2">
-														<div class="flex gap-1">
-															<i data-lucide="user" class="item-user"></i>
-															<a href="#" class="item-link">John Doe</a>
-														</div>
-														<div class="flex gap-1 text-responsive-xs text-gray-500 ">
-															<i data-lucide="shopping-cart" class="item-cart"></i>
-															<span>900</span>
-														</div>
-													</div>
-													
-												</div>
-											</div>
-											<div class="flex items-center justify-between mt-1">
-												<span class="item-price">500,000₫</span>
-												<button onclick="addToCart({
-													id: 'backlink-premium',
-													name: 'Backlink Premium',
-													category: 'SEO & Link Building',
-													price: 500000,
-													icon: 'link'
-												})" class="btn btn-primary btn-sm">
-												<i data-lucide="shopping-cart" class="size-4 mr-1 "></i>
-												Mua
-												</button>
-											</div>
-										</div>
-									</div>
-
-								</div>
-							</div>
-							<!-- Navigation buttons -->
-							<button class="blaze-prev" aria-label="Previous slide">
-							<i data-lucide="chevron-left" class="size-5"></i>
-							</button>
-							<button class="blaze-next" aria-label="Next slide">
-							<i data-lucide="chevron-right" class="size-5"></i>
-							</button>
-						</div>
-						<!-- Pagination dots -->
-						<div class="blaze-pagination"></div>
-					</div>
-				</div>
-			</section>
-			
+		<main class="min-h-screen bg-gray-50">
 			
 		</main>
 		<!-- Footer -->
@@ -3767,14 +2654,14 @@
 					<div class="space-y-4 col-span-2 lg:col-span-1 col-start-1">
 						<a href="/" class="flex items-center space-x-2">
 							<div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-sm">
-								<span class="text-white font-bold text-xl">M</span>
+								<span class="text-white font-bold text-responsive-lg">M</span>
 							</div>
 							<div>
-								<div class="font-bold text-xl">MMO Store</div>
-								<div class="text-xs text-emerald-200 -mt-1">Premium Digital Products</div>
+								<div class="font-bold text-responsive-lg">MMO Store</div>
+								<div class="text-responsive-xs text-emerald-200 -mt-1">Premium Digital Products</div>
 							</div>
 						</a>
-						<p class="text-emerald-200 text-sm leading-relaxed">
+						<p class="text-emerald-200 text-responsive-sm leading-relaxed">
 							Sàn bán tài nguyên số chuyên nghiệp cho MMO, cung cấp backlink, tài khoản social, data & tools, license phần mềm và các dịch vụ MMO chất lượng cao.
 						</p>
 						<div class="flex space-x-3">
@@ -3792,50 +2679,50 @@
 					</div>
 					<!-- Sản Phẩm -->
 					<div class="col-start-1 lg:col-start-2">
-						<h3 class="font-semibold text-lg mb-4">Sản Phẩm</h3>
+						<h3 class="font-semibold text-responsive-lg mb-4">Sản Phẩm</h3>
 						<ul class="space-y-2 text-emerald-200">
-							<li><a href="/backlink" class="hover:text-white transition-colors">Backlink/Textlink/Entity</a></li>
-							<li><a href="/email" class="hover:text-white transition-colors">Tài khoản Email</a></li>
-							<li><a href="/facebook" class="hover:text-white transition-colors">Tài khoản Facebook</a></li>
-							<li><a href="/social" class="hover:text-white transition-colors">Tài khoản Social khác</a></li>
-							<li><a href="/data-tools" class="hover:text-white transition-colors">Data & Tools MMO</a></li>
-							<li><a href="/license" class="hover:text-white transition-colors">License Phần Mềm</a></li>
-							<li><a href="/vpn-proxy" class="hover:text-white transition-colors">VPN/Proxy/Server</a></li>
-							<li><a href="/course" class="hover:text-white transition-colors">Khóa Học/TUT MMO</a></li>
+							<li><a href="/products/backlink" class="hover:text-white text-responsive-sm transition-colors">Backlink/Textlink/Entity</a></li>
+							<li><a href="/products/email" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Email</a></li>
+							<li><a href="/products/facebook" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Facebook</a></li>
+							<li><a href="/products/social" class="hover:text-white text-responsive-sm transition-colors">Tài khoản Social khác</a></li>
+							<li><a href="/products/data-tools" class="hover:text-white text-responsive-sm transition-colors">Data & Tools MMO</a></li>
+							<li><a href="/products/license" class="hover:text-white text-responsive-sm transition-colors">License Phần Mềm</a></li>
+							<li><a href="/products/vpn-proxy" class="hover:text-white text-responsive-sm transition-colors">VPN/Proxy/Server</a></li>
+							<li><a href="/products/course" class="hover:text-white text-responsive-sm transition-colors">Khóa Học/TUT MMO</a></li>
 						</ul>
 					</div>
 					<!-- Dịch Vụ -->
 					<div class="col-start-2 lg:col-start-3">
-						<h3 class="font-semibold text-lg mb-4">Dịch Vụ</h3>
+						<h3 class="font-semibold text-responsive-lg mb-4">Dịch Vụ</h3>
 						<ul class="space-y-2 text-emerald-200">
-							<li><a href="/services/website" class="hover:text-white transition-colors">Thiết kế Website</a></li>
-							<li><a href="/services/engagement" class="hover:text-white transition-colors">Tăng tương tác</a></li>
-							<li><a href="/services/marketing" class="hover:text-white transition-colors">Dịch vụ Marketing</a></li>
-							<li><a href="/services/software" class="hover:text-white transition-colors">Dịch vụ phần mềm</a></li>
-							<li><a href="/services/web" class="hover:text-white transition-colors">Dịch vụ website</a></li>
-							<li><a href="/services/seo" class="hover:text-white transition-colors">Dịch vụ SEO</a></li>
-							<li><a href="/support" class="hover:text-white transition-colors">Hỗ trợ khách hàng</a></li>
-							<li><a href="/warranty" class="hover:text-white transition-colors">Bảo hành</a></li>
+							<li><a href="/services/website" class="hover:text-white text-responsive-sm transition-colors">Thiết kế Website</a></li>
+							<li><a href="/services/engagement" class="hover:text-white text-responsive-sm transition-colors">Tăng tương tác</a></li>
+							<li><a href="/services/marketing" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ Marketing</a></li>
+							<li><a href="/services/software" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ phần mềm</a></li>
+							<li><a href="/services/web" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ website</a></li>
+							<li><a href="/services/seo" class="hover:text-white text-responsive-sm transition-colors">Dịch vụ SEO</a></li>
+							<li><a href="/support" class="hover:text-white text-responsive-sm transition-colors">Hỗ trợ khách hàng</a></li>
+							<li><a href="/warranty" class="hover:text-white text-responsive-sm transition-colors">Bảo hành</a></li>
 						</ul>
 					</div>
 					<!-- Liên Hệ -->
 					<div class="col-span-2 lg:col-span-1 col-start-1 lg:col-start-4">
-						<h3 class="font-semibold text-lg mb-4">Liên Hệ</h3>
-						<div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block">
-							<div class="flex items-start space-x-3">
+						<h3 class="font-semibold text-responsive-lg mb-4">Liên Hệ</h3>
+						<div class="space-y-3 text-emerald-200 block md:flex gap-4 justify-between lg:block text-responsive-sm">
+							<div class="flex items-start space-x-3 text-responsive-sm">
 								<i data-lucide="headphones" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
-								<div class="text-sm">
+								<div class="text-responsive-sm">
 									Hỗ trợ 24/7<br>
 									<span class="text-emerald-300">support@mmostore.com</span>
 								</div>
 							</div>
-							<div class="flex items-center space-x-3">
+							<div class="flex items-center space-x-3 text-responsive-sm">
 								<i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
-								<div class="text-sm">+84 123 456 789</div>
+								<div class="text-responsive-sm">+84 123 456 789</div>
 							</div>
-							<div class="flex items-center space-x-3">
+							<div class="flex items-center space-x-3 text-responsive-sm">
 								<i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
-								<div class="text-sm">info@mmostore.com</div>
+								<div class="text-responsive-sm">info@mmostore.com</div>
 							</div>
 						</div>
 					</div>
@@ -3855,7 +2742,5 @@
 		<script>
 			lucide.createIcons();
 		</script>
-		<!-- Product Detail JavaScript -->
-		<script src="js/detail.js"></script>
 	</body>
 </html>
